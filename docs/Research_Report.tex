@@ -127,7 +127,7 @@ Validation macro F1 is A 0.9549, B 0.9072, C 0.9573 and D 0.9243. Cropping there
 
 Validation still selects heads and mixture weights within each condition, and the independent audit recomputes that selection. D's target designation predates implementation. Repeated patient-aware partitions and external data are required to test stability.
 \fig{validation_test.pdf}{The direction of cropping's effect reverses between validation and test. This is a material split-sensitivity result, not a resolved explanation.}{fig:val}
-\begin{figure*}[!t]\centering\includegraphics[width=\textwidth]{confusion.pdf}\caption{All test confusion matrices. D finds 383 of 390 pneumonia records and correctly recognizes 202 of 234 normal records.}\label{fig:cm}\end{figure*}
+\begin{figure*}[!t]\centering\includegraphics[width=\textwidth]{confusion.pdf}\caption{All test confusion matrices (N: normal; P: pneumonia). D finds 383 of 390 pneumonia records and correctly recognizes 202 of 234 normal records.}\label{fig:cm}\end{figure*}
 
 \subsection{Historical and paper comparison}
 D makes 39 rather than the corrected M2 ensemble's 49 errors. Missed pneumonia falls from 21 to seven, while false alarms rise from 28 to 32. Accuracy improves 1.60 points, sensitivity 3.59 points and macro F1 0.0160, while specificity falls 1.71 points. Against the old ResNet18 component, accuracy improves only 0.64 points, or four cases. The new model is not better on every metric.

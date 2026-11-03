@@ -36,7 +36,7 @@ for color,k in zip(P,'ABCD'):
 ax.plot([0,1],[0,1],'--',color='#bbc3ca',lw=1);ax.set(xlabel='False-positive rate',ylabel='Pneumonia sensitivity',xlim=(0,1),ylim=(0,1.02));ax.legend(loc='lower right',frameon=False);save(f,'roc')
 f,axes=plt.subplots(1,4,figsize=(12,3.4))
 for ax,k in zip(axes,'ABCD'):
- cm=np.asarray(final['conditions'][k]['metrics']['confusion_matrix']);ax.imshow(cm,cmap='Blues',vmin=0,vmax=390);ax.set_title(k);ax.set_xticks([0,1],['Normal','Pneumonia'],fontsize=12);ax.set_yticks([0,1],['Normal','Pneumonia'],fontsize=12);ax.set_xlabel('Predicted');ax.set_ylabel('True label')
+ cm=np.asarray(final['conditions'][k]['metrics']['confusion_matrix']);ax.imshow(cm,cmap='Blues',vmin=0,vmax=390);ax.set_title(k);ax.set_xticks([0,1],['N','P'],fontsize=12);ax.set_yticks([0,1],['N','P'],fontsize=12);ax.set_xlabel('Predicted');ax.set_ylabel('True label')
  for i in range(2):
   for j in range(2):ax.text(j,i,str(cm[i,j]),ha='center',va='center',fontsize=15,color='white' if cm[i,j]>195 else '#172f43')
 save(f,'confusion')
@@ -44,7 +44,7 @@ f,axes=plt.subplots(1,2,figsize=(10,3.5))
 for color,name in zip(P,['resnet18_full','resnet18_crop','deit_tiny_full','deit_tiny_crop']):
  h=read('m4_m5/results/'+name+'_history.json');xx=[r['epoch'] for r in h];axes[0].plot(xx,[r['loss'] for r in h],'-o',label=name.replace('_',' '),color=color,ms=4);axes[1].plot(xx,[r['validation']['macro_f1'] for r in h],'-o',label=name.replace('_',' '),color=color,ms=4)
 for ax in axes:ax.set_xticks([1,2,3,4,5]);ax.set_xlabel('Classifier-head epoch');ax.grid(alpha=.15)
-axes[0].set_ylabel('Training cross-entropy');axes[1].set_ylabel('Validation macro F1');axes[1].legend(fontsize=12,frameon=False);save(f,'head_histories')
+axes[0].set_ylabel('Training cross-entropy');axes[1].set_ylabel('Validation macro F1');axes[0].legend(fontsize=12,frameon=False,loc='upper right');save(f,'head_histories')
 meta=read('m4_m5/data/crop_metadata.json');fractions=[]
 for m in meta.values():
  x0,y0,x1,y1=m['bbox'];w,h=m['original_size'];fractions.append((x1-x0)*(y1-y0)/(w*h))

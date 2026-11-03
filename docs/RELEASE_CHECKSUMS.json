@@ -1,0 +1,14 @@
+{
+  "Presentation_Kit.zip": {
+    "bytes": 6825296,
+    "sha256": "af50dcabebad0e5047386195effbebae4e4de385b506a3a7135954c8fa2f14d2"
+  },
+  "Historical_Models.zip": {
+    "bytes": 379377237,
+    "sha256": "ddba9457a6ef7dda23ba5305fbb6026afa9dc7af6f2a4287be3c67e6ba84a1c4"
+  },
+  "Portable_Lung_Model.zip": {
+    "bytes": 342205900,
+    "sha256": "fdec0e4c7313e4d9389695284e0e97caacdc0d2affae5338d62fc0d652a24857"
+  }
+}

@@ -14,7 +14,7 @@ def text(s,x,y,size=28,color='ink',bold=False):
 def start(title,n,dark=False):
  c.setFillColor(HexColor(C['ink'] if dark else C['bg']));c.rect(0,0,1280,720,fill=1,stroke=0)
  if title:text(title,64,638,43,'ink',True)
- text('Reading Room / final project',64,26,14,'muted');text(f'{n} / 8',1160,26,14,'muted')
+ text('Reading Room / final project',64,26,14,'#A8C4CC' if dark else 'muted');text(f'{n} / 8',1160,26,14,'#A8C4CC' if dark else 'muted')
 def img(path,x,y,w,h):c.drawImage(str(path),x,y,width=w,height=h,preserveAspectRatio=True,anchor='c',mask='auto')
 def line(x1,y1,x2,y2,color='line',width=2):c.setStrokeColor(HexColor(C[color]));c.setLineWidth(width);c.line(x1,y1,x2,y2)
 S=ROOT/'samples'
@@ -24,7 +24,7 @@ start('Our project journey',3)
 for i,(m,label) in enumerate([('M1','Review'),('M2','Baseline'),('M3','Hypothesis'),('M4','Experiment'),('M5','Demo + analysis')]):
  x=132+i*250
  if i<4:line(x+42,420,x+208,420)
- c.setFillColor(HexColor(C['teal'] if i==4 else C['ink']));c.circle(x,420,39,fill=1,stroke=0);text(m,x-26,410,26,'#FFFFFF',True);text(label,x-54,339,23,'ink',True)
+ c.setFillColor(HexColor(C['teal'] if i==4 else C['ink']));c.circle(x,420,39,fill=1,stroke=0);text(m,x-26,410,26,'#FFFFFF',True);c.setFillColor(HexColor(C['ink']));c.setFont('Helvetica-Bold',23);c.drawCentredString(x,339,label)
 for i,(label,value) in enumerate([('Cached 5',87.18),('Audit 15',85.74),('Online 5',92.15),('Final pilot',93.75)]):
  x=118+i*292;text(f'{value:.2f}%',x,189,38,'teal' if i==3 else 'muted',True);text(label,x+10,145,20,'muted')
 text('Historical runs used different settings.',395,82,19,'muted');c.showPage()
@@ -43,7 +43,7 @@ img(P/'figures/slide_false_positive.png',235,232,252,252);img(P/'figures/slide_f
 text('False alarm',282,179,29,'coral',True);text('Missed pneumonia',797,179,29,'coral',True);text('Validation and test disagreed.',390,86,27,'muted');c.showPage()
 start('Live demonstration',8);img(ROOT/'web/assets/demo_desktop.png',60,123,820,475)
 for i,t in enumerate(['Choose an image','Click Analyze','Show mask + result']):text(f'{i+1}. {t}',904,533-60*i,24,'ink',True)
-qr=qrcode.make('https://github.com/HulkInTherapy/reading-room-pneumonia');buf=io.BytesIO();qr.save(buf,format='PNG');c.drawImage(ImageReader(buf),944,128,width=180,height=180);text('Code, model and guide',923,94,19,'muted');text('github.com/HulkInTherapy/reading-room-pneumonia',64,60,18,'muted');c.showPage();c.save()
+qr=qrcode.make('https://hulkintherapy.github.io/reading-room-pneumonia/');buf=io.BytesIO();qr.save(buf,format='PNG');c.drawImage(ImageReader(buf),944,128,width=180,height=180);text('Code, model and guide',923,94,19,'muted');text('hulkintherapy.github.io/reading-room-pneumonia/',64,60,18,'muted');c.showPage();c.save()
 # Self-contained image slideshow: identical layout to the checked PDF, zero runtime dependencies.
 d=pymupdf.open(O);slides=[];images=P/'slide_images';images.mkdir(exist_ok=True)
 for i,page in enumerate(d):
