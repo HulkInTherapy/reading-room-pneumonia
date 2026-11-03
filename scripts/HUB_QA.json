@@ -1,0 +1,13 @@
+{
+  "verified": true,
+  "document_status": {
+    "Presentation_8_Slides.pdf": 200,
+    "Research_Report.pdf": 200,
+    "Presenter_Notes.pdf": 200,
+    "Offline_Demo.html": 200
+  },
+  "slideshow_navigation": true,
+  "offline_label": true,
+  "mobile_no_horizontal_overflow": true,
+  "javascript_errors": []
+}

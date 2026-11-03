@@ -1,0 +1,53 @@
+{
+  "repository": "https://github.com/HulkInTherapy/reading-room-pneumonia",
+  "commit": "18826a92033324ee13a8bea5657707f0d8370a5f",
+  "clone_authentication": "Anonymous HTTPS, credential helpers/global/system configs disabled; no authentication store copied",
+  "actual_public_release_download": true,
+  "download_url": "https://github.com/HulkInTherapy/reading-room-pneumonia/releases/download/v1.0.0/Portable_Lung_Model.zip",
+  "archive_bytes": 342205900,
+  "archive_sha256": "fdec0e4c7313e4d9389695284e0e97caacdc0d2affae5338d62fc0d652a24857",
+  "manifest_files": 21,
+  "model_hash_mismatches": [],
+  "runtime": "Previously tested CPU environment reused; all code/model/sample paths resolve inside this fresh clone",
+  "fresh_clone_path": "/workspace/home/projects/reading-room-github-check",
+  "samples": {
+    "normal": {
+      "http_status": 200,
+      "prediction": "Normal",
+      "d_score": 0.02729130256921053,
+      "max_probability_difference": {
+        "A": 0.0,
+        "B": 0.0,
+        "C": 0.0,
+        "D": 0.0
+      },
+      "server_seconds": 7.70034646987915
+    },
+    "pneumonia": {
+      "http_status": 200,
+      "prediction": "Pneumonia",
+      "d_score": 0.8136023581027985,
+      "max_probability_difference": {
+        "A": 0.0,
+        "B": 0.0,
+        "C": 0.0,
+        "D": 0.0
+      },
+      "server_seconds": 0.995124340057373
+    }
+  },
+  "upload": {
+    "http_status": 200,
+    "actual_segmentation": true,
+    "mask_shape": [
+      256,
+      256
+    ],
+    "prediction": "Normal",
+    "server_seconds": 5.61800217628479
+  },
+  "invalid_upload_status": 400,
+  "original_8765_still_ready": true,
+  "source_tree_clean": true,
+  "verified": true
+}
