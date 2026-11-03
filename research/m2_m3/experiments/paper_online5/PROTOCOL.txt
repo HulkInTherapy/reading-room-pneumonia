@@ -1,0 +1,50 @@
+P7 ONLINE FIVE EPOCH RECONSTRUCTION
+Locked before this run on 6 October 2026. No guaranteed score improvement.
+
+WHAT MATCHES RECOVERABLE PAPER DETAILS
+Use train plus original validation: 5232 records, 1349 normal and3883 pneumonia.
+Keep the original624 test records,234 normal and390 pneumonia. Retain original
+record multiplicity for comparability. No exact source hash crosses partitions.
+Keep the initial224x224 RGB resize, five ImageNet backbones and trainable boundaries
+from Figures4-8. AlexNet classifier9216->512->2. Adam/cross entropy. Initial LR.001,
+halved every3 epochs except AlexNet's stated200 optimizer steps then.00001.
+Final class comes from three-of-five votes, component threshold.5.
+AUC uses mean pneumonia probability; the author's executable score definition is
+not supplied. No class weighting, crop, ViT, test-time augmentation or test tuning.
+
+CORRECTIONS RELATIVE TO OUR PREVIOUS RESOURCE APPROXIMATION
+No frozen feature cache and no float16 activation conversion. Forward actual image
+pixels in FP32. Sample fresh augmentation per example on every epoch, not one
+fixed clean/augmented view for an entire epoch. Frozen parameters receive no
+gradients. Ordinary model.train() updates BatchNorm running statistics while
+affine gradients follow the paper's frozen/trainable weight boundaries.
+Disable unused auxiliary classifiers. Run one model at a time with two CPU
+threads, batch16, worker0 and the existing memory/disk guards.
+
+HONEST LIMITS THAT CANNOT BE ELIMINATED BY CLAIMING PERFECTION
+We precommit to FIVE epochs and final epoch-five weights to meet the deadline,
+not the paper's50-200 epochs. All5232 records train, so this paper-comparison run
+has no independent validation checkpoint selection. Exact author batch size,
+normalization, noise/crop/intensity settings, BatchNorm policy, weight revision,
+dropout details and split file manifest are unavailable. AlexNet's prose says200
+iterations while its table says200 epochs; this run interprets the LR switch as
+200 optimizer steps. These assumptions are specified in CONFIG.json, not silently
+presented as exact author choices. The benchmark test was inspected earlier and
+cannot be called blind. Filename patient identifiers are unverified proxies.
+
+PRETRAINING AND EVALUATION SAFETY
+Before training: scan all image files, labels and counts; verify trainable parameter
+names; test finite logits/loss/gradients, frozen weights unchanged, trainable weights
+updated, BatchNorm-statistics behavior, disabled auxiliary branches, transform
+randomness/repeatability, LR boundaries, arbitrary prediction batches and sampling.
+Preflight models are discarded. Actual training starts again from ImageNet.
+Save full model/optimizer/RNG/sampler state at each epoch for safe resumption.
+Abort on nonfinite loss/gradients or resource bounds. Do not mask failures.
+After ALL final checkpoints exist: evaluate each test image exactly once, calculate
+majority votes and all class metrics, then independently reload full checkpoints
+and rerun complete test forwards. Recalculate scores from per-image predictions.
+No hyperparameter, threshold or checkpoint selection based on test performance.
+
+This remains a bounded, explicitly documented reproduction. We cannot guarantee
+zero unknown edge cases or equivalence to unpublished author code. A lower score
+must be reported, not hidden or used to justify test-driven retries.

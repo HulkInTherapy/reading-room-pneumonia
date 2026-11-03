@@ -1,0 +1,889 @@
+<title>Reading the Reading Room</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+
+<style>
+/* ============================================================
+   TOKENS — light is the committed default (radiographic film
+   has a blue-tinted base; the neutral is cool, not grey).
+   Dark mirrors the radiology reading room, kept deliberately dim.
+   ============================================================ */
+:root{
+  --ink:      #0F1B24;
+  --ink-2:    #2B3D48;
+  --muted:    #64757F;
+  --hair:     #C3D0D8;
+  --hair-2:   #DDE5EA;
+  --paper:    #E7EDF1;
+  --surface:  #FDFEFF;
+  --surface-2:#F2F6F8;
+  --accent:   #0D6E80;
+  --accent-2: #0A5361;
+  --accent-wash:#DCEBEE;
+  --signal:   #A81D3F;
+  --signal-wash:#F6E2E7;
+  --dot-off:  #C9D5DC;
+  --shadow:   0 1px 2px rgba(15,27,36,.06), 0 12px 32px -12px rgba(15,27,36,.22);
+  --stage-bg: #FDFEFF;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ink:      #E8F0F4;
+    --ink-2:    #B4C6D0;
+    --muted:    #7D919C;
+    --hair:     #2C3D48;
+    --hair-2:   #1F2C35;
+    --paper:    #0A1218;
+    --surface:  #101B22;
+    --surface-2:#16242D;
+    --accent:   #4FBACB;
+    --accent-2: #7FD3E0;
+    --accent-wash:#122F37;
+    --signal:   #F0728F;
+    --signal-wash:#331420;
+    --dot-off:  #2C3D48;
+    --shadow:   0 1px 2px rgba(0,0,0,.4), 0 12px 32px -12px rgba(0,0,0,.7);
+    --stage-bg: #101B22;
+  }
+}
+:root[data-theme="dark"]{
+  --ink:      #E8F0F4;
+  --ink-2:    #B4C6D0;
+  --muted:    #7D919C;
+  --hair:     #2C3D48;
+  --hair-2:   #1F2C35;
+  --paper:    #0A1218;
+  --surface:  #101B22;
+  --surface-2:#16242D;
+  --accent:   #4FBACB;
+  --accent-2: #7FD3E0;
+  --accent-wash:#122F37;
+  --signal:   #F0728F;
+  --signal-wash:#331420;
+  --dot-off:  #2C3D48;
+  --shadow:   0 1px 2px rgba(0,0,0,.4), 0 12px 32px -12px rgba(0,0,0,.7);
+  --stage-bg: #101B22;
+}
+
+*{box-sizing:border-box}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"Source Serif 4",Georgia,"Times New Roman",serif;
+  -webkit-font-smoothing:antialiased;
+  overflow:hidden;
+}
+h1,h2,h3,h4,.ui{font-family:Archivo,"Helvetica Neue",Arial,sans-serif}
+.mono{font-family:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,monospace}
+
+/* ============================================================
+   VIEWER CHROME
+   ============================================================ */
+#app{height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0}
+#fit{display:flex;align-items:center;justify-content:center;flex:1;width:100%;min-height:0}
+#stage{
+  width:1280px;height:720px;flex:none;
+  transform-origin:center center;
+  background:var(--stage-bg);
+  position:relative;
+  box-shadow:var(--shadow);
+  border:1px solid var(--hair-2);
+  overflow:hidden;
+}
+.slide{position:absolute;inset:0;padding:52px 64px 60px;display:none;flex-direction:column}
+.slide.on{display:flex}
+
+/* running foot: speaker attribution + counter */
+.foot{
+  position:absolute;left:64px;right:64px;bottom:24px;
+  display:flex;align-items:center;justify-content:space-between;
+  border-top:1px solid var(--hair-2);padding-top:10px;
+  font-family:"IBM Plex Mono",monospace;font-size:10.5px;
+  letter-spacing:.09em;text-transform:uppercase;color:var(--muted);
+}
+.foot b{color:var(--accent);font-weight:600}
+
+/* eyebrow / section marker */
+.eyebrow{
+  font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:500;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--accent);
+  display:flex;align-items:center;gap:10px;
+}
+.eyebrow::after{content:"";height:1px;flex:1;background:var(--hair)}
+.eyebrow.sig{color:var(--signal)}
+
+h2.head{
+  font-size:38px;line-height:1.08;font-weight:700;letter-spacing:-.022em;
+  margin:14px 0 6px;text-wrap:balance;
+}
+.dek{font-size:17px;line-height:1.45;color:var(--ink-2);max-width:74ch;margin:0}
+
+/* ============================================================
+   PAPER CARDS
+   ============================================================ */
+.papers{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:26px;flex:1;min-height:0}
+.paper{
+  background:var(--surface-2);
+  border:1px solid var(--hair-2);
+  border-top:3px solid var(--accent);
+  padding:20px 20px 18px;
+  display:flex;flex-direction:column;gap:9px;
+}
+.paper.crit{border-top-color:var(--signal)}
+.pid{
+  font-family:"IBM Plex Mono",monospace;font-size:10px;font-weight:600;
+  letter-spacing:.12em;color:var(--muted);text-transform:uppercase;
+}
+.ptitle{font-family:Archivo,sans-serif;font-size:17px;font-weight:700;line-height:1.2;letter-spacing:-.012em;text-wrap:balance}
+.pcite{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--muted);line-height:1.45}
+.pmetric{
+  font-family:"IBM Plex Mono",monospace;font-weight:600;font-size:13px;
+  color:var(--accent-2);background:var(--accent-wash);
+  padding:6px 9px;align-self:flex-start;line-height:1.35;
+  font-variant-numeric:tabular-nums;
+}
+.paper.crit .pmetric{color:var(--signal);background:var(--signal-wash)}
+.pbody{font-size:14px;line-height:1.44;color:var(--ink-2);margin:0}
+.pbody b{color:var(--ink);font-weight:600}
+.ptake{
+  margin-top:auto;padding-top:9px;border-top:1px dashed var(--hair);
+  font-family:Archivo,sans-serif;font-size:12.5px;line-height:1.35;color:var(--muted);
+}
+.ptake em{font-style:normal;color:var(--signal);font-weight:600}
+
+/* ============================================================
+   TITLE SLIDE
+   ============================================================ */
+.title-wrap{flex:1;display:grid;grid-template-columns:1.18fr .82fr;gap:64px;align-items:center}
+.kicker{
+  font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--muted);
+}
+h1{
+  font-size:62px;line-height:1.02;font-weight:800;letter-spacing:-.035em;
+  margin:16px 0 0;text-wrap:balance;
+}
+h1 .thin{font-weight:400;color:var(--muted)}
+.sub{font-size:19px;line-height:1.45;color:var(--ink-2);margin:20px 0 0;max-width:50ch}
+.sub b{color:var(--accent-2);font-weight:600}
+.team{border-left:2px solid var(--accent);padding-left:22px;display:flex;flex-direction:column;gap:13px}
+.team .lab{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
+.member{display:flex;flex-direction:column;gap:2px}
+.member .nm{font-family:Archivo,sans-serif;font-weight:600;font-size:16px}
+.member .rn{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--muted)}
+.member .rl{font-size:12.5px;color:var(--accent-2);font-family:Archivo,sans-serif;font-weight:500}
+
+/* ============================================================
+   DATASET SLIDE
+   ============================================================ */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:44px;margin-top:24px;flex:1;align-items:start}
+.splits{display:flex;flex-direction:column;gap:0;margin-top:4px}
+.split{
+  display:grid;grid-template-columns:88px 1fr auto;gap:16px;align-items:center;
+  padding:13px 0;border-bottom:1px solid var(--hair-2);
+}
+.split .nm{font-family:Archivo,sans-serif;font-weight:600;font-size:14px}
+.split .bar{height:12px;background:var(--hair-2);position:relative;overflow:hidden}
+.split .bar i{position:absolute;inset:0 auto 0 0;background:var(--accent);display:block}
+.split .bar i.warn{background:var(--signal)}
+.split .n{font-family:"IBM Plex Mono",monospace;font-size:13px;font-weight:600;font-variant-numeric:tabular-nums;min-width:74px;text-align:right}
+.split.flag .nm,.split.flag .n{color:var(--signal)}
+.factbox{background:var(--surface-2);border:1px solid var(--hair-2);padding:20px 22px;display:flex;flex-direction:column;gap:12px}
+.factbox h4{margin:0;font-size:14px;font-weight:700;letter-spacing:-.005em}
+.factbox p{margin:0;font-size:14px;line-height:1.5;color:var(--ink-2)}
+.factbox p b{color:var(--ink);font-weight:600}
+.flagbox{border-left:3px solid var(--signal);background:var(--signal-wash);padding:16px 20px;margin-top:6px}
+.flagbox p{margin:0;font-size:14.5px;line-height:1.5;color:var(--ink)}
+.flagbox strong{color:var(--signal)}
+
+/* ============================================================
+   EVIDENCE MATRIX + ACCURACY CLIMB
+   ============================================================ */
+.synth{display:grid;grid-template-columns:.82fr 1.18fr;gap:40px;margin-top:22px;flex:1;min-height:0}
+.synth > div:first-child{display:flex;flex-direction:column;justify-content:center}
+.climb{display:flex;flex-direction:column;gap:0}
+.climb .row{display:grid;grid-template-columns:104px 1fr 52px;gap:12px;align-items:center;padding:7px 0}
+.climb .yr{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--muted);letter-spacing:.02em}
+.climb .track{height:14px;background:var(--hair-2);position:relative}
+.climb .track i.fill{position:absolute;inset:0 auto 0 0;background:linear-gradient(90deg,var(--accent-2),var(--accent));display:block;z-index:1}
+.climb .track i.ci{position:absolute;top:-4px;bottom:-4px;background:var(--signal);opacity:.22;display:block;z-index:2}
+.axis{display:grid;grid-template-columns:104px 1fr 52px;gap:12px;margin-top:2px}
+.axis .ticks{display:flex;justify-content:space-between;font-family:"IBM Plex Mono",monospace;font-size:9.5px;color:var(--muted);border-top:1px solid var(--hair);padding-top:5px}
+.cikey{display:flex;align-items:center;gap:7px;margin-top:13px;font-family:Archivo,sans-serif;font-size:11px;color:var(--muted)}
+.cikey i{width:26px;height:11px;background:var(--signal);opacity:.22;display:block}
+.climb .val{font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:600;text-align:right;font-variant-numeric:tabular-nums}
+.noisebar{
+  margin-top:12px;padding:11px 14px;background:var(--signal-wash);
+  border-left:3px solid var(--signal);font-size:13px;line-height:1.45;color:var(--ink);
+}
+.noisebar b{color:var(--signal);font-weight:600}
+
+table.mx{width:100%;border-collapse:collapse;font-family:Archivo,sans-serif}
+table.mx th{
+  font-size:9.5px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--muted);text-align:center;padding:0 4px 9px;vertical-align:bottom;line-height:1.25;
+}
+table.mx th.lft{text-align:left;width:34%}
+table.mx td{padding:5.5px 4px;border-top:1px solid var(--hair-2);text-align:center}
+table.mx td.lft{text-align:left;font-size:12.5px;font-weight:500;color:var(--ink-2)}
+table.mx td.lft span{font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--muted)}
+.dot{display:inline-block;width:11px;height:11px;border-radius:50%;background:var(--dot-off)}
+.dot.y{background:var(--accent)}
+.dot.s{background:var(--signal)}
+tr.grp td{
+  padding-top:11px;font-family:"IBM Plex Mono",monospace;font-size:9.5px;
+  letter-spacing:.13em;text-transform:uppercase;color:var(--muted);
+  text-align:left;border-top:1px solid var(--hair);
+}
+.legend{display:flex;gap:18px;margin-top:11px;font-family:Archivo,sans-serif;font-size:11px;color:var(--muted);align-items:center}
+.legend span{display:flex;align-items:center;gap:6px}
+
+/* ============================================================
+   GAP SLIDE
+   ============================================================ */
+.claim{
+  border-left:4px solid var(--signal);padding:20px 26px;background:var(--signal-wash);
+  margin-top:20px;
+}
+.claim p{margin:0;font-size:21px;line-height:1.36;font-weight:600;color:var(--ink);text-wrap:balance}
+.gaps{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:24px;flex:1}
+.gap{display:flex;flex-direction:column;gap:8px;border-top:2px solid var(--signal);padding-top:12px}
+.gap .no{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;color:var(--signal);letter-spacing:.08em}
+.gap h4{margin:0;font-size:14.5px;font-weight:700;line-height:1.2;letter-spacing:-.01em;text-wrap:balance}
+.gap p{margin:0;font-size:12.8px;line-height:1.42;color:var(--ink-2)}
+.gap p code{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--signal);background:var(--signal-wash);padding:1px 4px}
+
+/* ============================================================
+   PLAN SLIDE
+   ============================================================ */
+.plan{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:24px;flex:1;border-top:1px solid var(--hair)}
+.step{padding:20px 24px 8px;display:flex;flex-direction:column;gap:11px;border-right:1px solid var(--hair-2)}
+.step:last-child{border-right:none;padding-right:0}
+.step:first-child{padding-left:0}
+.step .mstone{
+  font-family:"IBM Plex Mono",monospace;font-size:10px;font-weight:600;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--surface);background:var(--accent);
+  padding:4px 8px;align-self:flex-start;
+}
+.step.hyp .mstone{background:var(--signal)}
+.step h4{margin:0;font-size:18px;font-weight:700;line-height:1.18;letter-spacing:-.015em;text-wrap:balance}
+.step p{margin:0;font-size:13.5px;line-height:1.48;color:var(--ink-2)}
+.step p b{color:var(--ink);font-weight:600}
+.step ul{margin:0;padding-left:16px;font-size:13px;line-height:1.55;color:var(--ink-2)}
+.step ul li{margin-bottom:4px}
+.predict{
+  margin-top:auto;background:var(--signal-wash);border-left:3px solid var(--signal);
+  padding:12px 14px;font-size:12.8px;line-height:1.45;color:var(--ink);
+}
+.predict .plabel{color:var(--signal);font-weight:600;display:block;font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;margin-bottom:6px}
+.predict b{color:var(--signal);font-weight:600}
+
+/* ============================================================
+   Q&A APPENDIX
+   ============================================================ */
+.qa{display:grid;grid-template-columns:1fr 1fr;gap:14px 34px;margin-top:22px;flex:1;align-content:start}
+.qitem{display:flex;flex-direction:column;gap:4px;padding-bottom:11px;border-bottom:1px solid var(--hair-2)}
+.qitem .q{font-family:Archivo,sans-serif;font-size:13.5px;font-weight:700;line-height:1.28;color:var(--ink)}
+.qitem .a{font-size:13px;line-height:1.45;color:var(--ink-2);margin:0}
+.qitem .a b{color:var(--accent-2);font-weight:600}
+
+/* ============================================================
+   CONTROLS / NOTES
+   ============================================================ */
+#bar{
+  display:flex;align-items:center;gap:14px;padding:10px 16px;
+  font-family:Archivo,sans-serif;font-size:12px;color:var(--muted);flex:none;
+}
+#bar button{
+  font-family:Archivo,sans-serif;font-size:12px;font-weight:600;color:var(--ink-2);
+  background:var(--surface);border:1px solid var(--hair);padding:6px 12px;cursor:pointer;
+  transition:background .12s,border-color .12s;
+}
+#bar button:hover{background:var(--surface-2);border-color:var(--accent)}
+#bar button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+#bar button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--stage-bg)}
+#pips{display:flex;gap:5px}
+#pips i{width:22px;height:3px;background:var(--hair);display:block;cursor:pointer;transition:background .15s}
+#pips i.on{background:var(--accent)}
+#pips i:hover{background:var(--accent-2)}
+#count{font-family:"IBM Plex Mono",monospace;font-size:11.5px;font-variant-numeric:tabular-nums;color:var(--ink-2)}
+
+#notes{
+  display:none;position:fixed;left:0;right:0;bottom:0;max-height:42vh;overflow:auto;
+  background:var(--surface);border-top:2px solid var(--accent);padding:18px 30px 22px;
+  box-shadow:0 -10px 30px -14px rgba(15,27,36,.35);z-index:20;
+}
+body.notes-on #notes{display:block}
+#notes h5{
+  margin:0 0 10px;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--accent);font-weight:600;
+}
+#notes .nbody{font-size:14.5px;line-height:1.6;color:var(--ink-2);max-width:100ch}
+#notes .nbody b{color:var(--ink);font-weight:600}
+#notes .nbody ul{margin:8px 0 0;padding-left:19px}
+#notes .nbody li{margin-bottom:5px}
+.notes{display:none}
+
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+/* ============================================================
+   PRINT — one slide per landscape page, notes underneath
+   ============================================================ */
+@media print{
+  @page{size:1280px 860px;margin:0}
+  body{background:#fff;overflow:visible}
+  #bar,#notes{display:none!important}
+  #app{display:block;height:auto}
+  #fit{display:block}
+  #stage{
+    width:1280px;height:auto;transform:none!important;box-shadow:none;border:none;
+  }
+  .slide{
+    display:flex!important;position:relative;inset:auto;
+    width:1280px;height:720px;page-break-after:always;break-after:page;
+    border-bottom:1px solid #ccc;
+  }
+  .slide .notes{
+    display:block;position:absolute;left:64px;right:64px;top:740px;
+    font-size:12px;line-height:1.5;color:#333;
+  }
+}
+</style>
+
+<div id="app">
+  <div id="fit"><div id="stage">
+
+  <!-- ═══════════════ 1 · TITLE ═══════════════ -->
+  <section class="slide on">
+    <div class="kicker">Milestone M1 · Literature Survey · CV Research-Reproduction Project</div>
+    <div class="title-wrap">
+      <div>
+        <h1>Reading the<br>Reading Room</h1>
+        <p class="sub">Twelve papers on pneumonia detection from chest X-rays. Accuracy on the
+        <b>Kermany pediatric CXR benchmark</b> climbed from 92.8% to 97.6% in six years — and we
+        found that <b>nobody checked whether the models were looking at the lungs.</b></p>
+      </div>
+      <div class="team">
+        <div>
+          <div class="lab">Team · 3 papers each</div>
+        </div>
+        <div class="member">
+          <span class="nm">Samarth Shekhar</span>
+          <span class="rn">230042</span>
+          <span class="rl">Foundations — slide 3</span>
+        </div>
+        <div class="member">
+          <span class="nm">Meghavi Rao</span>
+          <span class="rn">230044</span>
+          <span class="rl">The accuracy race — slide 4</span>
+        </div>
+        <div class="member">
+          <span class="nm">Rachit Kumar</span>
+          <span class="rn">230128</span>
+          <span class="rl">Ensembles &amp; transformers — slide 5</span>
+        </div>
+        <div class="member">
+          <span class="nm">Harshal Nerpagar</span>
+          <span class="rn">230076</span>
+          <span class="rl">The reality check — slide 6</span>
+        </div>
+      </div>
+    </div>
+    <div class="foot"><span>Pneumonia (Chest X-ray) · Kermany CXR</span><span><b>10 min</b> · 9 slides + Q&amp;A appendix</span></div>
+    <div class="notes"><b>Opening (any speaker, 30s):</b> Our topic is pneumonia classification on the Kermany chest X-ray dataset. We read 12 papers. The headline: reported accuracy went up ~5 points in six years, but not one paper on this benchmark verified that the gain is real or that the model uses lung pathology. That unverified gain is our research gap. Each of us takes one slide of three papers.</div>
+  </section>
+
+  <!-- ═══════════════ 2 · THE DATA ═══════════════ -->
+  <section class="slide">
+    <div class="eyebrow">01 · The benchmark everyone reports on</div>
+    <h2 class="head">5,856 X-rays. One hospital. Ages 1–5.</h2>
+    <p class="dek">Kermany et al. released this set with the 2018 <i>Cell</i> paper. It became the default
+    pneumonia benchmark — and its shape explains most of what we found.</p>
+
+    <div class="two">
+      <div>
+        <div class="splits">
+          <div class="split"><span class="nm">Train</span><span class="bar"><i style="width:100%"></i></span><span class="n">5,216</span></div>
+          <div class="split"><span class="nm">Test</span><span class="bar"><i style="width:11.96%"></i></span><span class="n">624</span></div>
+          <div class="split flag"><span class="nm">Validation</span><span class="bar"><i class="warn" style="width:1.2%"></i></span><span class="n">16</span></div>
+        </div>
+        <div class="flagbox">
+          <p>The official validation split is <strong>16 images</strong> — 8 per class. It cannot rank two
+          models. In practice every paper tunes against the 624-image test set, then reports on it.</p>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div class="factbox">
+          <h4>Where it comes from</h4>
+          <p>Guangzhou Women and Children's Medical Center, China. <b>Pediatric patients aged 1–5.</b>
+          One site, one scanner fleet, one acquisition protocol, one population.</p>
+        </div>
+        <div class="factbox">
+          <h4>What the label means</h4>
+          <p><b>4,273 pneumonia / 1,583 normal</b> — a 2.7 : 1 imbalance. Always predicting
+          "pneumonia" scores 62.5% on the test set, so accuracy alone is a weak claim.</p>
+        </div>
+        <div class="factbox">
+          <h4>Why the size matters</h4>
+          <p>624 test images gives a 95% confidence interval of roughly <b>±1.5 percentage points</b>.
+          A "1% improvement" is six images.</p>
+        </div>
+      </div>
+    </div>
+    <div class="foot"><span>The benchmark</span><span>Any speaker · <b>60 s</b></span></div>
+    <div class="notes"><b>Say (60s):</b> Three numbers to hold onto. 5,216 train / 624 test / <b>16 validation</b>. One hospital in Guangzhou, children aged one to five. 2.7:1 imbalance — so a model that always says "pneumonia" gets 62.5%. And 624 test images means a 95% CI of about ±1.5 points. Every number you see on the next four slides was measured on those same 624 images. <b>If asked "why does 16 matter?"</b> — model selection (early stopping, LR, architecture choice) needs a held-out set. With 16 images you cannot distinguish 93% from 87%. So people select on test, which inflates the reported number.</div>
+  </section>
+
+  <!-- ═══════════════ 3 · SAMARTH ═══════════════ -->
+  <section class="slide">
+    <div class="eyebrow">02 · Track A — Foundations</div>
+    <h2 class="head">The three papers the whole field is built on</h2>
+    <p class="dek">2017–2018: the datasets appear, transfer learning is shown to work, and "radiologist-level" enters the vocabulary.</p>
+
+    <div class="papers">
+      <article class="paper">
+        <div class="pid">P1 · Base paper candidate</div>
+        <div class="ptitle">Identifying Medical Diagnoses by Image-Based Deep Learning</div>
+        <div class="pcite">Kermany et al. · <i>Cell</i> 2018 · ~6,100 cites</div>
+        <div class="pmetric">92.8% acc · 93.2% sens · 90.1% spec</div>
+        <p class="pbody">ImageNet-pretrained <b>Inception-V3</b>, convolutional layers frozen and the
+        head retrained. Also separated bacterial vs viral pneumonia at 90.7%.</p>
+        <div class="ptake">Gave us the dataset and the baseline. <em>Reports one number, one test set.</em></div>
+      </article>
+
+      <article class="paper">
+        <div class="pid">P2 · Method</div>
+        <div class="ptitle">CheXNet: Radiologist-Level Pneumonia Detection</div>
+        <div class="pcite">Rajpurkar et al. · arXiv 2017 · Stanford ML Group</div>
+        <div class="pmetric">F1 0.435 vs radiologists 0.387</div>
+        <p class="pbody"><b>121-layer DenseNet</b> on ChestX-ray14. Introduced the Grad-CAM heatmap
+        as the standard way to "explain" a CXR model. One of the few to report <b>bootstrap 95% CIs</b>.</p>
+        <div class="ptake">Set the architecture template. <em>An F1 of 0.44 is far from solved.</em></div>
+      </article>
+
+      <article class="paper">
+        <div class="pid">P3 · Dataset &amp; scale</div>
+        <div class="ptitle">ChestX-ray8: Hospital-Scale Database and Benchmarks</div>
+        <div class="pcite">Wang et al. · CVPR 2017 · NIH</div>
+        <div class="pmetric">108,948 images · 32,717 patients</div>
+        <p class="pbody">Labels <b>text-mined from radiology reports by NLP</b>, not read from images —
+        so labels are noisy. Ships bounding boxes and scores localization, not just classification.</p>
+        <div class="ptake">The one early paper that measured <em>where</em> the model looks.</div>
+      </article>
+    </div>
+    <div class="foot"><span>Foundations</span><span><b>Samarth Shekhar</b> · 230042 · 2 min</span></div>
+    <div class="notes"><b>Samarth (2 min):</b> Kermany is our likely base paper — Inception-V3, frozen conv layers, retrained head, 92.8/93.2/90.1. Simple, public data, a clear target to reproduce. CheXNet is the architecture template everyone copied: DenseNet-121, and it's where Grad-CAM heatmaps became the standard explanation. Note CheXNet's actual pneumonia F1 is 0.435 — beating radiologists at 0.387, but both are low; pneumonia is genuinely hard. ChestX-ray8 matters for two reasons: its labels are NLP-mined from reports so they're noisy, and it's the only early paper that scored *localization* with bounding boxes rather than just showing pretty heatmaps. <b>Hard question — "why is CheXNet's F1 so low if accuracy elsewhere is 97%?"</b> Different dataset and task: ChestX-ray14 is adult, multi-label, 14 pathologies, noisy NLP labels. Kermany is pediatric, binary, clean, single-site — much easier. That difficulty gap is itself evidence the Kermany number is optimistic.</div>
+  </section>
+
+  <!-- ═══════════════ 4 · MEGHAVI ═══════════════ -->
+  <section class="slide">
+    <div class="eyebrow">03 · Track B — The accuracy race</div>
+    <h2 class="head">Everyone swaps the backbone; everyone reports higher</h2>
+    <p class="dek">2019–2020: the same 624 test images, a different pretrained network each time. All three papers below use the Kermany data.</p>
+
+    <div class="papers">
+      <article class="paper">
+        <div class="pid">P4 · From scratch</div>
+        <div class="ptitle">An Efficient Deep Learning Approach to Pneumonia Classification</div>
+        <div class="pcite">Stephen et al. · <i>J. Healthcare Eng.</i> 2019 · ~800 cites</div>
+        <div class="pmetric">CNN trained from scratch + heavy augmentation</div>
+        <p class="pbody">Argues you don't need ImageNet at all — a purpose-built CNN plus rotation,
+        zoom and flip augmentation reaches competitive accuracy on 5,856 images.</p>
+        <div class="ptake">Augmentation ≈ pretraining, at this scale. <em>No CI, no external test.</em></div>
+      </article>
+
+      <article class="paper">
+        <div class="pid">P5 · Head-to-head</div>
+        <div class="ptitle">Diagnosis of Pneumonia from Chest X-Ray Images Using Deep Learning</div>
+        <div class="pcite">Ayan &amp; Ünver · IEEE EBBT 2019 · ~550 cites</div>
+        <div class="pmetric">VGG16 87% acc · Xception 82% acc</div>
+        <p class="pbody">The useful result is the <b>split</b>: VGG16 wins on specificity (91% vs 76%),
+        Xception wins on sensitivity (85% vs 82%). Different networks make different mistakes.</p>
+        <div class="ptake">The honest baseline — and the argument for ensembles. <em>Nobody explains why.</em></div>
+      </article>
+
+      <article class="paper">
+        <div class="pid">P6 · Backbone sweep</div>
+        <div class="ptitle">Transfer Learning with Deep CNN for Pneumonia Detection</div>
+        <div class="pcite">Rahman et al. · <i>Applied Sciences</i> 2020 · ~815 cites</div>
+        <div class="pmetric">DenseNet-201 · 98% normal-vs-pneumonia</div>
+        <p class="pbody">Compares AlexNet, ResNet-18, DenseNet-201 and SqueezeNet.
+        Drops to <b>93.3% on bacterial vs viral</b> — the clinically useful question is much harder.</p>
+        <div class="ptake">Best headline number of the group. <em>Single split, single seed.</em></div>
+      </article>
+    </div>
+    <div class="foot"><span>The accuracy race</span><span><b>Meghavi Rao</b> · 230044 · 2 min</span></div>
+    <div class="notes"><b>Meghavi (2 min):</b> These three are the pattern of the whole field. Stephen shows you can skip ImageNet entirely if you augment hard — useful, because it means the gains aren't really about pretraining. Ayan &amp; Ünver is the most honest paper here: they publish 87% and 82%, and the interesting bit is the trade-off — VGG16 is specific (91%), Xception is sensitive (85%). Different architectures make different errors, which is exactly the argument for the ensembles on the next slide. Rahman sweeps four backbones, DenseNet-201 wins at 98% — but look at the second number: bacterial vs viral drops to 93.3%, and that's the question a doctor actually needs answered, because it decides whether you give antibiotics. <b>Hard question — "isn't 98% basically solved?"</b> No: it's 98% on 624 images from one hospital, with no CI, one seed, one split. That's the entire point of slide 7.</div>
+  </section>
+
+  <!-- ═══════════════ 5 · RACHIT ═══════════════ -->
+  <section class="slide">
+    <div class="eyebrow">04 · Track C — Ensembles, explanation, transformers</div>
+    <h2 class="head">Three ways to push past 96% on the same 624 images</h2>
+    <p class="dek">Combine models, visualise the decision, or replace convolution entirely.</p>
+
+    <div class="papers">
+      <article class="paper">
+        <div class="pid">P7 · Ensemble</div>
+        <div class="ptitle">A Novel Transfer Learning Based Approach for Pneumonia Detection</div>
+        <div class="pcite">Chouhan et al. · <i>Applied Sciences</i> 2020 · ~890 cites</div>
+        <div class="pmetric">96.4% acc · 99.62% recall</div>
+        <p class="pbody">Ensembles <b>five</b> backbones — AlexNet, DenseNet-121, Inception-V3,
+        ResNet-18, GoogLeNet. Highest recall we found, which is the metric that matters for screening.</p>
+        <div class="ptake">Confirms Ayan's diversity argument. <em>5× the compute for +1 point.</em></div>
+      </article>
+
+      <article class="paper">
+        <div class="pid">P8 · Interpretability</div>
+        <div class="ptitle">Visualization and Interpretation of CNN Predictions in Pediatric CXR</div>
+        <div class="pcite">Rajaraman et al. · <i>Applied Sciences</i> 2018 · ~400 cites</div>
+        <div class="pmetric">Customized VGG16 · 96.2% acc · 93.6% bact/viral</div>
+        <p class="pbody">The one Kermany paper that takes explanation seriously — CAM visualisations
+        of what drives each prediction, plus a customised, trimmed VGG16.</p>
+        <div class="ptake">Shows heatmaps. <em>Never scores them against a radiologist.</em></div>
+      </article>
+
+      <article class="paper">
+        <div class="pid">P9 · Current SOTA</div>
+        <div class="ptitle">Efficient Pneumonia Detection Using Vision Transformers on Chest X-Rays</div>
+        <div class="pcite">Singh et al. · <i>Scientific Reports</i> 2024</div>
+        <div class="pmetric">97.61% acc · ~95% sens · ~98% spec</div>
+        <p class="pbody">Self-attention over image patches instead of convolution, arguing ViT captures
+        <b>global context</b> a CNN's local receptive field misses.</p>
+        <div class="ptake">The highest number on this benchmark. <em>Same 624 images, still no CI.</em></div>
+      </article>
+    </div>
+    <div class="foot"><span>Ensembles &amp; transformers</span><span><b>Rachit Kumar</b> · 230128 · 2 min</span></div>
+    <div class="notes"><b>Rachit (2 min):</b> Chouhan ensembles five networks and gets 96.4% accuracy with 99.62% recall — recall is the number you want for screening, because a missed pneumonia is far worse than a false alarm. But it's five models for about one point over a single DenseNet. Rajaraman is the interpretability paper: 96.2%, and importantly it actually shows CAM visualisations of what the network keyed on. That's the closest anyone on this dataset gets to checking the model's reasoning — and it's still only pictures in a figure, never scored. Singh 2024 is the current top: a Vision Transformer at 97.61%. Self-attention sees the whole image at once instead of building up from local patches. <b>Hard question — "why would a ViT beat a CNN on 5,000 images? ViTs need huge data."</b> Correct, and that's a real tension — it only works because it's pretrained on ImageNet-21k and fine-tuned. Trained from scratch on 5,216 images a ViT would lose badly to a CNN. There's also a cost: reported comparisons put ViT inference around two orders of magnitude slower than a small CNN on CPU.</div>
+  </section>
+
+  <!-- ═══════════════ 6 · HARSHAL ═══════════════ -->
+  <section class="slide">
+    <div class="eyebrow sig">05 · Track D — The reality check</div>
+    <h2 class="head">Three papers that tested whether any of this holds up</h2>
+    <p class="dek">Published in <i>PLOS Medicine</i> and <i>Nature Machine Intelligence</i> — and none of them uses the Kermany dataset. That disconnect is our gap.</p>
+
+    <div class="papers">
+      <article class="paper crit">
+        <div class="pid">P10 · Generalisation</div>
+        <div class="ptitle">Variable Generalization Performance of a Deep Learning Model</div>
+        <div class="pcite">Zech et al. · <i>PLOS Medicine</i> 2018</div>
+        <div class="pmetric">AUC 0.931 internal → 0.815 external</div>
+        <p class="pbody">Trained on Mount Sinai + NIH, tested at Indiana. Performance collapses off-site.
+        The CNN identified <b>which hospital</b> an X-ray came from with 99.95% accuracy, and separated
+        portable from fixed scanners perfectly.</p>
+        <div class="ptake"><em>It learned the hospital, not the disease.</em></div>
+      </article>
+
+      <article class="paper crit">
+        <div class="pid">P11 · Shortcut learning</div>
+        <div class="ptitle">AI for Radiographic COVID-19 Detection Selects Shortcuts Over Signal</div>
+        <div class="pcite">DeGrave, Janizek &amp; Lee · <i>Nature Mach. Intell.</i> 2021 · ~980 cites</div>
+        <div class="pmetric">High in-distribution AUC → fails externally</div>
+        <p class="pbody">Names the mechanism. Models key on <b>laterality markers, image borders,
+        collimation edges and patient positioning</b> — everything outside the lungs — because those
+        correlate with the label in a single-source dataset.</p>
+        <div class="ptake"><em>Exactly the failure a single-hospital dataset invites.</em></div>
+      </article>
+
+      <article class="paper crit">
+        <div class="pid">P12 · Explanations</div>
+        <div class="ptitle">Benchmarking Saliency Methods for Chest X-Ray Interpretation</div>
+        <div class="pcite">Saporta et al. · <i>Nature Mach. Intell.</i> 2022 · CheXlocalize</div>
+        <div class="pmetric">All 7 saliency methods &lt; human benchmark</div>
+        <p class="pbody">Scored seven methods against expert segmentations using mIoU and hit rate.
+        <b>Grad-CAM was the best of the seven — and still significantly worse than a radiologist.</b>
+        Worst on small, complex findings.</p>
+        <div class="ptake"><em>A convincing heatmap is not evidence.</em></div>
+      </article>
+    </div>
+    <div class="foot"><span>The reality check</span><span><b>Harshal Nerpagar</b> · 230076 · 2 min</span></div>
+    <div class="notes"><b>Harshal (2 min):</b> These three are why we're not just going to chase 98%. Zech is the clearest result in the whole review: a model at AUC 0.931 in-house drops to 0.815 at another hospital — and the same network could tell you *which hospital* an X-ray came from with 99.95% accuracy, and portable-vs-fixed scanner with 100%. It learned the site. DeGrave names the mechanism — shortcut learning: laterality markers, borders, collimation edges, how the patient is positioned. All outside the lungs, all correlated with the label when your data comes from one place. Saporta closes it: they scored seven saliency methods against radiologist segmentations. Grad-CAM was best of the seven and still significantly worse than a human. So all those Grad-CAM figures in papers P1–P9 are not evidence the model looked at the lungs — they were never measured. <b>Hard question — "but Kermany is one hospital, so there's no site confound."</b> That's worse, not better: with a single site there's no signal telling the model to ignore acquisition artifacts, so shortcuts are free. And nobody has tested it, because nobody externally validates on this dataset.</div>
+  </section>
+
+  <!-- ═══════════════ 7 · SYNTHESIS ═══════════════ -->
+  <section class="slide">
+    <div class="eyebrow">06 · What twelve papers look like side by side</div>
+    <h2 class="head">Accuracy climbed. The evidence behind it didn't.</h2>
+
+    <div class="synth">
+      <div>
+        <div class="climb">
+          <div class="row"><span class="yr">Kermany '18</span><span class="track"><i class="fill" style="width:28%"></i><i class="ci" style="left:13%;width:30%"></i></span><span class="val">92.8</span></div>
+          <div class="row"><span class="yr">Rajaraman '18</span><span class="track"><i class="fill" style="width:62%"></i><i class="ci" style="left:47%;width:30%"></i></span><span class="val">96.2</span></div>
+          <div class="row"><span class="yr">Chouhan '20</span><span class="track"><i class="fill" style="width:64%"></i><i class="ci" style="left:49%;width:30%"></i></span><span class="val">96.4</span></div>
+          <div class="row"><span class="yr">Rahman '20</span><span class="track"><i class="fill" style="width:80%"></i><i class="ci" style="left:65%;width:30%"></i></span><span class="val">98.0</span></div>
+          <div class="row"><span class="yr">Singh ViT '24</span><span class="track"><i class="fill" style="width:76%"></i><i class="ci" style="left:61%;width:30%"></i></span><span class="val">97.6</span></div>
+        </div>
+        <div class="axis"><span></span><span class="ticks"><span>90%</span><span>92</span><span>94</span><span>96</span><span>98</span><span>100</span></span><span></span></div>
+        <div class="cikey"><i></i> the ±1.5 pt window that 624 test images allow</div>
+        <div class="noisebar">
+          Headline accuracy as published, all on the same 624-image test set.
+          <b>Only the 2018 baseline sits clearly outside the rest.</b> Every gain claimed since —
+          96.2 through 98.0 — falls inside the shaded window, so it is not separable from sampling
+          noise. No paper reports a confidence interval or a seed variance, so none of them could tell.
+        </div>
+      </div>
+
+      <div>
+        <table class="mx">
+          <thead>
+            <tr>
+              <th class="lft">Paper</th>
+              <th>Uses<br>Kermany</th>
+              <th>External<br>validation</th>
+              <th>CIs or<br>multi-seed</th>
+              <th>Calibration<br>reported</th>
+              <th>Localization<br>scored</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="grp"><td colspan="6">The nine benchmark papers</td></tr>
+            <tr><td class="lft">Kermany <span>'18</span></td><td><i class="dot y"></i></td><td><i class="dot"></i></td><td><i class="dot"></i></td><td><i class="dot"></i></td><td><i class="dot"></i></td></tr>
+            <tr><td class="lft">Rajpurkar <span>'17</span></td><td><i class="dot"></i></td><td><i class="dot"></i></td><td><i class="dot y"></i></td><td><i class="dot"></i></td><td><i class="dot"></i></td></tr>
+            <tr><td class="lft">Wang <span>'17</span></td><td><i class="dot"></i></td><td><i class="dot"></i></td><td><i class="dot"></i></td><td><i class="dot"></i></td><td><i class="dot y"></i></td></tr>
+            <tr><td class="lft">Stephen <span>'19</span></td><td><i class="dot y"></i></td><td><i class="dot"></i></td><td><i class="dot"></i></td><td><i class="dot"></i></td><td><i class="dot"></i></td></tr>
+            <tr><td class="lft">Ayan &amp; Ünver <span>'19</span></td><td><i class="dot y"></i></td><td><i class="dot"></i></td><td><i class="dot"></i></td><td><i class="dot"></i></td><td><i class="dot"></i></td></tr>
+            <tr><td class="lft">Rahman <span>'20</span></td><td><i class="dot y"></i></td><td><i class="dot"></i></td><td><i class="dot"></i></td><td><i class="dot"></i></td><td><i class="dot"></i></td></tr>
+            <tr><td class="lft">Rajaraman <span>'18</span></td><td><i class="dot y"></i></td><td><i class="dot"></i></td><td><i class="dot"></i></td><td><i class="dot"></i></td><td><i class="dot"></i></td></tr>
+            <tr><td class="lft">Chouhan <span>'20</span></td><td><i class="dot y"></i></td><td><i class="dot"></i></td><td><i class="dot"></i></td><td><i class="dot"></i></td><td><i class="dot"></i></td></tr>
+            <tr><td class="lft">Singh ViT <span>'24</span></td><td><i class="dot y"></i></td><td><i class="dot"></i></td><td><i class="dot"></i></td><td><i class="dot"></i></td><td><i class="dot"></i></td></tr>
+            <tr class="grp"><td colspan="6">The three that checked</td></tr>
+            <tr><td class="lft">Zech <span>'18</span></td><td><i class="dot"></i></td><td><i class="dot s"></i></td><td><i class="dot s"></i></td><td><i class="dot"></i></td><td><i class="dot"></i></td></tr>
+            <tr><td class="lft">DeGrave <span>'21</span></td><td><i class="dot"></i></td><td><i class="dot s"></i></td><td><i class="dot s"></i></td><td><i class="dot"></i></td><td><i class="dot s"></i></td></tr>
+            <tr><td class="lft">Saporta <span>'22</span></td><td><i class="dot"></i></td><td><i class="dot"></i></td><td><i class="dot s"></i></td><td><i class="dot"></i></td><td><i class="dot s"></i></td></tr>
+          </tbody>
+        </table>
+        <div class="legend">
+          <span><i class="dot y"></i> reported, benchmark paper</span>
+          <span><i class="dot s"></i> reported, critique paper</span>
+          <span><i class="dot"></i> not reported</span>
+        </div>
+      </div>
+    </div>
+    <div class="foot"><span>Synthesis</span><span>Any speaker · <b>1 min</b> — the key slide</span></div>
+    <div class="notes"><b>Say (60s) — this is the slide that earns the marks:</b> Left: reported accuracy over six years, all on the same 624 images. It looks like progress. The shaded band is the ±1.5 point window 624 images allow. Read it honestly: the jump from Kermany's 92.8 to the 2018–19 papers is real, it clears the band. Everything after that — 96.2, 96.4, 97.6, 98.0 — overlaps, so five years of reported improvement is not separable from noise. And no paper reports a CI or a seed variance, so none of them could have known either way. Right: five things you'd need to trust a medical model. The top block is the nine papers that use our dataset — the "Kermany" column is solid and every other column is empty. The bottom block is the three papers that did the checking — and their "Kermany" column is empty. <b>The two halves of this table never touch.</b> Also note the calibration column is empty for all twelve. <b>If asked "aren't these accuracies not comparable anyway?"</b> — exactly right, and that's part of the finding: different preprocessing, different augmentation, some re-split the data. Which makes the apparent climb even weaker as evidence.</div>
+  </section>
+
+  <!-- ═══════════════ 8 · GAP ═══════════════ -->
+  <section class="slide">
+    <div class="eyebrow sig">07 · Research gap</div>
+    <h2 class="head">The gap none of the twelve papers closes</h2>
+
+    <div class="claim">
+      <p>Every paper on this benchmark reports a single accuracy number on the same 624 single-centre
+      images. Every paper that tested whether such models actually work used a different dataset.
+      <span style="color:var(--signal)">Nobody has run the reality check on the benchmark itself.</span></p>
+    </div>
+
+    <div class="gaps">
+      <div class="gap">
+        <div class="no">GAP 01</div>
+        <h4>Selection on the test set</h4>
+        <p>A <code>16-image</code> validation split cannot rank models, so tuning happens against the
+        624 test images. Reported numbers are optimistic by construction.</p>
+      </div>
+      <div class="gap">
+        <div class="no">GAP 02</div>
+        <h4>No error bars</h4>
+        <p>Zero of the nine benchmark papers report a CI or run multiple seeds. Every gain
+        claimed since 2019 — <code>96.2 → 98.0</code> — sits inside the noise window.</p>
+      </div>
+      <div class="gap">
+        <div class="no">GAP 03</div>
+        <h4>No external validation</h4>
+        <p>One hospital, one city, ages 1–5. Zech showed <code>−0.12 AUC</code> off-site.
+        Nobody has measured that drop for this dataset.</p>
+      </div>
+      <div class="gap">
+        <div class="no">GAP 04</div>
+        <h4>No calibration</h4>
+        <p>Not one paper reports <code>ECE</code> or a reliability curve. A triage tool needs a
+        trustworthy confidence, not just a correct label.</p>
+      </div>
+      <div class="gap">
+        <div class="no">GAP 05</div>
+        <h4>Heatmaps never scored</h4>
+        <p>Grad-CAM appears as figures in most papers. Saporta showed scoring
+        <code>changes the verdict</code>. Nobody scores them here.</p>
+      </div>
+    </div>
+    <div class="foot"><span>Research gap</span><span>Any speaker · <b>90 s</b> — the bonus-point slide</span></div>
+    <div class="notes"><b>Say (90s):</b> State the claim in the box verbatim, then walk the five. The one-sentence version if you're short on time: <i>"The Kermany literature optimises a number; the critique literature questions whether that kind of number means anything — and the two have never been put in the same experiment."</i> <b>Hard question — "isn't 'nobody did external validation' just a dataset limitation, not a research gap?"</b> The gap isn't that the dataset is single-centre — it's that the field kept publishing increasingly precise-sounding numbers on it for six years without ever quantifying what that limitation costs. Nobody has said how much of the 97.6% is lung pathology and how much is acquisition artifact. That's a measurable, unanswered question, and it's what we propose to measure. <b>"Has really nobody done this?"</b> Be honest: individual pieces exist — people have re-split the data, and shortcut learning is studied on COVID datasets. What we found no paper doing is the combination: on this benchmark, with a proper split, with error bars, testing whether the decision depends on the lung field.</div>
+  </section>
+
+  <!-- ═══════════════ 9 · PLAN ═══════════════ -->
+  <section class="slide">
+    <div class="eyebrow">08 · Where we go next</div>
+    <h2 class="head">Reproduce Kermany, then test whether it needs the lungs</h2>
+
+    <div class="plan">
+      <div class="step">
+        <span class="mstone">M2 · Reproduce</span>
+        <h4>Kermany et al. 2018, Inception-V3</h4>
+        <p>Public dataset, ImageNet weights, a clearly stated target: <b>92.8% acc, 93.2% sens,
+        90.1% spec.</b> Small enough to train on a free GPU, well-specified enough to actually match.</p>
+        <p style="font-size:12.5px;color:var(--muted)">Fallback if reproduction stalls:
+        Rahman 2020 (DenseNet-201) — same data, more implementations available.</p>
+      </div>
+
+      <div class="step hyp">
+        <span class="mstone">M3 · Our one change</span>
+        <h4>Train and test on lung-cropped X-rays</h4>
+        <p>Segment the lung fields and crop. Everything the shortcut literature blames —
+        <b>laterality markers, collimation edges, borders, positioning</b> — is outside that crop.
+        Identical model, identical schedule, only the input region changes.</p>
+        <div class="predict">
+          <span class="plabel">Prediction — submitted before we code</span>
+          Standard test accuracy will move <b>less than 1 point</b> (no free lunch). But under a
+          context-ablation test — lungs masked out, periphery kept — the full-image model will stay
+          well above the 62.5% majority baseline while the cropped model falls toward it. That gap is
+          the shortcut, measured.
+        </div>
+      </div>
+
+      <div class="step">
+        <span class="mstone">M4 · M5 · Measure honestly</span>
+        <h4>The evaluation the field skipped</h4>
+        <ul>
+          <li><b>Patient-wise re-split</b> — a real validation set, not 16 images</li>
+          <li><b>5 seeds, mean ± 95% CI</b> on every number we report</li>
+          <li><b>Sensitivity / recall + AUC</b>, never accuracy alone</li>
+          <li><b>ECE + reliability curve</b> — the first calibration numbers on this benchmark</li>
+          <li><b>Grad-CAM hit rate inside the lung field</b>, scored, not shown</li>
+        </ul>
+        <p style="font-size:12.5px;color:var(--muted)">Ablations: crop only at test, crop only at train, and full-image control.</p>
+      </div>
+    </div>
+    <div class="foot"><span>Next milestones</span><span>Any speaker · <b>90 s</b></span></div>
+    <div class="notes"><b>Say (90s):</b> Base paper is Kermany — public data, ImageNet Inception-V3, and a clear three-number target to land near. Our one change is deliberately simple: segment the lungs and crop, so everything the shortcut literature blames is physically removed from the input. Same model, same schedule, only the input region changes. Our prediction, which we're committing to before coding: standard accuracy barely moves — under a point — because the lungs carry the real signal. The interesting result is the stress test: mask the lungs out and keep only the periphery. If the full-image model still scores well above the 62.5% majority baseline on lung-free images, it was using shortcuts, and we'll have measured how much. Around that we run the evaluation nobody ran: proper patient-wise split, five seeds with confidence intervals, sensitivity and AUC not just accuracy, calibration error, and a Grad-CAM hit rate scored inside the lung mask. <b>Hard question — "what if the prediction is wrong and cropping hurts accuracy a lot?"</b> That's still a result, and the brief says being wrong is fine if the reasoning is good. If cropping costs several points, it means clinically-relevant signal lives outside our mask — most likely the costophrenic angles and retrocardiac region, which segmentation models routinely clip. We'd report that as a finding about the segmentation, and it's a real limitation to write up. <b>"Where does the lung mask come from?"</b> A pretrained CXR lung segmentation model (U-Net trained on Montgomery/Shenzhen) — we're not hand-annotating, and we'll report mask quality as a limitation.</div>
+  </section>
+
+  <!-- ═══════════════ 10 · Q&A APPENDIX ═══════════════ -->
+  <section class="slide">
+    <div class="eyebrow sig">Appendix · not presented — Q&amp;A backup</div>
+    <h2 class="head">If you get pushed on something</h2>
+
+    <div class="qa">
+      <div class="qitem">
+        <div class="q">"Why this base paper and not the 97.6% ViT?"</div>
+        <p class="a">Reproducibility, not performance. Kermany has <b>public data, a stated architecture, and three stated metrics.</b> We need a baseline we can actually land near, then change one thing.</p>
+      </div>
+      <div class="qitem">
+        <div class="q">"How do you know the models use shortcuts here?"</div>
+        <p class="a">We don't — that's the point. It's shown on <b>other</b> CXR datasets (Zech, DeGrave). Whether it happens on Kermany is an open question, and it's the one we're measuring.</p>
+      </div>
+      <div class="qitem">
+        <div class="q">"Bacterial vs viral — why does it matter?"</div>
+        <p class="a">It decides antibiotics. Every paper scores worse on it (<b>90.7% → 93.6%</b>) than on normal-vs-pneumonia, because the visual difference is far subtler.</p>
+      </div>
+      <div class="qitem">
+        <div class="q">"Why is accuracy a bad metric here?"</div>
+        <p class="a">2.7 : 1 imbalance. Predicting "pneumonia" for everything scores <b>62.5%</b>. We report sensitivity/recall and AUC, per the project rules.</p>
+      </div>
+      <div class="qitem">
+        <div class="q">"What is calibration and why bring it up?"</div>
+        <p class="a">Whether a "90% confident" prediction is right 90% of the time. Softmax networks are famously overconfident. Zero of our twelve papers measure it.</p>
+      </div>
+      <div class="qitem">
+        <div class="q">"Isn't Grad-CAM already an explanation?"</div>
+        <p class="a">Saporta 2022 scored seven saliency methods against radiologist segmentations. Grad-CAM led — and was still <b>significantly worse than a human</b>. A heatmap is a hypothesis, not evidence.</p>
+      </div>
+      <div class="qitem">
+        <div class="q">"Isn't this dataset basically saturated?"</div>
+        <p class="a">Saturated on <b>one</b> metric. It is unmeasured on generalisation, calibration and localisation — which is the difference between a leaderboard and a tool.</p>
+      </div>
+      <div class="qitem">
+        <div class="q">"You said gains are noise — is Kermany→98% not real then?"</div>
+        <p class="a">The first jump is real: <b>92.8 → 96.2 clears the ±1.5 pt window.</b> What is not separable is everything after — 96.2, 96.4, 97.6, 98.0 all overlap. Five years, no measurable gain.</p>
+      </div>
+      <div class="qitem">
+        <div class="q">"What are the limitations of your own plan?"</div>
+        <p class="a">The lung mask is model-generated and can clip costophrenic angles. We still have no external test set. And 624 test images limits what any of our CIs can resolve.</p>
+      </div>
+    </div>
+    <div class="foot"><span>Q&amp;A backup — do not present</span><span>All speakers</span></div>
+    <div class="notes"><b>Not presented.</b> Read before the session. If a question isn't here, the safe move is: name what we'd have to measure to answer it, and say we haven't measured it yet — that's a stronger answer than guessing, and it matches the honest-evaluation posture of the whole deck.</div>
+  </section>
+
+  </div></div>
+
+  <nav id="bar">
+    <button id="prev" aria-label="Previous slide">←</button>
+    <span id="pips"></span>
+    <button id="next" aria-label="Next slide">→</button>
+    <span id="count">01 / 10</span>
+    <button id="ntoggle" aria-pressed="false">Speaker notes <span class="mono">N</span></button>
+    <span style="opacity:.75">Arrows to move · <span class="mono">P</span> to print / save PDF</span>
+  </nav>
+</div>
+
+<div id="notes"><h5 id="nlabel">Speaker notes</h5><div class="nbody" id="nbody"></div></div>
+
+<script>
+(function(){
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var stage  = document.getElementById('stage');
+  var fit    = document.getElementById('fit');
+  var pips   = document.getElementById('pips');
+  var count  = document.getElementById('count');
+  var nbody  = document.getElementById('nbody');
+  var nlabel = document.getElementById('nlabel');
+  var i = 0;
+
+  slides.forEach(function(_, k){
+    var p = document.createElement('i');
+    p.addEventListener('click', function(){ go(k); });
+    pips.appendChild(p);
+  });
+  var pipEls = Array.prototype.slice.call(pips.children);
+
+  function pad(n){ return (n < 10 ? '0' : '') + n; }
+
+  function go(k){
+    i = Math.max(0, Math.min(slides.length - 1, k));
+    slides.forEach(function(s, j){ s.classList.toggle('on', j === i); });
+    pipEls.forEach(function(p, j){ p.classList.toggle('on', j === i); });
+    count.textContent = pad(i + 1) + ' / ' + pad(slides.length);
+    var n = slides[i].querySelector('.notes');
+    nbody.innerHTML = n ? n.innerHTML : '<i>No notes for this slide.</i>';
+    nlabel.textContent = 'Speaker notes · slide ' + pad(i + 1);
+  }
+
+  function scale(){
+    var pad = 28;
+    var w = fit.clientWidth  - pad * 2;
+    var h = fit.clientHeight - pad;
+    var s = Math.min(w / 1280, h / 720);
+    if (!isFinite(s) || s <= 0) s = 1;
+    stage.style.transform = 'scale(' + s + ')';
+  }
+
+  document.getElementById('next').addEventListener('click', function(){ go(i + 1); });
+  document.getElementById('prev').addEventListener('click', function(){ go(i - 1); });
+
+  var nt = document.getElementById('ntoggle');
+  nt.addEventListener('click', function(){
+    var on = document.body.classList.toggle('notes-on');
+    nt.setAttribute('aria-pressed', on ? 'true' : 'false');
+    requestAnimationFrame(scale);
+  });
+
+  document.addEventListener('keydown', function(e){
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+    var k = e.key;
+    if (k === 'ArrowRight' || k === 'PageDown' || k === ' ') { e.preventDefault(); go(i + 1); }
+    else if (k === 'ArrowLeft' || k === 'PageUp') { e.preventDefault(); go(i - 1); }
+    else if (k === 'Home') { e.preventDefault(); go(0); }
+    else if (k === 'End')  { e.preventDefault(); go(slides.length - 1); }
+    else if (k === 'n' || k === 'N') { e.preventDefault(); nt.click(); }
+    else if (k === 'p' || k === 'P') { e.preventDefault(); window.print(); }
+  });
+
+  window.addEventListener('resize', scale);
+  scale();
+  go(0);
+})();
+</script>

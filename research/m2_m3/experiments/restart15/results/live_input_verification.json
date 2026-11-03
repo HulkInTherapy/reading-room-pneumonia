@@ -1,0 +1,62 @@
+{
+  "verified": true,
+  "test_indices": [
+    0,
+    233,
+    234,
+    623
+  ],
+  "method": "Fresh image normalization and full frozen-prefix/trainable-tail forwards; first/last examples of each class chosen without prediction-based selection",
+  "models": [
+    {
+      "model": "resnet18",
+      "max_probability_difference": 2.384185791015625e-07,
+      "scores": [
+        0.0009140395559370518,
+        0.7517585754394531,
+        1.0,
+        0.9999997615814209
+      ]
+    },
+    {
+      "model": "densenet121",
+      "max_probability_difference": 2.384185791015625e-07,
+      "scores": [
+        6.794924411224201e-05,
+        0.8294264674186707,
+        0.9999995231628418,
+        0.9995415210723877
+      ]
+    },
+    {
+      "model": "googlenet",
+      "max_probability_difference": 8.940696716308594e-08,
+      "scores": [
+        0.06853192299604416,
+        0.8452211022377014,
+        0.9994366765022278,
+        0.9379407167434692
+      ]
+    },
+    {
+      "model": "inception_v3",
+      "max_probability_difference": 1.1920928955078125e-07,
+      "scores": [
+        0.18621300160884857,
+        0.9847405552864075,
+        0.9999994039535522,
+        0.9990972280502319
+      ]
+    },
+    {
+      "model": "alexnet",
+      "max_probability_difference": 0.0,
+      "scores": [
+        0.4472108483314514,
+        0.9519384503364563,
+        0.9999157190322876,
+        0.9950260519981384
+      ]
+    }
+  ]
+}

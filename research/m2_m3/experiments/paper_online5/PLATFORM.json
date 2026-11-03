@@ -1,0 +1,7 @@
+{
+  "platform": "macOS-26.5-arm64-arm-64bit",
+  "python": "3.11.13 (main, Jun  3 2025, 18:38:25) [Clang 17.0.0 (clang-1700.3.19.1)]",
+  "torch": "2.14.1",
+  "threads": 2,
+  "config_hash": "e0e9ac2a0d1c82a7260d25a43705b706ecedd92909d4967ba6adc75124beb296"
+}

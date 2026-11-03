@@ -1,0 +1,9 @@
+{
+  "model": "alexnet",
+  "epochs": 15,
+  "seed": 42,
+  "boundary": "9216->512->2 replacement classifier",
+  "train_n": 4164,
+  "validation_n": 1042,
+  "seconds": 425.94271326065063
+}

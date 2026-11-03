@@ -1,0 +1,16 @@
+{
+  "verified": true,
+  "release_archive_sha256": "fdec0e4c7313e4d9389695284e0e97caacdc0d2affae5338d62fc0d652a24857",
+  "actual_archive_extracted": true,
+  "all_manifest_hashes_verified": true,
+  "repeated_setup_reuses_existing_verified_models": true,
+  "path_traversal_archive_rejected": true,
+  "network_note": "Extraction/checksum logic tested against the actual local Release ZIP; public GitHub URL becomes live when v1.0.0 is published.",
+  "manual_archive_cli_verified": true,
+  "verify_only_missing_exit": 1,
+  "verify_only_installed_exit": 0,
+  "manual_archive_http_requests": false,
+  "benchmark_verified_without_site_packages": true,
+  "runtime_ruff_format_checked": true,
+  "runtime_ruff_lint_passed": true
+}

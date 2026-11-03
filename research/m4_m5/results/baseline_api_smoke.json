@@ -1,0 +1,29 @@
+{
+  "prediction": "Normal",
+  "predicted_label": 0,
+  "pneumonia_votes": 0,
+  "total_models": 5,
+  "pneumonia_score": 0.03811961633618921,
+  "model_probabilities": {
+    "resnet18": 0.0006825753953307867,
+    "densenet121": 0.0016650707693770528,
+    "googlenet": 0.15114077925682068,
+    "inception_v3": 0.02076878398656845,
+    "alexnet": 0.016340872272849083
+  },
+  "explanation": {
+    "method": "Grad-CAM",
+    "component": "ResNet18",
+    "target_class": "Normal",
+    "source_resolution": "7 x 7, upscaled to 224 x 224",
+    "image_left_activation_share": 0.5356725397067705,
+    "image_right_activation_share": 0.4643274602932294,
+    "positive_activation": true,
+    "component_pneumonia_score": 0.0006825753953307867,
+    "component_vote": "Normal"
+  },
+  "seconds": 10.355872869491577,
+  "note": "Research model prediction. Score is uncalibrated. Heatmap explains one component, not a lesion or the entire ensemble.",
+  "known_test_label": "Normal",
+  "matches_known_label": true
+}

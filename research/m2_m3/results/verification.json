@@ -1,0 +1,37 @@
+{
+  "status": "passed",
+  "independently_recomputed": {
+    "accuracy": 0.8717948717948718,
+    "sensitivity": 0.9974358974358974,
+    "specificity": 0.6623931623931624,
+    "precision": 0.8311965811965812,
+    "pneumonia_f1": 0.9067599067599068,
+    "macro_f1": 0.8508158508158508,
+    "normal_f1": 0.7948717948717948,
+    "auc": 0.9815362699978085,
+    "balanced_accuracy": 0.8299145299145299
+  },
+  "confusion_matrix": [
+    [
+      155,
+      79
+    ],
+    [
+      1,
+      389
+    ]
+  ],
+  "saved_heads_predictions_verified": true,
+  "unique_test_sensitivity_analysis": {
+    "n": 618,
+    "accuracy": 0.872168284789644,
+    "macro_f1": 0.8509866162040075,
+    "auc": 0.9813975860487488
+  },
+  "sha256": {
+    "baseline.py": "1a4003bdc4362e21161580f9d5afb7bbaf91aac1418b4c145ae4ab2c432f9884",
+    "data/manifest.json": "e8e4215c9967e95b8ad1472454749d664f23fc6490e061e40a90482b0452d753",
+    "results/test_predictions.csv": "cea1df931b237e490f85ecc00d985dd18862ed982c38b536cdea8cd23f49ecdf",
+    "HYPOTHESIS_BEFORE_IMPLEMENTATION.md": "5f682357ed6f4b48484d5ea2b92d6368218df7c1fc3b77bee347337e6feb11fe"
+  }
+}

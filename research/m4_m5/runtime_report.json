@@ -1,0 +1,89 @@
+{
+  "mask_file_wall_interval_seconds": 6163.12694644928,
+  "mask_file_interval_note": "Earliest-to-latest uniform256 mask file mtimes; includes pauses/downloads between masks, excludes initial model/first-shard download",
+  "feature_last_logged_elapsed": {
+    "resnet18_full": {
+      "kind": "full",
+      "arch": "resnet18",
+      "complete": 5800,
+      "total": 5830,
+      "elapsed": 374.9402060508728
+    },
+    "resnet18_crop": {
+      "kind": "crop",
+      "arch": "resnet18",
+      "complete": 5800,
+      "total": 5830,
+      "elapsed": 302.23976492881775
+    },
+    "deit_tiny_full": {
+      "kind": "full",
+      "arch": "deit_tiny",
+      "complete": 5800,
+      "total": 5830,
+      "elapsed": 273.2578213214874
+    },
+    "deit_tiny_crop": {
+      "kind": "crop",
+      "arch": "deit_tiny",
+      "complete": 5800,
+      "total": 5830,
+      "elapsed": 254.85516548156738
+    }
+  },
+  "feature_attempt_last_logged_elapsed": {
+    "resnet18_full": [
+      {
+        "kind": "full",
+        "arch": "resnet18",
+        "complete": 5800,
+        "total": 5830,
+        "elapsed": 374.9402060508728
+      }
+    ],
+    "resnet18_crop": [
+      {
+        "kind": "crop",
+        "arch": "resnet18",
+        "complete": 5800,
+        "total": 5830,
+        "elapsed": 302.23976492881775
+      }
+    ],
+    "deit_tiny_full": [
+      {
+        "kind": "full",
+        "arch": "deit_tiny",
+        "complete": 5800,
+        "total": 5830,
+        "elapsed": 268.2433490753174
+      },
+      {
+        "kind": "full",
+        "arch": "deit_tiny",
+        "complete": 5800,
+        "total": 5830,
+        "elapsed": 273.2578213214874
+      }
+    ],
+    "deit_tiny_crop": [
+      {
+        "kind": "crop",
+        "arch": "deit_tiny",
+        "complete": 5800,
+        "total": 5830,
+        "elapsed": 254.85516548156738
+      }
+    ]
+  },
+  "feature_timing_note": "Last logged forward-loop elapsed per attempt; includes retained failed-attempt logs separately; excludes initial model load/download and final unlogged images",
+  "head_timing": "Not independently captured",
+  "parameter_counts": {
+    "resnet18_encoder": 11176512,
+    "resnet18_full_head": 1026,
+    "resnet18_crop_head": 1026,
+    "deit_tiny_encoder": 5524416,
+    "deit_tiny_full_head": 386,
+    "deit_tiny_crop_head": 386
+  }
+}

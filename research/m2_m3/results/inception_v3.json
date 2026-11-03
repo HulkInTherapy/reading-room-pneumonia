@@ -1,0 +1,62 @@
+{
+  "model": "inception_v3",
+  "metrics": {
+    "n": 624,
+    "accuracy": 0.8509615384615384,
+    "sensitivity": 0.9897435897435898,
+    "specificity": 0.6196581196581197,
+    "precision": 0.8126315789473684,
+    "pneumonia_f1": 0.892485549132948,
+    "normal_f1": 0.7571801566579635,
+    "macro_f1": 0.8248328528954557,
+    "balanced_accuracy": 0.8047008547008547,
+    "auc": 0.9713949156256849,
+    "confusion_matrix": [
+      [
+        145,
+        89
+      ],
+      [
+        4,
+        386
+      ]
+    ]
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "steps": 654,
+      "loss": 0.19427081448558592,
+      "learning_rate": 0.001
+    },
+    {
+      "epoch": 2,
+      "steps": 1308,
+      "loss": 0.12199400155449042,
+      "learning_rate": 0.001
+    },
+    {
+      "epoch": 3,
+      "steps": 1962,
+      "loss": 0.10246676162896286,
+      "learning_rate": 0.001
+    },
+    {
+      "epoch": 4,
+      "steps": 2616,
+      "loss": 0.056563440854084206,
+      "learning_rate": 0.0005
+    },
+    {
+      "epoch": 5,
+      "steps": 3270,
+      "loss": 0.05270426565252138,
+      "learning_rate": 0.0005
+    }
+  ],
+  "seed": 42,
+  "trainable_boundary": "Mixed_7c + fc",
+  "epochs": 5,
+  "seconds": 632.0572299957275,
+  "protocol": "Figures 4-8 late-block fine-tuning; five-epoch bounded reconstruction"
+}

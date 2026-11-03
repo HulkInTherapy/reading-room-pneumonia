@@ -1,0 +1,20 @@
+{
+  "assumption": "One binary confusion matrix on Table1 test partition, pneumonia positive",
+  "reported_accuracy": 0.9639,
+  "reported_recall": 0.9962,
+  "reported_precision": 0.9328,
+  "test_n": 624,
+  "positive_n": 390,
+  "implied_accuracy": 0.9527703687821611,
+  "implied_counts": {
+    "TP": 388.518,
+    "FP": 27.989289879931444,
+    "FN": 1.4820000000000277,
+    "TN": 206.01071012006855
+  },
+  "nearest_integer_accuracy_values": [
+    0.9631410256410257,
+    0.9647435897435898
+  ],
+  "interpretation": "Conditional inconsistency. Could reflect averaging, undocumented protocol/definitions, or reporting errors; not proof of fabrication."
+}

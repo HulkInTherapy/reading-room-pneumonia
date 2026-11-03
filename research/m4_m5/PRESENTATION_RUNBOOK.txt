@@ -1,0 +1,50 @@
+READING THE READING ROOM — FINAL PRESENTATION RUNBOOK
+
+1. Open output/Final_M4_M5_Presentation.pdf, or the HTML slideshow.
+   HTML: use arrow keys, Previous/Next, and Fullscreen.
+2. Double-click START_FINAL_DEMO.command on this Mac.
+   It checks the remote server, connects our SSH tunnel, and opens
+   http://127.0.0.1:8765 . Keep network access available.
+3. Select a test X-ray. Click Analyze image for the verified five-CNN baseline.
+   Explain majority voting and distinguish the ResNet18 Grad-CAM from the ensemble.
+4. In the lung-focused section, click Analyze lung crop and compare models.
+   Explain full image, predicted anatomical mask, cropped input, and A/B/C/D.
+   For samples, preprocessing was cached from original-resolution public images.
+   Classifier inference runs live. For uploads, segmentation also runs live.
+5. If network access fails, open output/Offline_Demo_Evidence.html.
+   Say explicitly that it contains recorded real model responses.
+
+DEFENCE POINTS
+
+M2: five CNNs, five epochs, final full FP32 checkpoints, original benchmark split.
+M4: frozen pretrained ResNet18 and DeiT-Tiny, five classifier-head epochs,
+matched full/cropped inputs with a separate group-aware validation split.
+These are different training protocols. Compare A/B/C/D within M4. Do not use
+M2-to-M4 differences as an isolated crop effect.
+
+The crop prediction was made before implementation. A disappointing crop result
+is a valid experimental finding. Report the measured direction and uncertainty.
+Validation selects checkpoints and blend weights. Test scores never select them.
+The original proposed five-CNN-plus-ViT experiment is larger than this pilot.
+A ViT blend weight of zero means validation selected the CNN alone for that
+condition; do not claim an effective transformer contribution there.
+
+Masks are model predictions, not manual ground truth. There are no lung/lesion
+annotations for segmentation accuracy measurement in this classification set.
+The bounding crop includes some non-lung pixels. It does not remove every shortcut.
+Grad-CAM is qualitative attribution. It does not prove clinical reasoning.
+
+Reliability limits: one seed, pediatric single-center data, imperfect filename
+patient proxies, and a benchmark test already inspected during earlier work.
+Do not claim clinical readiness, global novelty, or superiority over papers with
+different splits. Additional external data and repeated experiments remain future work.
+
+REMOTE RECOVERY
+
+Project: /workspace/home/projects/cvproj-76c4e6e6
+Environment: .venv/bin/python
+Server working directory: project/m2_m3
+Server command: ../.venv/bin/python -m uvicorn demo.app:app --host 127.0.0.1 --port 8765
+Training implementation: m4_m5/run_experiment.py
+Protocol and measured results: m4_m5/results/summary.json
+Do not rerun training immediately before presenting.

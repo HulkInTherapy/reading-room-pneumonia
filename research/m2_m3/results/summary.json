@@ -1,0 +1,85 @@
+{
+  "majority_vote": {
+    "n": 624,
+    "accuracy": 0.8717948717948718,
+    "sensitivity": 0.9974358974358974,
+    "specificity": 0.6623931623931624,
+    "precision": 0.8311965811965812,
+    "pneumonia_f1": 0.9067599067599068,
+    "normal_f1": 0.7948717948717948,
+    "macro_f1": 0.8508158508158508,
+    "balanced_accuracy": 0.8299145299145299,
+    "auc": 0.9815362699978085,
+    "confusion_matrix": [
+      [
+        155,
+        79
+      ],
+      [
+        1,
+        389
+      ]
+    ]
+  },
+  "majority_class": {
+    "n": 624,
+    "accuracy": 0.625,
+    "sensitivity": 1.0,
+    "specificity": 0.0,
+    "precision": 0.625,
+    "pneumonia_f1": 0.7692307692307693,
+    "normal_f1": 0.0,
+    "macro_f1": 0.38461538461538464,
+    "balanced_accuracy": 0.5,
+    "auc": 0.5,
+    "confusion_matrix": [
+      [
+        0,
+        234
+      ],
+      [
+        0,
+        390
+      ]
+    ]
+  },
+  "models": [
+    "resnet18",
+    "densenet121",
+    "googlenet",
+    "inception_v3",
+    "alexnet"
+  ],
+  "train_n": 5232,
+  "test_n": 624,
+  "seed": 42,
+  "device": "cpu",
+  "threads": 2,
+  "feature_batch": 4,
+  "training_batch": 8,
+  "epochs": 5,
+  "protocol": "Late-block fine-tuning; five epochs; fixed cached augmentation; float16 frozen activations",
+  "score_definition": "Labels: majority vote. AUC: mean probability.",
+  "bootstrap_95_ci": {
+    "accuracy": [
+      0.8461137820512821,
+      0.8974759615384615
+    ],
+    "sensitivity": [
+      0.9921465968586387,
+      1.0
+    ],
+    "specificity": [
+      0.5981497336377474,
+      0.723852685586626
+    ],
+    "macro_f1": [
+      0.8187413279743453,
+      0.8813760548833668
+    ],
+    "auc": [
+      0.9711362984140939,
+      0.9896473118169873
+    ]
+  }
+}

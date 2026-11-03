@@ -1,0 +1,62 @@
+{
+  "model": "resnet18",
+  "metrics": {
+    "n": 624,
+    "accuracy": 0.8717948717948718,
+    "sensitivity": 0.9974358974358974,
+    "specificity": 0.6623931623931624,
+    "precision": 0.8311965811965812,
+    "pneumonia_f1": 0.9067599067599068,
+    "normal_f1": 0.7948717948717948,
+    "macro_f1": 0.8508158508158508,
+    "balanced_accuracy": 0.8299145299145299,
+    "auc": 0.9799747972824896,
+    "confusion_matrix": [
+      [
+        155,
+        79
+      ],
+      [
+        1,
+        389
+      ]
+    ]
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "steps": 654,
+      "loss": 0.1579397864535982,
+      "learning_rate": 0.001
+    },
+    {
+      "epoch": 2,
+      "steps": 1308,
+      "loss": 0.0833537606245198,
+      "learning_rate": 0.001
+    },
+    {
+      "epoch": 3,
+      "steps": 1962,
+      "loss": 0.06799026341876861,
+      "learning_rate": 0.001
+    },
+    {
+      "epoch": 4,
+      "steps": 2616,
+      "loss": 0.032587401403236425,
+      "learning_rate": 0.0005
+    },
+    {
+      "epoch": 5,
+      "steps": 3270,
+      "loss": 0.032337124817776654,
+      "learning_rate": 0.0005
+    }
+  ],
+  "seed": 42,
+  "trainable_boundary": "layer4 + fc",
+  "epochs": 5,
+  "seconds": 614.1354320049286,
+  "protocol": "Figures 4-8 late-block fine-tuning; five-epoch bounded reconstruction"
+}

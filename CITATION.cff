@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: "Please cite the versioned project and its report when using these artifacts."
+title: "Reading Room: Lung-Focused CNN–Transformer Pneumonia Classification"
+type: software
+version: 1.0.0
+date-released: 2026-11-04
+url: "https://github.com/HulkInTherapy/reading-room-pneumonia"
+authors:
+  - given-names: Samarth
+    family-names: Shekhar
+  - given-names: Meghavi
+    family-names: Rao
+  - given-names: Rachit
+    family-names: Kumar
+  - given-names: Harshal
+    family-names: Nerpagar

@@ -1,0 +1,118 @@
+{
+  "completed": false,
+  "protocol": {
+    "experiment": "Frozen pretrained feature pilot; 5 head epochs; single CNN replaces original five-CNN proposed ablation",
+    "seed": 42,
+    "epochs": 5,
+    "training": "Frozen ImageNet features; standardized using training only; AdamW linear head; no fresh image augmentation in this declared pilot",
+    "split": "conservative person number / normal filename prefix / hash fallback",
+    "checkpoint_selection": "validation macro F1; earlier epoch breaks ties",
+    "test_history": "Benchmark previously inspected; not external blind holdout",
+    "crop": "Fixed pretrained PSPNet at256 inference (runtime-driven departure from official512 wrapper); lung union bounding box +10% margin on original pixels before224 resize",
+    "limitations": [
+      "Single seed",
+      "Filename patient proxies",
+      "Frozen representation pilot differs from online M2 reconstruction"
+    ]
+  },
+  "conditions": {
+    "A": {
+      "metrics": {
+        "accuracy": 0.8685897435897436,
+        "sensitivity": 0.9743589743589743,
+        "specificity": 0.6923076923076923,
+        "precision": 0.8407079646017699,
+        "macro_f1": 0.8503211916267859,
+        "normal_f1": 0.7980295566502463,
+        "pneumonia_f1": 0.9026128266033254,
+        "auc": 0.9308240192855578,
+        "confusion_matrix": [
+          [
+            162,
+            72
+          ],
+          [
+            10,
+            380
+          ]
+        ]
+      }
+    },
+    "B": {
+      "metrics": {
+        "accuracy": 0.9262820512820513,
+        "sensitivity": 0.9666666666666667,
+        "specificity": 0.8589743589743589,
+        "precision": 0.9195121951219513,
+        "macro_f1": 0.9199107142857144,
+        "normal_f1": 0.8973214285714286,
+        "pneumonia_f1": 0.9425,
+        "auc": 0.9703265395573087,
+        "confusion_matrix": [
+          [
+            201,
+            33
+          ],
+          [
+            13,
+            377
+          ]
+        ]
+      }
+    },
+    "C": {
+      "metrics": {
+        "accuracy": 0.8814102564102564,
+        "sensitivity": 0.9794871794871794,
+        "specificity": 0.717948717948718,
+        "precision": 0.8526785714285714,
+        "macro_f1": 0.865603352930904,
+        "normal_f1": 0.8195121951219512,
+        "pneumonia_f1": 0.9116945107398569,
+        "auc": 0.9472496164803857,
+        "confusion_matrix": [
+          [
+            168,
+            66
+          ],
+          [
+            8,
+            382
+          ]
+        ]
+      },
+      "vit_weight": 0.25
+    },
+    "D": {
+      "metrics": {
+        "accuracy": 0.9375,
+        "sensitivity": 0.982051282051282,
+        "specificity": 0.8632478632478633,
+        "precision": 0.9228915662650602,
+        "macro_f1": 0.931758338824783,
+        "normal_f1": 0.9119638826185101,
+        "pneumonia_f1": 0.9515527950310559,
+        "auc": 0.9757396449704141,
+        "confusion_matrix": [
+          [
+            202,
+            32
+          ],
+          [
+            7,
+            383
+          ]
+        ]
+      },
+      "vit_weight": 0.5
+    }
+  },
+  "crop_audit": {
+    "unique_images": 5824,
+    "fallbacks": 82
+  },
+  "paired_macro_f1_B_minus_A_95CI": [
+    0.040375225499737696,
+    0.10161032520812266
+  ]
+}

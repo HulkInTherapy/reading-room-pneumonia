@@ -1,0 +1,146 @@
+[
+  {
+    "path": "data/images/validation/0/95fe6dd24fc010ee526e40457ff34ef057d257c71b22ac9fd312094d4d7b2a37.png",
+    "split": "validation",
+    "label": 0,
+    "sha256": "95fe6dd24fc010ee526e40457ff34ef057d257c71b22ac9fd312094d4d7b2a37",
+    "width": 1776,
+    "height": 1416,
+    "source_path": "NORMAL2-IM-1427-0001.jpeg"
+  },
+  {
+    "path": "data/images/validation/0/ba2d0ff79c2758dc75331c3242dfc05b0108df3affc5402b55b6d9b81f44c2a0.png",
+    "split": "validation",
+    "label": 0,
+    "sha256": "ba2d0ff79c2758dc75331c3242dfc05b0108df3affc5402b55b6d9b81f44c2a0",
+    "width": 1272,
+    "height": 1040,
+    "source_path": "NORMAL2-IM-1430-0001.jpeg"
+  },
+  {
+    "path": "data/images/validation/0/1eab167cd836a153ddeb61a0e59ff21b276fb79b0aab70491605a77ffc52f4ac.png",
+    "split": "validation",
+    "label": 0,
+    "sha256": "1eab167cd836a153ddeb61a0e59ff21b276fb79b0aab70491605a77ffc52f4ac",
+    "width": 1736,
+    "height": 1416,
+    "source_path": "NORMAL2-IM-1431-0001.jpeg"
+  },
+  {
+    "path": "data/images/validation/0/1b96b8ba4d279362a396c2864f76eb3f30ba910f63573491ed2203b4e728f5c7.png",
+    "split": "validation",
+    "label": 0,
+    "sha256": "1b96b8ba4d279362a396c2864f76eb3f30ba910f63573491ed2203b4e728f5c7",
+    "width": 1288,
+    "height": 928,
+    "source_path": "NORMAL2-IM-1436-0001.jpeg"
+  },
+  {
+    "path": "data/images/validation/0/a73c06abbb473b57c90374424f86f0d7876bdbdb5c3ed8c681e4bd6f09778c38.png",
+    "split": "validation",
+    "label": 0,
+    "sha256": "a73c06abbb473b57c90374424f86f0d7876bdbdb5c3ed8c681e4bd6f09778c38",
+    "width": 1240,
+    "height": 1104,
+    "source_path": "NORMAL2-IM-1437-0001.jpeg"
+  },
+  {
+    "path": "data/images/validation/0/19deafbd4cb13b7bca7e9c83466066c0d0c9e1678861519dcb1d0a45a79b0362.png",
+    "split": "validation",
+    "label": 0,
+    "sha256": "19deafbd4cb13b7bca7e9c83466066c0d0c9e1678861519dcb1d0a45a79b0362",
+    "width": 1328,
+    "height": 1104,
+    "source_path": "NORMAL2-IM-1438-0001.jpeg"
+  },
+  {
+    "path": "data/images/validation/0/91c3cb7e4c579b7f9d7f48780575caacfbc51898841cdc0d0d1a388bbba47203.png",
+    "split": "validation",
+    "label": 0,
+    "sha256": "91c3cb7e4c579b7f9d7f48780575caacfbc51898841cdc0d0d1a388bbba47203",
+    "width": 1632,
+    "height": 1225,
+    "source_path": "NORMAL2-IM-1440-0001.jpeg"
+  },
+  {
+    "path": "data/images/validation/0/d30b85c96b78dabe1ddf05867a687dffe7a9a067cd72485abace2fc959c2a503.png",
+    "split": "validation",
+    "label": 0,
+    "sha256": "d30b85c96b78dabe1ddf05867a687dffe7a9a067cd72485abace2fc959c2a503",
+    "width": 1564,
+    "height": 1302,
+    "source_path": "NORMAL2-IM-1442-0001.jpeg"
+  },
+  {
+    "path": "data/images/validation/1/8bbf92ad61e43b7ff8c12eff396594cfbc631e4a1daff80deba3d929f6199cb0.png",
+    "split": "validation",
+    "label": 1,
+    "sha256": "8bbf92ad61e43b7ff8c12eff396594cfbc631e4a1daff80deba3d929f6199cb0",
+    "width": 968,
+    "height": 592,
+    "source_path": "person1946_bacteria_4874.jpeg"
+  },
+  {
+    "path": "data/images/validation/1/905a703da2ca12326f2d88ce9b9823290bad97e98c8179e77393c56f86978caa.png",
+    "split": "validation",
+    "label": 1,
+    "sha256": "905a703da2ca12326f2d88ce9b9823290bad97e98c8179e77393c56f86978caa",
+    "width": 1072,
+    "height": 712,
+    "source_path": "person1946_bacteria_4875.jpeg"
+  },
+  {
+    "path": "data/images/validation/1/a10dda144959f77c7589b2c874da00d9649e34ee96660b87ef8d720083524154.png",
+    "split": "validation",
+    "label": 1,
+    "sha256": "a10dda144959f77c7589b2c874da00d9649e34ee96660b87ef8d720083524154",
+    "width": 1152,
+    "height": 664,
+    "source_path": "person1947_bacteria_4876.jpeg"
+  },
+  {
+    "path": "data/images/validation/1/5bde846e4a137b37e568c66a61752b4c5cfe2057b0f4af6bfd3cfab3db1202b8.png",
+    "split": "validation",
+    "label": 1,
+    "sha256": "5bde846e4a137b37e568c66a61752b4c5cfe2057b0f4af6bfd3cfab3db1202b8",
+    "width": 1416,
+    "height": 944,
+    "source_path": "person1949_bacteria_4880.jpeg"
+  },
+  {
+    "path": "data/images/validation/1/e1d5161b6a6d82ccbee47fd8dfb1a6d44eded1d7e4f164121dd2a229bdc43f5d.png",
+    "split": "validation",
+    "label": 1,
+    "sha256": "e1d5161b6a6d82ccbee47fd8dfb1a6d44eded1d7e4f164121dd2a229bdc43f5d",
+    "width": 1256,
+    "height": 864,
+    "source_path": "person1950_bacteria_4881.jpeg"
+  },
+  {
+    "path": "data/images/validation/1/1136fa7a74528c4b6dd55b7318dedefdbc7b523db09928b1ebdf276fef31f08b.png",
+    "split": "validation",
+    "label": 1,
+    "sha256": "1136fa7a74528c4b6dd55b7318dedefdbc7b523db09928b1ebdf276fef31f08b",
+    "width": 1016,
+    "height": 656,
+    "source_path": "person1951_bacteria_4882.jpeg"
+  },
+  {
+    "path": "data/images/validation/1/3fef55b2ba3c51c66ad41122ed4f640c19bb549d850d53fbbe3a4f18d9eb4e82.png",
+    "split": "validation",
+    "label": 1,
+    "sha256": "3fef55b2ba3c51c66ad41122ed4f640c19bb549d850d53fbbe3a4f18d9eb4e82",
+    "width": 1192,
+    "height": 952,
+    "source_path": "person1952_bacteria_4883.jpeg"
+  },
+  {
+    "path": "data/images/validation/1/9904f0fec6adc349c35452fa9909721b9dfcb02a254c76b9d329f3432151ed39.png",
+    "split": "validation",
+    "label": 1,
+    "sha256": "9904f0fec6adc349c35452fa9909721b9dfcb02a254c76b9d329f3432151ed39",
+    "width": 1664,
+    "height": 1128,
+    "source_path": "person1954_bacteria_4886.jpeg"
+  }
+]

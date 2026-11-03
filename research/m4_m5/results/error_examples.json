@@ -1,0 +1,85 @@
+{
+  "selection": "First four unique D-error images per true class, then remaining first unique errors to at most eight; no retraining/model selection",
+  "cases": [
+    {
+      "test_index": 16,
+      "error_type": "false_positive",
+      "sha256": "d09519831dd7f24f1db680e1147392d455e8dd485cd3f23fdc4c281e2f00d63f",
+      "label": "0",
+      "A": "0.9943607449531555",
+      "B": "0.8592923879623413",
+      "C": "0.9890127778053284",
+      "D": "0.7446910738945007"
+    },
+    {
+      "test_index": 45,
+      "error_type": "false_positive",
+      "sha256": "cc2363317d6707c427f03bef9ecd7ddd0fc3bb01058fae883312864e42b9419e",
+      "label": "0",
+      "A": "0.926565408706665",
+      "B": "0.4879193603992462",
+      "C": "0.9121749997138977",
+      "D": "0.5099738240242004"
+    },
+    {
+      "test_index": 66,
+      "error_type": "false_positive",
+      "sha256": "4feeb8d280836d561b15f39499030467a8d7bc3a54ac57181aef9e036555f412",
+      "label": "0",
+      "A": "0.01936710625886917",
+      "B": "0.6381135582923889",
+      "C": "0.0539257675409317",
+      "D": "0.5782099366188049"
+    },
+    {
+      "test_index": 74,
+      "error_type": "false_positive",
+      "sha256": "f00d5705774e1aa4e8e9adaca7ef2898f87fe4edfb95d0e52c77124629380e54",
+      "label": "0",
+      "A": "0.2541109025478363",
+      "B": "0.5425004363059998",
+      "C": "0.21618716418743134",
+      "D": "0.5700036883354187"
+    },
+    {
+      "test_index": 388,
+      "error_type": "false_negative",
+      "sha256": "bb20b7298a8fd503536e5c686f5293ce4ba4b08d0715779b82d5540a4d543add",
+      "label": "1",
+      "A": "0.3882823884487152",
+      "B": "0.6039211750030518",
+      "C": "0.4975920021533966",
+      "D": "0.469395250082016"
+    },
+    {
+      "test_index": 390,
+      "error_type": "false_negative",
+      "sha256": "10084b44e05ab36f44de63a4dbe896234f3c384b11d16408472cd1441a584f7b",
+      "label": "1",
+      "A": "0.21647731959819794",
+      "B": "0.7841157913208008",
+      "C": "0.18643568456172943",
+      "D": "0.44263947010040283"
+    },
+    {
+      "test_index": 391,
+      "error_type": "false_negative",
+      "sha256": "1120184e63aa90eb602383a4fdcbd2204361bb30d0c67667fb8d1a90a1ccff69",
+      "label": "1",
+      "A": "0.21739982068538666",
+      "B": "0.13689319789409637",
+      "C": "0.23152127861976624",
+      "D": "0.1606120467185974"
+    },
+    {
+      "test_index": 404,
+      "error_type": "false_negative",
+      "sha256": "4dd2c63f50e1faeda72402dbf27e99b37f2ad28474f2449ecc19daa5adfb3704",
+      "label": "1",
+      "A": "0.25865498185157776",
+      "B": "0.22731740772724152",
+      "C": "0.3733249306678772",
+      "D": "0.3983018696308136"
+    }
+  ]
+}

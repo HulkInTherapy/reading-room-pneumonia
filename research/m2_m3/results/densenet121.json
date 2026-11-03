@@ -1,0 +1,62 @@
+{
+  "model": "densenet121",
+  "metrics": {
+    "n": 624,
+    "accuracy": 0.8477564102564102,
+    "sensitivity": 0.9974358974358974,
+    "specificity": 0.5982905982905983,
+    "precision": 0.8053830227743272,
+    "pneumonia_f1": 0.8911798396334479,
+    "normal_f1": 0.7466666666666667,
+    "macro_f1": 0.8189232531500573,
+    "balanced_accuracy": 0.7978632478632479,
+    "auc": 0.9746274380889766,
+    "confusion_matrix": [
+      [
+        140,
+        94
+      ],
+      [
+        1,
+        389
+      ]
+    ]
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "steps": 654,
+      "loss": 0.1277274663646158,
+      "learning_rate": 0.001
+    },
+    {
+      "epoch": 2,
+      "steps": 1308,
+      "loss": 0.07770523862349286,
+      "learning_rate": 0.001
+    },
+    {
+      "epoch": 3,
+      "steps": 1962,
+      "loss": 0.0681218856241571,
+      "learning_rate": 0.001
+    },
+    {
+      "epoch": 4,
+      "steps": 2616,
+      "loss": 0.037288526364695186,
+      "learning_rate": 0.0005
+    },
+    {
+      "epoch": 5,
+      "steps": 3270,
+      "loss": 0.02896595114507277,
+      "learning_rate": 0.0005
+    }
+  ],
+  "seed": 42,
+  "trainable_boundary": "denseblock4.denselayer15 + denselayer16 + classifier",
+  "epochs": 5,
+  "seconds": 592.8932390213013,
+  "protocol": "Figures 4-8 late-block fine-tuning; five-epoch bounded reconstruction"
+}

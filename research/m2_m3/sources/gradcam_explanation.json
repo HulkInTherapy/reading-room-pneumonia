@@ -1,0 +1,50 @@
+{
+  "query": "Grad-CAM Selvaraju 1610.02391 gradients localization final convolutional layer",
+  "follow_up_questions": null,
+  "answer": null,
+  "images": [],
+  "results": [
+    {
+      "url": "https://arxiv.org/abs/1610.02391",
+      "title": "[1610.02391] Grad-CAM: Visual Explanations from Deep Networks via Gradient-based Localization",
+      "content": "> Abstract:We propose a technique for producing \"visual explanations\" for decisions from a large class of CNN-based models, making them more transparent. Our approach - Gradient-weighted Class Activation Mapping (Grad-CAM), uses the gradients of any target concept, flowing into the final convolutional layer to produce a coarse localization map highlighting important regions in the image for predicting the concept. Grad-CAM is applicable to a wide variety of CNN model-families: (1) CNNs with fully-connected layers, (2) CNNs used for structured outputs, (3) CNNs used in tasks with multimodal inputs or reinforcement learning, without any architectural changes or re-training. We combine Grad-CAM with fine-grained visualizations to create a high-resolution class-discriminative visualization [...] archive \n\nPress Enter to search \u00b7 Advanced search\n\n# Computer Science > Computer Vision and Pattern Recognition\n\narXiv:1610.02391 (cs)\n\nSubmitted on 7 Oct 2016 ([v1), last revised 3 Dec 2019 (this version, v4)]\n\n# Title:Grad-CAM: Visual Explanations from Deep Networks via Gradient-based Localization\n\nAuthors:Ramprasaath R. Selvaraju, Michael Cogswell, Abhishek Das, Ramakrishna Vedantam, Devi Parikh, Dhruv Batra\n\nView a PDF of the paper titled Grad-CAM: Visual Explanations from Deep Networks via Gradient-based Localization, by Ramprasaath R. Selvaraju and 5 other authors [...] create a high-resolution class-discriminative visualization and apply it to off-the-shelf image classification, captioning, and visual question answering (VQA) models, including ResNet-based architectures. In the context of image classification models, our visualizations (a) lend insights into their failure modes, (b) are robust to adversarial images, (c) outperform previous methods on localization, (d) are more faithful to the underlying model and (e) help achieve generalization by identifying dataset bias. For captioning and VQA, we show that even non-attention based models can localize inputs. We devise a way to identify important neurons through Grad-CAM and combine it with neuron names to provide textual explanations for model decisions. Finally, we design and conduct human studies",
+      "score": 0.843393,
+      "raw_content": null,
+      "id": "9d8ebc-00"
+    },
+    {
+      "url": "https://openaccess.thecvf.com/content_ICCV_2017/papers/Selvaraju_Grad-CAM_Visual_Explanations_ICCV_2017_paper.pdf",
+      "title": "[PDF] Grad-CAM: Visual Explanations From Deep Networks via Gradient ...",
+      "content": "Grad-CAM: Visual Explanations from Deep Networks via Gradient-based Localization Ramprasaath R. Selvaraju1\u2217 Michael Cogswell1 Abhishek Das1 Ramakrishna Vedantam1\u2217 Devi Parikh1,2 Dhruv Batra1,2 1Georgia Institute of Technology 2Facebook AI Research {ramprs, cogswell, abhshkdz, vrama, parikh, dbatra}@gatech.edu Abstract We propose a technique for producing \u2018visual explana-tions\u2019 for decisions from a large class of Convolutional Neu-ral Network (CNN)-based models, making them more trans-parent. Our approach \u2013 Gradient-weighted Class Activation Mapping (Grad-CAM), uses the gradients of any target con-cept (say logits for \u2018dog\u2019 or even a caption), \ufb02owing into the \ufb01nal convolutional layer to produce a coarse localiza-tion map highlighting the important regions in the image for predicting the [...] In CVPR, 2014. 3  M. Oquab, L. Bottou, I. Laptev, and J. Sivic. Is object localization for free? \u2013 weakly-supervised learning with convolutional neural networks. In CVPR, 2015. 3  P. O. Pinheiro and R. Collobert. From image-level to pixel-level labeling with convolutional networks. In CVPR, 2015. 3  M. Ren, R. Kiros, and R. Zemel. Exploring models and data for image question answering. In NIPS, 2015. 1, 7  M. T. Ribeiro, S. Singh, and C. Guestrin. \"Why Should I Trust You?\": Explaining the Predictions of Any Classi\ufb01er. In SIGKDD, 2016. 3, 6  R. R. Selvaraju, A. Das, R. Vedantam, M. Cogswell, D. Parikh, and D. Batra. Grad-CAM: Why did you say that? Visual Expla-nations from Deep Networks via Gradient-based Localization. CoRR, abs/1610.02391, 2016. 3, 4, 7, 8  D. Silver, A. Huang, C. J. [...] 3. Approach A number of previous works have asserted that deeper representations in a CNN capture higher-level visual con-structs [5, 31]. Furthermore, convolutional features naturally retain spatial information which is lost in fully-connected layers, so we can expect the last convolutional layers to have the best compromise between high-level semantics and detailed spatial information. The neurons in these layers look for semantic class-speci\ufb01c information in the image (say object parts). Grad-CAM uses the gradient informa-tion \ufb02owing into the last convolutional layer of the CNN to understand the importance of each neuron for a decision of interest. Although our technique is very generic and can be used to visualize any activation in a deep network, in this work we focus on explaining",
+      "score": 0.8215175,
+      "raw_content": null,
+      "id": "b8685f-01"
+    },
+    {
+      "url": "https://ieeexplore.ieee.org/document/8237336",
+      "title": "Grad-CAM: Visual Explanations from Deep Networks via Gradient-Based Localization",
+      "content": "We propose a technique for producing `visual explanations' for decisions from a large class of Convolutional Neural Network (CNN)-based models, making them more transparent. Our approach - Gradient-weighted Class Activation Mapping (Grad-CAM), uses the gradients of any target concept (say logits for `dog' or even a caption), flowing into the final convolutional layer to produce a coarse localization map highlighting the important regions in the image for predicting the concept. Unlike previous approaches, Grad- CAM is applicable to a wide variety of CNN model-families: (1) CNNs with fully-connected layers (e.g. VGG), (2) CNNs used for structured outputs (e.g. captioning), (3) CNNs used in tasks with multi-modal inputs (e.g. visual question answering) or reinforcement learning, without",
+      "score": 0.73505294,
+      "raw_content": null,
+      "id": "c7c047-02"
+    },
+    {
+      "url": "https://research.facebook.com/publications/grad-cam-visual-explanations-from-deep-networks-via-gradient-based-localization",
+      "title": "Grad-CAM: Visual Explanations from Deep Networks via Gradient-based Localization - Meta Research",
+      "content": "We propose a technique for producing \u2018visual explanations\u2019 for decisions from a large class of Convolutional Neural Network (CNN)-based models, making them more transparent and explainable. Our approach \u2013 Gradient-weighted Class Activation Mapping (Grad-CAM), uses the gradients of any target concept (say \u2018dog\u2019 in a classification network or a sequence of words in captioning network) flowing into the final convolutional layer to produce a coarse localization map highlighting the important regions in the image for predicting the concept. Unlike previous approaches, GradCAM is applicable to a wide variety of CNN model-families: (1) CNNs with fully-connected layers (e.g. VGG), (2) CNNs used for structured outputs (e.g. captioning), (3) CNNs used in tasks with multi-modal inputs (e.g. visual",
+      "score": 0.7274535,
+      "raw_content": null,
+      "id": "b5735a-03"
+    },
+    {
+      "url": "https://www.academia.edu/120653161/Grad_CAM_Generalized_Gradient_Based_Visual_Explanations_for_Deep_Convolutional_Networks",
+      "title": "(PDF) Grad-CAM++: Generalized Gradient-Based Visual Explanations for Deep Convolutional Networks | Academia",
+      "content": "We propose a technique for producing 'visual explanations' for decisions from a large class of Convolutional Neural Network (CNN)-based models, making them more transparent and explainable. Our approach-Gradient-weighted Class Activation Mapping (Grad-CAM), uses the gradients of any target concept (say 'dog' in a classification network or a sequence of words in captioning network) flowing into the final convolutional layer to produce a coarse localization map highlighting the important regions in the image for predicting the concept. Unlike previous approaches, Grad-CAM is applicable to a wide variety of CNN model-families: (1) CNNs with fullyconnected layers (e.g. VGG), (2) CNNs used for structured outputs (e.g. captioning), (3) CNNs used in tasks with multimodal inputs (e.g. visual [...] 5. P. O. Pinheiro and R. Collobert, \"From image-level to pixel-level labeling with convolutional networks,\" in Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition, 2015, pp. 1713-1721.\n6. R. R. Selvaraju, A. Das, R. Vedantam, M. Cogswell, D. Parikh, and D. Batra, \"Grad-cam: Why did you say that? visual explana- tions from deep networks via gradient-based localization,\" arXiv preprint arXiv:1610.02391, 2016.\n7. J. T. Springenberg, A. Dosovitskiy, T. Brox, and M. Riedmiller, \"Striving for simplicity: The all convolutional net,\" arXiv preprint arXiv:1412.6806, 2014.\n8. S. A. Bargal, A. Zunino, D. Kim, J. Zhang, V. Murino, and S. Sclaroff, \"Excitation backprop for rnns,\" in Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition, 2018.",
+      "score": 0.70871735,
+      "raw_content": null,
+      "id": "6ad711-04"
+    }
+  ],
+  "response_time": 1.74,
+  "request_id": "a6e42931-a6f5-4405-8e64-c186023ba5d3"
+}

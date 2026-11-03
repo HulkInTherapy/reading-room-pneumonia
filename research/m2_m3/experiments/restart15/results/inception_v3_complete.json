@@ -1,0 +1,9 @@
+{
+  "model": "inception_v3",
+  "epochs": 15,
+  "seed": 42,
+  "boundary": "Mixed_7c + fc",
+  "train_n": 4164,
+  "validation_n": 1042,
+  "seconds": 3689.635260820389
+}

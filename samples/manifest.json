@@ -1,0 +1,128 @@
+[
+  {
+    "id": "0",
+    "name": "Test case 1",
+    "label": 0,
+    "sha256": "f17a003185299f171440c2cb408c2e5bacea90376971ed81ecc9812465e209fb",
+    "source_path": "IM-0001-0001.jpeg",
+    "crop_metadata": {
+      "bbox": [
+        193,
+        18,
+        1699,
+        1317
+      ],
+      "original_size": [
+        1857,
+        1317
+      ],
+      "fallback": false,
+      "mask_fraction": 0.3895263671875
+    }
+  },
+  {
+    "id": "117",
+    "name": "Test case 118",
+    "label": 0,
+    "sha256": "409f0f6c0f8a5b8ed4e0645633b07812aff5991aaee75bbe48044711a55c7c2c",
+    "source_path": "NORMAL2-IM-0173-0001-0001.jpeg",
+    "crop_metadata": {
+      "bbox": [
+        63,
+        75,
+        1255,
+        905
+      ],
+      "original_size": [
+        1304,
+        952
+      ],
+      "fallback": false,
+      "mask_fraction": 0.3331756591796875
+    }
+  },
+  {
+    "id": "233",
+    "name": "Test case 234",
+    "label": 0,
+    "sha256": "cac09efd971854dd7668d22f0e654b5e690e8cd9e95ffa758ed65b802faf4a8e",
+    "source_path": "NORMAL2-IM-0381-0001.jpeg",
+    "crop_metadata": {
+      "bbox": [
+        75,
+        29,
+        1997,
+        1675
+      ],
+      "original_size": [
+        2010,
+        1705
+      ],
+      "fallback": false,
+      "mask_fraction": 0.404022216796875
+    }
+  },
+  {
+    "id": "234",
+    "name": "Test case 235",
+    "label": 1,
+    "sha256": "4ba221b94dc77ef2e3663231b816fcf07d411067e8d09b40e72e707bc157c4cd",
+    "source_path": "person100_bacteria_475.jpeg",
+    "crop_metadata": {
+      "bbox": [
+        66,
+        71,
+        978,
+        681
+      ],
+      "original_size": [
+        1106,
+        762
+      ],
+      "fallback": false,
+      "mask_fraction": 0.250152587890625
+    }
+  },
+  {
+    "id": "429",
+    "name": "Test case 430",
+    "label": 1,
+    "sha256": "a6d8180a67d1913c3dbc7b1cf4e0d2a687c4f1c04f50320419568f94fe1d09cd",
+    "source_path": "person1633_virus_2829.jpeg",
+    "crop_metadata": {
+      "bbox": [
+        90,
+        121,
+        946,
+        522
+      ],
+      "original_size": [
+        1120,
+        528
+      ],
+      "fallback": false,
+      "mask_fraction": 0.133636474609375
+    }
+  },
+  {
+    "id": "623",
+    "name": "Test case 624",
+    "label": 1,
+    "sha256": "224e3dc54ef02ccf5991b58a115e4e23da48081e5ef7bfe46004852e91daa54e",
+    "source_path": "person99_bacteria_474.jpeg",
+    "crop_metadata": {
+      "bbox": [
+        129,
+        15,
+        1607,
+        1040
+      ],
+      "original_size": [
+        1704,
+        1122
+      ],
+      "fallback": false,
+      "mask_fraction": 0.3732147216796875
+    }
+  }
+]

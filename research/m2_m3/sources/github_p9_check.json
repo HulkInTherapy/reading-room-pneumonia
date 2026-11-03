@@ -1,0 +1,50 @@
+{
+  "query": "Efficient pneumonia detection using Vision Transformers on chest X-rays github code availability",
+  "follow_up_questions": null,
+  "answer": null,
+  "images": [],
+  "results": [
+    {
+      "url": "https://huggingface.co/codewithdark/vit-chest-xray",
+      "title": "codewithdark/vit-chest-xray \u00b7 Hugging Face",
+      "content": "## Model Overview\n\nThe fine-tuned Model Code on github is based on the Vision Transformer (ViT) architecture, which excels in handling image-based tasks by leveraging attention mechanisms for efficient feature extraction. The model was trained on the CheXpert dataset, which consists of labeled chest X-ray images for detecting diseases such as pneumonia, cardiomegaly, and others.\n\n## Performance\n\nThe model achieved a significant accuracy improvement during training, demonstrating its ability to generalize well to unseen chest X-ray images.\n\n## Dataset [...] Hugging Face's logo\n\n# codewithdark / vit-chest-xray Like 6\n\n### Instructions to use codewithdark/vit-chest-xray with libraries, inference providers, notebooks, and local apps. Follow these links to get started.\n\nHow to use codewithdark/vit-chest-xray with Transformers:\n\n# Chest X-ray Image Classifier\n\nThis repository contains a fine-tuned Vision Transformer (ViT) model for classifying chest X-ray images, utilizing the CheXpert dataset. The model is fine-tuned on the task of classifying various lung diseases from chest radiographs, achieving impressive accuracy in distinguishing between different conditions.\n\n## Model Overview [...] ### Fine-Tuning\n\nTo fine-tune the model on your own dataset, you can follow the instructions in this repo to adapt the code to your dataset and training configuration.\n\n## Contributing\n\nWe welcome contributions! If you have suggestions, improvements, or bug fixes, feel free to fork the repository and open a pull request.\n\n## License\n\nThis model is available under the MIT License. See LICENSE for more details.\n\n## Acknowledgements\n\n`transformers`\n\nHappy coding! \ud83d\ude80\n\nFiles info\n\n## Model tree for codewithdark/vit-chest-xray\n\nBase model\n\n## Spaces using codewithdark/vit-chest-xray 12",
+      "score": 0.8055255,
+      "raw_content": null,
+      "id": "a00edc-00"
+    },
+    {
+      "url": "https://eprints.leedsbeckett.ac.uk/id/eprint/10598",
+      "title": "Efficient pneumonia detection using Vision Transformers on chest X-rays - Leeds Beckett Repository",
+      "content": "on a public dataset of chest X-rays available on Kaggle. To acquire global context and spatial relationships from chest X-ray images, the proposed framework deploys the ViT model, which integrates self-attention mechanisms and transformer architecture. According to our experimentation with the proposed Vision Transformer-based framework, it achieves a higher accuracy of 97.61%, sensitivity of 95%, and specificity of 98% in detecting pneumonia from chest X-rays. The ViT model is preferable for capturing global context, comprehending spatial relationships, and processing images that have different resolutions. The framework establishes its efficacy as a robust pneumonia detection solution by surpassing convolutional neural network (CNN) based architectures. [...] Pneumonia is a widespread and acute respiratory infection that impacts people of all ages. Early detection and treatment of pneumonia are essential for avoiding complications and enhancing clinical results. We can reduce mortality, improve healthcare efficiency, and contribute to the global battle against a disease that has plagued humanity for centuries by devising and deploying effective detection methods. Detecting pneumonia is not only a medical necessity but also a humanitarian imperative and a technological frontier. Chest X-rays are a frequently used imaging modality for diagnosing pneumonia. This paper examines in detail a cutting-edge method for detecting pneumonia implemented on the Vision Transformer (ViT) architecture on a public dataset of chest X-rays available on Kaggle. To [...] Live Archive,\nSymplectic\n-\n [Manage ]  [Compare & Merge ]  [Acknowledge ]\" name=\"eprints.item\\_issues2\\_description\"> Implementing heuristic-based multiscale depth-wise separable adaptive temporal convolutional network for ambient air quality prediction using real time data\n  \nLive Archive,\nSymplectic\n-\n [Manage ]  [Compare & Merge ]  [Acknowledge ]\" name=\"eprints.item\\_issues2\\_description\"> ERABiLNet: enhanced residual attention with bidirectional long short-term memory\n  \nLive Archive,\nSymplectic\n-\n [Manage ]  [Compare & Merge ]  [Acknowledge ]\" name=\"eprints.item\\_issues2\\_description\"> Optimal design of hybrid green energy powered reduced switch converter based shunt active power filter using horse herd algorithm\n  \nLive Archive,\nSymplectic\n-",
+      "score": 0.7938904,
+      "raw_content": null,
+      "id": "912a9f-01"
+    },
+    {
+      "url": "https://www.semanticscholar.org/paper/Efficient-pneumonia-detection-using-Vision-on-chest-Singh-Kumar/bbecae5da4f5a7bc59e560f253fe0c3a4d305884",
+      "title": "Efficient pneumonia detection using Vision Transformers ...",
+      "content": "A cutting-edge method for detecting pneumonia implemented on the Vision Transformer (ViT) architecture on a public dataset of chest X-rays available on",
+      "score": 0.77913743,
+      "raw_content": null,
+      "id": "b009bb-02"
+    },
+    {
+      "url": "https://github.com/tikendraw/pneumonia-detection-with-vision-transformer",
+      "title": "tikendraw/pneumonia-detection-with-vision-transformer",
+      "content": "This project implements a Vision Transformer (ViT) for the detection of pneumonia in chest X-ray images. The ViT model is a state-of-the-art deep learning",
+      "score": 0.6972179,
+      "raw_content": null,
+      "id": "97197c-03"
+    },
+    {
+      "url": "https://link.springer.com/article/10.1186/s12911-024-02591-3",
+      "title": "Optimization of vision transformer-based detection of lung diseases from chest X-ray images | BMC Medical Informatics and Decision Making | Springer Nature Link",
+      "content": "## Conclusions\n\nIn summary, our analyses of ViT-based models with various optimizers showed varying performance in predicting lung diseases from the chest X-ray images. Adam-based optimizers showed better performance in predicting disease classes. In the balanced dataset, RAdam was the best performing optimizer, while NAdam with FastViT showed the best accuracy in the imbalanced dataset. For the prediction of each disease class, Normal and Tuberculosis were well predicted compared to other classes. Our results might help develop the optimized algorithms with different model architectures and optimizers.\n\n## Availability of data and materials\n\nThe datasets generated and analyzed during the current study are available in the BIMCV, GitHub, SIRM, eurorad, figshare, and Kaggle repository, [...] ## Methods\n\n### Dataset\n\nWe obtained a publicly available chest X-ray dataset from an open-source repository, details of which can be found in the availability of data and materials section [21,22,23,24,25,26,27,28 [\n                  \n                  \n                ].\"),29,30 Chest X-ray Database [\n                  \n                  \n                ].\"),31]. The dataset comprised 19,003 images, categorized into six disease classes: COVID-19 (n\u2009=\u20093,616), Viral Pneumonia (n\u2009=\u20091,345), Bacterial Pneumonia (n\u2009=\u20092,772), Middle East Respiratory Syndrome (MERS, n\u2009=\u2009144), Severe Acute Respiratory Syndrome (SARS, n\u2009=\u2009134), and Tuberculosis (n\u2009=\u2009800). Additionally, the dataset included normal chest X-rays (n\u2009=\u200910,192) for reference.\n\n### Model structure",
+      "score": 0.67988104,
+      "raw_content": null,
+      "id": "a73de1-04"
+    }
+  ],
+  "response_time": 2.18,
+  "request_id": "37a44422-04f8-485f-9817-9e822df7b8e8"
+}

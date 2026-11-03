@@ -1,0 +1,36 @@
+{
+  "normal": {
+    "status": 200,
+    "delta": {
+      "A": 0.0,
+      "B": 0.0,
+      "C": 0.0,
+      "D": 0.0
+    },
+    "prediction": "Normal",
+    "seconds": 7.233668327331543
+  },
+  "pneumonia": {
+    "status": 200,
+    "delta": {
+      "A": 0.0,
+      "B": 0.0,
+      "C": 0.0,
+      "D": 0.0
+    },
+    "prediction": "Pneumonia",
+    "seconds": 0.9801974296569824
+  },
+  "upload": {
+    "status": 200,
+    "seconds": 4.606723308563232,
+    "prediction": "Normal"
+  },
+  "unreadable": 400,
+  "unknown_sample": 400,
+  "oversize": 413,
+  "next_available_port": 8767,
+  "model_manifest_verified": true,
+  "standalone_root": "/workspace/home/projects/reading-room-public-qa",
+  "verified": true
+}

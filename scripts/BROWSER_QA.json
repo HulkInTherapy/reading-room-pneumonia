@@ -1,0 +1,19 @@
+{
+  "verified": true,
+  "browser": "Headless Chrome via Playwright",
+  "desktop_viewport": [
+    1440,
+    1000
+  ],
+  "mobile_viewport": [
+    390,
+    844
+  ],
+  "six_samples": true,
+  "live_normal_prediction": "Normal",
+  "mobile_horizontal_overflow": false,
+  "offline_pneumonia_prediction": "Pneumonia",
+  "page_errors": [],
+  "javascript_syntax_checked": true,
+  "notes": "Browser reached isolated VPS QA app through private local forwarding. Original live project/server remained unchanged."
+}

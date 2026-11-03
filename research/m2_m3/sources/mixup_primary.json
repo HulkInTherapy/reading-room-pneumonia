@@ -1,0 +1,50 @@
+{
+  "query": "mixup Beyond Empirical Risk Minimization Hongyi Zhang Cisse Dauphin Lopez Paz paper",
+  "follow_up_questions": null,
+  "answer": null,
+  "images": [],
+  "results": [
+    {
+      "url": "https://arxiv.org/abs/1710.09412",
+      "title": "[1710.09412] mixup: Beyond Empirical Risk Minimization",
+      "content": "archive \n\nPress Enter to search \u00b7 Advanced search\n\n# Computer Science > Machine Learning\n\narXiv:1710.09412 (cs)\n\nSubmitted on 25 Oct 2017 ([v1), last revised 27 Apr 2018 (this version, v2)]\n\n# Title:mixup: Beyond Empirical Risk Minimization\n\nAuthors:Hongyi Zhang, Moustapha Cisse, Yann N. Dauphin, David Lopez-Paz\n\nView a PDF of the paper titled mixup: Beyond Empirical Risk Minimization, by Hongyi Zhang and 3 other authors [...] > Abstract:Large deep neural networks are powerful, but exhibit undesirable behaviors such as memorization and sensitivity to adversarial examples. In this work, we propose mixup, a simple learning principle to alleviate these issues. In essence, mixup trains a neural network on convex combinations of pairs of examples and their labels. By doing so, mixup regularizes the neural network to favor simple linear behavior in-between training examples. Our experiments on the ImageNet-2012, CIFAR-10, CIFAR-100, Google commands and UCI datasets show that mixup improves the generalization of state-of-the-art neural network architectures. We also find that mixup reduces the memorization of corrupt labels, increases the robustness to adversarial examples, and stabilizes the training of generative [...] |  |  |\n --- |\n| Comments: | ICLR camera ready version. Changes vs V1: fix repo URL; add ablation studies; add mixup + dropout etc |\n| Subjects: | Machine Learning (cs.LG); Machine Learning (stat.ML) |\n| Cite as: | arXiv:1710.09412 [cs.LG] |\n|  | (or  arXiv:1710.09412v2 [cs.LG] for this version) |\n|  |  arXiv-issued DOI via DataCite |\n\n## Submission history\n\nFrom: Hongyi Zhang [view email]   \n (/abs/1710.09412v1) Wed, 25 Oct 2017 18:30:49 UTC (566 KB)  \n [v2] Fri, 27 Apr 2018 21:39:25 UTC (574 KB)\n\nFull-text links:\n\n## Access Paper:\n\nView a PDF of the paper titled mixup: Beyond Empirical Risk Minimization, by Hongyi Zhang and 3 other authors\n\n View PDF\n HTML (experimental)\n TeX Source\n\nview license\n\n### Current browse context:\n\ncs.LG\n\n< prev\")    |    next >\")\n\nnew  |  recent  | 2017-10",
+      "score": 0.898277,
+      "raw_content": null,
+      "id": "79e88a-00"
+    },
+    {
+      "url": "https://github.com/facebookresearch/mixup-cifar10",
+      "title": "GitHub - facebookresearch/mixup-cifar10: mixup: Beyond Empirical Risk Minimization \u00b7 GitHub",
+      "content": "## History\n\n9 Commits\n\n9 Commits\n\n## Folders and files\n\n| Name | Name | Last commit message | Last commit date |\n ---  --- |\n| models | models |  |  |\n| LICENSE | LICENSE |  |  |\n| LICENSE-pytorch-cifar | LICENSE-pytorch-cifar |  |  |\n| README.md | README.md |  |  |\n| train.py | train.py |  |  |\n| utils.py | utils.py |  |  |\n|  |\n\n## Repository files navigation\n\n# Mixup-CIFAR10\n\nBy Hongyi Zhang, Moustapha Cisse, Yann Dauphin, David Lopez-Paz.\n\nFacebook AI Research\n\n## Introduction\n\nMixup is a generic and straightforward data augmentation principle. In essence, mixup trains a neural network on convex combinations of pairs of examples and their labels. By doing so, mixup regularizes the neural network to favor simple linear behavior in-between training examples. [...] This repository contains the implementation used for the results in our paper ().\n\n## Citation\n\nIf you use this method or this code in your paper, then please cite it:\n\n```\n@article{ zhang2018mixup, title={mixup: Beyond Empirical Risk Minimization}, author={Hongyi Zhang, Moustapha Cisse, Yann N. Dauphin, David Lopez-Paz}, journal={International Conference on Learning Representations}, year={2018}, url={ } \n```\n\n## Requirements and Installation\n\n A computer running macOS or Linux\n For training new models, you'll also need a NVIDIA GPU and NCCL\n Python version 3.6\n A PyTorch installation\n\n## Training\n\nUse `python train.py` to train a new model. Here is an example setting:\n\n```\n$ CUDA_VISIBLE_DEVICES=0 python train.py --lr=0.1 --seed=20170922 --decay=1e-4 \n```\n\n## License",
+      "score": 0.89302075,
+      "raw_content": null,
+      "id": "dd6955-01"
+    },
+    {
+      "url": "https://arxiv.org/pdf/1710.09412",
+      "title": "mixup: BEYOND EMPIRICAL RISK MINIMIZATION - arXiv.org",
+      "content": "Published as a conference paper at ICLR 2018 mixup: BEYOND EMPIRICAL RISK MINIMIZATION Hongyi Zhang MIT Moustapha Cisse, Yann N. Dauphin, David Lopez-Paz\u2217 FAIR ABSTRACT Large deep neural networks are powerful, but exhibit undesirable behaviors such as memorization and sensitivity to adversarial examples. In this work, we propose mixup, a simple learning principle to alleviate these issues. In essence, mixup trains a neural network on convex combinations of pairs of examples and their labels. [...] The contribution of this paper is to propose a generic vicinal distribution, called mixup: \u00b5(\u02dc x, \u02dc y|xi, yi) = 1 n n X j E \u03bb [\u03b4(\u02dc x = \u03bb \u00b7 xi + (1 \u2212\u03bb) \u00b7 xj, \u02dc y = \u03bb \u00b7 yi + (1 \u2212\u03bb) \u00b7 yj)] , where \u03bb \u223cBeta(\u03b1, \u03b1), for \u03b1 \u2208(0, \u221e). In a nutshell, sampling from the mixup vicinal distribution produces virtual feature-target vectors \u02dc x = \u03bbxi + (1 \u2212\u03bb)xj, \u02dc y = \u03bbyi + (1 \u2212\u03bb)yj, where (xi, yi) and (xj, yj) are two feature-target vectors drawn at random from the training data, and \u03bb \u2208[0, 1]. The mixup hyper-parameter \u03b1 controls the strength of interpolation between feature-target pairs, recovering the ERM principle as \u03b1 \u21920. [...] 1 arXiv:1710.09412v2 [cs.LG] 27 Apr 2018 Published as a conference paper at ICLR 2018 examples in the vicinity share the same class, and does not model the vicinity relation across examples of different classes.\nContribution Motivated by these issues, we introduce a simple and data-agnostic data augmenta-tion routine, termed mixup (Section 2). In a nutshell, mixup constructs virtual training examples \u02dc x = \u03bbxi + (1 \u2212\u03bb)xj, where xi, xj are raw input vectors \u02dc y = \u03bbyi + (1 \u2212\u03bb)yj, where yi, yj are one-hot label encodings (xi, yi) and (xj, yj) are two examples drawn at random from our training data, and \u03bb \u2208[0, 1].",
+      "score": 0.8921218,
+      "raw_content": null,
+      "id": "c35780-02"
+    },
+    {
+      "url": "https://openreview.net/pdf?id=r1Ddp1-Rb",
+      "title": "mixup: BEYOND EMPIRICAL RISK MINIMIZATION",
+      "content": "by H Zhang \u00b7 2018 \u00b7 Cited by 17156 \u2014 Published as a conference paper at ICLR 2018 mixup: BEYOND EMPIRICAL RISK MINIMIZATION. Hongyi Zhang. MIT. Moustapha Cisse, Yann N. Dauphin, David Lopez-Paz\u2217.",
+      "score": 0.8765607,
+      "raw_content": null,
+      "id": "f82a0c-03"
+    },
+    {
+      "url": "https://bibbase.org/network/publication/zhang-cisse-dauphin-lopezpaz-mixupbeyondempiricalriskminimization-2017",
+      "title": "mixup: Beyond empirical risk minimization",
+      "content": "mixup: Beyond empirical risk minimization. Zhang, H., Cisse, M., Dauphin, Y. N, & Lopez-Paz, D. arXiv preprint arXiv:1710.09412, 2017.",
+      "score": 0.86136365,
+      "raw_content": null,
+      "id": "4025ac-04"
+    }
+  ],
+  "response_time": 3.93,
+  "request_id": "74763677-3237-4ad1-b7f1-8b331f2d800d"
+}

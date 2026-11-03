@@ -1,0 +1,50 @@
+{
+  "query": "vikashcode1997 github pneumonia",
+  "follow_up_questions": null,
+  "answer": null,
+  "images": [],
+  "results": [
+    {
+      "url": "https://github.com/Vikash94395/Pneumonia_Project",
+      "title": "GitHub - Vikash94395/Pneumonia_Project \u00b7 GitHub",
+      "content": "## \ud83d\udcc2 Project Structure\n\nAs seen in the project explorer:\n\n`data/chest_xray/`\n`train_model.py`\n`app.py`\n`pneumonia_model.h5`\n`templates/`\n`index.html`\n`upload.html`\n`requirements.txt`\n\n## \ud83e\udde0 Model Architecture\n\nThe CNN architecture defined in `train_model.py` includes:\n\n`train_model.py`\n`Conv2D`\n`MaxPooling2D`\n`Flatten`\n`Dense`\n`Dropout(0.5)`\n`Dense`\n`sigmoid`\n\n## \ud83d\ude80 How to Run\n\n### 1. Setup\n\nActivate your virtual environment:\n\n## About\n\n### Resources\n\n### Stars\n\n### Watchers\n\n### Forks\n\n## Releases\n\n## Packages\n\n## Contributors\n\n## Languages\n\n## Footer\n\n### Footer navigation [...] ## Navigation Menu\n\n## Latest commit\n\n## History\n\n## Folders and files\n\n| Name | | Name | Last commit message | Last commit date |\n ---  --- \n| NORMAL | | NORMAL |  |  |\n| PNEUMONIA | | PNEUMONIA |  |  |\n| static | | static |  |  |\n| Disease\\_Prediction\\_System | | Disease\\_Prediction\\_System |  |  |\n| README.md | | README.md |  |  |\n| app.py | | app.py |  |  |\n| model\\_builder.py | | model\\_builder.py |  |  |\n| requirements.txt | | requirements.txt |  |  |\n| train\\_model.py | | train\\_model.py |  |  |\n| View all files | | |\n\n## Repository files navigation\n\n# Pneumonia Detection System\n\nThis project is a Deep Learning-based web application that uses a Convolutional Neural Network (CNN) to classify chest X-ray images as Normal or Pneumonia.\n\n## \ud83d\udcc2 Project Structure",
+      "score": 0.5832277,
+      "raw_content": null,
+      "id": "55ac03-00"
+    },
+    {
+      "url": "https://app.readytensor.ai/publications/project-documentation-pneumonia-detection-from-chest-xray-using-cnncomputer-vision-JIpA7SGMdrhy",
+      "title": "Project Documentation: Pneumonia Detection from Chest X-ray using CNN(Computer Vision)",
+      "content": "Github - \n\n## Pneumonia: A Medical Overview :\n\nPneumonia is a respiratory infection that inflames the air sacs in the lungs (alveoli). It can be caused by bacteria, viruses, or fungi. Symptoms include coughing, fever, and difficulty breathing, and it can be life-threatening if not diagnosed and treated promptly.  \n LIVE LINK - \n\nChallenges in Diagnosis:\n\n Diagnosing pneumonia through chest X-rays can be subjective and prone to human error.\n Radiologists must interpret numerous images daily, increasing the risk of oversight in busy clinical environments.\n Variations in imaging quality and the presentation of pneumonia in X-rays make diagnosis more complex\n\n## Importance of the Project : [...] We use cookies to improve your browsing experience and to analyze our website traffic. By clicking \u201cAccept All\u201d you agree to our use of cookies. Privacy policy.\n\nReady Tensor logoReady Tensor logo\n\nProject Documentation: Pneumonia Detection from Chest X-ray using CNN(Computer Vision)\n\n\u25cf28 reads\u25cfNo License\n\n# Project Documentation: Pneumonia Detection from Chest X-ray using CNN(Computer Vision)\n\n Medical Imaging Pneumonia Detect\n\n d\n\n  @debansuprasada\n\nLikeBookmark\n\n## Table of contents\n\n## Project Documentation: Pneumonia Detection from Chest X-ray using CNN(Computer Vision) :\n\nGithub - \n\n## Pneumonia: A Medical Overview : [...] ```\n\n1. Training and Evaluation\n\n```\n\n# Train the model  model. fit(train_data,  validation_data = test_data,  epochs = 10)   # Save the model for later use  model. save('pneumonia_model.h5')\n\n```\n\n1. Confusion Matrix Visualization\n\n```\n\nfrom  sklearn. metrics import  confusion_matrix  import  matplotlib. pyplot as  plt  # Evaluate the model  predictions =  (model. predict(test_data)  >  0.5). astype(int)  cm =  confusion_matrix(test_data. classes,  predictions)   # Plot the confusion matrix  plt. matshow(cm,  cmap = 'Blues')  plt. title(\"Confusion Matrix\")  plt. colorbar()  plt. xlabel(\"Predicted\")  plt. ylabel(\"True\")  plt. show()\n\n```\n\n## Frontend Code Explanation :\n\n1. File Upload and Preprocessing\n\n```",
+      "score": 0.4135014,
+      "raw_content": null,
+      "id": "c537c3-01"
+    },
+    {
+      "url": "https://github.com/soumyojit868/Pneumonia_project",
+      "title": "GitHub - soumyojit868/Pneumonia_project",
+      "content": "An AI-powered web application that detects pneumonia from chest X-ray images using a **VGG19 deep learning model**. It also generates **Grad-CAM heatmaps** to visualize which regions of the X-ray influenced the model's prediction, and produces a downloadable **PDF report**.",
+      "score": 0.38262632,
+      "raw_content": null,
+      "id": "2b61d2-02"
+    },
+    {
+      "url": "https://github.com/topics/pneumonia-detection",
+      "title": "pneumonia-detection \u00b7 GitHub Topics \u00b7 GitHub",
+      "content": "## Navigation Menu\n\n# pneumonia-detection\n\n## Here are 372 public repositories matching this topic...\n\n### anjanatiha / Pneumonia-Detection-from-Chest-X-Ray-Images-with-Deep-Learning\n\nDetecting Pneumonia in Chest X-ray Images using Convolutional Neural Network and Pretrained Models\n\n### tatigabru / kaggle-rsna\n\nDeep Learning for Automatic Pneumonia Detection, RSNA challenge\n\nCOVID-CXNet\n\n### armiro / COVID-CXNet\n\nCOVID-CXNet: Diagnosing COVID-19 in Frontal Chest X-ray Images using Deep Learning. Preprint available on arXiv: \n\n### RiturajSaha / Health-Discernment-System\n\nA menu based multiple chronic disease detection system which will detect if a person is suffering from a severe disease by taking an essential input image.\n\n### 0xpranjal / Pneumonia-Detection-using-Deep-Learning [...] ### sunnynguyen-ai / medical-image-classifier\n\nDeep learning model for pneumonia detection in chest X-rays using TensorFlow and Streamlit\n\n### Abhhiiissshhek / pneumonia-detection\n\nDeep learning-based pneumonia detection from chest X-ray images using PyTorch and ResNet18, with a Streamlit interface for real-time predictions.\n\n### limingwu8 / Pneumonia-Detection\n\nKaggle RSNA Pneumonia Detection Challenge\n\n### V2dha / Pneumonia-and-Tuberculosis-Detection\n\nDeep Learning Model with CNN to detect whether a person is having pneumonia or tuberculosis based on the chest x-ray images\n\n## Add this topic to your repo\n\nTo associate your repository with the\npneumonia-detection\ntopic, visit your repo's landing page and select \"manage topics.\"\n\nLearn more\n\n## Footer\n\n### Footer navigation [...] ### 0xpranjal / Pneumonia-Detection-using-Deep-Learning\n\nMaking a binary classifier to detect pneumonia using chest x-rays images.\n\nAE-CNN\n\n### ekagra-ranjan / AE-CNN\n\nICVGIP' 18 Oral Paper - Classification of thoracic diseases on ChestX-Ray14 dataset\n\n### YashShende / Pneumonia\\_Detection\n\nA Flask Pneumonia Detection web app from chest X-Ray Images using CNN\n\n### THEGURUJ1 / AI-for-Healthcare-Project-using-NVIDIA-Jetson-Nano-2GB-Developer-kit\n\nThis project uses Deep learning concept in detection of Various Deadly diseases. It can Detect 1) Lung Cancer 2) Covid-19 3)Tuberculosis 4) Pneumonia. It uses CT-Scan and X-ray Images of chest/lung in detecting the disease. It has a Accuracy between 50%-80%. It can take input in any Image format or through Live videos and provide accurate output\u2026",
+      "score": 0.33600467,
+      "raw_content": null,
+      "id": "0b9e40-03"
+    },
+    {
+      "url": "https://github.com/gimnathperera/Pneumonia-detection-CNN",
+      "title": "GitHub - gimnathperera/Pneumonia-detection-CNN: Deep ...",
+      "content": "Pneumonia is a severe respiratory infection that affects millions of people worldwide. Timely and accurate diagnosis plays a vital role in ensuring proper treatment and care for patients. This project addresses the challenge of automating the pneumonia classification process, allowing medical professionals to make informed decisions quickly.",
+      "score": 0.3215244,
+      "raw_content": null,
+      "id": "ad8337-04"
+    }
+  ],
+  "response_time": 4.42,
+  "request_id": "6b7875a8-42a3-456f-a4ce-1bce4c741560"
+}

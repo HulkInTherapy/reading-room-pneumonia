@@ -1,0 +1,32 @@
+# Credentials and machine state
+.env
+.env.*
+!.env.example
+.DS_Store
+.gstack/
+.venv/
+.venv*/
+__pycache__/
+*.py[cod]
+.downloads/
+models/
+models.previous-*/
+# Large learned states and regenerated data belong in Releases, not Git history
+*.pt
+*.pth
+*.npy
+*.npz
+*.parquet
+*.zip
+**/data/images/
+**/data/full/
+**/data/crop/
+**/data/masks/
+**/cache/
+**/cache_tail/
+# Publication build intermediates
+docs/*.aux
+docs/*.log
+docs/*.out
+docs/*.toc
+.build/

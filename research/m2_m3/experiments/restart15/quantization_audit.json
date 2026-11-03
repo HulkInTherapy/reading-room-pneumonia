@@ -1,0 +1,37 @@
+[
+  {
+    "model": "resnet18",
+    "n": 16,
+    "max_probability_difference": 6.3478946685791016e-06,
+    "mean_probability_difference": 9.179484550259076e-07,
+    "decision_changes": 0
+  },
+  {
+    "model": "densenet121",
+    "n": 16,
+    "max_probability_difference": 5.165114998817444e-06,
+    "mean_probability_difference": 5.41056749625568e-07,
+    "decision_changes": 0
+  },
+  {
+    "model": "googlenet",
+    "n": 16,
+    "max_probability_difference": 5.543231964111328e-05,
+    "mean_probability_difference": 5.480187610373832e-06,
+    "decision_changes": 0
+  },
+  {
+    "model": "inception_v3",
+    "n": 16,
+    "max_probability_difference": 4.034489393234253e-06,
+    "mean_probability_difference": 4.763207925861934e-07,
+    "decision_changes": 0
+  },
+  {
+    "model": "alexnet",
+    "n": 16,
+    "max_probability_difference": 1.4901161193847656e-06,
+    "mean_probability_difference": 3.056711079807428e-07,
+    "decision_changes": 0
+  }
+]

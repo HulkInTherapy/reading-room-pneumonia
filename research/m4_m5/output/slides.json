@@ -1,0 +1,166 @@
+[
+  [
+    "Reading the Reading Room",
+    [
+      "Pneumonia classification from pediatric chest X-rays",
+      "Final milestones: anatomy-guided inputs and matched classifier comparisons",
+      "Samarth Shekhar \u00b7 Meghavi Rao \u00b7 Rachit Kumar \u00b7 Harshal Nerpagar"
+    ]
+  ],
+  [
+    "From reproduction to a controlled experiment",
+    [
+      "M1: literature review and dataset selection",
+      "M2: reproduced five-CNN baseline and audited predictions",
+      "M3: predicted gains from lung cropping and a pretrained transformer",
+      "M4\u2013M5: implementation, measured comparisons and failure analysis"
+    ]
+  ],
+  [
+    "Dataset and evaluation",
+    [
+      "Normal versus pneumonia on the Kermany pediatric benchmark",
+      "Historical baseline: 5,232 training records and 624 test records",
+      "New split: 4,164 training, 1,042 validation and 624 test records",
+      "The benchmark test was inspected previously. It is not an external blind holdout."
+    ]
+  ],
+  [
+    "The verified M2 baseline",
+    [
+      "Five pretrained CNNs, five epochs, majority voting. Paper target: 96.4% accuracy.",
+      "Accuracy 92.15% \u00b7 pneumonia recall 94.62% \u00b7 specificity 88.03%",
+      "Macro F1 0.916 \u00b7 ROC AUC 0.962",
+      "28 false positives, 21 false negatives. ResNet18 alone: 93.11% accuracy."
+    ]
+  ],
+  [
+    "Why focus on the lungs?",
+    [
+      "The full image includes peripheral anatomy and acquisition markings",
+      "A fixed pretrained anatomical model predicts both lungs at 256 pixels",
+      "We crop their union with a 10% margin, then resize for classification",
+      "256 replaces the standard 512 input for CPU runtime. Failed masks fall back.",
+      "Median retained crop area: 71.1% of original image area"
+    ]
+  ],
+  [
+    "The crop pipeline on a training image",
+    []
+  ],
+  [
+    "The implementation and its limits",
+    [
+      "Frozen pretrained image encoders with five-epoch trained classifier heads",
+      "ResNet18 supplies CNN features. DeiT-Tiny supplies transformer features.",
+      "The pilot isolates image region and classifier combination under one split",
+      "This reduced experiment differs from the original five-CNN late-block proposal.",
+      "Uploaded 224 px fixture: 4.58 s including segmentation; cached cases: 1.24\u20131.49 s."
+    ]
+  ],
+  [
+    "Four matched conditions",
+    [
+      "A: full image with ResNet18",
+      "B: lung-focused crop with ResNet18",
+      "C: full image with ResNet18 and DeiT-Tiny",
+      "D: lung-focused crop with ResNet18 and DeiT-Tiny",
+      "Checkpoints and combination weights use validation data only."
+    ]
+  ],
+  [
+    "Measured results",
+    [
+      "A: accuracy 86.86%, recall 97.44%, specificity 69.23%, macro F1 0.850, AUC 0.931",
+      "B: accuracy 92.63%, recall 96.67%, specificity 85.90%, macro F1 0.920, AUC 0.970",
+      "C: accuracy 88.14%, recall 97.95%, specificity 71.79%, macro F1 0.866, AUC 0.947",
+      "D: accuracy 93.75%, recall 98.21%, specificity 86.32%, macro F1 0.932, AUC 0.976"
+    ]
+  ],
+  [
+    "Confusion matrices by condition",
+    []
+  ],
+  [
+    "What happened to the M3 prediction?",
+    [
+      "Crop effect B minus A: macro F1 +0.0696, specificity +16.67 percentage points",
+      "Paired 95% interval for macro-F1 difference: [0.0404, 0.1016]",
+      "The measured macro-F1 gain exceeds the predicted +0.03 upper bound.",
+      "Validation-selected ViT weights: C=0.25, D=0.5"
+    ]
+  ],
+  [
+    "Validation and test disagree on cropping",
+    [
+      "A: validation macro F1 0.955; test 0.850",
+      "B: validation macro F1 0.907; test 0.920",
+      "C: validation macro F1 0.957; test 0.866",
+      "D: validation macro F1 0.924; test 0.932",
+      "This single split supports a benchmark result, not universal crop superiority."
+    ]
+  ],
+  [
+    "Errors and uncertainty",
+    [
+      "Automatic full-image fallbacks: 82 / 5824 (1.41%)",
+      "Inspect false positives, false negatives and segmentation failures",
+      "Report sensitivity alongside specificity and macro F1",
+      "Paired uncertainty estimates describe this benchmark, not other hospitals",
+      "Grad-CAM highlights one CNN response. It does not establish lesion boundaries."
+    ]
+  ],
+  [
+    "When the pipeline falls back to the full image",
+    []
+  ],
+  [
+    "Live demonstration",
+    [
+      "Select a benchmark example or upload a PNG/JPEG",
+      "Inspect the model prediction, individual scores and Grad-CAM",
+      "Inspect lung crop experiment metrics and recorded protocol",
+      "The interface identifies the model being demonstrated and uses saved trained weights."
+    ]
+  ],
+  [
+    "Conclusions and remaining questions",
+    [
+      "Predeclared crop CNN\u2013ViT: 93.75% accuracy and 98.21% pneumonia recall",
+      "Small pediatric data and imperfect identifier groups limit generalization",
+      "Adding ViT to the crop CNN improved accuracy by 1.12 percentage points",
+      "The validation/test reversal requires repeated splits and external testing."
+    ]
+  ],
+  [
+    "Appendix: Interpreting the comparison",
+    [
+      "B versus A tests the crop effect for the CNN pilot",
+      "C versus A tests the transformer addition on full images",
+      "D versus B tests the transformer addition on crops",
+      "The historical M2 score uses a different training protocol and is context only."
+    ]
+  ],
+  [
+    "Appendix: Training examples from both classes",
+    []
+  ],
+  [
+    "Appendix: Historical baseline error examples",
+    []
+  ],
+  [
+    "Appendix: Where the crop hybrid makes errors",
+    []
+  ],
+  [
+    "References",
+    [
+      "Chouhan et al. (2020). Five-CNN transfer-learning ensemble. doi:10.3390/app10020559",
+      "Cohen et al. (2022). TorchXRayVision. mlmed.org/torchxrayvision/models.html",
+      "Touvron et al. (2021). Data-efficient image transformers. github.com/facebookresearch/deit",
+      "Abdullah et al. (2026). HybridCATNet. doi:10.3389/fdgth.2026.1769444",
+      "Kermany et al. Pediatric chest X-ray dataset. doi:10.17632/rscbjbr9sj.2"
+    ]
+  ]
+]

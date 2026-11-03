@@ -1,0 +1,50 @@
+{
+  "query": "Chouhan 559 pneumonia code github preprocessing",
+  "follow_up_questions": null,
+  "answer": null,
+  "images": [],
+  "results": [
+    {
+      "url": "https://github.com/topics/pneumonia?l=jupyter+notebook&o=desc&s=stars",
+      "title": "pneumonia \u00b7 GitHub Topics",
+      "content": "A deep learning project for detecting pneumonia from chest X-ray images using Convolutional Neural Networks (CNN). This project was implemented in Python with",
+      "score": 0.32517812,
+      "raw_content": null,
+      "id": "c01e2a-00"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=1SQIrxhMuUs",
+      "title": "Advance DL Project 17: PNEUMONIA Detection Using Deep Learning | KNOWLEDGE DOCTOR | Mishu",
+      "content": "\ud83d\udcc8 What You'll Learn:\nUnderstanding pneumonia and its diagnosis\nPreprocessing and augmenting chest X-ray image data\nBuilding CNN models for pneumonia detection\nEvaluating model performance and interpreting results\nContributing to healthcare diagnostics through deep learning\n\n\ud83d\udd17 Resources:\n\ud83d\udcf8 Instagram: @knowledge_doctor.\n\n\ud83d\udcbb GitHub: \n\ud83d\udd2e Model Weights\ud83d\udc49\n\ud83d\udcd8 Facebook:   / knowledge-doctor-programming-114082097010409  \n\n\ud83d\ude80 Join the Multiverse Community:\nConnect with like-minded data enthusiasts, share your insights, and seek support on our vibrant community forums. The Multiverse community is your platform for collaboration, learning, and growth in the dynamic field of data science. [...] \ud83d\udd17 Resources:\nAccess the code, datasets, and additional materials on our GitHub repository. Follow along with the tutorial and unlock the potential of Pneumonia Detection using Python.\n\n\ud83d\udccc Stay tuned for upcoming episodes in our Multiverse series! Subscribe, like, and hit the notification bell to embark on an enriching journey through the diverse landscapes of data science projects.\n\n\ud83d\ude80 Multiverse of 100+ Data Science Project Series - Where possibilities are endless, and knowledge knows no bounds. Let's explore the world of data science together! \ud83c\udf0c\u2728 [...] [7:37] here the mat plot Li in line so let let's say Matt plot lip Matt plot lip in line then I'm going using here the gz\n[7:45] plot as a style let's say pl. style. use and inside that I'm going using the ZZ plot so let's say ZZ plot simple so you\n[7:54] load all the necessary Library just not need which you need it for uh loading the data set and try to do the data visualization and also data\n[8:01] preprocessing okay so now what we going to do we simply going to load the data set from our working directory so we have two levels numia and also the\n[8:09] normals so let's now levels so I hope so my voice is quite low\n[8:20] because last six I am not uploading the video in my YouTube channel so I\n[8:28] decided okay okay normal and we have a new okay\n[8:37] new uh new monia monia",
+      "score": 0.3233165,
+      "raw_content": null,
+      "id": "5af6e7-01"
+    },
+    {
+      "url": "https://github.com/mstewart796/pneumonia-classification/blob/main/preprocessing.ipynb",
+      "title": "preprocessing.ipynb - mstewart796/pneumonia-classification",
+      "content": "CNN to classifiy pneumonia from my Deep Learning with PyTorch for Medical Image Analysis course. Search code, repositories, users, issues, pull requests...",
+      "score": 0.31703547,
+      "raw_content": null,
+      "id": "bf09bc-02"
+    },
+    {
+      "url": "https://www.mdpi.com/2076-3417/10/2/559",
+      "title": "A Novel Transfer Learning Based Approach for Pneumonia Detection in Chest X-ray Images",
+      "content": "\u00a9 2020 by the authors. Licensee MDPI, Basel, Switzerland. This article is an open access article distributed under the terms and conditions of the Creative Commons Attribution (CC BY) license (\n\n## ; \"Wechat\")\n\nMDPI and ACS Style\n\nChouhan, V.; Singh, S.K.; Khamparia, A.; Gupta, D.; Tiwari, P.; Moreira, C.; Dama\u0161evi\u010dius, R.; de Albuquerque, V.H.C. A Novel Transfer Learning Based Approach for Pneumonia Detection in Chest X-ray Images. _Appl. Sci._2020, _10_, 559. \n\nAMA Style  \n\nChouhan V, Singh SK, Khamparia A, Gupta D, Tiwari P, Moreira C, Dama\u0161evi\u010dius R, de Albuquerque VHC. A Novel Transfer Learning Based Approach for Pneumonia Detection in Chest X-ray Images. _Applied Sciences_. 2020; 10(2):559. \n\nChicago/Turabian Style [...] Chicago/Turabian Style  \n\nChouhan, Vikash, Sanjay Kumar Singh, Aditya Khamparia, Deepak Gupta, Prayag Tiwari, Catarina Moreira, Robertas Dama\u0161evi\u010dius, and Victor Hugo C. de Albuquerque. 2020. \"A Novel Transfer Learning Based Approach for Pneumonia Detection in Chest X-ray Images\" _Applied Sciences_ 10, no. 2: 559. \n\nAPA Style  \n\nChouhan, V., Singh, S. K., Khamparia, A., Gupta, D., Tiwari, P., Moreira, C., Dama\u0161evi\u010dius, R., & de Albuquerque, V. H. C. (2020). A Novel Transfer Learning Based Approach for Pneumonia Detection in Chest X-ray Images. _Applied Sciences_, _10_(2), 559. \n\n Note that from the first issue of 2016, this journal uses article numbers instead of page numbers. See further details here. \n\n##  | EndNote) | RIS)\n\nMDPI and ACS Style [...] ##  | EndNote) | RIS)\n\nMDPI and ACS Style\n\nChouhan, V.; Singh, S.K.; Khamparia, A.; Gupta, D.; Tiwari, P.; Moreira, C.; Dama\u0161evi\u010dius, R.; de Albuquerque, V.H.C. A Novel Transfer Learning Based Approach for Pneumonia Detection in Chest X-ray Images. _Appl. Sci._2020, _10_, 559. \n\nAMA Style  \n\nChouhan V, Singh SK, Khamparia A, Gupta D, Tiwari P, Moreira C, Dama\u0161evi\u010dius R, de Albuquerque VHC. A Novel Transfer Learning Based Approach for Pneumonia Detection in Chest X-ray Images. _Applied Sciences_. 2020; 10(2):559. \n\nChicago/Turabian Style",
+      "score": 0.29033202,
+      "raw_content": null,
+      "id": "aa5faa-03"
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9581770",
+      "title": "Pediatric pneumonia diagnosis using stacked ensemble learning on multi-model deep CNN architectures",
+      "content": "5..Chouhan V, Singh SK, Khamparia A, Gupta D, Tiwari P, Moreira C, Dama\u0161evi\u010dius R, De Albuquerque VHC (2020) A novel transfer learning based approach for pneumonia detection in chest X-ray images. Appl Sci 10(2):559 [Google Scholar]\n   6..Chowdhury MEH, Rahman T, Khandakar A, Mazhar R, Kadir MA, Mahbub ZB, Islam KR, Khan MS, Iqbal A, Emadi NA, Reaz MBI, Islam MT. Can AI help in screening viral and COVID-19 pneumonia?. _IEEE Access_. 2020. 8:132665-132676. doi: 10.1109/ACCESS.2020.3010287 [DOI] [Google Scholar]\n   7..Dong S, Wang P, Abbas K. A survey on deep learning and its applications. _Comput Sci Rev_. 2021. 40:100379. doi: 10.1016/j.cosrev.2021.100379 [DOI] [Google Scholar] [...] TimeKermany et al. Normal and PneumoniaInception V3 pretrained CNN model92.890.193.2\u2013\u2013Nahida et al. Normal and PneumoniaTwo-Channel CNN model97.9298.3897.4797.97Stephen et al. Normal and PneumoniaCustom CNN model without Transfer Learning93.73\u2013\u2013\u2013\u2013Chouhan et al. Normal and PneumoniaMajority voting ensemble model96.3993.2899.6299.34\u2013Rajaraman et al. Normal and PneumoniaCustom VGG-16 model96.297.099.599.0\u2013Siddiqi et al. Normal and PneumoniaDeep sequential CNN model94.3992.099.0\u2013\u2013Hashmi et al. Normal and PneumoniaWeighted classifier98.43\u2013\u201399.76\u2013Yu Xiang et al. Normal and PneumoniaCGNET98.7297.4899.15\u2013\u2013El Asnaoui et al. Normal and PneumoniaDeep CNN model96.2798.0694.61\u2013\u2013Mittal et al. Normal and PneumoniaCapsNet architecture96.36\u2013\u2013\u2013\u2013Rahman et al. Normal and PneumoniaDeep CNN [...] Researchers began to analyze the importance of using spatial domain preprocessing techniques like Histogram Equalization, Adaptive Histogram Equalization (AHE), Contrast Limited Adaptive Histogram Equalization (CLAHE), and Gamma correction. Rubini et al.  examined two popular spatial processing approaches for improving MRI images: AHE and CLAHE. In , the authors propose using CLAHE as the preprocessing technique and custom CNN architectures for prediction. Nneji et al.  propose using dynamic histogram enhancement techniques for pediatric pneumonia detection. Tawsifur et al.  detail the effects of HE, CLAHE, image complement, gamma correction, and balance contrast enhancement approaches.",
+      "score": 0.24339549,
+      "raw_content": null,
+      "id": "2ed979-04"
+    }
+  ],
+  "response_time": 4.99,
+  "request_id": "45a0166f-63cf-4641-aa4f-31f0815c7755"
+}

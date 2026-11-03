@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Reading Room — presenter hub</title>
+    <style>
+      :root {
+        --ink: #132736;
+        --muted: #617383;
+        --bg: #f5f4ef;
+        --teal: #087f8c;
+        --violet: #7560ca;
+        --line: #dce4e7;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font:
+          17px/1.65 Arial,
+          sans-serif;
+      }
+      header,
+      main,
+      footer {
+        max-width: 1120px;
+        margin: auto;
+        padding: 24px;
+      }
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid var(--line);
+      }
+      .brand {
+        font-weight: 800;
+        font-size: 21px;
+      }
+      .tag {
+        font-size: 13px;
+        color: var(--muted);
+      }
+      h1 {
+        font-size: clamp(38px, 6vw, 70px);
+        letter-spacing: -2px;
+        line-height: 1.06;
+        margin: 36px 0 24px;
+        max-width: 850px;
+      }
+      h1 span {
+        color: var(--teal);
+      }
+      h2 {
+        font-size: 25px;
+        line-height: 1.25;
+      }
+      p {
+        max-width: 850px;
+      }
+      a {
+        color: var(--teal);
+      }
+      .lead {
+        color: var(--muted);
+        font-size: 20px;
+      }
+      .actions {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+        margin: 35px 0;
+      }
+      .card {
+        display: block;
+        background: white;
+        padding: 24px;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        text-decoration: none;
+        color: var(--ink);
+      }
+      .card:hover {
+        border-color: var(--teal);
+      }
+      .card b {
+        display: block;
+        font-size: 22px;
+        margin: 8px 0;
+      }
+      .card small {
+        display: block;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+      .number {
+        font-size: 14px;
+        color: var(--teal);
+        font-weight: bold;
+      }
+      .banner {
+        background: var(--ink);
+        color: #dbe9ec;
+        padding: 22px 28px;
+        border-radius: 15px;
+        margin: 24px 0;
+      }
+      .banner strong {
+        color: white;
+      }
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+        margin: 30px 0;
+      }
+      .stats strong {
+        display: block;
+        font-size: 40px;
+        color: var(--teal);
+        line-height: 1.2;
+      }
+      .stats span {
+        font-size: 14px;
+        color: var(--muted);
+      }
+      .preview {
+        width: 100%;
+        height: auto;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        display: block;
+        margin: 24px 0;
+      }
+      .section {
+        padding: 24px 0;
+        border-top: 1px solid var(--line);
+        margin-top: 22px;
+      }
+      .button {
+        display: inline-block;
+        background: var(--teal);
+        color: white;
+        text-decoration: none;
+        border-radius: 10px;
+        padding: 12px 18px;
+        margin: 6px 12px 6px 0;
+      }
+      .secondary {
+        background: white;
+        color: var(--ink);
+        border: 1px solid var(--line);
+      }
+      li {
+        margin: 9px 0;
+      }
+      footer {
+        border-top: 1px solid var(--line);
+        font-size: 14px;
+        color: var(--muted);
+      }
+      @media (max-width: 700px) {
+        .actions,
+        .stats {
+          grid-template-columns: 1fr;
+        }
+        .stats {
+          gap: 20px;
+        }
+        header {
+          gap: 16px;
+        }
+        h1 {
+          letter-spacing: -1px;
+        }
+        .tag {
+          max-width: 150px;
+          text-align: right;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="brand">RR / Reading Room</div>
+      <div class="tag">Computer vision · final project</div>
+    </header>
+    <main>
+      <h1>Ready to present.<br /><span>Start with these three files.</span></h1>
+      <p class="lead">
+        A simple presenter hub for our pediatric chest X-ray project. The
+        slides, script and recorded backup work without a Python setup.
+      </p>
+      <div class="actions">
+        <a class="card" href="Presentation_8_Slides.html"
+          ><span class="number">01 / PRESENT</span><b>Eight visual slides</b
+          ><small
+            >Open fullscreen. Use arrow keys or the Next button. <br />Also
+            available as a PDF below.</small
+          ></a
+        ><a class="card" href="Presenter_Notes.pdf"
+          ><span class="number">02 / SPEAK</span><b>Read-aloud script</b
+          ><small
+            >A short script for every slide, exact demo steps and simple answers
+            to likely questions.</small
+          ></a
+        ><a class="card" href="Offline_Demo.html"
+          ><span class="number">03 / BACKUP</span><b>Recorded model demo</b
+          ><small
+            >Actual saved model responses. This backup does not perform new
+            inference.</small
+          ></a
+        >
+      </div>
+      <div class="banner">
+        <strong>Want to predict a new image?</strong> Use the live model setup
+        below. This website hosts the presentation and recorded evidence; the
+        neural models run locally on your computer.
+      </div>
+      <div class="stats">
+        <div>
+          <strong>93.75%</strong><span>Test accuracy · 585 / 624 correct</span>
+        </div>
+        <div>
+          <strong>98.21%</strong><span>Pneumonia recall · 383 / 390 found</span>
+        </div>
+        <div>
+          <strong>0.976</strong
+          ><span>ROC AUC · final predeclared condition D</span>
+        </div>
+      </div>
+      <p class="tag">
+        Single-seed, frozen-encoder pilot. The benchmark was inspected
+        previously; validation and test showed different crop trends. The report
+        explains these limits.
+      </p>
+      <section class="section">
+        <h2>Live model setup</h2>
+        <ol>
+          <li>Install <strong>Python 3.13</strong>, the tested runtime.</li>
+          <li>Download and extract the repository ZIP.</li>
+          <li>
+            Open <strong>Start_Windows.bat</strong> or
+            <strong>Start_Mac.command</strong>. The first setup installs CPU
+            libraries and a verified 326 MiB model.
+          </li>
+          <li>
+            Wait for the browser, choose a sample and click
+            <strong>Analyze image</strong>. Keep the terminal open.
+          </li>
+        </ol>
+        <a
+          class="button"
+          href="https://github.com/HulkInTherapy/reading-room-pneumonia/archive/refs/heads/main.zip"
+          >Download code ZIP</a
+        ><a
+          class="button secondary"
+          href="https://github.com/HulkInTherapy/reading-room-pneumonia/blob/main/START_HERE.md"
+          >Step-by-step help</a
+        >
+        <p>
+          No GPU, API key, SSH access or GitHub login is needed. Linux CPU
+          runtime was tested; Mac and Windows launchers are supplied. Run the
+          first setup before the presentation.
+        </p>
+        <img
+          class="preview"
+          src="figures/standalone_demo.png"
+          alt="Actual standalone Reading Room interface after model inference"
+        />
+      </section>
+      <section class="section">
+        <h2>Take everything offline</h2>
+        <a
+          class="button"
+          href="https://github.com/HulkInTherapy/reading-room-pneumonia/releases/download/v1.0.0/Presentation_Kit.zip"
+          >Download presentation kit</a
+        ><a class="button secondary" href="Presentation_8_Slides.pdf"
+          >Slides PDF</a
+        ><a class="button secondary" href="Research_Report.pdf"
+          >Full IEEE-format report</a
+        >
+        <p>
+          The kit contains the 8-slide PDF and HTML, presenter script, full
+          research report and self-contained recorded demo. Model weights and
+          historical checkpoints are separate Release downloads.
+        </p>
+        <a
+          href="https://github.com/HulkInTherapy/reading-room-pneumonia/releases/tag/v1.0.0"
+          >All model and research downloads →</a
+        >
+      </section>
+    </main>
+    <footer>
+      <strong
+        >Samarth Shekhar · Meghavi Rao · Rachit Kumar · Harshal Nerpagar</strong
+      ><br />Research and educational demonstration. Anatomical masks are
+      predictions, not lesion annotations.<br /><a
+        href="https://github.com/HulkInTherapy/reading-room-pneumonia"
+        >Source repository</a
+      >
+    </footer>
+  </body>
+</html>

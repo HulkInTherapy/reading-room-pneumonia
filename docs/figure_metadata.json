@@ -1,0 +1,287 @@
+{
+  "historical": [
+    {
+      "n": 624,
+      "accuracy": 0.8717948717948718,
+      "sensitivity": 0.9974358974358974,
+      "specificity": 0.6623931623931624,
+      "precision": 0.8311965811965812,
+      "pneumonia_f1": 0.9067599067599068,
+      "normal_f1": 0.7948717948717948,
+      "macro_f1": 0.8508158508158508,
+      "balanced_accuracy": 0.8299145299145299,
+      "auc": 0.9815362699978085,
+      "confusion_matrix": [
+        [
+          155,
+          79
+        ],
+        [
+          1,
+          389
+        ]
+      ]
+    },
+    {
+      "n": 624,
+      "accuracy": 0.8573717948717948,
+      "sensitivity": 0.9974358974358974,
+      "specificity": 0.6239316239316239,
+      "precision": 0.8155136268343816,
+      "pneumonia_f1": 0.8973471741637832,
+      "normal_f1": 0.7664041994750657,
+      "macro_f1": 0.8318756868194244,
+      "balanced_accuracy": 0.8106837606837607,
+      "auc": 0.972260574183651,
+      "confusion_matrix": [
+        [
+          146,
+          88
+        ],
+        [
+          1,
+          389
+        ]
+      ]
+    },
+    {
+      "n": 624,
+      "accuracy": 0.9214743589743589,
+      "sensitivity": 0.9461538461538461,
+      "specificity": 0.8803418803418803,
+      "precision": 0.929471032745592,
+      "pneumonia_f1": 0.9377382465057179,
+      "normal_f1": 0.8937093275488069,
+      "macro_f1": 0.9157237870272624,
+      "balanced_accuracy": 0.9132478632478632,
+      "auc": 0.9623164584703047,
+      "confusion_matrix": [
+        [
+          206,
+          28
+        ],
+        [
+          21,
+          369
+        ]
+      ]
+    },
+    {
+      "accuracy": 0.9375,
+      "sensitivity": 0.982051282051282,
+      "specificity": 0.8632478632478633,
+      "precision": 0.9228915662650602,
+      "macro_f1": 0.931758338824783,
+      "normal_f1": 0.9119638826185101,
+      "pneumonia_f1": 0.9515527950310559,
+      "auc": 0.9757396449704141,
+      "confusion_matrix": [
+        [
+          202,
+          32
+        ],
+        [
+          7,
+          383
+        ]
+      ]
+    }
+  ],
+  "final": {
+    "completed": true,
+    "protocol": {
+      "experiment": "Frozen pretrained feature pilot; 5 head epochs; single CNN replaces original five-CNN proposed ablation",
+      "seed": 42,
+      "epochs": 5,
+      "training": "Frozen ImageNet features; standardized using training only; AdamW linear head; no fresh image augmentation in this declared pilot",
+      "split": "conservative person number / normal filename prefix / hash fallback",
+      "checkpoint_selection": "validation macro F1; earlier epoch breaks ties",
+      "test_history": "Benchmark previously inspected; not external blind holdout",
+      "crop": "Fixed pretrained PSPNet at256 inference (runtime-driven departure from official512 wrapper); lung union bounding box +10% margin on original pixels before224 resize",
+      "limitations": [
+        "Single seed",
+        "Filename patient proxies",
+        "Frozen representation pilot differs from online M2 reconstruction"
+      ],
+      "training_records": 4164,
+      "validation_records": 1042,
+      "test_records": 624,
+      "device": "CPU",
+      "threads": 2,
+      "precision": "FP32",
+      "head_optimizer": {
+        "name": "AdamW",
+        "learning_rate": 0.001,
+        "weight_decay": 0.01,
+        "batch_size": 32,
+        "loss": "Unweighted cross entropy"
+      },
+      "feature_standardization": "Training mean/std only; std floor0.001",
+      "image_normalization": {
+        "mean": [
+          0.485,
+          0.456,
+          0.406
+        ],
+        "std": [
+          0.229,
+          0.224,
+          0.225
+        ]
+      },
+      "segmentation": {
+        "input_resolution": 256,
+        "mask_threshold": 0.5,
+        "margin_per_side": 0.1,
+        "fallback_mask_fraction": [
+          0.08,
+          0.85
+        ],
+        "fixed_pretrained": true
+      },
+      "primary_metric": "Macro F1"
+    },
+    "conditions": {
+      "A": {
+        "metrics": {
+          "accuracy": 0.8685897435897436,
+          "sensitivity": 0.9743589743589743,
+          "specificity": 0.6923076923076923,
+          "precision": 0.8407079646017699,
+          "macro_f1": 0.8503211916267859,
+          "normal_f1": 0.7980295566502463,
+          "pneumonia_f1": 0.9026128266033254,
+          "auc": 0.9308240192855578,
+          "confusion_matrix": [
+            [
+              162,
+              72
+            ],
+            [
+              10,
+              380
+            ]
+          ]
+        }
+      },
+      "B": {
+        "metrics": {
+          "accuracy": 0.9262820512820513,
+          "sensitivity": 0.9666666666666667,
+          "specificity": 0.8589743589743589,
+          "precision": 0.9195121951219513,
+          "macro_f1": 0.9199107142857144,
+          "normal_f1": 0.8973214285714286,
+          "pneumonia_f1": 0.9425,
+          "auc": 0.9703265395573087,
+          "confusion_matrix": [
+            [
+              201,
+              33
+            ],
+            [
+              13,
+              377
+            ]
+          ]
+        }
+      },
+      "C": {
+        "metrics": {
+          "accuracy": 0.8814102564102564,
+          "sensitivity": 0.9794871794871794,
+          "specificity": 0.717948717948718,
+          "precision": 0.8526785714285714,
+          "macro_f1": 0.865603352930904,
+          "normal_f1": 0.8195121951219512,
+          "pneumonia_f1": 0.9116945107398569,
+          "auc": 0.9472496164803857,
+          "confusion_matrix": [
+            [
+              168,
+              66
+            ],
+            [
+              8,
+              382
+            ]
+          ]
+        },
+        "vit_weight": 0.25
+      },
+      "D": {
+        "metrics": {
+          "accuracy": 0.9375,
+          "sensitivity": 0.982051282051282,
+          "specificity": 0.8632478632478633,
+          "precision": 0.9228915662650602,
+          "macro_f1": 0.931758338824783,
+          "normal_f1": 0.9119638826185101,
+          "pneumonia_f1": 0.9515527950310559,
+          "auc": 0.9757396449704141,
+          "confusion_matrix": [
+            [
+              202,
+              32
+            ],
+            [
+              7,
+              383
+            ]
+          ]
+        },
+        "vit_weight": 0.5
+      }
+    },
+    "crop_audit": {
+      "unique_images": 5824,
+      "fallbacks": 82
+    },
+    "paired_macro_f1_B_minus_A_95CI": [
+      0.040375225499737696,
+      0.10161032520812266
+    ],
+    "bootstrap_unit": "conservative filename patient proxy",
+    "unique_image_sensitivity_analysis": {
+      "A": {
+        "records": 618,
+        "accuracy": 0.8673139158576052,
+        "sensitivity": 0.9741602067183462,
+        "specificity": 0.6883116883116883,
+        "macro_f1": 0.8484569377990431,
+        "auc": 0.9300647672740696
+      },
+      "B": {
+        "records": 618,
+        "accuracy": 0.9255663430420712,
+        "sensitivity": 0.9664082687338501,
+        "specificity": 0.8571428571428571,
+        "macro_f1": 0.918996546496917,
+        "auc": 0.9700213653702026
+      },
+      "C": {
+        "records": 618,
+        "accuracy": 0.8802588996763754,
+        "sensitivity": 0.979328165374677,
+        "specificity": 0.7142857142857143,
+        "macro_f1": 0.8639446877380046,
+        "auc": 0.9466760629551327
+      },
+      "D": {
+        "records": 618,
+        "accuracy": 0.9368932038834952,
+        "sensitivity": 0.9819121447028424,
+        "specificity": 0.8614718614718615,
+        "macro_f1": 0.9309720674871049,
+        "auc": 0.9755025336420685
+      }
+    }
+  },
+  "validation_macro_f1": [
+    0.9548760947702666,
+    0.9072084739407574,
+    0.9573152247826846,
+    0.9243016497937757
+  ],
+  "figures_rebuilt_from": "stored experiment CSV/JSON; no training performed"
+}

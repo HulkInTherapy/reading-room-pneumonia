@@ -1,0 +1,42 @@
+{
+  "normal": {
+    "status_code": 200,
+    "max_probability_difference": {
+      "A": 1.862645149230957e-08,
+      "B": 6.984919309616089e-09,
+      "C": 1.210719347000122e-08,
+      "D": 2.7939677238464355e-09
+    },
+    "seconds": 1.4854364395141602,
+    "preprocessing_seconds": 0.043721675872802734,
+    "classifier_seconds": 1.4164364337921143,
+    "timing_context": "Server-side processing; cached prepared sample masks, includes encoder/head loads and image encoding, excludes HTTP transport"
+  },
+  "pneumonia": {
+    "status_code": 200,
+    "max_probability_difference": {
+      "A": 0.0,
+      "B": 0.0,
+      "C": 0.0,
+      "D": 2.9802322387695312e-08
+    },
+    "seconds": 1.2400858402252197,
+    "preprocessing_seconds": 0.01810431480407715,
+    "classifier_seconds": 1.2022440433502197,
+    "timing_context": "Server-side processing; cached prepared sample masks, includes encoder/head loads and image encoding, excludes HTTP transport"
+  },
+  "upload": {
+    "status_code": 200,
+    "seconds": 4.575705289840698,
+    "preprocessing_seconds": 3.524928331375122,
+    "classifier_seconds": 1.0303006172180176,
+    "timing_context": "Server-side uploaded224px fixture; includes PSPNet load/segmentation, encoder/head loads and PNG encoding; excludes HTTP upload transport"
+  },
+  "invalid_upload_checks": {
+    "unreadable": 400,
+    "unknown_sample": 400,
+    "oversize_bytes": 413,
+    "oversize_dimensions": 413
+  },
+  "verified": true
+}

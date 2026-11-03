@@ -1,0 +1,136 @@
+{
+  "passed": true,
+  "config": {
+    "seed": 42,
+    "epochs": 5,
+    "batch_size": 16,
+    "device": "cpu",
+    "threads": 2,
+    "training_records": 5232,
+    "test_records": 624,
+    "class_mapping": {
+      "normal": 0,
+      "pneumonia": 1
+    },
+    "frozen_weights": "P7 Figures4-8 boundaries",
+    "batchnorm": "All running statistics update in train mode; affine gradients follow stated frozen/trainable boundaries. Author statistics policy unspecified.",
+    "augmentation": "Fresh per-example horizontal flip0.5, random resized crop scale0.8-1.0 ratio0.75-1.3333, brightness/contrast0.15, grayscale-shared Gaussian pixel noise std0.01. All training examples augmented; no fixed-view caches.",
+    "normalization": {
+      "mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "std": [
+        0.229,
+        0.224,
+        0.225
+      ]
+    },
+    "optimizer": {
+      "name": "Adam",
+      "initial_lr": 0.001,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "weight_decay": 0
+    },
+    "lr": "Non-AlexNet: halve every3 epochs. AlexNet: first200 optimizer steps0.001 then0.00001.",
+    "checkpoint": "Fixed final epoch5 per model, no selection using any test score",
+    "precision": "FP32 complete image forwards and trainable layers, no activation quantization",
+    "auxiliary_heads": "GoogLeNet and Inception unused auxiliary classifiers disabled",
+    "test_history": "Original benchmark was inspected in earlier experiments; not a blind external holdout",
+    "known_departures": [
+      "Five epochs instead of paper50-200",
+      "Author batch size, transform parameters, noise distribution, normalization, BatchNorm-statistics and exact pretrained revision not recovered",
+      "AlexNet200-iteration prose versus200-epoch table ambiguity; use literal optimizer steps",
+      "Initial224 RGB bilinear cache follows stated resize, but author interpolation/file manifest unverified"
+    ]
+  },
+  "config_hash": "e0e9ac2a0d1c82a7260d25a43705b706ecedd92909d4967ba6adc75124beb296",
+  "source_sha256": {
+    "engine.py": "bee69ae984ed3dc1c6286bda4109facce0198a2b6774461812a5f41d5332ed40",
+    "run.py": "677eb5a210a69124cc3b043726af33ee718d73a67b414f43a04b3dc4060c3ad2",
+    "preflight.py": "85c2ad5323b91f3fd623e22086969675312c802df9146914e75c4cadbcf810de",
+    "../../baseline.py": "1a4003bdc4362e21161580f9d5afb7bbaf91aac1418b4c145ae4ab2c432f9884",
+    "../../data/manifest.json": "e8e4215c9967e95b8ad1472454749d664f23fc6490e061e40a90482b0452d753"
+  },
+  "train_records": 5232,
+  "test_records": 624,
+  "unique_image_paths_verified": 5824,
+  "class_mapping_verified": true,
+  "no_exact_train_test_hash_overlap": true,
+  "fresh_augmentation_and_seed_repeatability_verified": true,
+  "lr_boundary_checks": true,
+  "models": [
+    {
+      "model": "resnet18",
+      "boundary": "layer4 + fc",
+      "trainable_parameter_count": 8394754,
+      "batch16_forward_backward_seconds": 1.4015655830007745,
+      "rss_mb": 451.578125,
+      "finite_loss": 0.5830287337303162,
+      "frozen_weights_unchanged": true,
+      "trainable_weights_updated": true,
+      "all_trainable_gradients_present": true,
+      "batchnorm_counters_updated": 20,
+      "single_image_eval_and_state_reload": true
+    },
+    {
+      "model": "densenet121",
+      "boundary": "denseblock4.denselayer15 + denselayer16 + classifier",
+      "trainable_parameter_count": 330050,
+      "batch16_forward_backward_seconds": 4.782207999989623,
+      "rss_mb": 361.15625,
+      "finite_loss": 0.8126567602157593,
+      "frozen_weights_unchanged": true,
+      "trainable_weights_updated": true,
+      "all_trainable_gradients_present": true,
+      "batchnorm_counters_updated": 121,
+      "single_image_eval_and_state_reload": true
+    },
+    {
+      "model": "googlenet",
+      "boundary": "inception5b + fc",
+      "trainable_parameter_count": 1349090,
+      "batch16_forward_backward_seconds": 2.380480958992848,
+      "rss_mb": 321.921875,
+      "finite_loss": 0.6628491878509521,
+      "frozen_weights_unchanged": true,
+      "trainable_weights_updated": true,
+      "all_trainable_gradients_present": true,
+      "batchnorm_counters_updated": 57,
+      "single_image_eval_and_state_reload": true
+    },
+    {
+      "model": "inception_v3",
+      "boundary": "Mixed_7c + fc",
+      "trainable_parameter_count": 6080898,
+      "batch16_forward_backward_seconds": 6.641760833008448,
+      "rss_mb": 698.953125,
+      "finite_loss": 0.6916131377220154,
+      "frozen_weights_unchanged": true,
+      "trainable_weights_updated": true,
+      "all_trainable_gradients_present": true,
+      "batchnorm_counters_updated": 94,
+      "single_image_eval_and_state_reload": true
+    },
+    {
+      "model": "alexnet",
+      "boundary": "9216->512->2 replacement classifier",
+      "trainable_parameter_count": 4720130,
+      "batch16_forward_backward_seconds": 0.35740412499581,
+      "rss_mb": 874.546875,
+      "finite_loss": 0.7117807865142822,
+      "frozen_weights_unchanged": true,
+      "trainable_weights_updated": true,
+      "all_trainable_gradients_present": true,
+      "batchnorm_counters_updated": 0,
+      "single_image_eval_and_state_reload": true
+    }
+  ],
+  "estimated_training_seconds": 25446.19088247957,
+  "warning": "Smoke-test timing estimate excludes loading/checkpoint overhead and sustained-load variation. Preflight weights are discarded; actual training restarts from ImageNet."
+}

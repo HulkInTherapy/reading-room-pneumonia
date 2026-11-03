@@ -1,0 +1,26 @@
+{
+  "epoch": 5,
+  "criterion": "validation macro F1, AUC, earlier epoch",
+  "metrics": {
+    "n": 1042,
+    "accuracy": 0.982725527831094,
+    "sensitivity": 0.9857512953367875,
+    "specificity": 0.9740740740740741,
+    "precision": 0.9908854166666666,
+    "pneumonia_f1": 0.9883116883116884,
+    "normal_f1": 0.9669117647058824,
+    "macro_f1": 0.9776117265087854,
+    "balanced_accuracy": 0.9799126847054308,
+    "auc": 0.9976635962387258,
+    "confusion_matrix": [
+      [
+        263,
+        7
+      ],
+      [
+        11,
+        761
+      ]
+    ]
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "method": "63-bit DCT perceptual hash distance <=4, followed by normalized 32x32 grayscale MAE <=0.03",
+  "warning": "Approximate resized-image screen, not proof of duplicate image or patient identity. Negative screening does not prove independence. No split/checkpoint/threshold changes are made from this audit.",
+  "train_validation": {
+    "low_phash_distance_pairs": 46,
+    "low_pixel_difference_candidates": []
+  },
+  "non_test_test": {
+    "low_phash_distance_pairs": 24,
+    "low_pixel_difference_candidates": []
+  }
+}

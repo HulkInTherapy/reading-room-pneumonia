@@ -1,0 +1,39 @@
+{
+  "status": "complete_and_verified",
+  "updated_local": "2026-10-05T23:10:17",
+  "models": {
+    "resnet18": {
+      "completed_epochs": 15,
+      "target_epochs": 15,
+      "training_complete": true,
+      "selected_epoch": 13
+    },
+    "densenet121": {
+      "completed_epochs": 15,
+      "target_epochs": 15,
+      "training_complete": true,
+      "selected_epoch": 9
+    },
+    "googlenet": {
+      "completed_epochs": 15,
+      "target_epochs": 15,
+      "training_complete": true,
+      "selected_epoch": 5
+    },
+    "inception_v3": {
+      "completed_epochs": 15,
+      "target_epochs": 15,
+      "training_complete": true,
+      "selected_epoch": 13
+    },
+    "alexnet": {
+      "completed_epochs": 15,
+      "target_epochs": 15,
+      "training_complete": true,
+      "selected_epoch": 1
+    }
+  },
+  "training_pid": 65770,
+  "results_verified": true,
+  "notebook_exists": true
+}

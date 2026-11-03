@@ -1,0 +1,50 @@
+{
+  "query": "A Novel Transfer Learning Based Approach for Pneumonia Detection github Chouhan",
+  "follow_up_questions": null,
+  "answer": null,
+  "images": [],
+  "results": [
+    {
+      "url": "https://www.mdpi.com/2076-3417/10/2/559",
+      "title": "A Novel Transfer Learning Based Approach for Pneumonia Detection in Chest X-ray Images",
+      "content": "\u00a9 2020 by the authors. Licensee MDPI, Basel, Switzerland. This article is an open access article distributed under the terms and conditions of the Creative Commons Attribution (CC BY) license (\n\n## ; \"Wechat\")\n\nMDPI and ACS Style\n\nChouhan, V.; Singh, S.K.; Khamparia, A.; Gupta, D.; Tiwari, P.; Moreira, C.; Dama\u0161evi\u010dius, R.; de Albuquerque, V.H.C. A Novel Transfer Learning Based Approach for Pneumonia Detection in Chest X-ray Images. _Appl. Sci._2020, _10_, 559. \n\nAMA Style  \n\nChouhan V, Singh SK, Khamparia A, Gupta D, Tiwari P, Moreira C, Dama\u0161evi\u010dius R, de Albuquerque VHC. A Novel Transfer Learning Based Approach for Pneumonia Detection in Chest X-ray Images. _Applied Sciences_. 2020; 10(2):559. \n\nChicago/Turabian Style [...] Pneumonia is among the top diseases which cause most of the deaths all over the world. Virus, bacteria and fungi can all cause pneumonia. However, it is difficult to judge the pneumonia just by looking at chest X-rays. The aim of this study is to simplify the pneumonia detection process for experts as well as for novices. We suggest a novel deep learning framework for the detection of pneumonia using the concept of transfer learning. In this approach, features from images are extracted using different neural network models pretrained on ImageNet, which then are fed into a classifier for prediction. We prepared five different models and analyzed their performance. Thereafter, we proposed an ensemble model that combines outputs from all pretrained models, which outperformed individual [...] Chicago/Turabian Style  \n\nChouhan, Vikash, Sanjay Kumar Singh, Aditya Khamparia, Deepak Gupta, Prayag Tiwari, Catarina Moreira, Robertas Dama\u0161evi\u010dius, and Victor Hugo C. de Albuquerque. 2020. \"A Novel Transfer Learning Based Approach for Pneumonia Detection in Chest X-ray Images\" _Applied Sciences_ 10, no. 2: 559. \n\nAPA Style  \n\nChouhan, V., Singh, S. K., Khamparia, A., Gupta, D., Tiwari, P., Moreira, C., Dama\u0161evi\u010dius, R., & de Albuquerque, V. H. C. (2020). A Novel Transfer Learning Based Approach for Pneumonia Detection in Chest X-ray Images. _Applied Sciences_, _10_(2), 559. \n\n Note that from the first issue of 2016, this journal uses article numbers instead of page numbers. See further details here. \n\n_clear_\n\n_Appl. Sci._, EISSN 2076-3417, Published by MDPI \n\nRSSContent Alert",
+      "score": 0.7959917,
+      "raw_content": null,
+      "id": "0dd8d3-00"
+    },
+    {
+      "title": "A Novel Transfer Learning Based Approach for Pneumonia ...",
+      "url": "https://www.semanticscholar.org/paper/A-Novel-Transfer-Learning-Based-Approach-for-in-Chouhan-Singh/119baf88111d8015dfbd38c79aaa3f7348d7e042/figure/0",
+      "content": "A novel deep learning framework for the detection of pneumonia using the concept of transfer learning, where features from images are extracted using different neural network models pretrained on ImageNet, which then are fed into a classifier for prediction.",
+      "score": 0.7785319,
+      "raw_content": null,
+      "id": "5444e1-01"
+    },
+    {
+      "title": "A novel transfer learning based approach for pneumonia ... - QUT",
+      "url": "https://eprints.qut.edu.au/199742",
+      "content": "Sep 15, 2026 \u00b7 We suggest a novel deep learning framework for the detection of pneumonia using the concept of transfer learning. In this approach, features from images are extracted using different neural network models pretrained on ImageNet, which then are fed into a classifier for prediction. We prepared five different models and analyzed their performance.",
+      "score": 0.7672197,
+      "raw_content": null,
+      "id": "5f136f-02"
+    },
+    {
+      "title": "Applied Sciences: A Novel Transfer Learning Based Approach ...",
+      "url": "https://www.scribd.com/document/457502736/applsci-10-00559-pdf",
+      "content": "applied sciences Article A Novel Transfer Learning Based Approach for Pneumonia Detection in Chest X-ray Images Vikash Chouhan 1 , Sanjay Kumar Singh 1 , Aditya Khamparia 1 , Deepak Gupta 2 , Prayag Tiwari 3 , Catarina Moreira 4 , Robertas Dama\u0161evi\u010dius 5, * and Victor Hugo C. de Albuquerque 6 1 School of Computer Science and Engineering, Lovely Professional University, Punjab 144411, India",
+      "score": 0.7533401,
+      "raw_content": null,
+      "id": "534400-03"
+    },
+    {
+      "url": "https://github.com/namas191297/pneumonia_detection_cnn",
+      "title": "GitHub - namas191297/pneumonia_detection_cnn: Using transfer learning to detect Pneumonia from chest x-ray images \u00b7 GitHub",
+      "content": "Pneumonia is an infection that inflames the air sacs in one or both lungs. The air sacs may fill with fluid or pus (purulent material), causing cough with phlegm or pus, fever, chills, and difficulty breathing. A variety of organisms, including bacteria, viruses and fungi, can cause pneumonia.\nIt is generally diagnosed by a medical professional and chest x-rays are an efficient way to diagnose pneumonia in a patient.\n\nTraining a classifier on medical images is a crucial task to aid doctors and provide lower cost services to patients. If we can build a classifier that can diagnosis a given disease and provide it to patients who can't afford a doctor as an app, we have a scalable business.\n\nThe name of the dataset is \"Chest X-Ray Images (Pneumonia)\" where the number of classes are `2`. [...] `2`\n\nLink: \n\nNumber/Size of Images :\n\n `Total : 5856 (1.15 Gigabyte (GB))\nTraining : 5216 (1.07 Gigabyte (GB))\nValidation : 320 (42.8 Megabyte (MB))\nTesting : 320 (35.4 Megabyte (MB))`\n\n## Transfer Learning\n\nTransfer learning makes use of the knowledge gained while solving one problem and applying it to a different but related problem. In this particular case, we have used Inceptionv3 and trained the latter layers to create CNN that can help us detect pneumonia from these chest x-ray images.\n\n## Inception v3 [...] Chest x-ray uses a very small dose of ionizing radiation to produce pictures of the inside of the chest. It is used to evaluate the lungs, heart and chest wall and may be used to help diagnose shortness of breath, persistent cough, fever, chest pain or injury. It also may be used to help diagnose and monitor treatment for a variety of lung conditions such as pneumonia, emphysema and cancer. Because chest x-ray is fast and easy, it is particularly useful in emergency diagnosis and treatment.",
+      "score": 0.70823324,
+      "raw_content": null,
+      "id": "4054ed-04"
+    }
+  ],
+  "response_time": 3.54,
+  "request_id": "fe7fa24c-6ea5-4ef9-9565-782a1a2043de"
+}

@@ -1,0 +1,29 @@
+{
+  "missing_verify_only": {
+    "code": 1,
+    "stdout": "",
+    "stderr": "Model verification failed: 21 missing or changed file(s).\n  verification.json: missing\n  README.txt: missing\n  inference.py: missing\n  requirements-lock.txt: missing\n  summary.json: missing\nRun setup_demo.py or pass --archive PATH to install the public model.\n"
+  },
+  "manual_archive": {
+    "code": 0,
+    "stdout": "Supplied archive size and SHA-256 verified. No network download is needed.\nAll model files verified. The demo can now run offline.\n",
+    "stderr": ""
+  },
+  "verify_only": {
+    "code": 0,
+    "stdout": "All installed model files match the pinned manifest. No download performed.\n",
+    "stderr": ""
+  },
+  "repeat_manual_archive": {
+    "code": 0,
+    "stdout": "Supplied archive size and SHA-256 verified. No network download is needed.\nModel files are already verified.\n",
+    "stderr": ""
+  },
+  "invalid_manual_archive": {
+    "code": 1,
+    "stdout": "",
+    "stderr": "Setup could not finish: The supplied archive does not match the published Release size and SHA-256. Download the exact Portable_Lung_Model.zip from the repository Releases page.\n"
+  },
+  "verified": true,
+  "network_connections_requested": false
+}

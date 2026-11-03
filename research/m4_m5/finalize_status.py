@@ -1,0 +1,13 @@
+from pathlib import Path
+import json
+R=Path(__file__).resolve().parent;root=R.parent
+s=json.loads((R/'results/summary.json').read_text());v=json.loads((R/'results/verification.json').read_text());assert s['completed'] and v['verified']
+lines=['FINAL PROJECT — START HERE','', 'Presentation: m4_m5/output/Final_M4_M5_Presentation.pdf','Offline slideshow: m4_m5/output/Final_M4_M5_Presentation.html','Start live demo: double-click m4_m5/START_FINAL_DEMO.command','Live URL: http://127.0.0.1:8765 (VPS over our SSH tunnel)','Offline backup: m4_m5/output/Offline_Demo_Evidence.html','Paper: m4_m5/output/Final_M4_M5_Paper.pdf','Results notebook: m4_m5/output/Final_M4_M5_Results.ipynb','Portable model: m4_m5/output/Portable_Lung_Model.zip','Submission: m4_m5/output/Final_M4_M5_Submission.zip','Speaking notes: m4_m5/output/TEAM_FINAL_PREP.txt','Launch/recovery/defence guide: m4_m5/PRESENTATION_RUNBOOK.txt','','MEASURED FINAL PILOT']
+for key,d in s['conditions'].items():
+ m=d['metrics'];lines.append(f"{key}: accuracy {m['accuracy']:.2%}, recall {m['sensitivity']:.2%}, specificity {m['specificity']:.2%}, macro F1 {m['macro_f1']:.4f}, AUC {m['auc']:.4f}, ViT weight {d.get('vit_weight',0)}")
+lines+=['','Scope: actual five-epoch classifier heads on frozen ResNet18 and DeiT-Tiny encoders. Single-CNN pilot replaces the original larger five-CNN crop ablation. Fixed pretrained PSPNet at256 rather than its standard512; crop original pixels using both lungs+10%margin. No fresh augmentation in this explicitly declared pilot. M2 already used fresh augmentation.','Historical M2: verified five-CNN full FP32 baseline92.15%accuracy/94.62%recall/88.03%specificity/AUC.9623. It is a different training protocol; compare new A/B/C/D with each other.','The timestamped M3 hypothesis and original M2/M3 documents are historical records. Final M4/M5 results and materials are in m4_m5/.','No clinical or state-of-the-art claim.']
+(root/'FINAL_START_HERE.txt').write_text('\n'.join(lines)+'\n')
+p=root/'m2_m3/README.md';old=p.read_text();marker='<!-- FINAL_M4_STATUS -->'
+if marker not in old:
+ p.write_text(marker+'\n# Final milestones completed: declared frozen-feature pilot\n\nThe new lung-crop/ResNet18/DeiT-Tiny experiment and final presentation are in `../m4_m5/`. Start with `../FINAL_START_HERE.txt`. The demo now loads the final full FP32 M2 checkpoints and provides a separate live M4 crop-comparison mode. The new experiment is a reduced single-CNN frozen-feature pilot, with a documented 256-pixel segmentation departure. The M2/M3 material below records the earlier submission and its then-future proposal. The timestamped hypothesis remains unchanged.\n\n---\n\n'+old)
+print('Final status and start guide written')

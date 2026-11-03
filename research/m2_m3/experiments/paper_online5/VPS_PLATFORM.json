@@ -1,0 +1,7 @@
+{
+  "platform": "Linux-5.15.0-181-generic-x86_64-with-glibc2.36",
+  "python": "3.11.2 (main, May 12 2026, 05:17:27) [GCC 12.2.0]",
+  "torch": "2.14.1+cpu",
+  "threads": 2,
+  "config_hash": "e0e9ac2a0d1c82a7260d25a43705b706ecedd92909d4967ba6adc75124beb296"
+}

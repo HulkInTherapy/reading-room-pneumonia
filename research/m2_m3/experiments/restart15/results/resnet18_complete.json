@@ -1,0 +1,9 @@
+{
+  "model": "resnet18",
+  "epochs": 15,
+  "seed": 42,
+  "boundary": "layer4 + fc",
+  "train_n": 4164,
+  "validation_n": 1042,
+  "seconds": 4190.141268014908
+}

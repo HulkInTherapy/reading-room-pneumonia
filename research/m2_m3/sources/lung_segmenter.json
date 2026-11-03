@@ -1,0 +1,50 @@
+{
+  "query": "torchxrayvision pretrained anatomical segmentation PSPNet left lung right lung github",
+  "follow_up_questions": null,
+  "answer": null,
+  "images": [],
+  "results": [
+    {
+      "url": "https://mlmed.org/torchxrayvision/models.html",
+      "title": "Models \u2014 TorchXRayVision 1.0.1 documentation",
+      "content": "A PSPNet model pre-trained for pixel-level segmentation of 14 anatomical structures in chest X-rays. Output shape is `[batch,14,512,512]`.\n\n    Targets (14): Left Clavicle, Right Clavicle, Left Scapula, Right Scapula, Left Lung, Right Lung, Left Hilus Pulmonis, Right Hilus Pulmonis, Heart, Aorta, Facies Diaphragmatica, Mediastinum, Weasand, Spine.\n\n    Demo notebook\n\n    ```\n     seg_model = xrv. baseline_models. chestx_det. PSPNet() output = seg_model(image) output. shape# [1, 14, 512, 512]\n    ```\n\n    _images/segmentation-pspnet.png\n\n    Parameters:\n    :   cache\\_dir \u2013 Directory used to store downloaded weights (default: `~/.torchxrayvision/`).\n\n    Dataset:\n    : [...] A U-Net with a ResNet-50 backbone pre-trained for pixel-level segmentation of 159 anatomical structures in chest X-rays. Output shape is `[batch,159,512,512]`. [...] A DenseNet-121 model trained on the Stanford CheXpert dataset using weakly supervised lesion localisation with Probabilistic-CAM Pooling. Predicts 5 pathologies.\n\n    Targets (5): Atelectasis, Cardiomegaly, Consolidation, Edema, Effusion.\n\n    Source:\n    :   \n\n    License:\n    :   Apache-2.0\n\n    Citation:\n    :   Ye W, Yao J, Xue H, Li Y. Weakly Supervised Lesion Localization With Probabilistic-CAM Pooling. arXiv:2005.14480, 2020. \n\n    targets: List[str] = ['Cardiomegaly', 'Edema', 'Consolidation', 'Atelectasis', 'Effusion']\uf0c1\n\n## ChestX-Det Segmentation\uf0c1\n\nclass xrv.baseline\\_models.chestx\\_det.PSPNet(cache\\_dir: str = None)\uf0c1\n:   ChestX-Det anatomical segmentation model (PSPNet)",
+      "score": 0.79293,
+      "raw_content": null,
+      "id": "cf65c9-00"
+    },
+    {
+      "url": "https://github.com/mlmed/torchxrayvision",
+      "title": "TorchXRayVision: A library of chest X-ray datasets and ...",
+      "content": "XRayVision is an open source software library. You can load pretrained anatomical segmentation models. 'Left Lung', 'Right Lung',",
+      "score": 0.7520312,
+      "raw_content": null,
+      "id": "c0da95-01"
+    },
+    {
+      "url": "https://epos.myesr.org/poster/esr/ecr2024/C-13499",
+      "title": "C-13499",
+      "content": "a pre-trained PSPNet model from torchxrayvision python library was used to segment the principal anatomic structures identified in a chest x-ray frontal exam.",
+      "score": 0.70214266,
+      "raw_content": null,
+      "id": "00df69-02"
+    },
+    {
+      "url": "https://context7.com/websites/mlmed_torchxrayvision",
+      "title": "TorchXRayVision (websites/mlmed_torchxrayvision)",
+      "content": "TorchXRayVision is an open source Python library providing pre-trained deep learning models and unified access to multiple chest X-ray datasets for medical",
+      "score": 0.67706895,
+      "raw_content": null,
+      "id": "a33e88-03"
+    },
+    {
+      "url": "https://mlmed.org/torchxrayvision",
+      "title": "Introduction \u2014 TorchXRayVision 1.0.1 documentation",
+      "content": "Introduction\n Edit on GitHub\n\n# Introduction\uf0c1\n\nWarning\n\nNOT FOR MEDICAL USE. For research and software development only. Not for diagnostic or clinical decision making.\n\nA library for chest X-ray datasets and models. Including pre-trained models.\n\nTorchXRayVision is an open source software library for working with chest X-ray datasets and deep learning models. It provides a common interface and common pre-processing chain for a wide set of publicly available chest X-ray datasets. In addition, a number of classification and representation learning models with different architectures, trained on different data combinations, are available through the library to serve as baselines or feature extractors. [...] import torchxrayvision as xrv import skimage, torch, torchvision# Prepare the image: img = skimage. io. imread(\"16747_3_1.jpg\") img = xrv. datasets. normalize(img, 255)# convert 8-bit image to [-1024, 1024] range img = img. mean(2)[None,...] # Make single color channel transform = torchvision. transforms. Compose([xrv. datasets. XRayCenterCrop(), xrv. datasets. XRayResizer(224),]) img = transform(img) img = torch. from_numpy(img) # Load model and process image model = xrv. models. DenseNet(weights =\"densenet121-res224-all\") outputs = model(img[None,...])# or model.features(img[None,...]) # Print results dict(zip(model. pathologies, outputs. detach(). numpy())){'Atelectasis':0.32797316, 'Consolidation':0.42933336, 'Infiltration':0.5316924, 'Pneumothorax':0.28849724, 'Edema':0.024142697, [...] Introduction\n Models\n  + Model Interface\n    - `Model`\n       `Model.forward()`\n       `Model.targets`\n       `Model.features()`\n  + XRV Pathology Classifiers\n    - `DenseNet`\n       `DenseNet.targets`\n    - `ResNet`\n       `ResNet.targets`\n  + XRV ResNet Autoencoder\n    - `ResNetAE`\n  + CheXpert Pathology Classifier\n    - `DenseNet`\n       `DenseNet.targets`\n  + JF Healthcare Pathology Classifier\n    - `DenseNet`\n       `DenseNet.targets`\n  + ChestX-Det Segmentation\n    - `PSPNet`\n       `PSPNet.targets`\n  + CXAS ChestXRayAnatomy Segmentation model\n    - `UNetResNet50`\n  + Emory HITI Race\n    - `RaceModel`\n       `RaceModel.targets`\n  + Riken Age Model\n    - `AgeModel`\n       `AgeModel.targets`\n  + Xinario View Model\n    - `ViewModel`\n       `ViewModel.targets`\n  + Mira Sex Model",
+      "score": 0.6609831,
+      "raw_content": null,
+      "id": "106b13-04"
+    }
+  ],
+  "response_time": 1.86,
+  "request_id": "6543c58f-4ced-4c15-86f0-4594d1f383b3"
+}

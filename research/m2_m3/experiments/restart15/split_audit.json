@@ -1,0 +1,20 @@
+{
+  "counts": {
+    "train": {
+      "total": 4164,
+      "normal": 1078,
+      "pneumonia": 3086,
+      "groups": 2289
+    },
+    "validation": {
+      "total": 1042,
+      "normal": 270,
+      "pneumonia": 772,
+      "groups": 572
+    }
+  },
+  "original_non_test": 5232,
+  "unique_non_test": 5206,
+  "hash_overlap": 0,
+  "group_overlap": 0
+}

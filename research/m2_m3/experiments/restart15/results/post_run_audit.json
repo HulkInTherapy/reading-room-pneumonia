@@ -1,0 +1,399 @@
+{
+  "comparison": {
+    "resnet18": {
+      "accuracy": {
+        "paper": 0.9423,
+        "local": 0.8493589743589743,
+        "difference_percentage_points": -9.29410256410257
+      },
+      "precision": {
+        "paper": 0.9158,
+        "local": 0.8070539419087137,
+        "difference_percentage_points": -10.874605809128624
+      },
+      "sensitivity": {
+        "paper": 0.9948,
+        "local": 0.9974358974358974,
+        "difference_percentage_points": 0.26358974358974274
+      },
+      "specificity": {
+        "paper": null,
+        "local": 0.6025641025641025,
+        "difference_percentage_points": null
+      },
+      "pneumonia_f1": {
+        "paper": null,
+        "local": 0.8922018348623854,
+        "difference_percentage_points": null
+      },
+      "normal_f1": {
+        "paper": null,
+        "local": 0.75,
+        "difference_percentage_points": null
+      },
+      "macro_f1": {
+        "paper": null,
+        "local": 0.8211009174311927,
+        "difference_percentage_points": null
+      },
+      "balanced_accuracy": {
+        "paper": null,
+        "local": 0.8,
+        "difference_percentage_points": null
+      },
+      "auc": {
+        "paper": 0.9936,
+        "local": 0.9737453429761123,
+        "difference_percentage_points": -1.9854657023887778
+      }
+    },
+    "densenet121": {
+      "accuracy": {
+        "paper": 0.9262,
+        "local": 0.8477564102564102,
+        "difference_percentage_points": -7.844358974358978
+      },
+      "precision": {
+        "paper": 0.9118,
+        "local": 0.8066528066528067,
+        "difference_percentage_points": -10.514719334719336
+      },
+      "sensitivity": {
+        "paper": 0.9923,
+        "local": 0.9948717948717949,
+        "difference_percentage_points": 0.257179487179493
+      },
+      "specificity": {
+        "paper": null,
+        "local": 0.6025641025641025,
+        "difference_percentage_points": null
+      },
+      "pneumonia_f1": {
+        "paper": null,
+        "local": 0.8909299655568312,
+        "difference_percentage_points": null
+      },
+      "normal_f1": {
+        "paper": null,
+        "local": 0.7480106100795756,
+        "difference_percentage_points": null
+      },
+      "macro_f1": {
+        "paper": null,
+        "local": 0.8194702878182034,
+        "difference_percentage_points": null
+      },
+      "balanced_accuracy": {
+        "paper": null,
+        "local": 0.7987179487179488,
+        "difference_percentage_points": null
+      },
+      "auc": {
+        "paper": 0.9878,
+        "local": 0.9809116809116809,
+        "difference_percentage_points": -0.6888319088319106
+      }
+    },
+    "googlenet": {
+      "accuracy": {
+        "paper": 0.9312,
+        "local": 0.8509615384615384,
+        "difference_percentage_points": -8.02384615384616
+      },
+      "precision": {
+        "paper": 0.9044,
+        "local": 0.8087318087318087,
+        "difference_percentage_points": -9.566819126819126
+      },
+      "sensitivity": {
+        "paper": 0.9948,
+        "local": 0.9974358974358974,
+        "difference_percentage_points": 0.26358974358974274
+      },
+      "specificity": {
+        "paper": null,
+        "local": 0.6068376068376068,
+        "difference_percentage_points": null
+      },
+      "pneumonia_f1": {
+        "paper": null,
+        "local": 0.8932261768082663,
+        "difference_percentage_points": null
+      },
+      "normal_f1": {
+        "paper": null,
+        "local": 0.753315649867374,
+        "difference_percentage_points": null
+      },
+      "macro_f1": {
+        "paper": null,
+        "local": 0.8232709133378202,
+        "difference_percentage_points": null
+      },
+      "balanced_accuracy": {
+        "paper": null,
+        "local": 0.8021367521367522,
+        "difference_percentage_points": null
+      },
+      "auc": {
+        "paper": 0.9829,
+        "local": 0.9646066184527724,
+        "difference_percentage_points": -1.8293381547227594
+      }
+    },
+    "inception_v3": {
+      "accuracy": {
+        "paper": 0.9201,
+        "local": 0.8525641025641025,
+        "difference_percentage_points": -6.75358974358975
+      },
+      "precision": {
+        "paper": 0.903,
+        "local": 0.8143459915611815,
+        "difference_percentage_points": -8.865400843881854
+      },
+      "sensitivity": {
+        "paper": 0.9846,
+        "local": 0.9897435897435898,
+        "difference_percentage_points": 0.5143589743589749
+      },
+      "specificity": {
+        "paper": null,
+        "local": 0.6239316239316239,
+        "difference_percentage_points": null
+      },
+      "pneumonia_f1": {
+        "paper": null,
+        "local": 0.8935185185185185,
+        "difference_percentage_points": null
+      },
+      "normal_f1": {
+        "paper": null,
+        "local": 0.7604166666666666,
+        "difference_percentage_points": null
+      },
+      "macro_f1": {
+        "paper": null,
+        "local": 0.8269675925925926,
+        "difference_percentage_points": null
+      },
+      "balanced_accuracy": {
+        "paper": null,
+        "local": 0.8068376068376069,
+        "difference_percentage_points": null
+      },
+      "auc": {
+        "paper": 0.9733,
+        "local": 0.9673679596756519,
+        "difference_percentage_points": -0.5932040324348131
+      }
+    },
+    "alexnet": {
+      "accuracy": {
+        "paper": 0.9286,
+        "local": 0.8333333333333334,
+        "difference_percentage_points": -9.52666666666666
+      },
+      "precision": {
+        "paper": 0.9021,
+        "local": 0.7894736842105263,
+        "difference_percentage_points": -11.262631578947369
+      },
+      "sensitivity": {
+        "paper": 0.9897,
+        "local": 1.0,
+        "difference_percentage_points": 1.0299999999999976
+      },
+      "specificity": {
+        "paper": null,
+        "local": 0.5555555555555556,
+        "difference_percentage_points": null
+      },
+      "pneumonia_f1": {
+        "paper": null,
+        "local": 0.8823529411764706,
+        "difference_percentage_points": null
+      },
+      "normal_f1": {
+        "paper": null,
+        "local": 0.7142857142857143,
+        "difference_percentage_points": null
+      },
+      "macro_f1": {
+        "paper": null,
+        "local": 0.7983193277310925,
+        "difference_percentage_points": null
+      },
+      "balanced_accuracy": {
+        "paper": null,
+        "local": 0.7777777777777778,
+        "difference_percentage_points": null
+      },
+      "auc": {
+        "paper": 0.9783,
+        "local": 0.9613412228796845,
+        "difference_percentage_points": -1.695877712031546
+      }
+    },
+    "ensemble": {
+      "accuracy": {
+        "paper": 0.9639,
+        "local": 0.8573717948717948,
+        "difference_percentage_points": -10.652820512820515
+      },
+      "precision": {
+        "paper": 0.9328,
+        "local": 0.8155136268343816,
+        "difference_percentage_points": -11.72863731656184
+      },
+      "sensitivity": {
+        "paper": 0.9962,
+        "local": 0.9974358974358974,
+        "difference_percentage_points": 0.12358974358974706
+      },
+      "specificity": {
+        "paper": null,
+        "local": 0.6239316239316239,
+        "difference_percentage_points": null
+      },
+      "pneumonia_f1": {
+        "paper": null,
+        "local": 0.8973471741637832,
+        "difference_percentage_points": null
+      },
+      "normal_f1": {
+        "paper": null,
+        "local": 0.7664041994750657,
+        "difference_percentage_points": null
+      },
+      "macro_f1": {
+        "paper": null,
+        "local": 0.8318756868194244,
+        "difference_percentage_points": null
+      },
+      "balanced_accuracy": {
+        "paper": null,
+        "local": 0.8106837606837607,
+        "difference_percentage_points": null
+      },
+      "auc": {
+        "paper": 0.9934,
+        "local": 0.972260574183651,
+        "difference_percentage_points": -2.113942581634898
+      }
+    }
+  },
+  "source": "P7 Table2, printed PDF page13: https://eprints.qut.edu.au/199742/1/applsci_10_00559_1_.pdf",
+  "fresh_full_test_forward_verified": true,
+  "selected_epochs": {
+    "resnet18": 13,
+    "densenet121": 9,
+    "googlenet": 5,
+    "inception_v3": 13,
+    "alexnet": 1
+  },
+  "normal_prefix_diagnostics": {
+    "validation": {
+      "IM": {
+        "n": 122,
+        "false_positives": 3,
+        "false_positive_rate": 0.02459016393442623
+      },
+      "NORMAL2": {
+        "n": 148,
+        "false_positives": 3,
+        "false_positive_rate": 0.02027027027027027
+      }
+    },
+    "test": {
+      "IM": {
+        "n": 69,
+        "false_positives": 16,
+        "false_positive_rate": 0.2318840579710145
+      },
+      "NORMAL2": {
+        "n": 165,
+        "false_positives": 72,
+        "false_positive_rate": 0.43636363636363634
+      }
+    }
+  },
+  "view_diagnostics": {
+    "resnet18": {
+      "selected_epoch": 13,
+      "selected_training_view": "clean",
+      "mean_validation_macro_f1_by_view": {
+        "clean": 0.9792656192580285,
+        "aug1": 0.9682595159357814,
+        "aug2": 0.9708013934631633,
+        "aug3": 0.9625190163029528
+      }
+    },
+    "densenet121": {
+      "selected_epoch": 9,
+      "selected_training_view": "clean",
+      "mean_validation_macro_f1_by_view": {
+        "clean": 0.976717508594329,
+        "aug1": 0.9680375811729796,
+        "aug2": 0.970179363999913,
+        "aug3": 0.953871979279477
+      }
+    },
+    "googlenet": {
+      "selected_epoch": 5,
+      "selected_training_view": "clean",
+      "mean_validation_macro_f1_by_view": {
+        "clean": 0.9752636414750272,
+        "aug1": 0.9331500020140604,
+        "aug2": 0.936604516929086,
+        "aug3": 0.9291181396627581
+      }
+    },
+    "inception_v3": {
+      "selected_epoch": 13,
+      "selected_training_view": "clean",
+      "mean_validation_macro_f1_by_view": {
+        "clean": 0.970806088296362,
+        "aug1": 0.9438293382295257,
+        "aug2": 0.9549492253415925,
+        "aug3": 0.9515661946577625
+      }
+    },
+    "alexnet": {
+      "selected_epoch": 1,
+      "selected_training_view": "clean",
+      "mean_validation_macro_f1_by_view": {
+        "clean": 0.9683541816400761,
+        "aug1": 0.9335368442682009,
+        "aug2": 0.9309493869573109,
+        "aug3": 0.9291637976595286
+      }
+    }
+  },
+  "filename_group_proxy_intersections": {
+    "train/validation": 0,
+    "train/test": 134,
+    "validation/test": 36
+  },
+  "proxy_warning": "Shared pneumonia person numbers mainly occur across bacterial/viral filenames and may be reused counters. They do not prove shared patients. No exact source hash overlaps non-test/test. Patient-independent test evaluation has NOT been certified.",
+  "paper_conditional_consistency": {
+    "assumption": "One binary confusion matrix on390 pneumonia and234 normal test records",
+    "reported_accuracy": 0.9639,
+    "accuracy_implied_by_reported_positive_precision_recall": 0.9527703687821611,
+    "implied_tp": 388.518,
+    "implied_fp": 27.989289879931444,
+    "warning": "Averaging, different definitions/partition or reporting errors could explain this. It is not proof of fabrication."
+  },
+  "confirmed_protocol_departures": [
+    "4164 training images versus5232 in the paper",
+    "15 local epochs versus50-200 paper epochs",
+    "Four fixed cached views, one view for an entire epoch",
+    "Frozen early BatchNorm running statistics and unspecified late normalization details",
+    "Validation-selected checkpoints rather than verified author selection",
+    "Assumed transform/noise/batch/normalization settings"
+  ],
+  "causal_conclusion": "No arithmetic, test-order or stale-cache error found in audited inference. The learning/evaluation protocol differs materially and normal-class generalization is poor. The exact causal contribution of each departure is not established.",
+  "training_or_thresholds_changed": false,
+  "saved_checkpoints_unchanged_since_verification": true,
+  "metadata_issue": "summary.validation.test_evaluated remains false because the pre-test validation report was embedded without updating that flag. This is misleading metadata, not the absence of a test evaluation. Per-image CSV, saved scores and fresh full-test audit establish that test evaluation ran."
+}

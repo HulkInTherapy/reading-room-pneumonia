@@ -1,0 +1,953 @@
+<?xml version="1.0" encoding="UTF-8"?><!doctype html><!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]--><!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]--><!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]--><!--[if gt IE 8]><!--><html class="no-js" lang="en"> <!--<![endif]--><head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-T2Q9C23B');</script>
+    <!-- End Google Tag Manager -->
+    
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="application-name" content="https://jmai.amegroups.org"/>
+
+    <title>Pediatric pneumonia X-ray image classification: predictive model development with DenseNet-169 transfer learning - Katreddi - Journal of Medical Artificial Intelligence</title>
+    <meta name="description" content="Pediatric pneumonia X-ray image classification: predictive model development with DenseNet-169 transfer learning"/>
+        <link rel="schema.DC" href="http://purl.org/dc/elements/1.1/" />
+
+	<meta name="DC.Contributor.Sponsor" xml:lang="en" content=""/>
+	<meta name="DC.Creator.PersonalName" content="Sasanka Katreddi"/>
+	<meta name="DC.Creator.PersonalName" content="Avinash Midatani"/>
+	<meta name="DC.Creator.PersonalName" content="Akshara P. Roy"/>
+	<meta name="DC.Creator.PersonalName" content="Usha Velpuri"/>
+	<meta name="DC.Creator.PersonalName" content="Sujan Kasani"/>
+	<meta name="DC.Date.created" scheme="ISO8601" content="2025-03-13"/>
+	<meta name="DC.Date.dateSubmitted" scheme="ISO8601" content="2025-03-13"/>
+	<meta name="DC.Date.issued" scheme="ISO8601" content="2025-12-30"/>
+	<meta name="DC.Date.modified" scheme="ISO8601" content="2025-05-29"/>
+	<meta name="DC.Description" xml:lang="en" content=""/>
+	<meta name="DC.Format" scheme="IMT" content="application/pdf"/>		
+	<meta name="DC.Format" scheme="IMT" content="text/html"/>		
+	<meta name="DC.Format" scheme="IMT" content="application/pdf"/>		
+	<meta name="DC.Format" scheme="IMT" content="application/pdf"/>		
+	<meta name="DC.Format" scheme="IMT" content="application/pdf"/>		
+	<meta name="DC.Identifier" content="9812"/>
+		<meta name="DC.Identifier.DOI" content="10.21037/jmai-24-356"/>
+	<meta name="DC.Identifier.URI" content="https://jmai.amegroups.org/article/view/9812"/>
+	<meta name="DC.Language" scheme="ISO639-1" content="en"/>
+	<meta name="DC.Source" content="Journal of Medical Artificial Intelligence"/>
+	<meta name="DC.Source.ISSN" content="2617-2496"/>
+	<meta name="DC.Source.Issue" content="0"/>
+	<meta name="DC.Source.URI" content="https://jmai.amegroups.org/"/>
+	<meta name="DC.Source.Volume" content="8"/>
+	<meta name="DC.Title" content="Pediatric pneumonia X-ray image classification: predictive model development with DenseNet-169 transfer learning"/>
+		<meta name="DC.Type" content="Text.Serial.Journal"/>
+	<meta name="DC.Type.articleType" content="Original Article"/>	
+    <meta name="citation_title" content="Pediatric pneumonia X-ray image classification: predictive model development with DenseNet-169 transfer learning"/>
+	<meta name="citation_author" content="Sasanka Katreddi"/>
+	<meta name="citation_author" content="Avinash Midatani"/>
+	<meta name="citation_author" content="Akshara P. Roy"/>
+	<meta name="citation_author" content="Usha Velpuri"/>
+	<meta name="citation_author" content="Sujan Kasani"/>
+
+			<meta name="citation_publication_date" content="2025/12/30"/>
+	
+	<meta name="citation_online_date" content="2025/04/09"/>
+
+    	<meta name="citation_doi" content="10.21037/jmai-24-356"/>
+<meta name="citation_volume" content="8"/>
+<meta name="citation_issue" content="0"/>
+    		<meta name="citation_pdf_url" content="https://jmai.amegroups.org/article/view/9812/pdf"/>
+                		<meta name="citation_fulltext_html_url" content="https://jmai.amegroups.org/article/view/9812/html"/>
+                            <meta name="citation_abstract_html_url" content="https://jmai.amegroups.org/article/view/9812"/>
+<meta name="citation_journal_title" content="Journal of Medical Artificial Intelligence"/>
+	<meta name="citation_issn" content="2617-2496"/>
+	<meta name="citation_language" content="en"/>
+	<meta name="citation_publisher" content="AME Publishing Company"/>
+    
+    <meta name="twitter:card" content="summary"/>
+<meta property="og:image" content="https://cdn.amegroups.cn/journals/jlpm/images/jmai/apple-touch-icon-144x144.png"/>
+<meta property="og:title" content="Pediatric pneumonia X-ray image classification: predictive model development with DenseNet-169 transfer learning"/>
+<meta property="og:description" content="Pediatric pneumonia X-ray image classification: predictive model development with DenseNet-169 transfer learning"/>
+
+<link rel="shortcut icon" href="//cdn.amegroups.cn/journals/jlpm/images/jmai/favicon.ico">
+<link href="https://jmai.amegroups.org" title="Journal of Medical Artificial Intelligence" rel="index"/>
+
+<link type="text/css" href="//cdn.amegroups.cn/journals/jlpm/styles/bootstrap.css?v=20261028153610-215107f6-b87a-4703-951d-cd4caf347479
+" rel="stylesheet"/>
+<link type="text/css" href="//cdn.amegroups.cn/journals/jlpm/styles/bootstrap-responsive.css?v=20261028153610-215107f6-b87a-4703-951d-cd4caf347479
+" rel="stylesheet"/>
+<link type="text/css" href="//cdn.amegroups.cn/journals/jlpm/styles/most.css?v=20261028153610-215107f6-b87a-4703-951d-cd4caf347479
+" rel="stylesheet"/>
+    <link type="text/css" href="//cdn.amegroups.cn/journals/jlpm/styles/jmai.css?v=20261028153610-215107f6-b87a-4703-951d-cd4caf347479
+" rel="stylesheet"/>
+    <link rel="apple-touch-icon" href="//cdn.amegroups.cn/journals/jlpm/images/jmai/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="//cdn.amegroups.cn/journals/jlpm/images/jmai/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="//cdn.amegroups.cn/journals/jlpm/images/jmai/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="//cdn.amegroups.cn/journals/jlpm/images/jmai/apple-touch-icon-144x144.png" />
+
+<script src="//cdn.amegroups.cn/journals/jlpm/js/modernizr-2.0.min.js?v=20261028153610-215107f6-b87a-4703-951d-cd4caf347479
+"></script>
+<script src="//cdn.amegroups.cn/journals/jlpm/js/jquery-3.2.1.js?v=20261028153610-215107f6-b87a-4703-951d-cd4caf347479
+"></script>
+<script>
+     var journal_path = 'jmai';
+     var up_path = 'https://jmai.amegroups.org/manager/uploadImage/2';
+     var submit_upload_path = 'https://jmai.amegroups.org/author/saveSubmit/4';
+     document.cookie="user_id=0;path=/";
+</script>
+<script src="//cdn.amegroups.cn/journals/jlpm/js/jquery-1.10.2.min.js?v=20261028153610-215107f6-b87a-4703-951d-cd4caf347479
+" ></script><script src="//cdn.amegroups.cn/journals/jlpm/js/jquery-migrate-1.2.1.js?v=20261028153610-215107f6-b87a-4703-951d-cd4caf347479
+" ></script><script src="//cdn.amegroups.cn/journals/jlpm/js/common.js?g=common&v=20261028153610-215107f6-b87a-4703-951d-cd4caf347479
+" ></script>
+
+    <link rel="stylesheet" href="//cdn.amegroups.cn/static/iconmoon/style.css?v=20261028153610-215107f6-b87a-4703-951d-cd4caf347479
+" type="text/css" />
+
+
+	<script language="javascript" type="text/javascript" src="//cdn.amegroups.cn/journals/jlpm/js/articleView.js
+?v=20261028153610-215107f6-b87a-4703-951d-cd4caf347479
+"></script>
+	<script language="javascript" type="text/javascript" src="//cdn.amegroups.cn/journals/jlpm/js/pdfobject.js?v=20261028153610-215107f6-b87a-4703-951d-cd4caf347479
+"></script>
+
+<link type="text/css" href="//cdn.amegroups.cn/static/ojs/public/global.css" rel="stylesheet"/>
+<script src="//cdn.amegroups.cn/static/ojs/public/global.js"></script></head><body class="journal-jmai controller-article action-view"><!-- Google Tag Manager (noscript) --><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T2Q9C23B"height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><!-- End Google Tag Manager (noscript) --><div id="container"><header id="header"><div name="ame-ad-100316"></div><div id="top-nav"><div class="container"><div id="user-bar"><div class="pull-left"><span>Have a website account?<a class="btn-login" href="https://jmai.amegroups.org/login">Log In</a> or<a class="btn-login btn-register" href="https://jmai.amegroups.org/user/register">Register</a><span class="hidden-phone"> for exclusive website content.</span></span></div>
+                        <div class="pull-right hidden-phone">
+                            <a class="btn-login" target="_blank" title="Subscribe" href="https://news.amepc.org/h/t/586EB728E71F52BF"><span class="icon-envelop"></span>&nbsp;Subscribe</a>
+                        </div>
+                    </div></div></div><div class="container"><div class="container"><div class="pull-left"><div id="logo"><a href="https://jmai.amegroups.org/"title="Journal of Medical Artificial Intelligence" ><img class="img-title" src="//cdn.amegroups.cn/journals/jlpm/public/journals/33/homeHeaderTitleImage_en_US.png/w1400?v=VV20261104" alt="" onerror="this.style.display='none'"/></a></div></div><div id="search-form" class="pull-right">
+    <form method="post" action="" class="form-horizontal" onsubmit="return applySearch(true)">
+        <div class="control-group">
+            <div class="input-append">
+                <input type="text" id="search-query" name="query" placeholder="Search" maxlength="255" value="" class="span3"/>
+                <input type="submit" value="Go" class="btn"/>
+            </div>
+            <div class="text-right">
+                <a href="" onclick="return applySearch(false)" style="margin-left: 10px;">Advanced Search</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script>
+    /**
+     * 搜索表单提交方法
+     * 使用 Apply [All-Fields] 方式搜索
+     * term 搜索词有值则导向【Apply高级搜索结果页面】，无值则导向【Apply高级搜索页面】
+     * journals 默认为当前杂志
+     * issues 默认为当前杂志
+     */
+    function applySearch(search) {
+        // DC杂志ID
+        let dcJournalId = 62;
+        // 当前杂志缩写
+        let journalPath = 'jmai'
+        // 搜索词
+        let query = $('#search-query').val();
+        // 当前环境
+        let app_local = 'prod';
+        // Apply URL
+        let apply_url = '';
+
+        // 判定环境
+        if ( app_local === 'test' ) {
+            apply_url = '//apply.amegroups.net/';
+        }else{
+            apply_url = '//apply.amegroups.com/';
+        }
+
+        // 判断搜索词是否为空和是否有DC杂志ID
+        if (search && query && dcJournalId) {
+            // apply_url = apply_url+'s?term='+query+'&journals='+dcJournalId+'&issues='+dcJournalId;
+            apply_url = apply_url+'s?term='+query+'&journals='+dcJournalId;
+        }else{
+            // 判断是否有杂志缩写
+            if ( journalPath ) {
+                apply_url = apply_url+'advanced?term='+journalPath+'[Journal]';
+            }else{
+                apply_url = apply_url+'advanced';
+            }
+        }
+
+        // 另窗口打开
+        window.open(apply_url);
+        return false;
+    }
+</script>
+</div><nav id="nav">
+    <ul class="clearfix">
+        <li><a href="https://jmai.amegroups.org/index">Home</a></li>
+                    <li>
+                <a href="#">Journal Info</a>
+                <ul class="clearfix">
+                    <li><a href="https://jmai.amegroups.org/about">About <span class="journal-path">jmai</span></a></li>
+                    <li><a href="/pages/view/indexing">Indexing and Archiving</a></li>
+                    <li><a href="https://jmai.amegroups.org/about/editorInChief">Editors-in-Chief</a></li>
+                    <li><a href="https://jmai.amegroups.org/about/editorialTeam">Editorial Board</a></li>
+                                                                                    <li><a href="https://jmai.amegroups.org/about/formereditor">Former Editorial Board</a></li>
+                    <li><a href="/pages/view/peer-review-process">Peer Review Process</a></li>
+                    <li><a href="/page/about/supplements-and-series">Supplements and Series</a></li>
+                    <li><a href="/page/about/advertising-policy">Advertising Policy</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">For Authors</a>
+                <ul class="clearfix" style="min-width: 255px;">
+                    <li><a href="/pages/view/guidelines-for-authors">Author Instruction</a></li>
+                    <li><a href="https://jmai.amegroups.org/author/submit">Online Submission</a></li>
+                                            <li><a href="/pages/view/submit-multimedia-files">Submit Multimedia Files</a></li>
+                                        <li><a href="/page/about/reference-style">Reference Style</a></li>
+                    <li><a href="/page/about/ethics-and-policies">Ethics and Policies</a></li>
+                    <li><a href="http://editing.amegroups.cn/" target="_blank">AME Editing Service</a></li>
+                    <li><a href="/post/category/interviews-with-outstanding-authors">Interviews with Outstanding Authors</a></li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#">For Reviewers</a>
+                <ul class="clearfix">
+                    <li><a href="/pages/view/guidelines-for-reviewers">Guidelines for Reviewers</a></li>
+                    <li><a href="https://jmai.amegroups.org/reviewer">Online Review</a></li>
+                    <li><a href="/post/category/reviewers">Reviewers</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Ethics and Policies</a>
+                <ul class="clearfix" style="min-width: 390px">
+                    <li><a href="https://www.amegroups.com/pages/journal-management#content-title" target="_blank">Journal Management (Editorial Roles)</a></li>
+                    <li><a href="/page/about/editorial-policies">Editorial Policies</a></li>
+                    <li><a href="/page/about/publication-ethics-policy">Publication Ethics Policy</a></li>
+                    <li><a href="/page/about/research-ethics-policy">Research Ethics Policy</a></li>
+                    <li><a href="/page/about/human-and-animal-rights">Human and Animal Rights</a></li>
+                    <li><a href="/page/about/authorship-and-contributorship">Authorship and Contributorship</a></li>
+                    <li><a href="/page/about/informed-consent-policy">Informed Consent Policy</a></li>
+                    <li><a href="/page/about/conflicts-of-interest">Conflicts of Interest</a></li>
+                    <li><a href="/page/about/data-sharing-policy">Data Sharing Policy</a></li>
+                    <li><a href="/page/about/open-access-statement">Open Access Statement</a></li>
+                    <li><a href="/page/about/content-licensing">Content Licensing</a></li>
+                    <li><a href="/page/about/copyright-and-permission">Copyright and Permission</a></li>
+                    <li><a href="/page/about/quality-control-system">Quality Control System</a></li>
+                    <li><a href="/page/about/data-and-reproducibility">Data and Reproducibility</a></li>
+                    <li><a href="/page/about/plagiarism-screening-policy">Policy of Screening for Plagiarism Process</a></li>
+                    <li><a href="/page/about/allegations-of-research-misconduct-policy">Policy of Dealing with Allegations of Research Misconduct</a></li>
+                    <li><a href="/page/about/the-process-for-handling-cases-requiring-corrections-retractions-and-editorial-expressions-of-concern">Corrections and Retractions</a></li>
+                    <li><a href="/page/about/complaints-and-appeals">Complaints and Appeals</a></li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#">Special Contents</a>
+                <ul class="clearfix" style="min-width: 245px;">
+                    <li><a href="/post/category/special-series">Special Series (Published)</a></li>
+                    <li><a href="/post/category/readers-choice-author-interviews">Readers' Choice: Author Interviews</a></li>
+                </ul>
+            </li>
+
+                        <li><a href="https://jmai.amegroups.org/issue/archive">Archives</a></li>
+            <li><a href="https://jmai.amegroups.org/issue/publishAheadOfPrint">Online First</a></li>
+            <li><a href="/pages/view/article-processing-charges">Article Processing Charges</a></li>
+
+                            <li><a href="https://jmai.amegroups.org/announcement">News</a></li>
+            
+            
+
+            </ul>
+</nav>
+</div></header><div id="wrapper" role="main"><div class="container"><div id="breadcrumb">
+    <ul class="breadcrumb">
+        <li>
+            <a href="https://jmai.amegroups.org/index">Home</a>
+            <span class="divider">/</span></li>
+
+                    <li><a href="https://jmai.amegroups.org/issue/view/483" class="hierarchyLink">
+                                            Vol 8 (December 30, 2025)
+                    </a> <span class="divider">/</span></li>
+        
+        <li>Pediatric pneumonia X-ray image classification: predictive model development with DenseNet-169 transfer learning</li>
+
+    </ul>
+</div>
+<div class="row-fluid" style="min-height: 400px">
+    <div class="span9">
+        <input type="hidden" id="send_article_id" value="9812">
+        
+                <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><head><meta charset="utf-8"><meta name="dc.identifier" content="doi: 10.21037/jmai-24-356"><title>Pediatric pneumonia X-ray image classification: predictive model development with DenseNet-169 transfer learning</title><style>
+        h2 * {
+            color: #fff
+        }
+    </style><style>
+        .highlight-box {
+            background: #ddd;
+            padding: 10px;
+        }
+    </style><style>
+        .meta.down {
+            text-align: right;
+        }
+
+        .meta.down .authors {
+            font-weight: bold;
+        }
+
+        .meta.down .affiliation {
+            font-style: italic;
+        }
+
+        .meta.down .affiliation aff country:after {
+            content: " ";
+            display: block;
+        }
+
+        .controller-article.action-view .figure.table {
+            background-color: #FFFCF0;
+            border: 1px solid #eac3af;
+            border-radius: 5px;
+            padding: 0;
+        }
+
+        .controller-article.action-view .figure.table .figure-content {
+            padding: 1.3846em;
+        }
+
+        .controller-article.action-view .figure.table .table_wrapper {
+            max-height: 80vh;
+            overflow: auto;
+        }
+
+        .controller-article.action-view .figure.table .table_wrapper table tr td img {
+            max-width: 200px;
+        }
+
+        .controller-article.action-view .figure.table .table_wrapper .tblwrap-foot {
+            font-size: .8461em;
+            margin: 1.3846em 0;
+        }
+    </style></head><body>
+    <article class="article"><header><script src="https://crossmark-cdn.crossref.org/widget/v2.0/widget.js" async></script><script src="https://cdn.amegroups.cn/static/js/mathJax/mml-svg.js?v=1.1"></script><a data-target="crossmark" style="cursor: pointer;float: right;width: 120px;"><img src="https://cdn.amegroups.cn/static/mirror/crossmark/widget/v2.0/CROSSMARK_Color_horizontal.svg" width="150"></a>
+            <div class="article-type">Original Article</div>
+            <h1 class="title">Pediatric pneumonia X-ray image classification: predictive model development with DenseNet-169 transfer learning</h1>
+            <div class="meta">
+                <p class="authors">Sasanka Katreddi<sup>1</sup><a href="https://orcid.org/0000-0002-9293-7161" style="text-decoration: none;" target="_blank">
+                        <img alt="ORCID logo" src="https://info.orcid.org/wp-content/uploads/2019/11/orcid_16x16.png" width="16" height="16"></a>, Avinash Midatani<sup>2</sup>, Akshara P. Roy<sup>3</sup>, Usha Velpuri<sup>4</sup>, Sujan Kasani<sup>5</sup><a href="https://orcid.org/0000-0003-1458-9509" style="text-decoration: none;" target="_blank">
+                        <img alt="ORCID logo" src="https://info.orcid.org/wp-content/uploads/2019/11/orcid_16x16.png" width="16" height="16"></a></p>
+                <p class="affiliation">
+                    <aff id="aff1"><sup>1</sup><addr-line>Lane Department of Computer Science and Electrical Engineering</addr-line>, <institution>West Virginia University</institution>, <addr-line>Morgantown, WV</addr-line>, <country country="us">USA</country>; </aff><aff id="aff2"><sup>2</sup><institution>Optum Global Solutions</institution>, <addr-line>Hyderabad</addr-line>, <country country="in">India</country>;
+                    </aff><aff id="aff3"><sup>3</sup><institution>Sree Balaji Medical College and Hospitals</institution>, <addr-line>Chennai</addr-line>, <country country="in">India</country>;
+                    </aff><aff id="aff4"><sup>4</sup><institution content-type="dept">Department of Advanced Semiconductors and Nanotechnology</institution>, <institution>Otto von Guericke University</institution>, <addr-line>Magdeburg</addr-line>, <country country="de">Germany</country>;
+                    </aff><aff id="aff5"><sup>5</sup><institution>Intel Corporation</institution>, <addr-line>Chandler, AZ</addr-line>, <country country="us">USA</country></aff></p>
+                <p><em>Contributions:</em> (I) Conception and design: S Katreddi, S Kasani; (II) Administrative support: S Kasani; (III) Provision of study materials or patients: AP Roy; (IV) Collection and assembly of data: S Katreddi, S Kasani; (V) Data analysis and interpretation: S Katreddi, A Midatani, U Velpuri; (VI) Manuscript writing: All authors; (VII) Final approval of manuscript: All authors.</p>
+                <div class="correspond-author">
+                    <corresp id="cor1"><em>Correspondence to:</em> Dr. Sasanka Katreddi, PhD. Lane Department of Computer Science and Electrical Engineering, West Virginia University, 1220 Evansdale Drive, Morgantown, WV 26505, USA. Email: <email xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="sasanka.katreddi@gmail.com">sasanka.katreddi@gmail.com</email>.</corresp></div>
+                <hr><div id="abstract">
+                    <p><strong>Background: </strong>Pneumonia is a leading cause of global mortality, particularly affecting infants, the elderly, and immunocompromised individuals. Timely and accurate diagnosis is essential for effective treatment, yet traditional methods often lack reliability and efficiency. Recent developments in medical imaging, especially through the application of deep learning (DL) and machine learning (ML) algorithms which are key components of artificial intelligence (AI), have demonstrated significant promise in improving the detection of pneumonia in chest X-ray images. This prospective study investigates the application of DL techniques, particularly convolutional neural networks (CNNs) to enhance the accuracy and efficiency of pediatric pneumonia diagnosis.</p>
+                    <p><strong>Methods: </strong>The eligibility criteria included pediatric patients aged 1&ndash;5 years, and the dataset was sourced from Kaggle. The dataset underwent preprocessing to enhance its suitability for transfer learning applications. The sample was split into training 85.88%, validation 4.2%, and test 9.92% sets. Various pre-trained CNN models were utilized, including VGG16, DenseNet-121, and DenseNet-169. Furthermore, ensemble methods that integrated these architectures were created to boost the overall performance of the models. The effectiveness of the models was assessed using standard evaluation metrics such as accuracy, recall, precision, and learning curves.</p>
+                    <p><strong>Results: </strong>Among the evaluated architectures, the DenseNet-169 model achieved the highest levels of accuracy and precision, recording 91.66% (89.37&ndash;93.95%) and 90.99% (88.62&ndash;93.36%), respectively with 95% confidence interval (CI). These results underscore the potential of DL methodologies, particularly those that leverage transfer learning and model ensembles, in advancing the detection of pneumonia from chest X-ray images. The statistical analysis was conducted using Python and other python libraries such as SciPy, Statsmodels.</p>
+                    <p><strong>Conclusions: </strong>The findings of our study indicate that DL, particularly using transfer learning and model ensembles, offers substantial potential for enhancing the accuracy of pneumonia detection. Notably, the DenseNet-169 model exhibited outstanding performance, which may facilitate improved early diagnosis and treatment of pneumonia, ultimately leading to better patient outcomes and reduced mortality rates.</p>
+                </div>
+                <div id="keywords">
+                    <p><strong>Keywords:</strong> Pneumonia; artificial intelligence (AI); deep learning (DL); classification; X-ray</p>
+                </div>
+                <hr><p>Received: 30 September 2024; Accepted: 07 March 2025; Published online: 09 April 2025.</p>
+                <p class="doi">doi: 10.21037/jmai-24-356</p>
+                <hr></div>
+        </header><section><div id="ba" class="highlight-box">
+                <h2>Highlight box</h2>
+                <sec><p><strong>Key findings</strong></p>
+                    <p>&bull; The study demonstrated that deep learning, particularly convolutional neural networks (CNNs), has the potential to significantly enhance the early diagnosis and treatment of pneumonia. This can lead to improved pediatric patient outcomes by providing more accurate and efficient diagnostic methods.</p>
+                    <p>&bull; Transfer learning using the DenseNet-169 CNN on the pneumonia dataset achieved a high accuracy of 91.6% in classifying X-ray images as normal or pneumonia, offering fast and reliable diagnostic approach while reducing the likelihood of human error.</p>
+                </sec><sec><p><strong>What is known and what is new?</strong></p>
+                    <p>&bull; Conventional pneumonia diagnostic methods, including chest X-rays, heavily rely on the expertise of medical professionals, often resulting in inconsistencies and misdiagnoses, particularly in resource-limited settings.</p>
+                    <p>&bull; This study presents an artificial intelligence (AI)-driven methodology utilizing CNNs to evaluate chest X-ray images, streamlining the detection process with enhanced accuracy and speed for pneumonia identification.</p>
+                </sec><sec><p><strong>What is the implication, and what should change now?</strong></p>
+                    <p>&bull; Integrating AI-powered tools into clinical practice for diagnosing pneumonia has the potential to enable earlier detection and treatment, therefore reducing mortality rates and improving the quality of patient care globally.</p>
+                    <p>&bull; There is a need to refine AI models further, to ensure their reliability and applicability across diverse populations. Additionally, addressing ethical and regulatory concerns is crucial for the effective implementation of AI in healthcare.</p>
+                </sec></div>
+            <hr><h2 id="introduction" class="section-title color-bg test">Introduction</h2>
+            <p>Pneumonia, a serious infection of the lungs, results from various microbial pathogens, leading to inflammation and the accumulation of pus and fluid in the alveoli. This compromises the exchange of oxygen and carbon dioxide, posing significant global health challenges, especially for vulnerable populations like infants, the elderly, and immunocompromised individuals (<a href="#B1">1</a>). With approximately 4 million deaths annually, pneumonia remains one of the leading causes of mortality worldwide (<a href="#B2">2</a>,<a href="#B3">3</a>). The condition is caused by bacteria, viruses, or fungi, necessitating distinct treatment strategies. Early and accurate diagnosis is critical to reducing pneumonia-related morbidity and mortality (<a href="#B4">4</a>,<a href="#B5">5</a>), as timely detection enables the isolation of affected patients and the initiation of targeted therapy, mitigating the rapid spread of infection and its complications (<a href="#B6">6</a>).</p>
+            <p>Traditional diagnostic methods, including clinical examination, blood tests, and chest X-rays, rely heavily on clinician expertise but are limited by subjective variability and the potential for misdiagnosis. For example, the diagnostic accuracy of chest X-rays ranges between 70% and 80%, depending on the clinician&rsquo;s experience and the complexity of cases (<a href="#B7">7</a>,<a href="#B8">8</a>). Moreover, resource-limited settings often lack skilled radiologists, further hindering timely and accurate diagnosis. In contrast, deep learning (DL) approaches have shown promise in automating pneumonia detection from chest X-ray images, achieving diagnostic accuracies exceeding 90% on benchmark datasets (<a href="#B9">9</a>-<a href="#B14">14</a>). These technologies can enhance diagnostic efficiency by addressing the overlapping features in chest radiographs of pneumonia and normal, which can otherwise lead to clinician misinterpretation (<a href="#B15">15</a>).</p>
+            <p>DL has revolutionized medical imaging by automating complex diagnostic tasks like image segmentation, lesion detection, and disease classification (<a href="#B16">16</a>-<a href="#B19">19</a>). Its adoption in clinical diagnostics is motivated by improved precision, reduced manual workload, and faster analysis (<a href="#B20">20</a>-<a href="#B22">22</a>). However, significant challenges remain, including model generalizability across diverse populations, imaging protocols, and data quality. The interpretability of DL models also raises concerns, as clinicians require transparency in decision-making (<a href="#B23">23</a>,<a href="#B24">24</a>). Ethical issues, including patient privacy and compliance with healthcare regulations, further complicate the integration of these technologies into clinical workflows (<a href="#B25">25</a>).</p>
+            <p>Although extensive research has been conducted on pneumonia detection using DL, studies focusing on Pediatric populations remain limited. Additionally, imbalanced datasets often hinder model performance, highlighting the need for advanced data augmentation techniques to ensure robustness. By addressing these challenges, this study aims to contribute valuable insights to the field of AI-assisted medical imaging. We present this article in accordance with the TRIPOD reporting checklist (available at <a href="https://jmai.amegroups.com/article/view/10.21037/jmai-24-356/rc" target="_blank">https://jmai.amegroups.com/article/view/10.21037/jmai-24-356/rc</a>).</p>
+            <hr><h2 id="methods" class="section-title color-bg test">Methods</h2>
+            <h3>Dataset</h3>
+            <p>The dataset used in this study, sourced from Kaggle, consists of 5,866 chest X-ray images categorized into two groups: pneumonia and normal (sample images shown in <a href="#figure1"><em>Figure 1</em></a>). These images were organized into three primary folders: train, validation (val), and test. The input dataset comprises a training set with 5,266 images accounting for 89.81% of the total, a validation set with 16 images representing 0.27% and a test set with 624 images, making up 9.92%. After preprocessing, the dataset was modified, resulting in a training set of 5,034 images (85.88%), a validation set of 208 images (4.2%) and the test set remaining unchanged at 624 (9.92%). This division ensured a balanced representation of both categories, with no missing or incomplete data, as the Kaggle dataset was rigorously curated and underwent stringent quality control by its providers.</p>
+            <div id="figure1" class="figure"><a href="//cdn.amegroups.cn/static/magazine_modules/imgRender/dist/index.html?imgSource=https://cdn.amegroups.cn/journals/jlpm/files/journals/33/articles/9812/public/9812-PB6-5677-R1.jpg" target="_blank"><img target="_blank" src="//cdn.amegroups.cn/journals/jlpm/files/journals/33/articles/9812/public/9812-PB6-5677-R1.jpg/w300" title="Click on image to zoom" style="cursor: zoom-in;"></a>
+                <div class="figure-content"><strong>Figure 1</strong> X-ray images from the dataset (A) normal, (B) bacterial pneumonia and (C) viral pneumonia (<a href="#B26">26</a>).</div>
+            </div>
+            <p>The Kaggle dataset was selected for its comprehensive and high-quality collection of annotated chest X-ray images, making it particularly suitable for training DL models for pneumonia detection. The dataset includes both positive (pneumonia) and negative (normal) cases that were curated from pediatric patients aged 1 to 5 years, a demographic highly susceptible to pneumonia due to their still-developing immune systems. The availability of high-quality anterior-posterior chest X-rays from this age group ensures consistency in analysis and provides a dataset tailored to address the unique physiological characteristics of young children&rsquo;s lungs. Additionally, the dataset underwent rigorous quality control, with poor-quality or unreadable scans excluded during curation. Diagnoses were graded by two expert physicians, and any discrepancies were resolved through a third expert&rsquo;s review. This ensured the reliability of labels and enhanced the dataset&rsquo;s overall quality and relevance.</p>
+            <p>The dataset (<a href="#B26">26</a>) used in this study adhered to specific inclusion and exclusion criteria to ensure quality and reliability. For inclusion, the dataset exclusively comprised two distinct image categories&mdash;pneumonia and normal&mdash;each stored in separate subfolders within the main directories for training, testing, and validation. It contained only anterior-posterior chest X-rays from pediatric patients aged one to five years, sourced from Guangzhou Women and Children&rsquo;s Medical Center, Guangzhou. To maintain quality, only high-quality and readable scans, as determined by an initial quality control process, were included. The exclusion criteria aimed to enhance reliability and accuracy. Images that were blurry, incomplete, or unreadable were excluded during preprocessing. Furthermore, diagnoses were initially graded by two expert physicians, and in cases of discrepancies, a third expert conducted a review to ensure consistent labeling. Any images with unclear or inconsistent diagnoses were excluded from the dataset. A flowchart regarding exclusion criteria is shown in <a href="#figure2"><em>Figure 2</em></a>.</p>
+            <div id="figure2" class="figure"><a href="//cdn.amegroups.cn/static/magazine_modules/imgRender/dist/index.html?imgSource=https://cdn.amegroups.cn/journals/jlpm/files/journals/33/articles/9812/public/9812-PB7-5297-R1.jpg" target="_blank"><img target="_blank" src="//cdn.amegroups.cn/journals/jlpm/files/journals/33/articles/9812/public/9812-PB7-5297-R1.jpg/w300" title="Click on image to zoom" style="cursor: zoom-in;"></a>
+                <div class="figure-content"><strong>Figure 2</strong> Flowchart for exclusion and inclusion criteria.</div>
+            </div>
+            <h3>Preprocessing and dataset integrity</h3>
+            <p>The Kaggle dataset underwent thorough preprocessing and quality control by its providers, ensuring all included images were suitable for analysis. No additional exclusions were necessary during this study. Since the dataset was complete and ready for use, techniques such as interpolation or imputation to address missing data were not required. A detailed number of images per category for training, validation and test sets are shown in <a href="#table1"><em>Table 1</em></a>.</p>
+            <div id="table1" class="figure table">
+                <div class="figure-content">
+                    <h3><strong>Table 1</strong></h3>
+                    <div class="caption"><strong>Dataset counts after split</strong></div><br><div class="table_wrapper">
+                        <table frame="hsides" rules="groups"><colgroup><col width="26.59%"><col width="20.02%"><col width="28.92%"><col width="24.47%"></colgroup><thead><tr><th valign="middle" align="left" scope="col">Dataset</th>
+                                    <th valign="middle" align="center" scope="col">Total cases</th>
+                                    <th valign="middle" align="center" scope="col">Pneumonia cases</th>
+                                    <th valign="middle" align="center" scope="col">Normal cases</th>
+                                </tr></thead><tbody><tr><td colspan="4" valign="top" align="left" scope="col">Before preprocessing</td>
+                                </tr><tr><td valign="top" align="left" scope="row">&nbsp;&nbsp;&nbsp;Training set</td>
+                                    <td valign="top" align="center">5,266</td>
+                                    <td valign="top" align="center">3,885</td>
+                                    <td valign="top" align="center">1,341</td>
+                                </tr><tr><td valign="top" align="left" scope="row">&nbsp;&nbsp;&nbsp;Validation set</td>
+                                    <td valign="top" align="center">16</td>
+                                    <td valign="top" align="center">8</td>
+                                    <td valign="top" align="center">8</td>
+                                </tr><tr><td valign="top" align="left" scope="row">&nbsp;&nbsp;&nbsp;Test set</td>
+                                    <td valign="top" align="center">624</td>
+                                    <td valign="top" align="center">390</td>
+                                    <td valign="top" align="center">234</td>
+                                </tr><tr><td colspan="4" valign="top" align="left" scope="col">After preprocessing</td>
+                                </tr><tr><td valign="top" align="left" scope="row">&nbsp;&nbsp;&nbsp;Training set</td>
+                                    <td valign="top" align="center">5,034</td>
+                                    <td valign="top" align="center">3,789</td>
+                                    <td valign="top" align="center">1,245</td>
+                                </tr><tr><td valign="top" align="left" scope="row">&nbsp;&nbsp;&nbsp;Validation set</td>
+                                    <td valign="top" align="center">208</td>
+                                    <td valign="top" align="center">104</td>
+                                    <td valign="top" align="center">104</td>
+                                </tr><tr><td valign="top" align="left" scope="row">&nbsp;&nbsp;&nbsp;Test set</td>
+                                    <td valign="top" align="center">624</td>
+                                    <td valign="top" align="center">390</td>
+                                    <td valign="top" align="center">234</td>
+                                </tr></tbody></table></div>
+                </div>
+            </div>
+            <h3>Data augmentation</h3>
+            <p>The data augmentation techniques applied to all images uniformly included several transformations to enhance the dataset. A shear transformation with a range of 0.2 was implemented to simulate geometric distortions, while a zoom transformation of the same range introduced scale variability. Horizontal and vertical shifts were applied, allowing up to 10% (0.1) of the image dimensions to vary. Brightness adjustments were made, ranging between 0.2 and 1.0, to account for differences in illumination. Additionally, horizontal flipping was performed to generate mirrored versions of the images, further diversifying the dataset. Following these augmentations, the dataset expanded to 75,360 augmented training images, calculated as steps_per_epoch &times; batch_size &times; epochs =314&times;16&times;15. These augmentations ensured consistency in preserving the original data distribution while enhancing the model&rsquo;s ability to generalize to new, unseen data. Data augmentation significantly increased the diversity of the training set, helping to prevent overfitting and improve the model&rsquo;s generalization to real-world scenarios. By simulating variations in imaging conditions, such as lighting and orientation, the augmentation process prepared the model to handle a wide range of diagnostic challenges, thereby enhancing its robustness and reliability.</p>
+            <h3>Model training and evaluation</h3>
+            <p>The convolutional neural network (CNN) stands out as the primary DL algorithm extensively employed for image classification tasks (<a href="#B27">27</a>). CNNs consist of a convolutional layer, a pooling layer, a non-linear layer, and fully connected layers (<a href="#B28">28</a>). A deep neural network (DNN) architecture uses several neurons to extract significant features from images. To effectively build and train a neural network from the scratch, a substantial amount of data is necessary to ensure it learns features adequately without succumbing to overfitting/underfitting. Building a neural network that can fit to smaller dataset is challenging as initial weights are randomly initialized and updated continuously based on the dataset and the loss function used. This can result in underfitting the network due to insufficient training data and also time-consuming due to slow updates to the weights during the learning process. There are various state-of-the-art CNN models used for the classification of images such as VGG (<a href="#B29">29</a>), ResNet (<a href="#B30">30</a>), GoogleNet (<a href="#B31">31</a>), DenseNet (<a href="#B32">32</a>), etc. used for classification in various sectors.</p>
+            <p>This paper presents a study of Pneumonia classification using the transfer learning of DenseNet-169 shown in <a href="#figure3"><em>Figure 3</em></a> (<a href="#B33">33</a>). Transfer learning is a technique used in the training of DL models that makes use of pre-trained CNN weights trained on state-of-the-art datasets. During the transfer learning the higher-level representations from the new dataset are only trained while transferring the lower-level representations. Thus, transfer learning involves adjusting the weights of higher hidden layers and the effectiveness of learning is determined using the distance between origin and destination datasets. Despite the large number of layers compared to other State-Of-The-Art classification models, DenseNet has a relatively low number of parameters handling the vanishing gradient problem. In this work, a DenseNet-169 classification network pre-trained on the ImageNet dataset is fine-tuned using the pneumonia dataset through transfer learning. To adapt DenseNet-169 for a binary classification task, the original top (or head) of the model was replaced with a custom layer structure tailored to the binary classification of Pneumonia as shown in <a href="#table2"><em>Table 2</em></a>. Like many pre-trained models, DenseNet-169 is designed for multi-class classification task, for examples ImageNet classification with 1,000 classes. However, for binary classification, the head model requires significant modifications such as removal of the original head. Instead of using traditional fully connected layers, a global average pooling (GAP) layer was added for reducing the spatial dimensions of feature maps mitigating overfitting. A dense layer with a reduced number of neuros was added as bottleneck for condensing the extracted features into a lower-dimensional space with ReLU activation layer to introduce non-linearity and enhance feature learning. A dropout layer was included to prevent overfitting by randomly setting a fraction of inputs to zero during training, making sure that the model does not rely heavily on any single feature. Lastly, the final dense layer was designed with a single neuron with sigmoid activation which outputs probabilities between 0 and 1. This custom head is integrated with the pre-trained DenseNet-169 backbone.</p>
+            <div id="figure3" class="figure"><a href="//cdn.amegroups.cn/static/magazine_modules/imgRender/dist/index.html?imgSource=https://cdn.amegroups.cn/journals/jlpm/files/journals/33/articles/9812/public/9812-PB8-5375-R1.jpg" target="_blank"><img target="_blank" src="//cdn.amegroups.cn/journals/jlpm/files/journals/33/articles/9812/public/9812-PB8-5375-R1.jpg/w300" title="Click on image to zoom" style="cursor: zoom-in;"></a>
+                <div class="figure-content"><strong>Figure 3</strong> DenseNet architecture (<a href="#B32">32</a>).</div>
+            </div>
+            <div id="table2" class="figure table">
+                <div class="figure-content">
+                    <h3><strong>Table 2</strong></h3>
+                    <div class="caption"><strong>Modified top/head of DenseNet-169 for pneumonia classification</strong></div><br><div class="table_wrapper">
+                        <table frame="hsides" rules="groups"><colgroup><col width="45.6%"><col width="30.47%"><col width="23.93%"></colgroup><thead><tr><th valign="middle" align="left" scope="col">Layer (type)</th>
+                                    <th valign="middle" align="center" scope="col">Output shape</th>
+                                    <th valign="middle" align="center" scope="col">Param #</th>
+                                </tr></thead><tbody><tr><td valign="top" align="left" scope="row">densenet169 (functional)</td>
+                                    <td valign="top" align="center">(None, 7, 7, 1,664)</td>
+                                    <td valign="top" align="center">1, 26, 42,880</td>
+                                </tr><tr><td valign="top" align="left" scope="row">global_average_pooling2d</td>
+                                    <td valign="top" align="center">(None, 1,664)</td>
+                                    <td valign="top" align="center">0</td>
+                                </tr><tr><td valign="top" align="left" scope="row">batch_normalization</td>
+                                    <td valign="top" align="center">(None, 1,664)</td>
+                                    <td valign="top" align="center">6,656</td>
+                                </tr><tr><td valign="top" align="left" scope="row">dense</td>
+                                    <td valign="top" align="center">(None, 256)</td>
+                                    <td valign="top" align="center">4, 26,240</td>
+                                </tr><tr><td valign="top" align="left" scope="row">dropout</td>
+                                    <td valign="top" align="center">(None, 256)</td>
+                                    <td valign="top" align="center">0</td>
+                                </tr><tr><td valign="top" align="left" scope="row">batch_normalization_1</td>
+                                    <td valign="top" align="center">(None, 256)</td>
+                                    <td valign="top" align="center">1,024</td>
+                                </tr><tr><td valign="top" align="left" scope="row">dense_1</td>
+                                    <td valign="top" align="center">(None, 128)</td>
+                                    <td valign="top" align="center">32,896</td>
+                                </tr><tr><td valign="top" align="left" scope="row">dropout_1</td>
+                                    <td valign="top" align="center">(None, 128)</td>
+                                    <td valign="top" align="center">0</td>
+                                </tr><tr><td valign="top" align="left" scope="row">dense_2</td>
+                                    <td valign="top" align="center">(None, 1)</td>
+                                    <td valign="top" align="center">129</td>
+                                </tr></tbody></table><div class="tblwrap-foot">
+                            <p>Total params: 13,109,825 (50.01 MB). Trainable params: 463,105 (1.77 MB). Non-trainable params: 12,646,720 (48.24 MB).</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p>To align with input requirements of DenseNet-169, images are resized to 224&times;224. Further, to match the model&rsquo;s expectation, the images are normalized and standardized during the preprocessing. To mitigate overfitting and enhance the diversity in the dataset, augmentation techniques described in the dataset section were performed. During fine-tuning, the model is initialized using pre-trained weights derived from ImageNet dataset. The initial layers were left frozen to retain generic features that are transferable across domains. The top fully connected layer was replaced to perform pneumonia classification, which includes a classification head comprising of a GAP layer, a dense layer with 128 neurons and ReLU activation followed by a dropout layer and finally a softmax layer with two output units corresponding to normal and pneumonia classes. Thus, transfer learning allows leveraging the existing knowledge of the neural network for the classification of the new dataset on which the transfer learning has been performed. Different hyperparameter combinations are experimented with to find the optimal parameters. The training process involves running the model through 25 epochs, employing a learning rate of 0.0001 along with cross-entropy loss and stochastic gradient descent (SGD) optimizer. A lower learning rate was used for fine-tuning to avoid manipulating pre-trained weights while adapting to the new dataset. This ensures the continual minimization of the loss function and updates the weights after each epoch. A batch size of 16 is chosen to balance computational efficiency and convergence of model with adam optimizer to dynamically adjust the learning rate. The model performance is evaluated on the validation dataset after every epoch to monitor the overfitting. The fine-tuned DenseNet-169 model is evaluated on unseen test data. Test images traverse the network, yielding predictions compared against ground truth labels. Performance metrics including accuracy, precision, recall, and F1-score are calculated to assess model efficiency.</p>
+            <h3>Statistical analysis</h3>
+            <p>Accuracy: this metric quantifies the overall correctness of predictions, representing the ratio of correctly classified samples to the total number of samples.</p>
+            <p style="display: flex;align-items: center" id="e1"><math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="block" id="m1"><mrow><mi>A</mi><mi>c</mi><mi>c</mi><mi>u</mi><mi>r</mi><mi>a</mi><mi>c</mi><mi>y</mi><mo>=</mo><mfrac><mrow><mi>T</mi><mi>P</mi><mo>+</mo><mi>T</mi><mi>N</mi></mrow><mrow><mi>T</mi><mi>P</mi><mo>+</mo><mi>T</mi><mi>N</mi><mo>+</mo><mi>F</mi><mi>P</mi><mo>+</mo><mi>F</mi><mi>N</mi></mrow></mfrac></mrow></math><label>[1]</label></p>
+            <p>Precision: precision measures the reliability of positive predictions, indicating the proportion of true positives (TPs) among all instances predicted as positive.</p>
+            <p style="display: flex;align-items: center" id="e2"><math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="block" id="m2"><mrow><mi>P</mi><mi>r</mi><mi>e</mi><mi>c</mi><mi>i</mi><mi>s</mi><mi>i</mi><mi>o</mi><mi>n</mi><mo>=</mo><mfrac><mrow><mi>T</mi><mi>P</mi></mrow><mrow><mi>T</mi><mi>P</mi><mo>+</mo><mi>F</mi><mi>P</mi></mrow></mfrac></mrow></math><label>[2]</label></p>
+            <p>Recall: also known as sensitivity, recall evaluates the model&rsquo;s ability to capture all relevant instances of the positive class.</p>
+            <p style="display: flex;align-items: center" id="e3"><math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="block" id="m3"><mrow><mi>R</mi><mi>e</mi><mi>c</mi><mi>a</mi><mi>l</mi><mi>l</mi><mo>=</mo><mfrac><mrow><mi>T</mi><mi>P</mi></mrow><mrow><mi>T</mi><mi>P</mi><mo>+</mo><mi>F</mi><mi>N</mi></mrow></mfrac></mrow></math><label>[3]</label></p>
+            <p>F1-score: the F1-score combines precision and recall into a single metric, providing a balanced measure that considers both false positives (FPs) and false negatives (FNs).</p>
+            <p style="display: flex;align-items: center" id="e4"><math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="block" id="m4"><mrow><mi>F</mi><mn>1</mn><mtext>&thinsp;</mtext><mi>S</mi><mi>c</mi><mi>o</mi><mi>r</mi><mi>e</mi><mo>=</mo><mfrac><mrow><mn>2</mn><mo>&lowast;</mo><mi>P</mi><mi>r</mi><mi>e</mi><mi>c</mi><mi>i</mi><mi>s</mi><mi>i</mi><mi>o</mi><mi>n</mi><mo>&lowast;</mo><mi>R</mi><mi>e</mi><mi>c</mi><mi>a</mi><mi>l</mi><mi>l</mi></mrow><mrow><mi>P</mi><mi>r</mi><mi>e</mi><mi>c</mi><mi>i</mi><mi>s</mi><mi>i</mi><mi>o</mi><mi>n</mi><mo>+</mo><mi>R</mi><mi>e</mi><mi>c</mi><mi>a</mi><mi>l</mi><mi>l</mi></mrow></mfrac></mrow></math><label>[4]</label></p>
+            <p>The statistical analysis was conducted using Python and other python libraries such as SciPy, Statsmodels. These tools were employed for calculating performance metrics conducting comparative tests and visualizing results. Confidence intervals (CIs) for accuracy, precision, recall and F1-score were computed using standard error-based methods to assess the reliability of the metrics.</p>
+            <p>The code implementation for the DenseNet-169 model, including preprocessing steps, training, evaluation is available through a publicly accessible google colab link (<a href="https://colab.research.google.com/drive/1mRjCy4f5eQhTClH5e3AqMCptRut_4KgI?usp=sharing" target="_blank">https://colab.research.google.com/drive/1mRjCy4f5eQhTClH5e3AqMCptRut_4KgI?usp=sharing</a>).</p>
+            <hr><h2 id="results" class="section-title color-bg test">Results</h2>
+            <p>In this section, we present a comprehensive analysis of the performance of our neural network model, focusing on learning curves, confusion matrix evaluation, and predicted results. These components collectively offer insights into the model&rsquo;s training dynamics, classification accuracy, and specific instances of correct and incorrect predictions. The results of the proposed model are estimated using evaluation metrics such as accuracy, precision, recall, and F1-score on test data as shown in <a href="#table3"><em>Table 3</em></a>.</p>
+            <div id="table3" class="figure table">
+                <div class="figure-content">
+                    <h3><strong>Table 3</strong></h3>
+                    <div class="caption"><strong>Comparison of DenseNet-169 performance with DenseNet-121 and VGG16</strong></div><br><div class="table_wrapper">
+                        <table frame="hsides" rules="groups"><colgroup><col width="15.33%"><col width="21.81%"><col width="21.81%"><col width="19.24%"><col width="21.81%"></colgroup><thead><tr><th valign="middle" align="left" scope="col">Model</th>
+                                    <th valign="middle" align="center" scope="col">Accuracy (%) (95% CI)</th>
+                                    <th valign="middle" align="center" scope="col">Precision (%) (95% CI)</th>
+                                    <th valign="middle" align="center" scope="col">Recall (%) (95% CI)</th>
+                                    <th valign="middle" align="center" scope="col">F1-score (%) (95% CI)</th>
+                                </tr></thead><tbody><tr><td valign="top" align="left" scope="row">DenseNet-169</td>
+                                    <td valign="top" align="center">91.66 (89.37&ndash;93.95)</td>
+                                    <td valign="top" align="center">90.99 (88.62&ndash;93.36)</td>
+                                    <td valign="top" align="center">86.32 (83.50&ndash;89.14)</td>
+                                    <td valign="top" align="center">87.62 (84.96&ndash;90.28)</td>
+                                </tr><tr><td valign="top" align="left" scope="row">DenseNet-121</td>
+                                    <td valign="top" align="center">90.41</td>
+                                    <td valign="top" align="center">89.25</td>
+                                    <td valign="top" align="center">86.73</td>
+                                    <td valign="top" align="center">87.97</td>
+                                </tr><tr><td valign="top" align="left" scope="row">VGG16</td>
+                                    <td valign="top" align="center">76.63</td>
+                                    <td valign="top" align="center">82.60</td>
+                                    <td valign="top" align="center">76.56</td>
+                                    <td valign="top" align="center">79.46</td>
+                                </tr></tbody></table><div class="tblwrap-foot">
+                            <p>CI, confidence interval.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p>The evaluation of the proposed model was conducted using several standard metrics, including accuracy, precision, recall, and F1-score, based on a large and representative sample of the dataset. These metrics were computed from the classification of both positive and negative instances in relation to the true and false classes. Specifically, TP refers to samples classified as positive that belong to the positive class, while FP refers to samples from the negative class misclassified as positive. True negative (TN) refers to samples from the negative class correctly classified as negative, and FN refers to positive samples that were misclassified as negative. Learning curves shown in <a href="#figure4"><em>Figure 4A</em></a> depict the model&rsquo;s performance metrics over epochs, illustrating its learning process on both the training and validation datasets. The training curve demonstrates the model&rsquo;s ability to fit the training data, ideally showing improvement or stabilization.</p>
+            <div id="figure4" class="figure"><a href="//cdn.amegroups.cn/static/magazine_modules/imgRender/dist/index.html?imgSource=https://cdn.amegroups.cn/journals/jlpm/files/journals/33/articles/9812/public/9812-PB9-5069-R1.jpg" target="_blank"><img target="_blank" src="//cdn.amegroups.cn/journals/jlpm/files/journals/33/articles/9812/public/9812-PB9-5069-R1.jpg/w300" title="Click on image to zoom" style="cursor: zoom-in;"></a>
+                <div class="figure-content"><strong>Figure 4</strong> Plots illustrating the results: (A) model&rsquo;s accuracy and loss performance metrics over epoch, (B) confusion matrix.</div>
+            </div>
+            <p>Concurrently, the validation curve indicates the model&rsquo;s generalization performance, crucial for identifying overfitting or underfitting tendencies. Analysis of these curves informs adjustments to training strategies such as data augmentation, regularization techniques, or model architecture modifications. The learning curves show the fine-tuning of the DenseNet-169 model converges at around 11 epochs. The closeness of the curves for the train and validation set indicates the generalization of the model. This outcome is indicative of the model&rsquo;s resilience to overfitting, aided by the use of regularization techniques like early stopping. The alignment between training and validation performance underscores the suitability of the selected architecture and hyperparameter configurations for this dataset. The model is then evaluated by passing an unseen test dataset for prediction. The model has an accuracy of 91.66% prediction on unseen data which is shown in <a href="#figure4"><em>Figure 4B</em></a> by plotting the confusion matrix. The confusion matrix offers a comprehensive overview of how well the model performs in classifying different categories. The actual and predicted labels for sample images from the test dataset are shown in <a href="#figure5"><em>Figure 5</em></a>. Examining the model&rsquo;s predictions against ground truth labels offers a granular view of its performance in individual instances.</p>
+            <div id="figure5" class="figure"><a href="//cdn.amegroups.cn/static/magazine_modules/imgRender/dist/index.html?imgSource=https://cdn.amegroups.cn/journals/jlpm/files/journals/33/articles/9812/public/9812-PB10-9283-R1.jpg" target="_blank"><img target="_blank" src="//cdn.amegroups.cn/journals/jlpm/files/journals/33/articles/9812/public/9812-PB10-9283-R1.jpg/w300" title="Click on image to zoom" style="cursor: zoom-in;"></a>
+                <div class="figure-content"><strong>Figure 5</strong> Actual and predicted label for test image.</div>
+            </div>
+            <hr><h2 id="discussion" class="section-title color-bg test">Discussion</h2>
+            <p>The DenseNet-169 model demonstrated exceptional performance in the classification of pneumonia X-ray images, achieving the highest accuracy of 91.66% compared to DenseNet-121 (90.41%) and VGG-16 (76.63%). Evaluation metrics such as precision (90.99%), recall (86.32%), and F1-score (87.62%) collectively affirm its robustness and effectiveness in identifying Pneumonia cases. The model&rsquo;s dense connectivity pattern contributed significantly to mitigating vanishing gradient issues and improving parameter efficiency, enabling better feature extraction and gradient flow.</p>
+            <p>DenseNet-169&rsquo;s superior architecture, with its deeper layers and dense connectivity, facilitated improved feature reuse and reduced computational redundancy. These characteristics were instrumental in achieving high performance even in the presence of moderate dataset imbalances. Its precision score underscores its ability to minimize false positives, a critical requirement in medical diagnostics where incorrect predictions can have severe implications. The study noted a relatively lower recall compared to precision, highlighting a trade-off in capturing all relevant instances of the positive class. This limitation indicates that some true Pneumonia cases might not be detected, warranting further optimization of the model. Additionally, the dataset used in this study was moderately imbalanced, with a higher proportion of Pneumonia cases. While prior research (<a href="#B34">34</a>) suggests that such imbalance may not significantly affect accuracy, addressing this imbalance more comprehensively could further enhance recall and overall model reliability.</p>
+            <p>Compared to other CNN architectures such as DenseNet-121 (<a href="#B35">35</a>) and VGG-16, DenseNet-169 (<a href="#B36">36</a>) exhibited superior performance. The higher accuracy and precision of DenseNet-169 can be attributed to its advanced architecture, which enhances gradient flow and facilitates feature reuse (<a href="#B37">37</a>). In contrast, the relatively lower performance of VGG-16 reflects its less sophisticated design and lack of dense connectivity. These findings align with trends in similar research, where deeper and more connected architectures outperform traditional models in complex image classification tasks. The enhanced performance of DenseNet-169 is primarily due to its dense connectivity pattern, which promotes efficient feature reuse and mitigates vanishing gradient problems. This architectural advantage allowed the model to effectively leverage the limited dataset, extracting meaningful features even from underrepresented patterns. The misclassifications observed in the confusion matrix provide insights into potential areas for improvement, such as augmenting underrepresented classes or refining hyperparameters.</p>
+            <p>The findings of this study underscore the importance of leveraging advanced DL architectures in medical image classification. Future work should focus on improving recall through targeted data augmentation strategies, enhancing dataset diversity, or incorporating ensemble learning techniques. Addressing dataset imbalances and investigating misclassified instances in greater detail could also contribute to refining the model&rsquo;s performance. These efforts will be crucial in advancing the reliability and adaptability of AI models in critical healthcare applications.</p>
+            <hr><h2 id="conclusions" class="section-title color-bg test">Conclusions</h2>
+            <p>In summary, this research highlights the effectiveness of DenseNet-169 in pneumonia classification, specific to pediatric patients with pneumonia, attaining an impressive accuracy rate of 91.66%. Utilizing its advanced DL framework, DenseNet-169 has shown significant capability in differentiating pneumonia cases from normal ones based on medical X-ray images. This strong performance underscores its potential as a crucial resource in clinical environments, providing dependable assistance to healthcare practitioners for prompt and precise diagnoses. Future investigations may focus on improving the model&rsquo;s generalization and scalability, to incorporate these enhancements into practical healthcare applications to better patient outcomes.</p>
+            <hr><h2 id="acknowledgments" class="section-title color-bg">Acknowledgments</h2>
+            <p>None.</p>
+            <hr><h2 id="Footnote" class="section-title color-bg">Footnote</h2>
+            <p><em>Reporting Checklist:</em> The authors have completed the TRIPOD reporting checklist. Available at <a href="https://jmai.amegroups.com/article/view/10.21037/jmai-24-356/rc" target="_blank">https://jmai.amegroups.com/article/view/10.21037/jmai-24-356/rc</a></p>
+            <p><em>Peer Review File: </em>Available at <a href="https://jmai.amegroups.com/article/view/10.21037/jmai-24-356/prf" target="_blank">https://jmai.amegroups.com/article/view/10.21037/jmai-24-356/prf</a></p>
+            <p><em>Funding: </em>None.</p>
+            <p><em>Conflicts of Interest: </em>All authors have completed the ICMJE uniform disclosure form (available at <a href="https://jmai.amegroups.com/article/view/10.21037/jmai-24-356/coif" target="_blank">https://jmai.amegroups.com/article/view/10.21037/jmai-24-356/coif</a>). The authors have no conflicts of interest to declare.</p>
+            <p content-type="note added in proof"><em>Ethical Statement:</em> The authors are accountable for all aspects of the work in ensuring that questions related to the accuracy or integrity of any part of the work are appropriately investigated and resolved. The study was conducted using publicly available, open-source data that was originally collected following ethical guidelines. No new human data was collected, and therefore, additional ethics approval was not required for this study.</p>
+            <p content-type="note added in proof"><em>Open Access Statement:</em> This is an Open Access article distributed in accordance with the Creative Commons Attribution-NonCommercial-NoDerivs 4.0 International License (CC BY-NC-ND 4.0), which permits the non-commercial replication and distribution of the article with the strict proviso that no changes or edits are made and the original work is properly cited (including links to both the formal publication through the relevant DOI and the license). See: <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">https://creativecommons.org/licenses/by-nc-nd/4.0/</a>.</p>
+            <hr><h2 id="references" class="section-title color-bg">References</h2>
+            <ol class="ref-item"><li id="B1">Zhang ZX, Yong Y, Tan WC, et al. Prognostic factors for mortality due to pneumonia among adults from different age groups in Singapore and mortality predictions based on PSI and CURB-65. Singapore Med J 2018;59:190-8. [<a href="http://dx.doi.org/10.11622/smedj.2017079" target="_blank">Crossref</a>] [<a href="http://www.ncbi.nlm.nih.gov/pubmed/28805234" target="_blank">PubMed</a>]</li>
+                <li id="B2">Bjarnason A, Westin J, Lindh M, et al. Incidence, Etiology, and Outcomes of Community-Acquired Pneumonia: A Population-Based Study. Open Forum Infect Dis 2018;5:ofy010. [<a href="http://dx.doi.org/10.1093/ofid/ofy010" target="_blank">Crossref</a>] [<a href="http://www.ncbi.nlm.nih.gov/pubmed/29479548" target="_blank">PubMed</a>]</li>
+                <li id="B3">Eurich DT, Marrie TJ, Minhas-Sandhu JK, et al. Risk of heart failure after community acquired pneumonia: prospective controlled study with 10 years of follow-up. BMJ 2017;356:j413. [<a href="http://dx.doi.org/10.1136/bmj.j413" target="_blank">Crossref</a>] [<a href="http://www.ncbi.nlm.nih.gov/pubmed/28193610" target="_blank">PubMed</a>]</li>
+                <li id="B4">Metlay JP, Fine MJ. Testing strategies in the initial management of patients with community-acquired pneumonia. Ann Intern Med 2003;138:109-18. [<a href="http://dx.doi.org/10.7326/0003-4819-138-2-200301210-00012" target="_blank">Crossref</a>] [<a href="http://www.ncbi.nlm.nih.gov/pubmed/12529093" target="_blank">PubMed</a>]</li>
+                <li id="B5">Mandell LA. Community-acquired pneumonia: An overview. Postgrad Med 2015;127:607-15. [<a href="http://dx.doi.org/10.1080/00325481.2015.1074030" target="_blank">Crossref</a>] [<a href="http://www.ncbi.nlm.nih.gov/pubmed/26224210" target="_blank">PubMed</a>]</li>
+                <li id="B6">Eurich DT, Marrie TJ, Minhas-Sandhu JK, et al. Ten-Year Mortality after Community-acquired Pneumonia. A Prospective Cohort. Am J Respir Crit Care Med 2015;192:597-604. [<a href="http://dx.doi.org/10.1164/rccm.201501-0140OC" target="_blank">Crossref</a>] [<a href="http://www.ncbi.nlm.nih.gov/pubmed/26067221" target="_blank">PubMed</a>]</li>
+                <li id="B7">Mabrouk A, D&iacute;az Redondo RP, Dahou A, et al. Pneumonia Detection on Chest X-ray Images Using Ensemble of Deep Convolutional Neural Networks. Appl Sci 2022;12:6448. [<a href="http://dx.doi.org/10.3390/app12136448" target="_blank">Crossref</a>]</li>
+                <li id="B8">Bourcier JE, Paquet J, Seinger M, et al. Performance comparison of lung ultrasound and chest x-ray for the diagnosis of pneumonia in the ED. Am J Emerg Med 2014;32:115-8. [<a href="http://dx.doi.org/10.1016/j.ajem.2013.10.003" target="_blank">Crossref</a>] [<a href="http://www.ncbi.nlm.nih.gov/pubmed/24184011" target="_blank">PubMed</a>]</li>
+                <li id="B9">Han Y, Chen C, Tewfik A, et al. Pneumonia detection on chest X-ray using radiomic features and contrastive learning. Proc IEEE Int Symp Biomed Imaging 2021;2021:247-51. [<a href="http://dx.doi.org/10.1109/ISBI48211.2021.9433853" target="_blank">Crossref</a>] [<a href="http://www.ncbi.nlm.nih.gov/pubmed/35571507" target="_blank">PubMed</a>]</li>
+                <li id="B10">Jain DK, Singh T, Saurabh P, et al. Deep Learning-Aided Automated Pneumonia Detection and Classification Using CXR Scans. Comput Intell Neurosci 2022;2022:7474304. [<a href="http://dx.doi.org/10.1155/2022/7474304" target="_blank">Crossref</a>] [<a href="http://www.ncbi.nlm.nih.gov/pubmed/35936981" target="_blank">PubMed</a>]</li>
+                <li id="B11">Sharma S, Guleria K. A deep learning based model for the detection of pneumonia from chest X-ray images using VGG-16 and neural networks. Procedia Comput Sci 2023;218:357-66. [<a href="http://dx.doi.org/10.1016/j.procs.2023.01.018" target="_blank">Crossref</a>]</li>
+                <li id="B12">Stephen O, Sain M, Maduh UJ, et al. An Efficient Deep Learning Approach to Pneumonia Classification in Healthcare. J Healthc Eng 2019;2019:4180949. [<a href="http://dx.doi.org/10.1155/2019/4180949" target="_blank">Crossref</a>] [<a href="http://www.ncbi.nlm.nih.gov/pubmed/31049186" target="_blank">PubMed</a>]</li>
+                <li id="B13">Nillmani, Jain PK, Sharma N, et al. Four Types of Multiclass Frameworks for Pneumonia Classification and Its Validation in X-ray Scans Using Seven Types of Deep Learning Artificial Intelligence Models. Diagnostics (Basel) 2022;12:652.</li>
+                <li id="B14">Hasan MR, Ullah SMA, Isla SMR. Recent advancement of deep learning techniques for pneumonia prediction from chest X-ray image. Med Rec 2024;7:100106. [<a href="http://dx.doi.org/10.1016/j.hmedic.2024.100106" target="_blank">Crossref</a>]</li>
+                <li id="B15">Scanlon GT, Unger JD. The radiology of bacterial and viral pneumonias. Radiol Clin North Am 1973;11:317-38. [<a href="http://dx.doi.org/10.1016/S0033-8389(22)01655-4" target="_blank">Crossref</a>] [<a href="http://www.ncbi.nlm.nih.gov/pubmed/4354427" target="_blank">PubMed</a>]</li>
+                <li id="B16">Litjens G, Kooi T, Bejnordi BE, et al. A survey on deep learning in medical image analysis. Med Image Anal 2017;42:60-88. [<a href="http://dx.doi.org/10.1016/j.media.2017.07.005" target="_blank">Crossref</a>] [<a href="http://www.ncbi.nlm.nih.gov/pubmed/28778026" target="_blank">PubMed</a>]</li>
+                <li id="B17">Gore JC. Artificial intelligence in medical imaging. Magn Reson Imaging 2020;68:A1-4. [<a href="http://dx.doi.org/10.1016/j.mri.2019.12.006" target="_blank">Crossref</a>] [<a href="http://www.ncbi.nlm.nih.gov/pubmed/31857130" target="_blank">PubMed</a>]</li>
+                <li id="B18">Sistaninejhad B, Rasi H, Nayeri P. A Review Paper about Deep Learning for Medical Image Analysis. Comput Math Methods Med 2023;2023:7091301. [<a href="http://dx.doi.org/10.1155/2023/7091301" target="_blank">Crossref</a>] [<a href="http://www.ncbi.nlm.nih.gov/pubmed/37284172" target="_blank">PubMed</a>]</li>
+                <li id="B19">Alzubaidi L, Zhang J, Humaidi AJ, et al. Review of deep learning: concepts, CNN architectures, challenges, applications, future directions. J Big Data 2021;8:53. [<a href="http://dx.doi.org/10.1186/s40537-021-00444-8" target="_blank">Crossref</a>] [<a href="http://www.ncbi.nlm.nih.gov/pubmed/33816053" target="_blank">PubMed</a>]</li>
+                <li id="B20">Mall PK, Singh PK, Srivastava S, et al. A comprehensive review of deep neural networks for medical image processing: Recent developments and future opportunities. Healthcare Analytics 2023;4:100216. [<a href="http://dx.doi.org/10.1016/j.health.2023.100216" target="_blank">Crossref</a>]</li>
+                <li id="B21">Cheung HMC, Rubin D. Challenges and opportunities for artificial intelligence in oncological imaging. Clin Radiol 2021;76:728-36. [<a href="http://dx.doi.org/10.1016/j.crad.2021.03.009" target="_blank">Crossref</a>] [<a href="http://www.ncbi.nlm.nih.gov/pubmed/33902889" target="_blank">PubMed</a>]</li>
+                <li id="B22">Siegersma KR, Leiner T, Chew DP, et al. Artificial intelligence in cardiovascular imaging: state of the art and implications for the imaging cardiologist. Neth Heart J 2019;27:403-13. [<a href="http://dx.doi.org/10.1007/s12471-019-01311-1" target="_blank">Crossref</a>] [<a href="http://www.ncbi.nlm.nih.gov/pubmed/31399886" target="_blank">PubMed</a>]</li>
+                <li id="B23">Dhar T, Dey N, Borra S, et al. Challenges of Deep Learning in Medical Image Analysis&mdash;Improving Explainability and Trust. IEEE Trans on Tech Soc 2023;4:68-75. [<a href="http://dx.doi.org/10.1109/TTS.2023.3234203" target="_blank">Crossref</a>]</li>
+                <li id="B24">Borys K, Schmitt YA, Nauta M, et al. Explainable AI in medical imaging: An overview for clinical practitioners - Beyond saliency-based XAI approaches. Eur J Radiol 2023;162:110786. [<a href="http://dx.doi.org/10.1016/j.ejrad.2023.110786" target="_blank">Crossref</a>] [<a href="http://www.ncbi.nlm.nih.gov/pubmed/36990051" target="_blank">PubMed</a>]</li>
+                <li id="B25">Naik N, Hameed BMZ, Shetty DK, et al. Legal and Ethical Consideration in Artificial Intelligence in Healthcare: Who Takes Responsibility? Front Surg 2022;9:862322. [<a href="http://dx.doi.org/10.3389/fsurg.2022.862322" target="_blank">Crossref</a>] [<a href="http://www.ncbi.nlm.nih.gov/pubmed/35360424" target="_blank">PubMed</a>]</li>
+                <li id="B26">Kermany D, Zhang K, Goldbaum M. Labeled Optical Coherence Tomography (OCT) and Chest X-Ray Images for Classification. Mendeley Data 2018; [<a href="http://dx.doi.org/10.17632/rscbjbr9sj.2" target="_blank">Crossref</a>]</li>
+                <li id="B27">LeCun Y, Bengio Y, Hinton G. Deep learning. Nature 2015;521:436-44. [<a href="http://dx.doi.org/10.1038/nature14539" target="_blank">Crossref</a>] [<a href="http://www.ncbi.nlm.nih.gov/pubmed/26017442" target="_blank">PubMed</a>]</li>
+                <li id="B28">Albawi S, Mohammed TA, Al-Zawi S. Understanding of a convolutional neural network. International Conference on Engineering and Technology (ICET) 2017:1-6. doi: <pub-id pub-id-type="doi">10.1109/ICEngTechnol.2017.8308186</pub-id>.<pub-id pub-id-type="doi">10.1109/ICEngTechnol.2017.8308186</pub-id></li>
+                <li id="B29">Simonyan K, Zisserman A. Very Deep Convolutional Networks for Large-Scale Image Recognition. 3rd International Conference on Learning Representations (ICLR) 2015:1-14.</li>
+                <li id="B30">He K, Zhang X, Ren S, Sun J. Deep Residual Learning for Image Recognition. IEEE Conference on Computer Vision and Pattern Recognition (CVPR) 2016:770-8.</li>
+                <li id="B31">Szegedy C, Liu W, Jia Y, et al. Going Deeper with Convolutions. Proc IEEE Comput Soc Conf Comput Vis Pattern Recognit 2015;1-9.</li>
+                <li id="B32">Huang G, Liu Z, van der Maaten L, et al. Densely Connected Convolutional Networks. Proc IEEE Comput Soc Conf Comput Vis Pattern Recognit 2017;4700-8.</li>
+                <li id="B33">Ribani R, Marengoni M. A Survey of Transfer Learning for Convolutional Neural Networks. 32nd SIBGRAPI Conference on Graphics, Patterns and Images Tutorials (SIBGRAPI-T) 2019:47-57.</li>
+                <li id="B34">Davidian M, Lahav A, Joshua BZ, et al. Exploring the Interplay of Dataset Size and Imbalance on CNN Performance in Healthcare: Using X-rays to Identify COVID-19 Patients. Diagnostics (Basel) 2024;14:1727. [<a href="http://dx.doi.org/10.3390/diagnostics14161727" target="_blank">Crossref</a>] [<a href="http://www.ncbi.nlm.nih.gov/pubmed/39202215" target="_blank">PubMed</a>]</li>
+                <li id="B35">Rajpurkar P, Irvin J, Ball RL, et al. Deep learning for chest radiograph diagnosis: A retrospective comparison of the CheXNeXt algorithm to practicing radiologists. PLoS Med 2018;15:e1002686. [<a href="http://dx.doi.org/10.1371/journal.pmed.1002686" target="_blank">Crossref</a>] [<a href="http://www.ncbi.nlm.nih.gov/pubmed/30457988" target="_blank">PubMed</a>]</li>
+                <li id="B36">Wang X, Peng Y, Lu L, et al. ChestX-ray8: Hospital-scale Chest X-ray Database and Benchmarks on Weakly-supervised Classification and Localization of Common Thorax Diseases. IEEE Conference on Computer Vision and Pattern Recognition (CVPR) 2017:3462-71.</li>
+                <li id="B37">Kermany DS, Goldbaum M, Cai W, et al. Identifying Medical Diagnoses and Treatable Diseases by Image-Based Deep Learning. Cell 2018;172:1122-1131.e9. [<a href="http://dx.doi.org/10.1016/j.cell.2018.02.010" target="_blank">Crossref</a>] [<a href="http://www.ncbi.nlm.nih.gov/pubmed/29474911" target="_blank">PubMed</a>]</li>
+            </ol><div class="doi-number color-bg">doi: 10.21037/jmai-24-356<br><strong>Cite this article as:</strong> Katreddi S, Midatani A, Roy AP, Velpuri U, Kasani S. Pediatric pneumonia X-ray image classification: predictive model development with DenseNet-169 transfer learning. J Med Artif Intell 2025;8:37.</div>
+        </section></article></body></html>
+
+<input type="hidden" id="incrementArticleId" value="9812">
+<input type="hidden" id="incrementGalleryId" value="13082">
+
+    <script>
+        $(function(){
+            // ajax Increment Views
+
+            var aid = $('#incrementArticleId').val();
+            var gid = $('#incrementGalleryId').val();
+
+            var postId = '';
+
+            if( gid ) {
+                postId = aid+'/'+gid;
+            }else{
+                postId = aid;
+            }
+
+
+            if( postId ) {
+                $.ajax({
+                    url:"/article/incrementViews/"+postId,
+                    type:"POST",
+                    async:true,
+                    success: function(data) {
+                        // 处理数据
+                        console.log(data);
+                    },
+                });
+            }
+        })
+    </script>
+
+        
+            </div>
+    <div class="span3">
+        <div id="aside" class="aside">
+
+
+    <div class="galleries-block">
+        <h3 class="title">Article Options</h3>
+        <ul>
+                                        <li class="">
+                    <a class="pdf"
+                       target="_blank"
+                       href="https://jmai.amegroups.org/article/view/9812/pdf">
+                        <strong>
+                            PDF
+                        </strong>
+                        <input type="hidden" id="pdf"
+                               value="938">
+                        <span class="pull-right">938&nbsp;views</span>
+                    </a>
+                </li>
+                            <li class="active">
+                    <a class="full-text"
+                       target="_blank"
+                       href="https://jmai.amegroups.org/article/view/9812/html">
+                        <strong>
+                            Full Text
+                        </strong>
+                        <input type="hidden" id="full-text"
+                               value="1369">
+                        <span class="pull-right">1369&nbsp;views</span>
+                    </a>
+                </li>
+                            <li class="">
+                    <a class="reporting-checklist"
+                       target="_blank"
+                       href="https://jmai.amegroups.org/article/view/9812/rc">
+                        <strong>
+                            Reporting Checklist
+                        </strong>
+                        <input type="hidden" id="reporting-checklist"
+                               value="386">
+                        <span class="pull-right">386&nbsp;views</span>
+                    </a>
+                </li>
+                            <li class="">
+                    <a class="peer-review-file"
+                       target="_blank"
+                       href="https://jmai.amegroups.org/article/view/9812/prf">
+                        <strong>
+                            Peer Review File
+                        </strong>
+                        <input type="hidden" id="peer-review-file"
+                               value="457">
+                        <span class="pull-right">457&nbsp;views</span>
+                    </a>
+                </li>
+                            <li class="">
+                    <a class="coi-form"
+                       target="_blank"
+                       href="https://jmai.amegroups.org/article/view/9812/coif">
+                        <strong>
+                            COI Form
+                        </strong>
+                        <input type="hidden" id="coi-form"
+                               value="370">
+                        <span class="pull-right">370&nbsp;views</span>
+                    </a>
+                </li>
+                        <li>
+                <a style="font: 14px arial; width:120px;background-color:transparent;" target="_blank"
+                   href="https://creativecommons.org/licenses/by-nc-nd/4.0/" title="License"><img alt="License"
+                                                                                                  title="License"
+                                                                                                  style="margin-right: 10px;height: 30px;"
+                                                                                                  src="https://cdn.amegroups.cn/static/image/41bc1963fd89d68b77ed544999f514f0.png/w300"/></a>
+            </li>
+            <li>
+            <a style="font: 14px arial; width:120px; background-color:transparent;" target="_blank" href="https://marketplace.copyright.com/rs-ui-web/mp/search/article/10.21037%2Fjmai-24-356">
+                        <img alt="Get Permission" style="margin-right:10px;margin-left:-3px;" src ="//cdn.amegroups.cn/static/image/5945e34c7a75afe40a8f7f6fa4a01e7a/get-permission-btn-big.png/w150" />
+                    </a>
+            </li>
+
+        </ul>
+    </div>
+
+    <div class="galleries-block">
+        <h3 class="title">Download Citation</h3>
+        <ul>
+            <li>
+                <a target="_blank" href="https://jmai.amegroups.org/rt/captureCite/9812/0/BibtexCitationPlugin">Bibtex</a>
+            </li>
+            <li>
+                <a target="_blank" href="https://jmai.amegroups.org/rt/captureCite/9812/0/EndNoteCitationPlugin">EndNote</a>
+            </li>
+            <li>
+                <a target="_blank" href="https://jmai.amegroups.org/rt/captureCite/9812/0/ProCiteCitationPlugin">ProCite</a>
+            </li>
+            <li>
+                <a target="_blank" href="https://jmai.amegroups.org/rt/captureCite/9812/0/RefManCitationPlugin">refMan</a>
+            </li>
+            <li>
+                <a target="_blank" href="https://jmai.amegroups.org/rt/captureCite/9812/0/RefWorksCitationPlugin">refWorks</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="galleries-block">
+        <h3 class="title">Share</h3>
+        <ul>
+            <li><a href="#"
+                   onclick="
+    window.open(
+      'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href),
+      'facebook-share-dialog',
+      'width=626,height=436');
+    return false;">
+                    Share on Facebook
+                </a></li>
+            <li><a href="#"
+                   onclick="
+                           window.open(
+                           'https://twitter.com/intent/tweet?text=Pediatric pneumonia X-ray image classification: predictive model development with DenseNet-169 transfer learning&url='+encodeURIComponent(location.href),
+                           'twitter-share-dialog',
+                           'width=626,height=436');
+                           return false;">
+                    Share on Twitter
+                </a></li>
+        </ul>
+    </div>
+    <div name="ame-ad-100320"></div>
+    
+        <script>
+            document.addEventListener("readystatechange", function () {
+                let isAddAsideEvent = false
+                if (document.readyState === "complete") {
+                    isAddAsideEvent = document.querySelector("#aside [name^='ame-ad-'] img")
+                    if (isAddAsideEvent) {
+                        document.querySelector("#aside [name^='ame-ad-']").style.display = "block"
+                        document.querySelector("#aside").classList.add("aside_ad")
+                        document.querySelector("#aside").style.top = 0
+                        document.querySelector("#aside").style.position = "relative"
+                    }else {
+                        let elem = document.querySelector("#aside [name^='ame-ad-']")
+                        if(elem){
+                          elem.style.display="none"
+                        }
+                    }
+                }
+            })
+        </script>
+    
+</div>    </div>
+</div>
+</div> <!-- .container --></div> <!-- #wrapper --><footer id="footer"><div class="footer-wrapper"><div class="container"><div class="row-fluid"><div class="span3"><h4>About</h4><p><a href="https://jmai.amegroups.org/about">Aims and Scope  Journal of Medical Artificial Intelligence (JMAI, J Med Artif Intell, Online ISSN 2617-2496) is a peer-reviewed and open access journal that publishes articles from a wide variety of ...</a></p></div><div class="span6 amepc-list"><ul class="unstyled"><h4 class="title">AME Publishing Company</h4><ul class="unstyled span6"><li><a href="https://acr.amegroups.com/" target="_blank" rel="noopener">AME Case Reports</a></li><li><a href="https://actr.amegroups.com/" target="_blank" rel="noopener">AME Clinical Trials Review</a></li><li><a href="https://amj.amegroups.org/" target="_blank" rel="noopener">AME Medical Journal</a></li><li><a href="https://asj.amegroups.com/" target="_blank" rel="noopener">AME Surgical Journal</a></li><li><a href="https://aob.amegroups.com/" target="_blank" rel="noopener">Annals of Blood</a></li><li><a href="https://abs.amegroups.org/" target="_blank" rel="noopener">Annals of Breast Surgery</a></li><li><a href="https://ace.amegroups.com/" target="_blank" rel="noopener">Annals of Cancer Epidemiology</a></li><li><a href="https://www.annalscts.com/" target="_blank" rel="noopener">Annals of Cardiothoracic Surgery</a></li><li><a href="https://aoe.amegroups.com/" target="_blank" rel="noopener">Annals of Esophagus</a></li><li><a href="https://aes.amegroups.com/" target="_blank" rel="noopener">Annals of Eye Science</a></li><li><a href="https://aoj.amegroups.org/" target="_blank" rel="noopener">Annals of Joint</a></li><li><a href="https://ales.amegroups.com/" target="_blank" rel="noopener">Annals of Laparoscopic and Endoscopic Surgery</a></li><li><a href="https://aol.amegroups.com/" target="_blank" rel="noopener">Annals of Lymphoma</a></li><li><a href="https://apm.amegroups.com/" target="_blank" rel="noopener">Annals of Palliative Medicine</a></li><li><a href="https://apc.amegroups.com/" target="_blank" rel="noopener">Annals of Pancreatic Cancer</a></li><li><a href="https://aot.amegroups.com/" target="_blank" rel="noopener">Annals of Thyroid</a></li><li><a href="https://atm.amegroups.com/" target="_blank" rel="noopener">Annals of Translational Medicine</a></li><li><a href="https://ajo.amegroups.com/" target="_blank" rel="noopener">Australian Journal of Otolaryngology</a></li><li><a href="https://bc.amegroups.org/" target="_blank" rel="noopener">Breast Communications</a></li><li><a href="https://cdt.amegroups.com/" target="_blank" rel="noopener">Cardiovascular Diagnosis and Therapy</a></li><li><a href="https://cco.amegroups.com/" target="_blank" rel="noopener">Chinese Clinical Oncology</a></li><li><a href="https://ccts.amegroups.com/" target="_blank" rel="noopener">Current Challenges in Thoracic Surgery</a></li><li><a href="https://fomm.amegroups.com/" target="_blank" rel="noopener">Frontiers of Oral and Maxillofacial Medicine</a></li><li><a href="https://gist.amegroups.com/" target="_blank" rel="noopener">Gastrointestinal Stromal Tumor</a></li><li><a href="https://gs.amegroups.com/" target="_blank" rel="noopener">Gland Surgery</a></li><li><a href="https://gpm.amegroups.com/" target="_blank" rel="noopener">Gynecology and Pelvic Medicine</a></li><li><a href="https://ht.amegroups.com/" target="_blank" rel="noopener">Health Technology</a></li><li><a href="https://hbsn.amegroups.com/" target="_blank" rel="noopener">Hepatobiliary Surgery and Nutrition</a></li></ul><ul class="unstyled span6"><li><a href="https://idea.amegroups.org/" target="_blank" rel="noopener">IDEA</a></li><li><a href="https://jeccm.amegroups.org/" target="_blank" rel="noopener">Journal of Emergency and Critical Care Medicine</a></li><li><a href="https://jgo.amegroups.com/" target="_blank" rel="noopener">Journal of Gastrointestinal Oncology</a></li><li><a href="https://jhmhp.amegroups.com/" target="_blank" rel="noopener">Journal of Hospital Management and Health Policy</a></li><li><a href="https://jlpm.amegroups.com/" target="_blank" rel="noopener">Journal of Laboratory and Precision Medicine</a></li><li><a href="https://jmai.amegroups.com/" target="_blank" rel="noopener">Journal of Medical Artificial Intelligence</a></li><li><a href="https://jni.amegroups.com/" target="_blank" rel="noopener">Journal of Neurointervention</a></li><li><a href="https://joma.amegroups.com/" target="_blank" rel="noopener">Journal of Oral and Maxillofacial Anesthesia</a></li><li><a href="https://jphe.amegroups.com/" target="_blank" rel="noopener">Journal of Public Health and Emergency</a></li><li><a href="https://jss.amegroups.com/" target="_blank" rel="noopener">Journal of Spine Surgery</a></li><li><a href="https://jtd.amegroups.com/" target="_blank" rel="noopener">Journal of Thoracic Disease</a></li><li><a href="https://jovs.amegroups.com/" target="_blank" rel="noopener">Journal of Visualized Surgery</a></li><li><a href="https://ls.amegroups.org/" target="_blank" rel="noopener">Laparoscopic Surgery</a></li><li><a href="https://med.amegroups.com/" target="_blank" rel="noopener">Mediastinum</a></li><li><a href="https://mhealth.amegroups.com/" target="_blank" rel="noopener">mHealth</a></li><li><a href="https://pm.amegroups.com/" target="_blank" rel="noopener">Pediatric Medicine</a></li><li><a href="https://qims.amegroups.com/" target="_blank" rel="noopener">Quantitative Imaging in Medicine and Surgery</a></li><li><a href="https://rx.amegroups.org/" target="_blank" rel="noopener">Radiology-X</a></li><li><a href="https://shc.amegroups.com/" target="_blank" rel="noopener">Shanghai Chest</a></li><li><a href="https://tro.amegroups.com/" target="_blank" rel="noopener">Therapeutic Radiology and Oncology</a></li><li><a href="https://tbcr.amegroups.com/" target="_blank" rel="noopener">Translational Breast Cancer Research</a></li><li><a href="https://tau.amegroups.com/" target="_blank" rel="noopener">Translational Andrology and Urology</a></li><li><a href="https://tcr.amegroups.com/" target="_blank" rel="noopener">Translational Cancer Research</a></li><li><a href="https://tgh.amegroups.com/" target="_blank" rel="noopener">Translational Gastroenterology and Hepatology</a></li><li><a href="https://tlcr.amegroups.com/" target="_blank" rel="noopener">Translational Lung Cancer Research</a></li><li><a href="https://tp.amegroups.com/" target="_blank" rel="noopener">Translational Pediatrics</a></li><li><a href="https://vats.amegroups.com/" target="_blank" rel="noopener">Video-Assisted Thoracic Surgery</a></li></ul></ul></div></div></div><div class="container" style="margin-top:20px"><p class="copyright">All content on this site: Copyright © 2026 AME Publishing Company. All rights are reserved. For all open access content, the Creative Commons licensing terms apply.</p><p class="copyright">Published by AME Publishing Company&nbsp;<br />Address: Flat/RM C 16F, Kings Wing Plaza 1, NO. 3 on Kwan Street, Shatin, NT, Hong Kong, China.<br />Email:&nbsp;<a href="mailto:jmai@amegroups.com">jmai@amegroups.com</a></p></div><div class="container"></div></div></footer></div><div id="google-analytics">
+        
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-VDXEF5FRGV"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+          
+
+            // 新总站ID
+            gtag('config', 'G-VDXEF5FRGV',{
+                'page_path': '/ojs-jmai/article/view/9812/html'
+            });
+
+            // 子站点ID，后台谷歌统计插件配置
+            gtag('config', 'G-0LFGEBG5P9');
+        </script>
+        <!-- /Global site tag (gtag.js) - Google Analytics -->
+    
+        
+        <script>
+            var _hmt = _hmt || [];
+            (function() {
+                var hm = document.createElement("script");
+                hm.src = "https://hm.baidu.com/hm.js?010f4fb2da6192e9d5aaebff6463076e";
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(hm, s);
+            })();
+        </script>
+        <script>
+            var _hmt = _hmt || [];
+            (function() {
+                var hm = document.createElement("script");
+                hm.src = "https://hm.baidu.com/hm.js?7290a7c06e9c94a3e9f8304bbe057624";
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(hm, s);
+            })();
+        </script>
+    
+</div><div id="back" style="display: block;"><div id="back-to-top" class="back-to-top"><i></i></div><a class="back-to-home" href="/"><i></i></a></div><div id="footer-ame-ad" name="ame-ad-100317"></div><!-- Custom Session Timeout Modal --><div id="sessionExpiredModal" class="modal hide fade" tabindex="-1" role="dialog" aria-hidden="true"><div class="modal-body text-center"><h2 class="expired-title">Session Timed Out</h2><p class="expired-text">Your session has expired. Please sign in again.</p><div class="btn-group"><button class="btn btn-close" id="sessionExpired-closeBtn" data-dismiss="modal">Close</button><button class="btn btn-refresh" id="sessionExpired-reLoginBtn">Sign in</button></div></div></div></body>
+    <script>
+        document.addEventListener("readystatechange", function () {
+            if (document.readyState === "complete") {
+                if ($(window).scrollTop() > 500) {
+                    $("#back").css("display", "block");
+                } else {
+                    $("#back").css("display", "none");
+                }
+                $(window).scroll(function () {
+                    if ($(window).scrollTop() > 500) {
+                        $("#back").fadeIn(1000);
+                    } else {
+                        $("#back").fadeOut(1000);
+                    }
+                    if (!document.querySelector(".aside_ad")) {
+                        var H = $(document).height() - $(window).height() - $(window).scrollTop();
+                        var footerHeight = $("footer").height();
+                        var bot = ($("#map").outerHeight(true) + $("header").outerHeight(true) + $(".breadcrumb").outerHeight(true) - $(window).scrollTop()) + "px";
+                        var headerHeight = $("#map").outerHeight(true) + $("header").outerHeight(true) + $(".breadcrumb").outerHeight(true);
+                        var footerSh = $(window).height() - footerHeight;
+                        // var h = (200 + Math.abs(H - footerHeight)) + "px" ;
+                        var h = (-($(window).height() - H) + footerSh) + "px";
+                        if ($(window).scrollTop() > headerHeight) {
+                            $(".aside").css("top", "0px");
+                            if (H < footerHeight) {
+                                $(".aside").css("top", h);
+                            }
+                        } else {
+                            $(".aside").css("top", bot);
+                        }
+                    }
+                });
+
+                if (!document.querySelector(".aside_ad")) {
+                    if ($(window).scrollTop() > headerHeight) {
+                        var H = $(document).height() - $(window).height() - $(window).scrollTop();
+                        var footerHeight = $("footer").height();
+                        var bot = ($("#map").outerHeight(true) + $("header").outerHeight(true) + $(".breadcrumb").outerHeight(true) - $(window).scrollTop()) + "px";
+                        var headerHeight = $("#map").outerHeight(true) + $("header").outerHeight(true) + $(".breadcrumb").outerHeight(true);
+                        var footerSh = $(window).height() - footerHeight;
+                        var h = (-($(window).height() - H) + footerSh) + "px";
+                        $(".aside").css("top", "0px");
+                        if (H < footerHeight) {
+                            $(".aside").css("top", h);
+                        }
+                    } else {
+                        $(".aside").css("top", bot);
+                    }
+                }
+                $("#back-to-top").click(function () {
+                    $('body,html').animate({scrollTop: 0}, 500);
+                    return false;
+                });
+            }
+        })
+
+        function showSessionExpiredModal() {
+            $('#sessionExpiredModal').modal('show');
+        }
+
+        $.ajaxSetup({
+            statusCode: {
+                401: function(jqXHR) {// 统一处理 401
+                    showSessionExpiredModal();
+                }
+            }
+        });
+
+        $('#sessionExpired-reLoginBtn').on('click', function() {
+            gotoLogin();
+        });
+
+        $('#sessionExpired-closeBtn').on('click', function() {
+            $('#sessionExpiredModal').modal('hide');
+        });
+
+        function gotoLogin(){
+            ojsGlobalLib.deleteAllCookies();
+            const env = location.hostname.split('.').pop() === 'net' ? 'dev' : 'prod';
+            location.href = `https://auth.amegroups.${env==='dev'? 'net':'cn'}/sign-in?lang=en-US&service=${location.href}`;
+        }
+    </script>
+
+    <script type="text/javascript">
+        document.addEventListener("readystatechange", function () {
+            if (document.readyState === "complete") {
+                // 获取表单元素
+                let btns = $('.action-profile form[name=profile] input[type="submit"][value="Save"].btn, ' +
+                    '.action-edituser form[name=userForm] input[type="submit"][value="Save"].btn, ' +
+                    '.action-updateuser form[name=userForm] input[type="submit"][value="Save"].btn, ' +
+                    '.action-updateuser form[name=userForm] input[type="submit"][name="createAnother"].btn, ' +
+                    '.action-createuser form[name=userForm] input[type="submit"][value="Save"].btn, ' +
+                    '.action-createuser form[name=userForm] input[type="submit"][name="createAnother"].btn, ' +
+                    '.action-createreviewer form[name=reviewerForm] input[type="submit"][value="Save"].btn');
+                btns.click(function (event) {
+                    event.preventDefault();
+                    let form = $(this).closest("form");
+                    let flag = form.name === "reviewerForm" ? onCheckSave() : true;
+                    if (flag) {
+                        let newPmid = document.getElementById("newPmid");
+                        if (newPmid && newPmid.value) {
+                            $("#newPmid").on("ajaxComplete", function () {
+                                handleFormSubmit(form);
+                            })
+                            $('#newPmid').trigger($.Event('keydown', {which: 13}));
+                        } else {
+                            handleFormSubmit(form);
+                        }
+                    }
+                });
+            }
+        });
+        // 处理数据的函数
+        function handleProcessInterestData() {
+            let interestInput = document.getElementById('interestsKeywordInput');
+            if (interestInput && interestInput.value) {
+                // 程序触发回车事件
+                $('#interestsKeywordInput').trigger($.Event('keypress', {which: 13}));
+            }
+        }
+
+        function handleFormSubmit(form) {
+            handleProcessInterestData();
+            // 这句不能删, 因为xheditor在手动提交时,数据不会同步到textarea;
+            // 需要使用xheditor({submitID,"id")}来绑定, 或者使用手动刷新页面textaera的值
+            let biography = $('#biography').val();
+            form.submit();// 提交表单
+        }
+
+        function onCheckSave() {
+            let flag = true
+            let firstElem = null
+            let fields = document.querySelectorAll("td.label")
+            Array.prototype.forEach.call(fields, item => {
+                if (item.innerText.match(/\*$/)) {
+                    let elem = item.parentNode.querySelector('td.value input') || item.parentNode.querySelector('td.value textarea')
+                    if (elem && !elem.value) {
+                        flag = false;
+                        firstElem = firstElem ? firstElem : elem;
+                    }
+                }
+            })
+            firstElem && firstElem.focus();
+            return flag; //return true提交表单，否则不提交
+        }
+    </script>
+</body></html>

@@ -1,0 +1,74 @@
+{
+  "selection": "First two automatic-fallback TRAINING examples per class",
+  "cases": [
+    {
+      "path": "data/images/train/0/0ecf006dd1b3ad1467bd1d2186c72c3451252738601e4824f5dc9f577dbaf122.png",
+      "split": "train",
+      "label": 0,
+      "sha256": "0ecf006dd1b3ad1467bd1d2186c72c3451252738601e4824f5dc9f577dbaf122",
+      "width": 992,
+      "height": 816,
+      "source_path": "NORMAL2-IM-1362-0001.jpeg",
+      "mask_metadata": {
+        "bbox": [
+          0,
+          0,
+          992,
+          816
+        ],
+        "original_size": [
+          992,
+          816
+        ],
+        "fallback": true,
+        "mask_fraction": 0.0643310546875
+      }
+    },
+    {
+      "path": "data/images/train/1/1000d8b3a510f0552138280e9025684aa5f6ba22ade359ed4de15a439e1b6f7f.png",
+      "split": "train",
+      "label": 1,
+      "sha256": "1000d8b3a510f0552138280e9025684aa5f6ba22ade359ed4de15a439e1b6f7f",
+      "width": 1064,
+      "height": 880,
+      "source_path": "person1055_bacteria_2989.jpeg",
+      "mask_metadata": {
+        "bbox": [
+          0,
+          0,
+          1064,
+          880
+        ],
+        "original_size": [
+          1064,
+          880
+        ],
+        "fallback": true,
+        "mask_fraction": 0.0430908203125
+      }
+    },
+    {
+      "path": "data/images/train/1/ca0f15adcb1627c853243e8ecc0b0d8d3d01d74304ea4b7c56ce6e78ec3bbd1f.png",
+      "split": "train",
+      "label": 1,
+      "sha256": "ca0f15adcb1627c853243e8ecc0b0d8d3d01d74304ea4b7c56ce6e78ec3bbd1f",
+      "width": 858,
+      "height": 522,
+      "source_path": "person1104_virus_1826.jpeg",
+      "mask_metadata": {
+        "bbox": [
+          0,
+          0,
+          858,
+          522
+        ],
+        "original_size": [
+          858,
+          522
+        ],
+        "fallback": true,
+        "mask_fraction": 0.074066162109375
+      }
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+RESULTS AND HANDOFF
+
+The Mac runs ResNet18, GoogLeNet and AlexNet sequentially, CPU two threads.
+The isolated AgentCloud container runs DenseNet121 and InceptionV3 sequentially,
+only after dependencies, image/weight sync and the same preflight pass.
+No shared host files or services are in scope. Versions match except CPU build
+suffixes and platform. Public data and weights alone are synced; secrets excluded.
+
+After both jobs finish, preview a non-destructive AgentCloud pull. Copy only the
+remote final states, histories and completion receipts into this experiment after
+checking configuration and checkpoint hashes. Preserve the platform preflight
+receipt separately. Do not replace Mac preflight or prior experiment artifacts.
+
+Run run.py again with the complete local set: completed models are skipped,
+fixed checkpoints are evaluated once, metrics and624-row CSV are produced.
+Then verify.py reloads every full checkpoint and repeats all624 image forwards,
+checking every prediction, actual epoch counts, BatchNorm update counts and metrics.
+Do not claim completion until independent_verification.json says verified=true.
+
+Create an executed results notebook showing code, declared protocol and measured
+outputs. Update only result-dependent deck/report/preparation sections. The M3
+crop plus ViT hypothesis stays unimplemented. Re-render and inspect the final
+presentation/report, then rebuild the submission bundle. Keep the older runs.
+
+Fixed budgets cannot establish exact author equivalence where settings are not
+published. Bad results remain valid measured results and must not be hidden.

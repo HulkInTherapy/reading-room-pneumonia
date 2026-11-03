@@ -1,0 +1,7 @@
+{
+  "unique_images": 5824,
+  "automatic_fallbacks": 82,
+  "median_crop_area_fraction": 0.7109887207985908,
+  "min_crop_area_fraction": 0.1771903743891923,
+  "max_crop_area_fraction": 1.0
+}

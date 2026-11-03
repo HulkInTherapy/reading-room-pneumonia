@@ -1,0 +1,25 @@
+{
+  "status": "passed",
+  "sample_id": "234",
+  "prediction": "Pneumonia",
+  "score": 0.9994972467422485,
+  "live_probabilities_match_saved_test_outputs": true,
+  "upload_and_sample_equivalent": true,
+  "jpeg_upload_valid": true,
+  "real_gradcam_png_valid": true,
+  "invalid_image_status": 400,
+  "missing_input_status": 400,
+  "unknown_sample_status": 404,
+  "seconds": 2.6544430255889893,
+  "explanation": {
+    "method": "Grad-CAM",
+    "component": "ResNet18",
+    "target_class": "Pneumonia",
+    "source_resolution": "7 x 7, upscaled to 224 x 224",
+    "image_left_activation_share": 0.48019171288896056,
+    "image_right_activation_share": 0.5198082871110394,
+    "positive_activation": true,
+    "component_pneumonia_score": 0.999847412109375,
+    "component_vote": "Pneumonia"
+  }
+}

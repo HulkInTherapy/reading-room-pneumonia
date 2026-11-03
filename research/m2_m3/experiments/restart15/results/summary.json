@@ -1,0 +1,170 @@
+{
+  "protocol": "Fresh ImageNet initialization; group validation; 15 epochs; batch16; four fixed views; validation-selected checkpoints; fixed0.5 components and majority vote",
+  "metrics": {
+    "n": 624,
+    "accuracy": 0.8573717948717948,
+    "sensitivity": 0.9974358974358974,
+    "specificity": 0.6239316239316239,
+    "precision": 0.8155136268343816,
+    "pneumonia_f1": 0.8973471741637832,
+    "normal_f1": 0.7664041994750657,
+    "macro_f1": 0.8318756868194244,
+    "balanced_accuracy": 0.8106837606837607,
+    "auc": 0.972260574183651,
+    "confusion_matrix": [
+      [
+        146,
+        88
+      ],
+      [
+        1,
+        389
+      ]
+    ]
+  },
+  "validation": {
+    "epoch_validation_ensembles": {
+      "5": {
+        "n": 1042,
+        "accuracy": 0.9875239923224568,
+        "sensitivity": 0.9909326424870466,
+        "specificity": 0.9777777777777777,
+        "precision": 0.9922178988326849,
+        "pneumonia_f1": 0.9915748541801686,
+        "normal_f1": 0.9759704251386322,
+        "macro_f1": 0.9837726396594004,
+        "balanced_accuracy": 0.9843552101324122,
+        "auc": 0.9993955094991365,
+        "confusion_matrix": [
+          [
+            264,
+            6
+          ],
+          [
+            7,
+            765
+          ]
+        ]
+      },
+      "10": {
+        "n": 1042,
+        "accuracy": 0.9788867562380038,
+        "sensitivity": 0.9727979274611399,
+        "specificity": 0.9962962962962963,
+        "precision": 0.9986702127659575,
+        "pneumonia_f1": 0.9855643044619422,
+        "normal_f1": 0.9607142857142857,
+        "macro_f1": 0.9731392950881139,
+        "balanced_accuracy": 0.9845471118787181,
+        "auc": 0.9991220495106505,
+        "confusion_matrix": [
+          [
+            269,
+            1
+          ],
+          [
+            21,
+            751
+          ]
+        ]
+      },
+      "15": {
+        "n": 1042,
+        "accuracy": 0.980806142034549,
+        "sensitivity": 0.9753886010362695,
+        "specificity": 0.9962962962962963,
+        "precision": 0.9986737400530504,
+        "pneumonia_f1": 0.9868938401048493,
+        "normal_f1": 0.96415770609319,
+        "macro_f1": 0.9755257730990197,
+        "balanced_accuracy": 0.9858424486662829,
+        "auc": 0.999155632316254,
+        "confusion_matrix": [
+          [
+            269,
+            1
+          ],
+          [
+            19,
+            753
+          ]
+        ]
+      }
+    },
+    "selected_validation_ensemble": {
+      "n": 1042,
+      "accuracy": 0.989443378119002,
+      "sensitivity": 0.9935233160621761,
+      "specificity": 0.9777777777777777,
+      "precision": 0.9922380336351876,
+      "pneumonia_f1": 0.9928802588996763,
+      "normal_f1": 0.9795918367346939,
+      "macro_f1": 0.9862360478171851,
+      "balanced_accuracy": 0.985650546919977,
+      "auc": 0.9991460372289387,
+      "confusion_matrix": [
+        [
+          264,
+          6
+        ],
+        [
+          5,
+          767
+        ]
+      ]
+    },
+    "test_evaluated": false
+  },
+  "selected_epochs": {
+    "resnet18": 13,
+    "densenet121": 9,
+    "googlenet": 5,
+    "inception_v3": 13,
+    "alexnet": 1
+  },
+  "old_five_epoch_metrics": {
+    "n": 624,
+    "accuracy": 0.8717948717948718,
+    "sensitivity": 0.9974358974358974,
+    "specificity": 0.6623931623931624,
+    "precision": 0.8311965811965812,
+    "pneumonia_f1": 0.9067599067599068,
+    "normal_f1": 0.7948717948717948,
+    "macro_f1": 0.8508158508158508,
+    "balanced_accuracy": 0.8299145299145299,
+    "auc": 0.9815362699978085,
+    "confusion_matrix": [
+      [
+        155,
+        79
+      ],
+      [
+        1,
+        389
+      ]
+    ]
+  },
+  "warning": "Multiple settings/split changed; this comparison does not isolate epoch count. Test was inspected in earlier work; no test-based selection in this run.",
+  "unique_test_metrics": {
+    "n": 618,
+    "accuracy": 0.8576051779935275,
+    "sensitivity": 0.9974160206718347,
+    "specificity": 0.6233766233766234,
+    "precision": 0.8160676532769556,
+    "pneumonia_f1": 0.8976744186046511,
+    "normal_f1": 0.7659574468085106,
+    "macro_f1": 0.8318159327065808,
+    "balanced_accuracy": 0.810396322024229,
+    "auc": 0.9720740069577279,
+    "confusion_matrix": [
+      [
+        144,
+        87
+      ],
+      [
+        1,
+        386
+      ]
+    ]
+  }
+}

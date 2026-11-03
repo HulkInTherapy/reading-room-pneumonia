@@ -1,0 +1,50 @@
+{
+  "query": "pneumonia CNN vision transformer ensemble hybrid chest xray 2024 2025",
+  "follow_up_questions": null,
+  "answer": null,
+  "images": [],
+  "results": [
+    {
+      "url": "https://hightechjournal.org/index.php/HIJ/article/view/1607",
+      "title": "A Novel Hybrid ViT-CNN Approach for Pneumonia and ...",
+      "content": "(2025). Enhanced pneumonia detection in chest X-rays using hybrid convolutional and vision transformer networks. Current Medical Imaging, 21(1), 1-23. doi",
+      "score": 0.81025416,
+      "raw_content": null,
+      "id": "9ef4c0-00"
+    },
+    {
+      "url": "https://www.sciencedirect.com/org/science/article/pii/S1573405625000931",
+      "title": "Enhanced Pneumonia Detection in Chest x-rays using Hybrid Convolutional and Vision Transformer Networks",
+      "content": "The proposed hybrid CNN-ViT model, which integrates modified Swin Transformer blocks within the CNN architecture, provides a significant advancement in pneumonia detection by effectively capturing both local and global features within chest X-ray images. The modifications to the Swin Transformer blocks enable them to work seamlessly with the CNN layers, enhancing the model\u2019s ability to understand complex visual patterns and dependencies. This results in superior classification performance. The lightweight design of the model eliminates the need for extensive hardware, facilitating easy deployment in resource-constrained settings. This innovative approach not only improves pneumonia diagnosis but also has the potential to enhance patient outcomes and support healthcare providers in [...] Skip to main contentSkip to article\n\nImage 2: Elsevier logo\n\n   Journals & Books\n\n   Help   \n   Search \n\nMy account\n\nSign in\n\nImage 3: Current Medical Imaging\n\n## Current Medical Imaging\n\nDate:2025\n\nVolume:Volume 21\n\nView accessibility information\n\n## Published by:Bentham Science Publishers\n\n### Published by\n\nImage 4: Bentham Science Publishers\n\nShow more\n\nResearch article\n\nOpen access\n\nUnder a Creative Commons license\n\n# Medicine, Imaging, Radiology, Nuclear Medicine\n\nEnhanced Pneumonia Detection in Chest x-rays using Hybrid Convolutional and Vision Transformer Networks\n\nAuthor links open overlay panel Benzorgat Mustapha 1, Yatong Zhou 1, Chunyan Shan 2, Zhitao Xiao 3\n\nShow more\n\nView at publisher\n\nCite\n\nAdd to Mendeley\n\nShare\n\n10.2174/0115734056326685250101113959\n\nMore actions [...] ## Keywords\n\nPneumonia detection\n\n; \n\nVision transformers\n\n; \n\nDeep learning\n\n; \n\nHyperparameter optimization\n\n; \n\nComputer-aided diagnosis\n\n; \n\nCLAHE\n\n; \n\nConvolutional neural networks\n\n; \n\nSwin transformer\n\n; \n\nMedical image processing\n\n; \n\nChest X-ray imaging\n\n   Previous article in this issue\n   Next article in this issue\n\nSorry, something went wrong. Please try again and make sure cookies are enabled\n\n## Recommended articles\n\nRecommended articles cannot be displayed at this time.\n\n## Metrics\n\n### Citations\n\n   Citation Indexes 25\n\n### Captures\n\n   Mendeley Readers 65\n\nImage 5: PlumX Metrics LogoView details\n\n\u00a9 2025 The Author(s).\n\nImage 6: Elsevier logo with wordmark",
+      "score": 0.74652773,
+      "raw_content": null,
+      "id": "c19805-01"
+    },
+    {
+      "url": "https://www.nature.com/articles/s41598-024-52703-2",
+      "title": "Efficient pneumonia detection using Vision Transformers on chest X-rays | Scientific Reports",
+      "content": "Hybrid designs integrate Convolutional Neural Networks (CNNs) and Vision Transformers (ViTs) for tasks such as pneumonia detection in chest X-ray images, we first use a CNN as the feature extractor, removing its fully connected layers while retaining its convolutional and pooling layers. The CNN-generated feature maps are then separated into non-overlapping patches, and each patch is converted into a high-dimensional embedding vector. These embeddings, which depict local characteristics, are then fed into the ViT model in order to capture global dependencies and contextual information across the entire image. For final predictions, a classification head is appended to the ViT output. The entire hybrid model, comprised of the CNN feature extractor and the ViT model, is trained from [...] CNN feature extractor and the ViT model, is trained from beginning to end using labeled data, with fine-tuning strategies tailored to the specific dataset and computational resources available. This approach maximizes the extraction of both local and global information, optimizing performance for complex image analysis tasks.Transformers process CNN-extracted features. This hybrid strategy uses CNNs (local feature extraction) and transformers (global context modeling) to improve performance. Pyramid Vision Transformer (PVT captures multi-scale information hierarchically. Multiple steps process features at varying resolutions. The model effectively captures local and global information. A convoluted Vision Transformer (ConvViT) is a Self-attention mechanism with convolutional layers. [...] on a public dataset of chest X-rays available on Kaggle. To acquire global context and spatial relationships from chest X-ray images, the proposed framework deploys the ViT model, which integrates self-attention mechanisms and transformer architecture. According to our experimentation with the proposed Vision Transformer-based framework, it achieves a higher accuracy of 97.61%, sensitivity of 95%, and specificity of 98% in detecting pneumonia from chest X-rays. The ViT model is preferable for capturing global context, comprehending spatial relationships, and processing images that have different resolutions. The framework establishes its efficacy as a robust pneumonia detection solution by surpassing convolutional neural network (CNN) based architectures.",
+      "score": 0.7018975,
+      "raw_content": null,
+      "id": "c00cb0-02"
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10248870",
+      "title": "A hybrid explainable ensemble transformer encoder for pneumonia identification from chest X-ray images",
+      "content": "Transformers ,  are attention mechanism-based deep neural network architectures initially designed for natural language processing (NLP) tasks. After obtaining state-of-the-art performance in NLP, it motivated the vision community to investigate its usefulness in vision challenges to take advantage of its capacity to represent long-range dependence inside an image . The Vision Transformer (ViT) is among the successful efforts to deploy Transformer explicitly on images, obtaining good results in image classification tests compared to state-of-the-art CNN . Despite its better performance, it has a simple modular architecture allowing several extensive applicability in various jobs with minimum alteration. Chen et al.  bintroduced an image recognition transformer, one of the promising [...] purpose. We fine-tuned the vision transformer to suit our identification task where the transformer received an input size of (12, 12, 4480) and (12, 12, 5504) in terms of Ensemble A and B, respectively. Since different deep learning models are used for this study, the ReLU activation function is used in the internal convolutional layers, while the the softmax is used for the output layer as a prediction regression to find the final class probabilitieis. [...] Despite the fact that VisTransf architectures demand a greater number of training samples than CNN architectures, the most common strategy is to utilize a pre-trained network and afterward fine-tune it on a smaller undertaking sample which was done in this paper. The following are the benefits of our fine-tuned architecture over CNN design: (1) The proposed hybrid architecture integrates more spatial information than ResNet (CNN) at lower layers, resulting in statistically distinct features. (2) In the implemented model, skip connections are significantly more prominent than in ResNet (CNN), with significant effects on efficiency and representation comparability. (3) ResNet needed lower layers to calculate representations that were equivalent to a limited number of the implemented lower",
+      "score": 0.6977124,
+      "raw_content": null,
+      "id": "79e727-03"
+    },
+    {
+      "url": "https://www.researchsquare.com/article/rs-9503702/latest.pdf",
+      "title": "Explainable Hybrid ConvNeXt\u2013Vision Transformer Model ...",
+      "content": "This paper proposes an understandable ensemble deep learning framework to automate pneumonia detection from chest X-ray images using a",
+      "score": 0.6778372,
+      "raw_content": null,
+      "id": "92cd60-04"
+    }
+  ],
+  "response_time": 2.81,
+  "request_id": "f1f38607-ee23-438e-b162-996e12518c80"
+}

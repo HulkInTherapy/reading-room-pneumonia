@@ -1,0 +1,240 @@
+{
+  "verified": true,
+  "test_records": 624,
+  "test_order_labels_hashes_match_manifest": true,
+  "models": [
+    {
+      "model": "resnet18",
+      "images": 624,
+      "max_probability_difference": 1.3113021850585938e-06,
+      "max_cached_feature_difference": 0.0,
+      "decision_changes": 0,
+      "seconds": 25.20000195503235,
+      "test_metrics": {
+        "n": 624,
+        "accuracy": 0.8493589743589743,
+        "sensitivity": 0.9974358974358974,
+        "specificity": 0.6025641025641025,
+        "precision": 0.8070539419087137,
+        "pneumonia_f1": 0.8922018348623854,
+        "normal_f1": 0.75,
+        "macro_f1": 0.8211009174311927,
+        "balanced_accuracy": 0.8,
+        "auc": 0.9737453429761123,
+        "confusion_matrix": [
+          [
+            141,
+            93
+          ],
+          [
+            1,
+            389
+          ]
+        ]
+      }
+    },
+    {
+      "model": "densenet121",
+      "images": 624,
+      "max_probability_difference": 1.5497207641601562e-06,
+      "max_cached_feature_difference": 0.0,
+      "decision_changes": 0,
+      "seconds": 88.1205108165741,
+      "test_metrics": {
+        "n": 624,
+        "accuracy": 0.8477564102564102,
+        "sensitivity": 0.9948717948717949,
+        "specificity": 0.6025641025641025,
+        "precision": 0.8066528066528067,
+        "pneumonia_f1": 0.8909299655568312,
+        "normal_f1": 0.7480106100795756,
+        "macro_f1": 0.8194702878182034,
+        "balanced_accuracy": 0.7987179487179488,
+        "auc": 0.9809116809116809,
+        "confusion_matrix": [
+          [
+            141,
+            93
+          ],
+          [
+            2,
+            388
+          ]
+        ]
+      }
+    },
+    {
+      "model": "googlenet",
+      "images": 624,
+      "max_probability_difference": 4.470348358154297e-07,
+      "max_cached_feature_difference": 0.0,
+      "decision_changes": 0,
+      "seconds": 51.0943067073822,
+      "test_metrics": {
+        "n": 624,
+        "accuracy": 0.8509615384615384,
+        "sensitivity": 0.9974358974358974,
+        "specificity": 0.6068376068376068,
+        "precision": 0.8087318087318087,
+        "pneumonia_f1": 0.8932261768082663,
+        "normal_f1": 0.753315649867374,
+        "macro_f1": 0.8232709133378202,
+        "balanced_accuracy": 0.8021367521367522,
+        "auc": 0.9646066184527724,
+        "confusion_matrix": [
+          [
+            142,
+            92
+          ],
+          [
+            1,
+            389
+          ]
+        ]
+      }
+    },
+    {
+      "model": "inception_v3",
+      "images": 624,
+      "max_probability_difference": 5.364418029785156e-07,
+      "max_cached_feature_difference": 0.0,
+      "decision_changes": 0,
+      "seconds": 37.55093693733215,
+      "test_metrics": {
+        "n": 624,
+        "accuracy": 0.8525641025641025,
+        "sensitivity": 0.9897435897435898,
+        "specificity": 0.6239316239316239,
+        "precision": 0.8143459915611815,
+        "pneumonia_f1": 0.8935185185185185,
+        "normal_f1": 0.7604166666666666,
+        "macro_f1": 0.8269675925925926,
+        "balanced_accuracy": 0.8068376068376069,
+        "auc": 0.9673679596756519,
+        "confusion_matrix": [
+          [
+            146,
+            88
+          ],
+          [
+            4,
+            386
+          ]
+        ]
+      }
+    },
+    {
+      "model": "alexnet",
+      "images": 624,
+      "max_probability_difference": 1.1920928955078125e-07,
+      "max_cached_feature_difference": 0.0,
+      "decision_changes": 0,
+      "seconds": 14.841388702392578,
+      "test_metrics": {
+        "n": 624,
+        "accuracy": 0.8333333333333334,
+        "sensitivity": 1.0,
+        "specificity": 0.5555555555555556,
+        "precision": 0.7894736842105263,
+        "pneumonia_f1": 0.8823529411764706,
+        "normal_f1": 0.7142857142857143,
+        "macro_f1": 0.7983193277310925,
+        "balanced_accuracy": 0.7777777777777778,
+        "auc": 0.9613412228796845,
+        "confusion_matrix": [
+          [
+            130,
+            104
+          ],
+          [
+            0,
+            390
+          ]
+        ]
+      }
+    }
+  ],
+  "ensemble": {
+    "n": 624,
+    "accuracy": 0.8573717948717948,
+    "sensitivity": 0.9974358974358974,
+    "specificity": 0.6239316239316239,
+    "precision": 0.8155136268343816,
+    "pneumonia_f1": 0.8973471741637832,
+    "normal_f1": 0.7664041994750657,
+    "macro_f1": 0.8318756868194244,
+    "balanced_accuracy": 0.8106837606837607,
+    "auc": 0.972260574183651,
+    "confusion_matrix": [
+      [
+        146,
+        88
+      ],
+      [
+        1,
+        389
+      ]
+    ]
+  },
+  "view_diagnostics": {
+    "resnet18": {
+      "selected_epoch": 13,
+      "selected_training_view": "clean",
+      "mean_validation_macro_f1_by_view": {
+        "clean": 0.9792656192580285,
+        "aug1": 0.9682595159357814,
+        "aug2": 0.9708013934631633,
+        "aug3": 0.9625190163029528
+      }
+    },
+    "densenet121": {
+      "selected_epoch": 9,
+      "selected_training_view": "clean",
+      "mean_validation_macro_f1_by_view": {
+        "clean": 0.976717508594329,
+        "aug1": 0.9680375811729796,
+        "aug2": 0.970179363999913,
+        "aug3": 0.953871979279477
+      }
+    },
+    "googlenet": {
+      "selected_epoch": 5,
+      "selected_training_view": "clean",
+      "mean_validation_macro_f1_by_view": {
+        "clean": 0.9752636414750272,
+        "aug1": 0.9331500020140604,
+        "aug2": 0.936604516929086,
+        "aug3": 0.9291181396627581
+      }
+    },
+    "inception_v3": {
+      "selected_epoch": 13,
+      "selected_training_view": "clean",
+      "mean_validation_macro_f1_by_view": {
+        "clean": 0.970806088296362,
+        "aug1": 0.9438293382295257,
+        "aug2": 0.9549492253415925,
+        "aug3": 0.9515661946577625
+      }
+    },
+    "alexnet": {
+      "selected_epoch": 1,
+      "selected_training_view": "clean",
+      "mean_validation_macro_f1_by_view": {
+        "clean": 0.9683541816400761,
+        "aug1": 0.9335368442682009,
+        "aug2": 0.9309493869573109,
+        "aug3": 0.9291637976595286
+      }
+    }
+  },
+  "filename_group_proxy_intersections": {
+    "train/validation": 0,
+    "train/test": 134,
+    "validation/test": 36
+  },
+  "proxy_warning": "Shared pneumonia person numbers mainly occur across bacterial/viral filenames and may be reused counters. They do not prove shared patients. No exact source hash overlaps non-test/test. Patient-independent test evaluation has NOT been certified.",
+  "threshold_selected_on_test": false,
+  "weights_modified": false,
+  "note": "Every original test image was forwarded freshly through its normalized image input and ImageNet prefix; no cached test feature was used to produce these predictions. Existing caches were compared only for diagnosis."
+}

@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Models &mdash; TorchXRayVision 1.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=86f27845" />
+
+  
+  
+        <script src="_static/jquery.js?v=8dae8fb0" type="b41268c08e0d40ff3e50b3bd-text/javascript"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c" type="b41268c08e0d40ff3e50b3bd-text/javascript"></script>
+        <script src="_static/documentation_options.js?v=292eb321" type="b41268c08e0d40ff3e50b3bd-text/javascript"></script>
+        <script src="_static/doctools.js?v=888ff710" type="b41268c08e0d40ff3e50b3bd-text/javascript"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c" type="b41268c08e0d40ff3e50b3bd-text/javascript"></script>
+    <script src="_static/js/theme.js" type="b41268c08e0d40ff3e50b3bd-text/javascript"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Dataset Helpers" href="dataset_helpers.html" />
+    <link rel="prev" title="Introduction" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #fcfcfc" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/torchxrayvision-logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-xrv.models">Model Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#xrv.models.Model"><code class="docutils literal notranslate"><span class="pre">Model</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#xrv.models.Model.forward"><code class="docutils literal notranslate"><span class="pre">Model.forward()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#xrv.models.Model.targets"><code class="docutils literal notranslate"><span class="pre">Model.targets</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#xrv.models.Model.features"><code class="docutils literal notranslate"><span class="pre">Model.features()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#xrv-pathology-classifiers">XRV Pathology Classifiers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#xrv.models.DenseNet"><code class="docutils literal notranslate"><span class="pre">DenseNet</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#xrv.models.DenseNet.targets"><code class="docutils literal notranslate"><span class="pre">DenseNet.targets</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#xrv.models.ResNet"><code class="docutils literal notranslate"><span class="pre">ResNet</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#xrv.models.ResNet.targets"><code class="docutils literal notranslate"><span class="pre">ResNet.targets</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-xrv.autoencoders">XRV ResNet Autoencoder</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#xrv.autoencoders.ResNetAE"><code class="docutils literal notranslate"><span class="pre">ResNetAE</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#chexpert-pathology-classifier">CheXpert Pathology Classifier</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#xrv.baseline_models.chexpert.DenseNet"><code class="docutils literal notranslate"><span class="pre">DenseNet</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#xrv.baseline_models.chexpert.DenseNet.targets"><code class="docutils literal notranslate"><span class="pre">DenseNet.targets</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#jf-healthcare-pathology-classifier">JF Healthcare Pathology Classifier</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#xrv.baseline_models.jfhealthcare.DenseNet"><code class="docutils literal notranslate"><span class="pre">DenseNet</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#xrv.baseline_models.jfhealthcare.DenseNet.targets"><code class="docutils literal notranslate"><span class="pre">DenseNet.targets</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#chestx-det-segmentation">ChestX-Det Segmentation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#xrv.baseline_models.chestx_det.PSPNet"><code class="docutils literal notranslate"><span class="pre">PSPNet</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#xrv.baseline_models.chestx_det.PSPNet.targets"><code class="docutils literal notranslate"><span class="pre">PSPNet.targets</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#cxas-chestxrayanatomy-segmentation-model">CXAS ChestXRayAnatomy Segmentation model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#xrv.baseline_models.chestx_anatomy.UNetResNet50"><code class="docutils literal notranslate"><span class="pre">UNetResNet50</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#emory-hiti-race">Emory HITI Race</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#xrv.baseline_models.emory_hiti.RaceModel"><code class="docutils literal notranslate"><span class="pre">RaceModel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#xrv.baseline_models.emory_hiti.RaceModel.targets"><code class="docutils literal notranslate"><span class="pre">RaceModel.targets</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#riken-age-model">Riken Age Model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#xrv.baseline_models.riken.AgeModel"><code class="docutils literal notranslate"><span class="pre">AgeModel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#xrv.baseline_models.riken.AgeModel.targets"><code class="docutils literal notranslate"><span class="pre">AgeModel.targets</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#xinario-view-model">Xinario View Model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#xrv.baseline_models.xinario.ViewModel"><code class="docutils literal notranslate"><span class="pre">ViewModel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#xrv.baseline_models.xinario.ViewModel.targets"><code class="docutils literal notranslate"><span class="pre">ViewModel.targets</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#mira-sex-model">Mira Sex Model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#xrv.baseline_models.mira.SexModel"><code class="docutils literal notranslate"><span class="pre">SexModel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#xrv.baseline_models.mira.SexModel.targets"><code class="docutils literal notranslate"><span class="pre">SexModel.targets</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#vqgan-autoencoder">VQGAN Autoencoder</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#xrv.baseline_models.ieee8023.VQGAN"><code class="docutils literal notranslate"><span class="pre">VQGAN</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="dataset_helpers.html">Dataset Helpers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dataset_helpers.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dataset_helpers.html#combining-datasets">Combining Datasets</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dataset_helpers.html#xrv.datasets.MergeDataset"><code class="docutils literal notranslate"><span class="pre">MergeDataset</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="dataset_helpers.html#xrv.datasets.FilterDataset"><code class="docutils literal notranslate"><span class="pre">FilterDataset</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="dataset_helpers.html#xrv.datasets.SubsetDataset"><code class="docutils literal notranslate"><span class="pre">SubsetDataset</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dataset_helpers.html#label-alignment">Label Alignment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dataset_helpers.html#xrv.datasets.relabel_dataset"><code class="docutils literal notranslate"><span class="pre">relabel_dataset()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dataset_helpers.html#image-transforms">Image Transforms</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dataset_helpers.html#xrv.datasets.XRayCenterCrop"><code class="docutils literal notranslate"><span class="pre">XRayCenterCrop</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="dataset_helpers.html#xrv.datasets.XRayResizer"><code class="docutils literal notranslate"><span class="pre">XRayResizer</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dataset_helpers.html#covariate-shift-simulation">Covariate Shift Simulation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dataset_helpers.html#xrv.datasets.CovariateDataset"><code class="docutils literal notranslate"><span class="pre">CovariateDataset</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="datasets.html">Datasets</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="datasets.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datasets.html#available-datasets">Available Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datasets.html#base-class">Base Class</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="datasets.html#xrv.datasets.Dataset"><code class="docutils literal notranslate"><span class="pre">Dataset</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="datasets.html#xrv.datasets.Dataset.pathologies"><code class="docutils literal notranslate"><span class="pre">Dataset.pathologies</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="datasets.html#xrv.datasets.Dataset.labels"><code class="docutils literal notranslate"><span class="pre">Dataset.labels</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="datasets.html#xrv.datasets.Dataset.csv"><code class="docutils literal notranslate"><span class="pre">Dataset.csv</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="datasets.html#xrv.datasets.Dataset.totals"><code class="docutils literal notranslate"><span class="pre">Dataset.totals()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="datasets.html#xrv.datasets.Dataset.__repr__"><code class="docutils literal notranslate"><span class="pre">Dataset.__repr__()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="datasets.html#dataset-classes">Dataset Classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="datasets.html#xrv.datasets.NIH_Dataset"><code class="docutils literal notranslate"><span class="pre">NIH_Dataset</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datasets.html#xrv.datasets.NIH_Google_Dataset"><code class="docutils literal notranslate"><span class="pre">NIH_Google_Dataset</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datasets.html#xrv.datasets.CheX_Dataset"><code class="docutils literal notranslate"><span class="pre">CheX_Dataset</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datasets.html#xrv.datasets.MIMIC_Dataset"><code class="docutils literal notranslate"><span class="pre">MIMIC_Dataset</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datasets.html#xrv.datasets.BRAX_Dataset"><code class="docutils literal notranslate"><span class="pre">BRAX_Dataset</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datasets.html#xrv.datasets.PC_Dataset"><code class="docutils literal notranslate"><span class="pre">PC_Dataset</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datasets.html#xrv.datasets.RSNA_Pneumonia_Dataset"><code class="docutils literal notranslate"><span class="pre">RSNA_Pneumonia_Dataset</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datasets.html#xrv.datasets.Openi_Dataset"><code class="docutils literal notranslate"><span class="pre">Openi_Dataset</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datasets.html#xrv.datasets.COVID19_Dataset"><code class="docutils literal notranslate"><span class="pre">COVID19_Dataset</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datasets.html#xrv.datasets.NLMTB_Dataset"><code class="docutils literal notranslate"><span class="pre">NLMTB_Dataset</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datasets.html#xrv.datasets.TBX11K_Dataset"><code class="docutils literal notranslate"><span class="pre">TBX11K_Dataset</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datasets.html#xrv.datasets.SIIM_Pneumothorax_Dataset"><code class="docutils literal notranslate"><span class="pre">SIIM_Pneumothorax_Dataset</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datasets.html#xrv.datasets.VinDr_Dataset"><code class="docutils literal notranslate"><span class="pre">VinDr_Dataset</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datasets.html#xrv.datasets.StonyBrookCOVID_Dataset"><code class="docutils literal notranslate"><span class="pre">StonyBrookCOVID_Dataset</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datasets.html#xrv.datasets.ObjectCXR_Dataset"><code class="docutils literal notranslate"><span class="pre">ObjectCXR_Dataset</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">Utilities Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="utilities.html#image-i-o">Image I/O</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utilities.html#inference-helpers">Inference Helpers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utilities.html#download-caching">Download / Caching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utilities.html#resolution-preprocessing">Resolution &amp; Preprocessing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utilities.html#dataset-composition">Dataset Composition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utilities.html#mask-segmentation-support">Mask &amp; Segmentation Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utilities.html#pathology-handling">Pathology Handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utilities.html#end-to-end-pipeline">End-to-End Pipeline</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ / Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="faq.html#missing-pydicom">Missing pydicom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html#cache-download-issues">Cache / download issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html#unexpected-0-5-predictions">Unexpected ~0.5 predictions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html#dicom-monochrome1-inversion">DICOM MONOCHROME1 inversion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html#incorrect-image-intensity-range">Incorrect image intensity range</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html#slow-first-import-due-to-downloads">Slow first import due to downloads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html#reproducibility-non-determinism">Reproducibility / non-determinism</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #fcfcfc" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">TorchXRayVision</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Models</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/mlmed/torchxrayvision/blob/main/docs/source/models.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="models">
+<h1>Models<a class="headerlink" href="#models" title="Link to this heading"></a></h1>
+<p>Model benchmarks for classifiers are <a class="reference external" href="https://github.com/mlmed/torchxrayvision/blob/main/BENCHMARKS.md">here</a></p>
+<section id="module-xrv.models">
+<span id="model-interface"></span><h2>Model Interface<a class="headerlink" href="#module-xrv.models" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="xrv.models.Model">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">xrv.models.</span></span><span class="sig-name descname"><span class="pre">Model</span></span><a class="headerlink" href="#xrv.models.Model" title="Link to this definition"></a></dt>
+<dd><p>The library is composed of core and baseline classifiers. Core
+classifiers are trained specifically for this library and baseline
+classifiers come from other papers that have been adapted to provide the
+same interface and work with the same input pixel scaling as our core
+models. All models will automatically resize input images (higher or
+lower using bilinear interpolation) to match the specified size they were
+trained on. This allows them to be easily swapped out for experiments.
+Pre-trained models are hosted on GitHub and automatically downloaded to
+the user’s local <cite>~/.torchxrayvision</cite> directory.</p>
+<p>Core pre-trained classifiers are provided as PyTorch Modules which are
+fully differentiable in order to work seamlessly with other PyTorch code.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="xrv.models.Model.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tensor</span></span></span><a class="headerlink" href="#xrv.models.Model.forward" title="Link to this definition"></a></dt>
+<dd><p>The model will output a tensor with the shape [batch, pathologies]
+which is aligned to the order of the list <cite>model.pathologies</cite>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">preds</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">targets</span><span class="p">,</span> <span class="n">preds</span><span class="o">.</span><span class="n">tolist</span><span class="p">()[</span><span class="mi">0</span><span class="p">])))</span>
+<span class="c1"># {&#39;Atelectasis&#39;: 0.5583771,</span>
+<span class="c1">#  &#39;Consolidation&#39;: 0.5279943,</span>
+<span class="c1">#  &#39;Infiltration&#39;: 0.60061914,</span>
+<span class="c1">#  ...</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="xrv.models.Model.targets">
+<span class="sig-name descname"><span class="pre">targets</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#xrv.models.Model.targets" title="Link to this definition"></a></dt>
+<dd><p>Each classifier provides a field <cite>model.targets</cite> which aligns to
+the list of predictions that the model makes. Depending on the
+weights loaded this list will change. The predictions can be aligned
+to pathology names as follows:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xrv.models.Model.features">
+<span class="sig-name descname"><span class="pre">features</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tensor</span></span></span><a class="headerlink" href="#xrv.models.Model.features" title="Link to this definition"></a></dt>
+<dd><p>The pre-trained models can also be used as features extractors for
+semi-supervised training or transfer learning tasks. A feature vector
+can be obtained for each image using the model.features function. The
+resulting size will vary depending on the architecture and the input
+image size. For some models there is a model.features2 method that
+will extract features at a different point of the computation graph.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">feats</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">features</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="xrv-pathology-classifiers">
+<h2>XRV Pathology Classifiers<a class="headerlink" href="#xrv-pathology-classifiers" title="Link to this heading"></a></h2>
+<blockquote>
+<div><dl class="py class">
+<dt class="sig sig-object py" id="xrv.models.DenseNet">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">xrv.models.</span></span><span class="sig-name descname"><span class="pre">DenseNet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weights</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">SPECIFY</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">op_threshs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">apply_sigmoid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#xrv.models.DenseNet" title="Link to this definition"></a></dt>
+<dd><p>Pre-trained DenseNet-121 pathology classifier</p>
+<p>Based on
+<a class="reference external" href="https://arxiv.org/abs/1608.06993">“Densely Connected Convolutional Networks”</a></p>
+<p>Models are trained on a single dataset or a combination of datasets and
+predict up to 18 chest pathologies. Input images are automatically resized
+to the resolution the model was trained on (224 × 224 for all current
+weights).</p>
+<p>Available pre-trained weights:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">xrv</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">DenseNet</span><span class="p">(</span><span class="n">weights</span><span class="o">=</span><span class="s2">&quot;densenet121-res224-all&quot;</span><span class="p">)</span>       <span class="c1"># trained on all datasets</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">xrv</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">DenseNet</span><span class="p">(</span><span class="n">weights</span><span class="o">=</span><span class="s2">&quot;densenet121-res224-rsna&quot;</span><span class="p">)</span>      <span class="c1"># RSNA Pneumonia Challenge</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">xrv</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">DenseNet</span><span class="p">(</span><span class="n">weights</span><span class="o">=</span><span class="s2">&quot;densenet121-res224-nih&quot;</span><span class="p">)</span>       <span class="c1"># NIH ChestX-ray14</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">xrv</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">DenseNet</span><span class="p">(</span><span class="n">weights</span><span class="o">=</span><span class="s2">&quot;densenet121-res224-pc&quot;</span><span class="p">)</span>        <span class="c1"># PadChest</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">xrv</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">DenseNet</span><span class="p">(</span><span class="n">weights</span><span class="o">=</span><span class="s2">&quot;densenet121-res224-chex&quot;</span><span class="p">)</span>      <span class="c1"># CheXpert (Stanford)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">xrv</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">DenseNet</span><span class="p">(</span><span class="n">weights</span><span class="o">=</span><span class="s2">&quot;densenet121-res224-mimic_nb&quot;</span><span class="p">)</span>  <span class="c1"># MIMIC-CXR (MIT)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">xrv</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">DenseNet</span><span class="p">(</span><span class="n">weights</span><span class="o">=</span><span class="s2">&quot;densenet121-res224-mimic_ch&quot;</span><span class="p">)</span>  <span class="c1"># MIMIC-CXR (MIT)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>weights</strong> – Name of pre-trained weights to load. See above for options.</p></li>
+<li><p><strong>cache_dir</strong> – Directory used to store downloaded weights
+(default: <code class="docutils literal notranslate"><span class="pre">~/.torchxrayvision/</span></code>).</p></li>
+<li><p><strong>op_threshs</strong> – Per-pathology operating-point thresholds. When set,
+outputs are re-scaled so that the threshold maps to 0.5.</p></li>
+<li><p><strong>apply_sigmoid</strong> – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, apply a sigmoid to the raw logits before
+returning. Ignored when <code class="docutils literal notranslate"><span class="pre">op_threshs</span></code> is also set.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="xrv.models.DenseNet.targets">
+<span class="sig-name descname"><span class="pre">targets</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['Atelectasis',</span> <span class="pre">'Consolidation',</span> <span class="pre">'Infiltration',</span> <span class="pre">'Pneumothorax',</span> <span class="pre">'Edema',</span> <span class="pre">'Emphysema',</span> <span class="pre">'Fibrosis',</span> <span class="pre">'Effusion',</span> <span class="pre">'Pneumonia',</span> <span class="pre">'Pleural_Thickening',</span> <span class="pre">'Cardiomegaly',</span> <span class="pre">'Nodule',</span> <span class="pre">'Mass',</span> <span class="pre">'Hernia',</span> <span class="pre">'Lung</span> <span class="pre">Lesion',</span> <span class="pre">'Fracture',</span> <span class="pre">'Lung</span> <span class="pre">Opacity',</span> <span class="pre">'Enlarged</span> <span class="pre">Cardiomediastinum']</span></em><a class="headerlink" href="#xrv.models.DenseNet.targets" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="xrv.models.ResNet">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">xrv.models.</span></span><span class="sig-name descname"><span class="pre">ResNet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weights</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">SPECIFY</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">op_threshs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">apply_sigmoid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#xrv.models.ResNet" title="Link to this definition"></a></dt>
+<dd><p>Pre-trained ResNet-50/101 pathology classifier</p>
+<p>Based on
+<a class="reference external" href="https://arxiv.org/abs/1512.03385">“Deep Residual Learning for Image Recognition”</a></p>
+<p>Input images are automatically resized to the resolution the model was
+trained on (512 × 512 for all current weights).</p>
+<p>Available pre-trained weights:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">xrv</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">ResNet</span><span class="p">(</span><span class="n">weights</span><span class="o">=</span><span class="s2">&quot;resnet50-res512-all&quot;</span><span class="p">)</span>  <span class="c1"># trained on all datasets</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>weights</strong> – Name of pre-trained weights to load. See above for options.</p></li>
+<li><p><strong>cache_dir</strong> – Directory used to store downloaded weights
+(default: <code class="docutils literal notranslate"><span class="pre">~/.torchxrayvision/</span></code>).</p></li>
+<li><p><strong>op_threshs</strong> – Per-pathology operating-point thresholds. When set,
+outputs are re-scaled so that the threshold maps to 0.5.</p></li>
+<li><p><strong>apply_sigmoid</strong> – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, apply a sigmoid to the raw logits before
+returning. Ignored when <code class="docutils literal notranslate"><span class="pre">op_threshs</span></code> is also set.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="xrv.models.ResNet.targets">
+<span class="sig-name descname"><span class="pre">targets</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['Atelectasis',</span> <span class="pre">'Consolidation',</span> <span class="pre">'Infiltration',</span> <span class="pre">'Pneumothorax',</span> <span class="pre">'Edema',</span> <span class="pre">'Emphysema',</span> <span class="pre">'Fibrosis',</span> <span class="pre">'Effusion',</span> <span class="pre">'Pneumonia',</span> <span class="pre">'Pleural_Thickening',</span> <span class="pre">'Cardiomegaly',</span> <span class="pre">'Nodule',</span> <span class="pre">'Mass',</span> <span class="pre">'Hernia',</span> <span class="pre">'Lung</span> <span class="pre">Lesion',</span> <span class="pre">'Fracture',</span> <span class="pre">'Lung</span> <span class="pre">Opacity',</span> <span class="pre">'Enlarged</span> <span class="pre">Cardiomediastinum']</span></em><a class="headerlink" href="#xrv.models.ResNet.targets" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div></blockquote>
+</section>
+<section id="module-xrv.autoencoders">
+<span id="xrv-resnet-autoencoder"></span><h2>XRV ResNet Autoencoder<a class="headerlink" href="#module-xrv.autoencoders" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="xrv.autoencoders.ResNetAE">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">xrv.autoencoders.</span></span><span class="sig-name descname"><span class="pre">ResNetAE</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weights</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">SPECIFY</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#xrv.autoencoders.ResNetAE" title="Link to this definition"></a></dt>
+<dd><p>ResNet-based image autoencoder</p>
+<p>Encodes a chest X-ray to a compact latent representation and decodes it
+back to image space. Useful for representation learning, anomaly detection,
+and data augmentation.</p>
+<p>Available pre-trained weights:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;101-elastic&quot;</span></code> — trained on PadChest, NIH, CheXpert, and MIMIC.
+From <a class="reference external" href="https://arxiv.org/abs/2102.09475">Cohen et al., 2021</a>.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ae</span> <span class="o">=</span> <span class="n">xrv</span><span class="o">.</span><span class="n">autoencoders</span><span class="o">.</span><span class="n">ResNetAE</span><span class="p">(</span><span class="n">weights</span><span class="o">=</span><span class="s2">&quot;101-elastic&quot;</span><span class="p">)</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">ae</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>    <span class="c1"># encode to latent space</span>
+<span class="n">image2</span> <span class="o">=</span> <span class="n">ae</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>   <span class="c1"># reconstruct</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>weights</strong> – Name of pre-trained weights to load. See above for options.</p></li>
+<li><p><strong>cache_dir</strong> – Directory used to store downloaded weights
+(default: <code class="docutils literal notranslate"><span class="pre">~/.torchxrayvision/</span></code>).</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="chexpert-pathology-classifier">
+<h2>CheXpert Pathology Classifier<a class="headerlink" href="#chexpert-pathology-classifier" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="xrv.baseline_models.chexpert.DenseNet">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">xrv.baseline_models.chexpert.</span></span><span class="sig-name descname"><span class="pre">DenseNet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weights_zip</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_models</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">30</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#xrv.baseline_models.chexpert.DenseNet" title="Link to this definition"></a></dt>
+<dd><p>CheXpert ensemble DenseNet classifier</p>
+<p>An ensemble of up to 30 DenseNet models trained on the Stanford CheXpert
+dataset, predicting 5 pathologies. Setting <code class="docutils literal notranslate"><span class="pre">num_models</span></code> to a value less
+than 30 loads a subset of the ensemble, which reduces memory use and
+inference time at the cost of accuracy.</p>
+<p><strong>Targets (5):</strong> Atelectasis, Cardiomegaly, Consolidation, Edema, Effusion.</p>
+<p>Modified for TorchXRayVision to maintain the PyTorch gradient tape and
+to expose a <code class="docutils literal notranslate"><span class="pre">features()</span></code> method compatible with the rest of the library.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This class requires a local copy of the pre-trained weights ZIP file,
+which must be passed as <code class="docutils literal notranslate"><span class="pre">weights_zip</span></code>. The weights are <strong>not</strong>
+downloaded automatically.</p>
+</div>
+<dl class="simple">
+<dt>Citation:</dt><dd><p>Irvin J, Rajpurkar P, Ko M, et al.
+CheXpert: A Large Chest Radiograph Dataset with Uncertainty Labels
+and Expert Comparison.
+<em>AAAI Conference on Artificial Intelligence</em>, 2019.
+<a class="reference external" href="https://arxiv.org/abs/1901.07031">https://arxiv.org/abs/1901.07031</a></p>
+</dd>
+<dt>Download weights:</dt><dd><p><a class="reference external" href="https://academictorrents.com/details/5c7ee21e6770308f2d2b4bd829e896dbd9d3ee87">https://academictorrents.com/details/5c7ee21e6770308f2d2b4bd829e896dbd9d3ee87</a></p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="xrv.baseline_models.chexpert.DenseNet.targets">
+<span class="sig-name descname"><span class="pre">targets</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['Atelectasis',</span> <span class="pre">'Cardiomegaly',</span> <span class="pre">'Consolidation',</span> <span class="pre">'Edema',</span> <span class="pre">'Effusion']</span></em><a class="headerlink" href="#xrv.baseline_models.chexpert.DenseNet.targets" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="jf-healthcare-pathology-classifier">
+<h2>JF Healthcare Pathology Classifier<a class="headerlink" href="#jf-healthcare-pathology-classifier" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="xrv.baseline_models.jfhealthcare.DenseNet">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">xrv.baseline_models.jfhealthcare.</span></span><span class="sig-name descname"><span class="pre">DenseNet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">apply_sigmoid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#xrv.baseline_models.jfhealthcare.DenseNet" title="Link to this definition"></a></dt>
+<dd><p>JF Healthcare DenseNet-121 classifier trained on CheXpert</p>
+<p>A DenseNet-121 model trained on the Stanford CheXpert dataset using
+weakly supervised lesion localisation with Probabilistic-CAM Pooling.
+Predicts 5 pathologies.</p>
+<p><strong>Targets (5):</strong> Atelectasis, Cardiomegaly, Consolidation, Edema, Effusion.</p>
+<dl class="simple">
+<dt>Source:</dt><dd><p><a class="reference external" href="https://github.com/jfhealthcare/Chexpert">https://github.com/jfhealthcare/Chexpert</a></p>
+</dd>
+<dt>License:</dt><dd><p>Apache-2.0</p>
+</dd>
+<dt>Citation:</dt><dd><p>Ye W, Yao J, Xue H, Li Y.
+Weakly Supervised Lesion Localization With Probabilistic-CAM Pooling.
+<em>arXiv:2005.14480</em>, 2020.
+<a class="reference external" href="https://arxiv.org/abs/2005.14480">https://arxiv.org/abs/2005.14480</a></p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="xrv.baseline_models.jfhealthcare.DenseNet.targets">
+<span class="sig-name descname"><span class="pre">targets</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['Cardiomegaly',</span> <span class="pre">'Edema',</span> <span class="pre">'Consolidation',</span> <span class="pre">'Atelectasis',</span> <span class="pre">'Effusion']</span></em><a class="headerlink" href="#xrv.baseline_models.jfhealthcare.DenseNet.targets" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="chestx-det-segmentation">
+<h2>ChestX-Det Segmentation<a class="headerlink" href="#chestx-det-segmentation" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="xrv.baseline_models.chestx_det.PSPNet">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">xrv.baseline_models.chestx_det.</span></span><span class="sig-name descname"><span class="pre">PSPNet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cache_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#xrv.baseline_models.chestx_det.PSPNet" title="Link to this definition"></a></dt>
+<dd><p>ChestX-Det anatomical segmentation model (PSPNet)</p>
+<p>A PSPNet model pre-trained for pixel-level segmentation of 14 anatomical
+structures in chest X-rays. Output shape is <code class="docutils literal notranslate"><span class="pre">[batch,</span> <span class="pre">14,</span> <span class="pre">512,</span> <span class="pre">512]</span></code>.</p>
+<p><strong>Targets (14):</strong> Left Clavicle, Right Clavicle, Left Scapula, Right
+Scapula, Left Lung, Right Lung, Left Hilus Pulmonis, Right Hilus
+Pulmonis, Heart, Aorta, Facies Diaphragmatica, Mediastinum, Weasand,
+Spine.</p>
+<p><a class="reference external" href="https://github.com/mlmed/torchxrayvision/blob/main/scripts/segmentation.ipynb">Demo notebook</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">seg_model</span> <span class="o">=</span> <span class="n">xrv</span><span class="o">.</span><span class="n">baseline_models</span><span class="o">.</span><span class="n">chestx_det</span><span class="o">.</span><span class="n">PSPNet</span><span class="p">()</span>
+<span class="n">output</span> <span class="o">=</span> <span class="n">seg_model</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+<span class="n">output</span><span class="o">.</span><span class="n">shape</span>  <span class="c1"># [1, 14, 512, 512]</span>
+</pre></div>
+</div>
+<img alt="_images/segmentation-pspnet.png" src="_images/segmentation-pspnet.png" />
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>cache_dir</strong> – Directory used to store downloaded weights
+(default: <code class="docutils literal notranslate"><span class="pre">~/.torchxrayvision/</span></code>).</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Dataset:</dt><dd><p><a class="reference external" href="https://github.com/Deepwise-AILab/ChestX-Det-Dataset">https://github.com/Deepwise-AILab/ChestX-Det-Dataset</a></p>
+</dd>
+<dt>Citation:</dt><dd><p>Lian J, Liu J, Zhang S, et al.
+A Structure-Aware Relation Network for Thoracic Diseases Detection
+and Segmentation.
+<em>IEEE Transactions on Medical Imaging</em>, 2021.
+doi: 10.48550/arxiv.2104.10326</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="xrv.baseline_models.chestx_det.PSPNet.targets">
+<span class="sig-name descname"><span class="pre">targets</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['Left</span> <span class="pre">Clavicle',</span> <span class="pre">'Right</span> <span class="pre">Clavicle',</span> <span class="pre">'Left</span> <span class="pre">Scapula',</span> <span class="pre">'Right</span> <span class="pre">Scapula',</span> <span class="pre">'Left</span> <span class="pre">Lung',</span> <span class="pre">'Right</span> <span class="pre">Lung',</span> <span class="pre">'Left</span> <span class="pre">Hilus</span> <span class="pre">Pulmonis',</span> <span class="pre">'Right</span> <span class="pre">Hilus</span> <span class="pre">Pulmonis',</span> <span class="pre">'Heart',</span> <span class="pre">'Aorta',</span> <span class="pre">'Facies</span> <span class="pre">Diaphragmatica',</span> <span class="pre">'Mediastinum',</span> <span class="pre">'Weasand',</span> <span class="pre">'Spine']</span></em><a class="headerlink" href="#xrv.baseline_models.chestx_det.PSPNet.targets" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="cxas-chestxrayanatomy-segmentation-model">
+<h2>CXAS ChestXRayAnatomy Segmentation model<a class="headerlink" href="#cxas-chestxrayanatomy-segmentation-model" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="xrv.baseline_models.chestx_anatomy.UNetResNet50">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">xrv.baseline_models.chestx_anatomy.</span></span><span class="sig-name descname"><span class="pre">UNetResNet50</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weights</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#xrv.baseline_models.chestx_anatomy.UNetResNet50" title="Link to this definition"></a></dt>
+<dd><p>ChestXRayAnatomySegmentation model (UNet-ResNet50)</p>
+<p>A U-Net with a ResNet-50 backbone pre-trained for pixel-level segmentation
+of 159 anatomical structures in chest X-rays. Output shape is
+<code class="docutils literal notranslate"><span class="pre">[batch,</span> <span class="pre">159,</span> <span class="pre">512,</span> <span class="pre">512]</span></code>.</p>
+<dl class="simple">
+<dt><strong>Targets (159):</strong> </dt><dd><p>“spine”,
+“cervical spine”,
+“thoracic spine”,
+“lumbar spine”,
+“vertebrae C1”,
+“vertebrae C2”,
+“vertebrae C3”,
+“vertebrae C4”,
+“vertebrae C5”,
+“vertebrae C6”,
+“vertebrae C7”,
+“vertebrae T1”,
+“vertebrae T2”,
+“vertebrae T3”,
+“vertebrae T4”,
+“vertebrae T5”,
+“vertebrae T6”,
+“vertebrae T7”,
+“vertebrae T8”,
+“vertebrae T9”,
+“vertebrae T10”,
+“vertebrae T11”,
+“vertebrae T12”,
+“vertebrae L1”,
+“vertebrae L2”,
+“vertebrae L3”,
+“vertebrae L4”,
+“vertebrae L5”,
+“rib_cartilage”,
+“sternum”,
+“clavicles”,
+“clavicle left”,
+“clavicle right”,
+“scapulas”,
+“scapula left”,
+“scapula right”,
+“posterior 12th rib right”,
+“posterior 12th rib left”,
+“anterior 11th rib right”,
+“posterior 11th rib right”,
+“anterior 11th rib left”,
+“posterior 11th rib left”,
+“anterior 10th rib right”,
+“posterior 10th rib right”,
+“anterior 10th rib left”,
+“posterior 10th rib left”,
+“anterior 9th rib right”,
+“posterior 9th rib right”,
+“anterior 9th rib left”,
+“posterior 9th rib left”,
+“anterior 8th rib right”,
+“posterior 8th rib right”,
+“anterior 8th rib left”,
+“posterior 8th rib left”,
+“anterior 7th rib right”,
+“posterior 7th rib right”,
+“anterior 7th rib left”,
+“posterior 7th rib left”,
+“anterior 6th rib right”,
+“posterior 6th rib right”,
+“anterior 6th rib left”,
+“posterior 6th rib left”,
+“anterior 5th rib right”,
+“posterior 5th rib right”,
+“anterior 5th rib left”,
+“posterior 5th rib left”,
+“anterior 4th rib right”,
+“posterior 4th rib right”,
+“anterior 4th rib left”,
+“posterior 4th rib left”,
+“anterior 3rd rib right”,
+“posterior 3rd rib right”,
+“anterior 3rd rib left”,
+“posterior 3rd rib left”,
+“anterior 2nd rib right”,
+“posterior 2nd rib right”,
+“anterior 2nd rib left”,
+“posterior 2nd rib left”,
+“anterior 1st rib right”,
+“posterior 1st rib right”,
+“anterior 1st rib left”,
+“posterior 1st rib left”,
+“12th rib”,
+“posterior 11th rib”,
+“anterior 11th rib”,
+“posterior 10th rib”,
+“anterior 10th rib”,
+“posterior 9th rib”,
+“anterior 9th rib”,
+“posterior 8th rib”,
+“anterior 8th rib”,
+“posterior 7th rib”,
+“anterior 7th rib”,
+“posterior 6th rib”,
+“anterior 6th rib”,
+“posterior 5th rib”,
+“anterior 5th rib”,
+“posterior 4th rib”,
+“anterior 4th rib”,
+“posterior 3rd rib”,
+“anterior 3rd rib”,
+“posterior 2nd rib”,
+“anterior 2nd rib”,
+“posterior 1st rib”,
+“anterior 1st rib”,
+“diaphragm”,
+“left hemidiaphragm”,
+“right hemidiaphragm”,
+“stomach”,
+“small bowel”,
+“duodenum”,
+“liver”,
+“pancreas”,
+“kidney left”,
+“kidney right”,
+“cardiomediastinum”,
+“upper mediastinum”,
+“lower mediastinum”,
+“anterior mediastinum”,
+“middle mediastinum”,
+“posterior mediastinum”,
+“heart”,
+“heart atrium left”,
+“heart atrium right”,
+“heart myocardium”,
+“heart ventricle left”,
+“heart ventricle right”,
+“aorta”,
+“ascending aorta”,
+“descending aorta”,
+“aortic arch”,
+“pulmonary artery”,
+“inferior vena cava”,
+“esophagus”,
+“lung”,
+“right lung”,
+“left lung”,
+“lung base”,
+“mid zone lung”,
+“upper zone lung”,
+“apical zone lung”,
+“right upper zone lung”,
+“right mid zone lung”,
+“right lung base”,
+“right apical zone lung”,
+“left upper zone lung”,
+“left mid zone lung”,
+“left lung base”,
+“left apical zone lung”,
+“lung lower lobe left”,
+“lung upper lobe left”,
+“lung lower lobe right”,
+“lung middle lobe right”,
+“lung upper lobe right”,
+“trachea”,
+“tracheal bifurcation”,
+“breast”,
+“breast left”,
+“breast right”</p>
+</dd>
+</dl>
+<p><a class="reference external" href="https://github.com/mlmed/torchxrayvision/blob/main/scripts/segmentation-chestx_anatomy.ipynb">CXAS Demo notebook</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">seg_model</span> <span class="o">=</span> <span class="n">xrv</span><span class="o">.</span><span class="n">baseline_models</span><span class="o">.</span><span class="n">chestx_anatomy</span><span class="o">.</span><span class="n">UNetResNet50</span><span class="p">()</span>
+<span class="n">output</span> <span class="o">=</span> <span class="n">seg_model</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+<span class="n">output</span><span class="o">.</span><span class="n">shape</span>  <span class="c1"># [1, 159, 512, 512]</span>
+</pre></div>
+</div>
+<img alt="_images/segmentation-cxas.png" src="_images/segmentation-cxas.png" />
+<dl>
+<dt>License:</dt><dd><p>Creative Commons Attribution-NonCommercial-ShareAlike
+“the license applies only to the CXAS model and weights, and does not extend to or restrict the rest of 
+the TorchXRayVision library, which can remain under Apache” - Constantin Seibold (code author)</p>
+</dd>
+<dt>Citation:</dt><dd><p>Seibold C M, Reiß S, Sarfraz M S, et al.
+Detailed Annotations of Chest X-Rays via CT Projection for Report
+Understanding.
+<em>33rd British Machine Vision Conference (BMVC)</em>, 2022.
+url: <a class="reference external" href="https://bmvc2022.mpi-inf.mpg.de/0058.pdf">https://bmvc2022.mpi-inf.mpg.de/0058.pdf</a></p>
+<p>Seibold C, Jaus A, Fink M A, Kim M, Reiß S, Herrmann K, Kleesiek J,
+Stiefelhagen R.
+Accurate fine-grained segmentation of human anatomy in radiographs via
+volumetric pseudo-labeling.
+arXiv:2306.03934, 2023.
+url: https://arxiv.org/abs/2306.03934</p>
+<p><a class="reference external" href="https://github.com/ConstantinSeibold/ChestXRayAnatomySegmentation">https://github.com/ConstantinSeibold/ChestXRayAnatomySegmentation</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="emory-hiti-race">
+<h2>Emory HITI Race<a class="headerlink" href="#emory-hiti-race" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="xrv.baseline_models.emory_hiti.RaceModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">xrv.baseline_models.emory_hiti.</span></span><span class="sig-name descname"><span class="pre">RaceModel</span></span><a class="headerlink" href="#xrv.baseline_models.emory_hiti.RaceModel" title="Link to this definition"></a></dt>
+<dd><p>This model is from the work below and is trained to predict the
+patient race from a chest X-ray. Public data from the MIMIC dataset is used
+to train this model. The native resolution of the model is 320x320. Images
+are scaled automatically.</p>
+<p><a class="reference external" href="https://github.com/mlmed/torchxrayvision/blob/main/scripts/race_prediction.ipynb">Demo notebook</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">xrv</span><span class="o">.</span><span class="n">baseline_models</span><span class="o">.</span><span class="n">emory_hiti</span><span class="o">.</span><span class="n">RaceModel</span><span class="p">()</span>
+
+<span class="n">image</span> <span class="o">=</span> <span class="n">xrv</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="s1">&#39;00027426_000.png&#39;</span><span class="p">)</span>
+<span class="n">image</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">image</span><span class="p">)[</span><span class="kc">None</span><span class="p">,</span><span class="o">...</span><span class="p">]</span>
+
+<span class="n">pred</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">targets</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">pred</span><span class="p">)]</span>
+<span class="c1"># &#39;White&#39;</span>
+</pre></div>
+</div>
+<div class="highlight-bibtex notranslate"><div class="highlight"><pre><span></span><span class="nc">@article</span><span class="p">{</span><span class="nl">Gichoya2022</span><span class="p">,</span>
+<span class="w">    </span><span class="na">title</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">{AI recognition of patient race in medical imaging: a modelling study}</span><span class="p">,</span>
+<span class="w">    </span><span class="na">author</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">{Gichoya, Judy Wawira and Banerjee, Imon and Bhimireddy, Ananth Reddy and Burns, John L and Celi, Leo Anthony and Chen, Li-Ching and Correa, Ramon and Dullerud, Natalie and Ghassemi, Marzyeh and Huang, Shih-Cheng and Kuo, Po-Chih and Lungren, Matthew P and Palmer, Lyle J and Price, Brandon J and Purkayastha, Saptarshi and Pyrros, Ayis T and Oakden-Rayner, Lauren and Okechukwu, Chima and Seyyed-Kalantari, Laleh and Trivedi, Hari and Wang, Ryan and Zaiman, Zachary and Zhang, Haoran}</span><span class="p">,</span>
+<span class="w">    </span><span class="na">doi</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">{10.1016/S2589-7500(22)00063-2}</span><span class="p">,</span>
+<span class="w">    </span><span class="na">journal</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">{The Lancet Digital Health}</span><span class="p">,</span>
+<span class="w">    </span><span class="na">pmid</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">{35568690}</span><span class="p">,</span>
+<span class="w">    </span><span class="na">url</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">{https://www.thelancet.com/journals/landig/article/PIIS2589-7500(22)00063-2/fulltext}</span><span class="p">,</span>
+<span class="w">    </span><span class="na">year</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">{2022}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="xrv.baseline_models.emory_hiti.RaceModel.targets">
+<span class="sig-name descname"><span class="pre">targets</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['Asian',</span> <span class="pre">'Black',</span> <span class="pre">'White']</span></em><a class="headerlink" href="#xrv.baseline_models.emory_hiti.RaceModel.targets" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="riken-age-model">
+<h2>Riken Age Model<a class="headerlink" href="#riken-age-model" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="xrv.baseline_models.riken.AgeModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">xrv.baseline_models.riken.</span></span><span class="sig-name descname"><span class="pre">AgeModel</span></span><a class="headerlink" href="#xrv.baseline_models.riken.AgeModel" title="Link to this definition"></a></dt>
+<dd><p>This model predicts age. It is trained on the NIH dataset. The
+publication reports a mean absolute error (MAE) between the estimated age
+and chronological age of 3.67 years.</p>
+<p>The native resolution of the model is 320x320. Images are scaled
+automatically.</p>
+<p><a class="reference external" href="https://github.com/mlmed/torchxrayvision/blob/main/scripts/cxr_age_prediction.ipynb">Demo notebook</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">xrv</span><span class="o">.</span><span class="n">baseline_models</span><span class="o">.</span><span class="n">riken</span><span class="o">.</span><span class="n">AgeModel</span><span class="p">()</span>
+
+<span class="n">image</span> <span class="o">=</span> <span class="n">xrv</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="s1">&#39;00027426_000.png&#39;</span><span class="p">)</span>
+<span class="n">image</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">image</span><span class="p">)[</span><span class="kc">None</span><span class="p">,</span><span class="o">...</span><span class="p">]</span>
+
+<span class="n">pred</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+<span class="c1"># tensor([[50.4033]], grad_fn=&lt;AddmmBackward0&gt;)</span>
+</pre></div>
+</div>
+<p>Source: <a class="reference external" href="https://github.com/pirocv/xray_age">https://github.com/pirocv/xray_age</a></p>
+<div class="highlight-bibtex notranslate"><div class="highlight"><pre><span></span><span class="nc">@article</span><span class="p">{</span><span class="nl">Ieki2022</span><span class="p">,</span>
+<span class="w">    </span><span class="na">title</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">{{Deep learning-based age estimation from chest X-rays indicates cardiovascular prognosis}}</span><span class="p">,</span>
+<span class="w">    </span><span class="na">author</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">{Ieki, Hirotaka et al.}</span><span class="p">,</span>
+<span class="w">    </span><span class="na">doi</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">{10.1038/s43856-022-00220-6}</span><span class="p">,</span>
+<span class="w">    </span><span class="na">journal</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">{Communications Medicine}</span><span class="p">,</span>
+<span class="w">    </span><span class="na">publisher</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">{Nature Publishing Group}</span><span class="p">,</span>
+<span class="w">    </span><span class="na">url</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">{https://www.nature.com/articles/s43856-022-00220-6}</span><span class="p">,</span>
+<span class="w">    </span><span class="na">year</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">{2022}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="xrv.baseline_models.riken.AgeModel.targets">
+<span class="sig-name descname"><span class="pre">targets</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['Age']</span></em><a class="headerlink" href="#xrv.baseline_models.riken.AgeModel.targets" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="xinario-view-model">
+<h2>Xinario View Model<a class="headerlink" href="#xinario-view-model" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="xrv.baseline_models.xinario.ViewModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">xrv.baseline_models.xinario.</span></span><span class="sig-name descname"><span class="pre">ViewModel</span></span><a class="headerlink" href="#xrv.baseline_models.xinario.ViewModel" title="Link to this definition"></a></dt>
+<dd><p>Chest X-ray view classifier (Frontal vs. Lateral)</p>
+<p>A ResNet-50 model trained to classify chest X-rays as frontal or lateral
+view. The native resolution is 320 × 320; images are scaled automatically.</p>
+<p><strong>Targets (2):</strong> Frontal, Lateral.</p>
+<p><a class="reference external" href="https://github.com/mlmed/torchxrayvision/blob/main/scripts/view_classifier.ipynb">Demo notebook</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">xrv</span><span class="o">.</span><span class="n">baseline_models</span><span class="o">.</span><span class="n">xinario</span><span class="o">.</span><span class="n">ViewModel</span><span class="p">()</span>
+
+<span class="n">image</span> <span class="o">=</span> <span class="n">xrv</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="s1">&#39;00027426_000.png&#39;</span><span class="p">)</span>
+<span class="n">image</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">image</span><span class="p">)[</span><span class="kc">None</span><span class="p">,</span><span class="o">...</span><span class="p">]</span>
+
+<span class="n">pred</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">targets</span><span class="p">[</span><span class="n">pred</span><span class="o">.</span><span class="n">argmax</span><span class="p">()]</span>
+<span class="c1"># &#39;Lateral&#39;</span>
+</pre></div>
+</div>
+<dl class="simple">
+<dt>Source:</dt><dd><p><a class="reference external" href="https://github.com/xinario/chestViewSplit">https://github.com/xinario/chestViewSplit</a></p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="xrv.baseline_models.xinario.ViewModel.targets">
+<span class="sig-name descname"><span class="pre">targets</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['Frontal',</span> <span class="pre">'Lateral']</span></em><a class="headerlink" href="#xrv.baseline_models.xinario.ViewModel.targets" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="mira-sex-model">
+<h2>Mira Sex Model<a class="headerlink" href="#mira-sex-model" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="xrv.baseline_models.mira.SexModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">xrv.baseline_models.mira.</span></span><span class="sig-name descname"><span class="pre">SexModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weights</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#xrv.baseline_models.mira.SexModel" title="Link to this definition"></a></dt>
+<dd><p>This model is from the MIRA (Medical Image Representation and Analysis) 
+project and is trained to predict patient sex from a chest X-ray. The model 
+uses a ResNet34 architecture and is trained on CheXpert dataset. The 
+native resolution of the model is 224x224. Images are scaled automatically.</p>
+<p><a class="reference external" href="https://github.com/mlmed/torchxrayvision/blob/main/scripts/sex_prediction.ipynb">Demo notebook</a></p>
+<p>Publication: <a class="reference external" href="https://www.thelancet.com/journals/ebiom/article/PIIS2352-3964(23)00032-4/fulltext">Algorithmic encoding of protected characteristics in chest X-ray disease detection models</a>  
+B. Glocker, C. Jones, M. Bernhardt, S. Winzeck  
+eBioMedicine. Volume 89, 104467, 2023.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">xrv</span><span class="o">.</span><span class="n">baseline_models</span><span class="o">.</span><span class="n">mira</span><span class="o">.</span><span class="n">SexModel</span><span class="p">()</span>
+
+<span class="n">image</span> <span class="o">=</span> <span class="n">xrv</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="s1">&#39;00027426_000.png&#39;</span><span class="p">)</span>
+<span class="n">image</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">image</span><span class="p">)[</span><span class="kc">None</span><span class="p">,</span><span class="o">...</span><span class="p">]</span>
+
+<span class="n">pred</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">targets</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">pred</span><span class="p">)]</span>
+<span class="c1"># &#39;Male&#39; or &#39;Female&#39;  </span>
+</pre></div>
+</div>
+<div class="highlight-bibtex notranslate"><div class="highlight"><pre><span></span><span class="nc">@article</span><span class="p">{</span><span class="nl">MIRA2023</span><span class="p">,</span>
+<span class="w">    </span><span class="na">title</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">{Chexploration: Medical Image Representation and Analysis}</span><span class="p">,</span>
+<span class="w">    </span><span class="na">author</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">{MIRA Team}</span><span class="p">,</span>
+<span class="w">    </span><span class="na">journal</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">{biomedia-mira/chexploration}</span><span class="p">,</span>
+<span class="w">    </span><span class="na">url</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">{https://github.com/biomedia-mira/chexploration}</span><span class="p">,</span>
+<span class="w">    </span><span class="na">year</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">{2023}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="xrv.baseline_models.mira.SexModel.targets">
+<span class="sig-name descname"><span class="pre">targets</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['Male',</span> <span class="pre">'Female']</span></em><a class="headerlink" href="#xrv.baseline_models.mira.SexModel.targets" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="vqgan-autoencoder">
+<h2>VQGAN Autoencoder<a class="headerlink" href="#vqgan-autoencoder" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="xrv.baseline_models.ieee8023.VQGAN">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">xrv.baseline_models.ieee8023.</span></span><span class="sig-name descname"><span class="pre">VQGAN</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weights</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cxr2-vqgan-768-sd'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ckpt_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yaml_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#xrv.baseline_models.ieee8023.VQGAN" title="Link to this definition"></a></dt>
+<dd><p>VQGAN image autoencoder for chest X-rays</p>
+<p>A VQ-GAN (<a class="reference external" href="https://arxiv.org/abs/2012.09841">Esser et al., 2021</a>) that
+encodes a chest X-ray into a grid of discrete latent codes and decodes it
+back. It was built for generating counterfactual explanations with Latent
+Shift (<a class="reference external" href="https://arxiv.org/abs/2102.09475">Cohen et al., 2021</a>): the
+gradient of a classifier’s output is followed in the latent space, and
+decoding gives an image the classifier scores as less positive. It was 
+used for the 6th place MIDRC XAI Challenge winner.</p>
+<img alt="_images/ieee8023-vqgan.jpg" src="_images/ieee8023-vqgan.jpg" />
+<p>The native resolution of the model is 768x768. Inputs are expected in the
+TorchXRayVision pixel range of [-1024, 1024] and are resized by bilinear
+interpolation automatically. The single channel is repeated to three for the
+VQ-GAN, and <code class="docutils literal notranslate"><span class="pre">decode</span></code> returns one channel clipped to [-1024, 1024] at
+768x768, regardless of the input size.</p>
+<p>Available pre-trained weights, both at 768x768 resolution:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;cxr2-vqgan-768-sd&quot;</span></code> — 306 MB checkpoint, 64-dimensional codes on a
+24x24 grid (256-entry codebook).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;cxr2-vqgan-768-msdd&quot;</span></code> — 1.23 GB checkpoint, 128-dimensional codes on
+a 12x12 grid (512-entry codebook).</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">vq</span> <span class="o">=</span> <span class="n">xrv</span><span class="o">.</span><span class="n">baseline_models</span><span class="o">.</span><span class="n">ieee8023</span><span class="o">.</span><span class="n">VQGAN</span><span class="p">(</span><span class="n">weights</span><span class="o">=</span><span class="s2">&quot;cxr2-vqgan-768-sd&quot;</span><span class="p">)</span>
+<span class="n">image</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">768</span><span class="p">,</span><span class="mi">768</span><span class="p">)</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">vq</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>    <span class="c1"># image in [-1024, 1024], shape (B, 1, H, W)</span>
+<span class="n">image2</span> <span class="o">=</span> <span class="n">vq</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>weights</strong> – Name of pre-trained weights to download and load. Alternatively
+pass <code class="docutils literal notranslate"><span class="pre">ckpt_path</span></code> and <code class="docutils literal notranslate"><span class="pre">yaml_path</span></code> to use local files.</p></li>
+<li><p><strong>ckpt_path</strong> – Path to a local checkpoint (used instead of <code class="docutils literal notranslate"><span class="pre">weights</span></code>).</p></li>
+<li><p><strong>yaml_path</strong> – Path to the local model config yaml (used instead of <code class="docutils literal notranslate"><span class="pre">weights</span></code>).</p></li>
+<li><p><strong>cache_dir</strong> – Directory used to store downloaded weights
+(default: <code class="docutils literal notranslate"><span class="pre">~/.torchxrayvision/models_data/</span></code>).</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="dataset_helpers.html" class="btn btn-neutral float-right" title="Dataset Helpers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, TorchXRayVision.
+      <span class="lastupdated">Last updated on True.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script type="b41268c08e0d40ff3e50b3bd-text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+<script src="/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="b41268c08e0d40ff3e50b3bd-|49" defer></script></body>
+</html>

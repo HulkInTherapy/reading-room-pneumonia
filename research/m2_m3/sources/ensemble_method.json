@@ -1,0 +1,50 @@
+{
+  "query": "Chouhan pneumonia frozen epochs 2020 AlexNet",
+  "follow_up_questions": null,
+  "answer": null,
+  "images": [],
+  "results": [
+    {
+      "url": "https://arxiv.org/pdf/2011.05543",
+      "title": "arXiv:2011.05543v1 [eess.IV] 11 Nov 2020",
+      "content": "by SK Venu \u00b7 2020 \u00b7 Cited by 29 \u2014 To classify pneumonia from chest X-ray images, Chouhan et al. achieving 96.4% accuracy and 98.43% accuracy respectively \u2026 reported a 98% Epochs",
+      "score": 0.66621506,
+      "raw_content": null,
+      "id": "f03115-00"
+    },
+    {
+      "url": "https://www.researchgate.net/publication/338543002_A_Novel_Transfer_Learning_Based_Approach_for_Pneumonia_Detection_in_Chest_X-ray_Images",
+      "title": "A Novel Transfer Learning Based Approach for Pneumonia ...",
+      "content": "AlexNet with trainable and \u201cfrozen\u201d layers. Chouhan, V. et al. introduced a novel transfer learning-based approach for pneumonia detection in",
+      "score": 0.5996498,
+      "raw_content": null,
+      "id": "d25741-01"
+    },
+    {
+      "url": "https://eprints.qut.edu.au/199742/1/applsci_10_00559_1_.pdf",
+      "title": "A Novel Transfer Learning Based Approach for Pneumonia ...",
+      "content": "by V Chouhan \u00b7 2020 \u00b7 Cited by 901 \u2014 Chouhan, Vikas Page 1. Hugo (2020) A novel transfer learning based approach for pneumonia detection in chest x-ray images. AlexNet with",
+      "score": 0.59401023,
+      "raw_content": null,
+      "id": "afb124-02"
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9581770",
+      "title": "Pediatric pneumonia diagnosis using stacked ensemble ...",
+      "content": "by JA Prakash \u00b7 2022 \u00b7 Cited by 54 \u2014 Chouhan et al. [65] analyzed the performance of a majority voting ensemble composed of AlexNet, DenseNet121, Inception V3, GoogLeNet, and ResNet18. Sagar Kora",
+      "score": 0.33875546,
+      "raw_content": null,
+      "id": "36265f-03"
+    },
+    {
+      "url": "https://www.researchgate.net/figure/AlexNet-with-trainable-and-frozen-layers_fig4_338543002",
+      "title": "AlexNet with trainable and \u201cfrozen\u201d layers.",
+      "content": "DenseNet121 with \u201cfrozen\u201d and trainable layers. A Novel Transfer Learning Based Approach for Pneumonia Detection in Chest X-ray Images.",
+      "score": 0.30660018,
+      "raw_content": null,
+      "id": "b37b99-04"
+    }
+  ],
+  "response_time": 3.43,
+  "request_id": "13eb3e8a-3480-4983-96ff-7c950acd6d4b"
+}

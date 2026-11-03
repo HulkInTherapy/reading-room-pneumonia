@@ -1,0 +1,59 @@
+{
+  "selection": "First three declared TRAINING indices per class; no threshold changes",
+  "records": [
+    {
+      "path": "data/images/train/0/05bc425eda168493cbe38eea4c079edbbfad1e17e3477892740b1fce97b69957.png",
+      "split": "train",
+      "label": 0,
+      "sha256": "05bc425eda168493cbe38eea4c079edbbfad1e17e3477892740b1fce97b69957",
+      "width": 1422,
+      "height": 1152,
+      "source_path": "IM-0117-0001.jpeg"
+    },
+    {
+      "path": "data/images/train/0/46c9ea6d3c6ef09eac134e3cb3294caaa63aa2b8c5327814ebfa3f2e81d24af0.png",
+      "split": "train",
+      "label": 0,
+      "sha256": "46c9ea6d3c6ef09eac134e3cb3294caaa63aa2b8c5327814ebfa3f2e81d24af0",
+      "width": 1810,
+      "height": 1434,
+      "source_path": "IM-0119-0001.jpeg"
+    },
+    {
+      "path": "data/images/train/0/eea992f8a396289babd7fc152293c35bce98fc2d00992557a1ae474145fccf7e.png",
+      "split": "train",
+      "label": 0,
+      "sha256": "eea992f8a396289babd7fc152293c35bce98fc2d00992557a1ae474145fccf7e",
+      "width": 1618,
+      "height": 1279,
+      "source_path": "IM-0122-0001.jpeg"
+    },
+    {
+      "path": "data/images/train/1/4dd191a2d1e60ac1cfefa607f10155d95cf4bda15b885d01d8fcb7886557c3c0.png",
+      "split": "train",
+      "label": 1,
+      "sha256": "4dd191a2d1e60ac1cfefa607f10155d95cf4bda15b885d01d8fcb7886557c3c0",
+      "width": 1244,
+      "height": 863,
+      "source_path": "person1001_bacteria_2932.jpeg"
+    },
+    {
+      "path": "data/images/train/1/7ba95cac43a63191040b7cee8a407dbe2da1b3aaf8b1aa68092db69b8225dd3b.png",
+      "split": "train",
+      "label": 1,
+      "sha256": "7ba95cac43a63191040b7cee8a407dbe2da1b3aaf8b1aa68092db69b8225dd3b",
+      "width": 1488,
+      "height": 1280,
+      "source_path": "person1003_bacteria_2934.jpeg"
+    },
+    {
+      "path": "data/images/train/1/9170b5b11c02f30becf0b1594997426bf340691c1f012d8840d081f422edca4b.png",
+      "split": "train",
+      "label": 1,
+      "sha256": "9170b5b11c02f30becf0b1594997426bf340691c1f012d8840d081f422edca4b",
+      "width": 1008,
+      "height": 616,
+      "source_path": "person1003_virus_1685.jpeg"
+    }
+  ]
+}

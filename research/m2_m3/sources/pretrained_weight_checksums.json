@@ -1,0 +1,27 @@
+[
+  {
+    "file": "inception_v3_google-0cc3c7bd.pth",
+    "sha256": "0cc3c7bd75056d25e46cba549dc184522069b81e9787eff6df84f397bd52a5ef",
+    "source": "https://download.pytorch.org/models/inception_v3_google-0cc3c7bd.pth"
+  },
+  {
+    "file": "resnet18-f37072fd.pth",
+    "sha256": "f37072fd47e89c5e827621c5baffa7500819f7896bbacec160b1a16c560e07ec",
+    "source": "https://download.pytorch.org/models/resnet18-f37072fd.pth"
+  },
+  {
+    "file": "densenet121-a639ec97.pth",
+    "sha256": "a639ec97d7c33b07ae66f0b5fb7d0192f95a3b11b7576c66c0126c2a727c4395",
+    "source": "https://download.pytorch.org/models/densenet121-a639ec97.pth"
+  },
+  {
+    "file": "googlenet-1378be20.pth",
+    "sha256": "1378be20a8e875cf1568b8a71654e704449655e34711a959a38b04fb34905cef",
+    "source": "https://download.pytorch.org/models/googlenet-1378be20.pth"
+  },
+  {
+    "file": "alexnet-owt-7be5be79.pth",
+    "sha256": "7be5be791159472b1fbf3c69796f7cb30dca7ad8466c2df70058c37116cdee02",
+    "source": "https://download.pytorch.org/models/alexnet-owt-7be5be79.pth"
+  }
+]

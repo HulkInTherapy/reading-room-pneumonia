@@ -1,0 +1,10 @@
+{
+  "verified": true,
+  "javascript_errors": [],
+  "model_status": "Known sample label: Normal. M4 frozen pretrained encoders with five-epoch heads. Lung crop passed the declared geometric checks. 1.0 seconds. Sample crops are preprocessed from original source pixels; classifier inference runs now. Scores are uncalibrated.",
+  "conditions": "A: Normal (match) · pneumonia score 3.5% · ViT weight 0\n\nB: Normal (match) · pneumonia score 0.8% · ViT weight 0\n\nC: Normal (match) · pneumonia score 5.2% · ViT weight 0.25\n\nD: Normal (match) · pneumonia score 2.7% · ViT weight 0.5",
+  "image_count": 3,
+  "mobile_no_horizontal_overflow": true,
+  "offline_slideshow_navigation": true,
+  "offline_gallery_images": 13
+}

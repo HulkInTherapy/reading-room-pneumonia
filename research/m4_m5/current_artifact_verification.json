@@ -1,0 +1,41 @@
+{
+  "records": 624,
+  "confusion_matrix": [
+    [
+      206,
+      28
+    ],
+    [
+      21,
+      369
+    ]
+  ],
+  "checkpoint_checks": [
+    {
+      "model": "resnet18",
+      "present": true,
+      "saved_checksum_matches": true
+    },
+    {
+      "model": "densenet121",
+      "present": true,
+      "saved_checksum_matches": true
+    },
+    {
+      "model": "googlenet",
+      "present": true,
+      "saved_checksum_matches": true
+    },
+    {
+      "model": "inception_v3",
+      "present": true,
+      "saved_checksum_matches": true
+    },
+    {
+      "model": "alexnet",
+      "present": true,
+      "saved_checksum_matches": true
+    }
+  ],
+  "verification_scope": "CSV metrics and file checksums; no live model reload in this turn"
+}

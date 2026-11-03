@@ -1,0 +1,49 @@
+{
+  "note": "Old weights already saw these images; this is a mode-sensitivity diagnostic, not independent validation performance.",
+  "stored_running_statistics": {
+    "n": 1042,
+    "accuracy": 0.9980806142034548,
+    "sensitivity": 0.9974093264248705,
+    "specificity": 1.0,
+    "precision": 1.0,
+    "pneumonia_f1": 0.9987029831387808,
+    "normal_f1": 0.996309963099631,
+    "macro_f1": 0.9975064731192059,
+    "balanced_accuracy": 0.9987046632124352,
+    "auc": 0.9998512761466128,
+    "confusion_matrix": [
+      [
+        270,
+        0
+      ],
+      [
+        2,
+        770
+      ]
+    ]
+  },
+  "batch_statistics": {
+    "n": 1042,
+    "accuracy": 0.9961612284069098,
+    "sensitivity": 0.9948186528497409,
+    "specificity": 1.0,
+    "precision": 1.0,
+    "pneumonia_f1": 0.9974025974025974,
+    "normal_f1": 0.9926470588235294,
+    "macro_f1": 0.9950248281130634,
+    "balanced_accuracy": 0.9974093264248705,
+    "auc": 0.9997601228171176,
+    "confusion_matrix": [
+      [
+        270,
+        0
+      ],
+      [
+        4,
+        768
+      ]
+    ]
+  },
+  "mean_score_shift": -0.0015781864876708025,
+  "mean_absolute_shift": 0.003737052832165286
+}

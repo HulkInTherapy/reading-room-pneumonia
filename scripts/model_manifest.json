@@ -1,0 +1,86 @@
+{
+  "verification.json": {
+    "bytes": 939,
+    "sha256": "837bf32e09da9601c97cd2f798a1970f38ffe1d1ca779accba59bdca5b05c148"
+  },
+  "README.txt": {
+    "bytes": 2295,
+    "sha256": "d44312371319abec844da0fb62e8c71120a5e338751640c8be282d924878ad3d"
+  },
+  "inference.py": {
+    "bytes": 4535,
+    "sha256": "e17cfc4292f9f4030147552861f37201f61bacb299d4392efeb262bafde5f671"
+  },
+  "requirements-lock.txt": {
+    "bytes": 1143,
+    "sha256": "03436647faf28a5b5743028dd62cd43ef023f966f02740911c7526cd2004a856"
+  },
+  "summary.json": {
+    "bytes": 5086,
+    "sha256": "fe11cafadb315b10ae2e0f8da0edb1643ff4535d7e81c7908bf005751bbcda04"
+  },
+  "weights/pspnet_chestxray_best_model_4.pth": {
+    "bytes": 272988989,
+    "sha256": "019b167eac6b729fc1bb92bbbc185fc1730aaa65819f4e3fe718186cadc044fc"
+  },
+  "weights/deit_tiny_encoder.pt": {
+    "bytes": 22155307,
+    "sha256": "62a484ef772079a071137296e1425113cb3e99660632618c1725fdeb8f32ac1a"
+  },
+  "weights/resnet18-f37072fd.pth": {
+    "bytes": 46830571,
+    "sha256": "f37072fd47e89c5e827621c5baffa7500819f7896bbacec160b1a16c560e07ec"
+  },
+  "heads/deit_tiny_full.pt": {
+    "bytes": 6045,
+    "sha256": "b7cddd1ba8e50ba501a3cb1279c460cc32be37639c67880b42930c5c02cabc70"
+  },
+  "heads/deit_tiny_crop.pt": {
+    "bytes": 5981,
+    "sha256": "a4758c80a3f178b0230c6289cf08ea00604d3a09033b50973c235834e9760184"
+  },
+  "heads/resnet18_full.pt": {
+    "bytes": 11925,
+    "sha256": "a2a8a02f4d7c6607a88d06b038d7e77c1e0a12c143545b30a277085698b7f20f"
+  },
+  "heads/resnet18_crop.pt": {
+    "bytes": 11989,
+    "sha256": "843dfea2da87c517836d0d381e59c0d6336e5fc2f79f70803dad0fe7de81ed3e"
+  },
+  "examples/normal/masks.png": {
+    "bytes": 1272,
+    "sha256": "9842206cf9630e703367562e37fefeeccb4976ec26036b007030fde28955a9f4"
+  },
+  "examples/normal/prepared_prediction.json": {
+    "bytes": 1001,
+    "sha256": "9598c27199dd8400d9b9a77aecc1e8b9760472aadd7830f9668da8ba3bbfc1ff"
+  },
+  "examples/normal/full.png": {
+    "bytes": 42448,
+    "sha256": "4f7b12f9b401d8ef54a7aa426f9a2d3af3b24e2e20746f4b2c86e36c122f27a9"
+  },
+  "examples/normal/crop.png": {
+    "bytes": 43422,
+    "sha256": "2eb0d56bfa5f56722a0f7c4c491da8276adcedcfbf6c03c699ce2b27428f849e"
+  },
+  "examples/normal/resegmented_mask_from_224_input.png": {
+    "bytes": 1272,
+    "sha256": "67ea050bff12055e0aa459cb2adf70a7eeeacb0476c595a46a10ce6c2face27e"
+  },
+  "examples/pneumonia/masks.png": {
+    "bytes": 1094,
+    "sha256": "1f530769d49e1f876d9380a67f2ea1f881fc10e7e8e6ff1345b6c548bbd52284"
+  },
+  "examples/pneumonia/prepared_prediction.json": {
+    "bytes": 1003,
+    "sha256": "9745cff63cb9757ab1afe7feada5ddab78d9e7dd350e69b8241c44bab8239f6a"
+  },
+  "examples/pneumonia/full.png": {
+    "bytes": 40829,
+    "sha256": "93f5f15db95b89ad15b734233b74f8d9e828eef2b0f7c3287579f32788bd91e1"
+  },
+  "examples/pneumonia/crop.png": {
+    "bytes": 42776,
+    "sha256": "5af88aebc3b2710bf6bfd3a8229c964e5fa4dc3db12bc0506b72dd7b39d29a82"
+  }
+}

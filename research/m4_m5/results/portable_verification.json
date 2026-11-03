@@ -1,0 +1,43 @@
+{
+  "verified": true,
+  "network_connections_disabled": true,
+  "prepared_case_checks": [
+    {
+      "sample_index": 0,
+      "max_probability_delta": {
+        "A": 1.862645149230957e-08,
+        "B": 6.984919309616089e-09,
+        "C": 1.210719347000122e-08,
+        "D": 2.7939677238464355e-09
+      },
+      "seconds": 1.9665226936340332
+    },
+    {
+      "sample_index": 234,
+      "max_probability_delta": {
+        "A": 0.0,
+        "B": 0.0,
+        "C": 0.0,
+        "D": 2.9802322387695312e-08
+      },
+      "seconds": 0.9048779010772705
+    }
+  ],
+  "segmenter_loaded_offline": true,
+  "segmenter_input_fixture": "224px exported example, not original-resolution source",
+  "segmentation_fixture_metadata": {
+    "bbox": [
+      23,
+      3,
+      204,
+      224
+    ],
+    "original_size": [
+      224,
+      224
+    ],
+    "mask_fraction": 0.384246826171875,
+    "fallback": false,
+    "segmenter_parameters": 68068316
+  }
+}

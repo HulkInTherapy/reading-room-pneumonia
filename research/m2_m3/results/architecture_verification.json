@@ -1,0 +1,60 @@
+[
+  {
+    "model": "resnet18",
+    "prefix_shape": [
+      2,
+      256,
+      14,
+      14
+    ],
+    "trainable_boundary": "layer4 + fc",
+    "trainable_parameters": 8394754,
+    "max_forward_difference": 0.0
+  },
+  {
+    "model": "densenet121",
+    "prefix_shape": [
+      2,
+      960,
+      7,
+      7
+    ],
+    "trainable_boundary": "denseblock4.denselayer15 + denselayer16 + classifier",
+    "trainable_parameters": 330050,
+    "max_forward_difference": 0.0
+  },
+  {
+    "model": "googlenet",
+    "prefix_shape": [
+      2,
+      832,
+      7,
+      7
+    ],
+    "trainable_boundary": "inception5b + fc",
+    "trainable_parameters": 1349090,
+    "max_forward_difference": 0.0
+  },
+  {
+    "model": "inception_v3",
+    "prefix_shape": [
+      2,
+      2048,
+      5,
+      5
+    ],
+    "trainable_boundary": "Mixed_7c + fc",
+    "trainable_parameters": 6080898,
+    "max_forward_difference": 0.0
+  },
+  {
+    "model": "alexnet",
+    "prefix_shape": [
+      2,
+      9216
+    ],
+    "trainable_boundary": "9216->512->2 replacement classifier",
+    "trainable_parameters": 4720130,
+    "max_forward_difference": 0.0
+  }
+]

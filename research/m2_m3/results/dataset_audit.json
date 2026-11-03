@@ -1,0 +1,28 @@
+{
+  "counts": {
+    "train": {
+      "0": 1341,
+      "1": 3875
+    },
+    "validation": {
+      "0": 8,
+      "1": 8
+    },
+    "test": {
+      "0": 234,
+      "1": 390
+    }
+  },
+  "total_records": 5856,
+  "unique_source_images": 5824,
+  "train_records": 5232,
+  "test_records": 624,
+  "unique_train": 5206,
+  "unique_test": 618,
+  "exact_hash_overlap": 0,
+  "source": "hf-vision/chest-xray-pneumonia",
+  "source_dataset": "10.17632/rscbjbr9sj.2",
+  "manifest_sha256": "e8e4215c9967e95b8ad1472454749d664f23fc6490e061e40a90482b0452d753",
+  "cache": "RGB bilinear initial resize 224x224, lossless PNG",
+  "test_majority_accuracy": 0.625
+}

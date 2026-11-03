@@ -1,0 +1,134 @@
+1. Reading the Reading Room
+Pneumonia classification from pediatric chest X-rays
+Final milestones: anatomy-guided inputs and matched classifier comparisons
+Samarth Shekhar · Meghavi Rao · Rachit Kumar · Harshal Nerpagar
+
+2. From reproduction to a controlled experiment
+M1: literature review and dataset selection
+M2: reproduced five-CNN baseline and audited predictions
+M3: predicted gains from lung cropping and a pretrained transformer
+M4–M5: implementation, measured comparisons and failure analysis
+
+3. Dataset and evaluation
+Normal versus pneumonia on the Kermany pediatric benchmark
+Historical baseline: 5,232 training records and 624 test records
+New split: 4,164 training, 1,042 validation and 624 test records
+The benchmark test was inspected previously. It is not an external blind holdout.
+
+4. The verified M2 baseline
+Five pretrained CNNs, five epochs, majority voting. Paper target: 96.4% accuracy.
+Accuracy 92.15% · pneumonia recall 94.62% · specificity 88.03%
+Macro F1 0.916 · ROC AUC 0.962
+28 false positives, 21 false negatives. ResNet18 alone: 93.11% accuracy.
+
+5. Why focus on the lungs?
+The full image includes peripheral anatomy and acquisition markings
+A fixed pretrained anatomical model predicts both lungs at 256 pixels
+We crop their union with a 10% margin, then resize for classification
+256 replaces the standard 512 input for CPU runtime. Failed masks fall back.
+Median retained crop area: 71.1% of original image area
+
+6. The crop pipeline on a training image
+
+
+7. The implementation and its limits
+Frozen pretrained image encoders with five-epoch trained classifier heads
+ResNet18 supplies CNN features. DeiT-Tiny supplies transformer features.
+The pilot isolates image region and classifier combination under one split
+This reduced experiment differs from the original five-CNN late-block proposal.
+Uploaded 224 px fixture: 4.58 s including segmentation; cached cases: 1.24–1.49 s.
+
+8. Four matched conditions
+A: full image with ResNet18
+B: lung-focused crop with ResNet18
+C: full image with ResNet18 and DeiT-Tiny
+D: lung-focused crop with ResNet18 and DeiT-Tiny
+Checkpoints and combination weights use validation data only.
+
+9. Measured results
+A: accuracy 86.86%, recall 97.44%, specificity 69.23%, macro F1 0.850, AUC 0.931
+B: accuracy 92.63%, recall 96.67%, specificity 85.90%, macro F1 0.920, AUC 0.970
+C: accuracy 88.14%, recall 97.95%, specificity 71.79%, macro F1 0.866, AUC 0.947
+D: accuracy 93.75%, recall 98.21%, specificity 86.32%, macro F1 0.932, AUC 0.976
+
+10. Confusion matrices by condition
+
+
+11. What happened to the M3 prediction?
+Crop effect B minus A: macro F1 +0.0696, specificity +16.67 percentage points
+Paired 95% interval for macro-F1 difference: [0.0404, 0.1016]
+The measured macro-F1 gain exceeds the predicted +0.03 upper bound.
+Validation-selected ViT weights: C=0.25, D=0.5
+
+12. Validation and test disagree on cropping
+A: validation macro F1 0.955; test 0.850
+B: validation macro F1 0.907; test 0.920
+C: validation macro F1 0.957; test 0.866
+D: validation macro F1 0.924; test 0.932
+This single split supports a benchmark result, not universal crop superiority.
+
+13. Errors and uncertainty
+Automatic full-image fallbacks: 82 / 5824 (1.41%)
+Inspect false positives, false negatives and segmentation failures
+Report sensitivity alongside specificity and macro F1
+Paired uncertainty estimates describe this benchmark, not other hospitals
+Grad-CAM highlights one CNN response. It does not establish lesion boundaries.
+
+14. When the pipeline falls back to the full image
+
+
+15. Live demonstration
+Select a benchmark example or upload a PNG/JPEG
+Inspect the model prediction, individual scores and Grad-CAM
+Inspect lung crop experiment metrics and recorded protocol
+The interface identifies the model being demonstrated and uses saved trained weights.
+
+16. Conclusions and remaining questions
+Predeclared crop CNN–ViT: 93.75% accuracy and 98.21% pneumonia recall
+Small pediatric data and imperfect identifier groups limit generalization
+Adding ViT to the crop CNN improved accuracy by 1.12 percentage points
+The validation/test reversal requires repeated splits and external testing.
+
+17. Appendix: Interpreting the comparison
+B versus A tests the crop effect for the CNN pilot
+C versus A tests the transformer addition on full images
+D versus B tests the transformer addition on crops
+The historical M2 score uses a different training protocol and is context only.
+
+18. Appendix: Training examples from both classes
+
+
+19. Appendix: Historical baseline error examples
+
+
+20. Appendix: Where the crop hybrid makes errors
+
+
+21. References
+Chouhan et al. (2020). Five-CNN transfer-learning ensemble. doi:10.3390/app10020559
+Cohen et al. (2022). TorchXRayVision. mlmed.org/torchxrayvision/models.html
+Touvron et al. (2021). Data-efficient image transformers. github.com/facebookresearch/deit
+Abdullah et al. (2026). HybridCATNet. doi:10.3389/fdgth.2026.1769444
+Kermany et al. Pediatric chest X-ray dataset. doi:10.17632/rscbjbr9sj.2
+
+Defence: Never describe the frozen-feature pilot as a full late-block replication. Compare A/B/C/D within their own protocol. Explain negative results and resource limits openly.
+
+
+QUESTIONS TO PREPARE
+
+Sensitivity is the share of pneumonia images correctly detected. Specificity is the share of normal images correctly recognized. Macro F1 gives the normal and pneumonia class F1 scores equal weight. AUC measures ranking across thresholds, whereas the confusion matrix uses the declared decision threshold.
+
+Why not compare M4 directly to M2 as proof of cropping? M2 trained late layers on the larger paper-training partition. M4 trains heads on frozen encoders using a separate validation split. Several settings change, so only matched A/B/C/D comparisons isolate the declared effects.
+
+Is the crop only lung pixels? No. A bounding rectangle around both predicted lung masks, with a margin, still includes the heart and sometimes side markers. The masks have no manual ground truth here.
+
+Did we train the segmenter? No. It is fixed pretrained PSPNet from TorchXRayVision. We use 256-pixel segmentation instead of its standard 512-pixel wrapper because the measured CPU runtime was about 4.4 times faster. The predicted box is mapped to original pixels before cropping.
+
+Did we train a new transformer from scratch? No. DeiT-Tiny is pretrained on ImageNet. We train a small classifier head and select blend weights on validation data. Weight0 means the transformer contributes nothing, and weight1 means the transformer alone supplies that condition.
+
+Does this prove clinical performance? No. This is a pediatric benchmark with a previously inspected test set, imperfect filename patient groups and a single experiment seed. External validation remains necessary.
+
+Validation/test reversal: validation macro F1 {'A': 0.9548760947702666, 'C': 0.9573152247826846, 'B': 0.9072084739407574, 'D': 0.9243016497937757}. Cropping lowered validation performance but raised test performance. D was predeclared, not selected across conditions using test scores.
+Measured crop verdict: The measured macro-F1 gain exceeds the predicted +0.03 upper bound.
+B minus A macro F1: +0.0696; specificity: +16.67 percentage points. Paired interval: [0.0404, 0.1016]
+Validation-selected transformer weights: C=0.25, D=0.5

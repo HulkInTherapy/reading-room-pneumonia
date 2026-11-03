@@ -1,0 +1,86 @@
+{
+  "verified": true,
+  "models": [
+    {
+      "model": "resnet18",
+      "epochs": 5,
+      "train_records": 5232,
+      "test_records": 624,
+      "checkpoint_sha256": "9aa0cdcb7e993c1eed4f334ff6dd43226876247b647826e0ef123f39635c0440",
+      "max_probability_difference": 0.0,
+      "fresh_full_image_forwards": true,
+      "all_batchnorm_counters_verified": true
+    },
+    {
+      "model": "densenet121",
+      "epochs": 5,
+      "train_records": 5232,
+      "test_records": 624,
+      "checkpoint_sha256": "52c20e86c63fe4a4d386e9e0854def19580d4cc129717d62a1caf5812568dbc7",
+      "max_probability_difference": 0.0,
+      "fresh_full_image_forwards": true,
+      "all_batchnorm_counters_verified": true
+    },
+    {
+      "model": "googlenet",
+      "epochs": 5,
+      "train_records": 5232,
+      "test_records": 624,
+      "checkpoint_sha256": "257f81027fe1eb4032740dc2abdca12cce57289a8209209ed95492b266076c03",
+      "max_probability_difference": 0.0,
+      "fresh_full_image_forwards": true,
+      "all_batchnorm_counters_verified": true
+    },
+    {
+      "model": "inception_v3",
+      "epochs": 5,
+      "train_records": 5232,
+      "test_records": 624,
+      "checkpoint_sha256": "3baab2c8fcbbce52ef75a24db3f80e708057f13823aae0ad8a26e2211ce090e8",
+      "max_probability_difference": 0.0,
+      "fresh_full_image_forwards": true,
+      "all_batchnorm_counters_verified": true
+    },
+    {
+      "model": "alexnet",
+      "epochs": 5,
+      "train_records": 5232,
+      "test_records": 624,
+      "checkpoint_sha256": "1e96f0d0d68552b402d24bb90b237d3d7968047d6897cce5c371b3cd3c47064f",
+      "max_probability_difference": 0.0,
+      "fresh_full_image_forwards": true,
+      "all_batchnorm_counters_verified": true
+    }
+  ],
+  "metrics": {
+    "n": 624,
+    "accuracy": 0.9214743589743589,
+    "sensitivity": 0.9461538461538461,
+    "specificity": 0.8803418803418803,
+    "precision": 0.929471032745592,
+    "pneumonia_f1": 0.9377382465057179,
+    "normal_f1": 0.8937093275488069,
+    "macro_f1": 0.9157237870272624,
+    "balanced_accuracy": 0.9132478632478632,
+    "auc": 0.9623164584703047,
+    "confusion_matrix": [
+      [
+        206,
+        28
+      ],
+      [
+        21,
+        369
+      ]
+    ]
+  },
+  "config_hash": "e0e9ac2a0d1c82a7260d25a43705b706ecedd92909d4967ba6adc75124beb296",
+  "test_evaluated": true,
+  "selection": "Fixed epoch5, no test-driven choices",
+  "limitations": [
+    "Five epochs instead of paper50-200",
+    "Author batch size, transform parameters, noise distribution, normalization, BatchNorm-statistics and exact pretrained revision not recovered",
+    "AlexNet200-iteration prose versus200-epoch table ambiguity; use literal optimizer steps",
+    "Initial224 RGB bilinear cache follows stated resize, but author interpolation/file manifest unverified"
+  ]
+}

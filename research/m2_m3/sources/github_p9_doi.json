@@ -1,0 +1,50 @@
+{
+  "query": "s41598-024-52703-2 code github",
+  "follow_up_questions": null,
+  "answer": null,
+  "images": [],
+  "results": [
+    {
+      "url": "https://link.springer.com/article/10.1186/s12911-026-03497-y",
+      "title": "Ensemble localized patch residual convolution neural ...",
+      "content": "The source code used in this study is publicly available in the GitHub ... https://doi.org/10.1038/s41598-024-52703-2. Hussain D, Hyeon Gu Y",
+      "score": 0.8020137,
+      "raw_content": null,
+      "id": "ccc9f5-00"
+    },
+    {
+      "url": "https://www.itm-conferences.org/articles/itmconf/ref/2026/10/itmconf_ic3aid2026_05011/itmconf_ic3aid2026_05011.html",
+      "title": "Vision Transformer\u2013Driven Feature Extraction for ...",
+      "content": "OI: https://doi.org/10.1038/s41598-024-52703-2 [Google Scholar]; T. Chen et al., \u201cA vision transformer machine learning model for COVID-19 detection using",
+      "score": 0.5114976,
+      "raw_content": null,
+      "id": "fd6582-01"
+    },
+    {
+      "url": "https://github.com/YassminAhmed10/EyeVengers-Team-Project/blob/systems-integration/Modules/ClinicSystem/Backend/Uploads/97ae85f9-67cb-46bc-8a69-86c1cc7b2f84_s41598-024-75830-2%20(1).pdf",
+      "title": "97ae85f9-67cb-46bc-8a69-86c1cc7b2f84_s41598-024 ... - GitHub",
+      "content": "Contribute to YassminAhmed10/EyeVengers-Team-Project development by creating an account on GitHub.",
+      "score": 0.48396602,
+      "raw_content": null,
+      "id": "59fa6f-02"
+    },
+    {
+      "url": "https://colab.ws/articles/10.1038%2Fs41598-024-52703-2",
+      "title": "Efficient pneumonia detection using Vision Transformers on ...",
+      "content": "| \u0422\u0438\u043f \u043f\u0443\u0431\u043b\u0438\u043a\u0430\u0446\u0438\u0438: Journal Article \u0414\u0430\u0442\u0430 \u043f\u0443\u0431\u043b\u0438\u043a\u0430\u0446\u0438\u0438: 2024-01-30 DOI: 10.1038/s41598-024-52703-2 ... PubMed ID: 38291130 Multidisciplinary",
+      "score": 0.48030865,
+      "raw_content": null,
+      "id": "236b09-03"
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10827725",
+      "title": "Efficient pneumonia detection using Vision Transformers on ...",
+      "content": "by S Singh \u00b7 2024 \u00b7 Cited by 200 \u2014 10.1038/s41598-024-52703-2. LM Catalog Add to search Efficient pneumonia detection using Vision Transformers on chest X-rays \u30fb \u00a9 The Author(s) 2024 \u30fb",
+      "score": 0.4627892,
+      "raw_content": null,
+      "id": "75a548-04"
+    }
+  ],
+  "response_time": 3.22,
+  "request_id": "1090bcfe-a6bf-414f-a1c6-d0716d8dfc2b"
+}

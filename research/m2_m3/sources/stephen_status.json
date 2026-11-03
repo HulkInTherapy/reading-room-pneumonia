@@ -1,0 +1,50 @@
+{
+  "query": "An Efficient Deep Learning Approach to Pneumonia Classification in Healthcare retracted",
+  "follow_up_questions": null,
+  "answer": null,
+  "images": [],
+  "results": [
+    {
+      "url": "https://onlinelibrary.wiley.com/doi/pdf/10.1155/2021/8036304",
+      "title": "Retraction Retracted: Evaluating Deep Neural Network ...",
+      "content": "by S Krishnamurthy \u00b7 2021 \u00b7 Cited by 20 \u2014 Jeong, \u201cAn effi- cient deep learning approach to pneumonia classification in healthcare,\u201d Journal of healthcare engineering, vol. 2019, 7.",
+      "score": 0.7978881,
+      "raw_content": null,
+      "id": "9d5d24-00"
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6458916",
+      "title": "An Efficient Deep Learning Approach to Pneumonia Classification in Healthcare - PMC",
+      "content": "This study proposes a convolutional neural network model trained from scratch to classify and detect the presence of pneumonia from a collection of chest X-ray image samples. Unlike other methods that rely solely on transfer learning approaches or traditional handcrafted techniques to achieve a remarkable classification performance, we constructed a convolutional neural network model from scratch to extract features from a given chest X-ray image and classify it to determine if a person is infected with pneumonia. This model could help mitigate the reliability and interpretability challenges often faced when dealing with medical imagery. Unlike other deep learning classification tasks with sufficient image repository, it is difficult to obtain a large amount of pneumonia dataset for this [...] Deep neural network models have conventionally been designed, and experiments were performed upon them by human experts in a continuing trial-and-error method. This process demands enormous time, know-how, and resources. To overcome this problem, a novel but simple model is introduced to automatically perform optimal classification tasks with deep neural network architecture. The neural network architecture was specifically designed for pneumonia image classification tasks. The proposed technique is based on the convolutional neural network algorithm, utilizing a set of neurons to convolve on a given image and extract relevant features from them. Demonstration of the efficacy of the proposed method with the minimization of the computational cost as the focal point was conducted and [...] We developed a model to detect and classify pneumonia from chest X-ray images taken from frontal views at high validation accuracy. The algorithm begins by transforming chest X-ray images into sizes smaller than the original. The next step involves the identification and classification of images by the convolutional neural network framework, which extracts features from the images and classifies them. Due to the effectiveness of the trained CNN model for identifying pneumonia from chest X-ray images, the validation accuracy of our model was significantly higher when compared with other approaches. To affirm the performance of the model, we repeated the training process of the model several times, each time obtaining the same results. To validate the performance of the trained model on",
+      "score": 0.7825466,
+      "raw_content": null,
+      "id": "a8e02c-01"
+    },
+    {
+      "url": "https://www.academia.edu/41945336/An_Efficient_Deep_Learning_Approach_to_Pneumonia_Classification_in_Healthcare",
+      "title": "(PDF) An Efficient Deep Learning Approach to Pneumonia ...",
+      "content": "study proposes a convolutional neural network model trained from scratch to classify and detect the presence of pneumonia from a collection of chest X-ray",
+      "score": 0.61168414,
+      "raw_content": null,
+      "id": "4115fa-02"
+    },
+    {
+      "url": "https://www.sciencedirect.com/science/article/pii/S2405844024022084",
+      "title": "RETRACTED: Pneumonia classification: A limited data ...",
+      "content": "by A ul Haque \u00b7 2024 \u00b7 Cited by 4 \u2014 The current state-of-the-art pneumonia classification with deep learning approaches has limitations for being lightweight, data- hungry, and",
+      "score": 0.6097339,
+      "raw_content": null,
+      "id": "af649c-03"
+    },
+    {
+      "url": "https://www.researchgate.net/publication/332049903_An_Efficient_Deep_Learning_Approach_to_Pneumonia_Classification_in_Healthcare",
+      "title": "(PDF) An Efficient Deep Learning Approach to Pneumonia ...",
+      "content": "This study proposes a convolutional neural network model trained from scratch to classify and detect the presence of pneumonia from a collection",
+      "score": 0.5999311,
+      "raw_content": null,
+      "id": "d9bad0-04"
+    }
+  ],
+  "response_time": 5.41,
+  "request_id": "4bb8e7fa-0e0a-422a-bac9-b4249f9e75b2"
+}

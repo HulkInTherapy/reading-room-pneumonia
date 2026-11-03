@@ -1,0 +1,9 @@
+{
+  "model": "googlenet",
+  "epochs": 15,
+  "seed": 42,
+  "boundary": "inception5b + fc",
+  "train_n": 4164,
+  "validation_n": 1042,
+  "seconds": 1954.852553844452
+}

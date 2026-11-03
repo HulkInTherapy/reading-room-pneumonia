@@ -1,0 +1,9 @@
+{
+  "model": "densenet121",
+  "epochs": 15,
+  "seed": 42,
+  "boundary": "denseblock4.denselayer15 + denselayer16 + classifier",
+  "train_n": 4164,
+  "validation_n": 1042,
+  "seconds": 2251.8333809375763
+}

@@ -1,0 +1,174 @@
+{
+  "verified": true,
+  "models": [
+    {
+      "model": "resnet18",
+      "selected_epoch": 13,
+      "epochs_verified": 15,
+      "max_probability_difference": 1.3113021850585938e-06,
+      "checkpoint_sha256": "8c01070b9b4cdd4d6f6d46855c78a4ff4e6d9483ae9d7794caba539e6ba7612f",
+      "test_metrics": {
+        "n": 624,
+        "accuracy": 0.8493589743589743,
+        "sensitivity": 0.9974358974358974,
+        "specificity": 0.6025641025641025,
+        "precision": 0.8070539419087137,
+        "pneumonia_f1": 0.8922018348623854,
+        "normal_f1": 0.75,
+        "macro_f1": 0.8211009174311927,
+        "balanced_accuracy": 0.8,
+        "auc": 0.9737453429761123,
+        "confusion_matrix": [
+          [
+            141,
+            93
+          ],
+          [
+            1,
+            389
+          ]
+        ]
+      }
+    },
+    {
+      "model": "densenet121",
+      "selected_epoch": 9,
+      "epochs_verified": 15,
+      "max_probability_difference": 1.5497207641601562e-06,
+      "checkpoint_sha256": "7cb44133c21bf86a0c86461a61dd7f1677185ef005f4146344145f7f6cbe999a",
+      "test_metrics": {
+        "n": 624,
+        "accuracy": 0.8477564102564102,
+        "sensitivity": 0.9948717948717949,
+        "specificity": 0.6025641025641025,
+        "precision": 0.8066528066528067,
+        "pneumonia_f1": 0.8909299655568312,
+        "normal_f1": 0.7480106100795756,
+        "macro_f1": 0.8194702878182034,
+        "balanced_accuracy": 0.7987179487179488,
+        "auc": 0.9809116809116809,
+        "confusion_matrix": [
+          [
+            141,
+            93
+          ],
+          [
+            2,
+            388
+          ]
+        ]
+      }
+    },
+    {
+      "model": "googlenet",
+      "selected_epoch": 5,
+      "epochs_verified": 15,
+      "max_probability_difference": 4.470348358154297e-07,
+      "checkpoint_sha256": "16a52e9f12c89faaec8d28460a8ad583e6eb42bd5e1dc5f36f0107a073775889",
+      "test_metrics": {
+        "n": 624,
+        "accuracy": 0.8509615384615384,
+        "sensitivity": 0.9974358974358974,
+        "specificity": 0.6068376068376068,
+        "precision": 0.8087318087318087,
+        "pneumonia_f1": 0.8932261768082663,
+        "normal_f1": 0.753315649867374,
+        "macro_f1": 0.8232709133378202,
+        "balanced_accuracy": 0.8021367521367522,
+        "auc": 0.9646066184527724,
+        "confusion_matrix": [
+          [
+            142,
+            92
+          ],
+          [
+            1,
+            389
+          ]
+        ]
+      }
+    },
+    {
+      "model": "inception_v3",
+      "selected_epoch": 13,
+      "epochs_verified": 15,
+      "max_probability_difference": 4.172325134277344e-07,
+      "checkpoint_sha256": "5ccc0a850c26cb90bd84548701b6efcc2169b12f38e6c424c6472b66462cbba0",
+      "test_metrics": {
+        "n": 624,
+        "accuracy": 0.8525641025641025,
+        "sensitivity": 0.9897435897435898,
+        "specificity": 0.6239316239316239,
+        "precision": 0.8143459915611815,
+        "pneumonia_f1": 0.8935185185185185,
+        "normal_f1": 0.7604166666666666,
+        "macro_f1": 0.8269675925925926,
+        "balanced_accuracy": 0.8068376068376069,
+        "auc": 0.9673679596756519,
+        "confusion_matrix": [
+          [
+            146,
+            88
+          ],
+          [
+            4,
+            386
+          ]
+        ]
+      }
+    },
+    {
+      "model": "alexnet",
+      "selected_epoch": 1,
+      "epochs_verified": 15,
+      "max_probability_difference": 1.1920928955078125e-07,
+      "checkpoint_sha256": "922305e13a8a89ef5483ec979d3b75c6acaba91bce5acbd5e94555f84f7618bf",
+      "test_metrics": {
+        "n": 624,
+        "accuracy": 0.8333333333333334,
+        "sensitivity": 1.0,
+        "specificity": 0.5555555555555556,
+        "precision": 0.7894736842105263,
+        "pneumonia_f1": 0.8823529411764706,
+        "normal_f1": 0.7142857142857143,
+        "macro_f1": 0.7983193277310925,
+        "balanced_accuracy": 0.7777777777777778,
+        "auc": 0.9613412228796845,
+        "confusion_matrix": [
+          [
+            130,
+            104
+          ],
+          [
+            0,
+            390
+          ]
+        ]
+      }
+    }
+  ],
+  "ensemble": {
+    "n": 624,
+    "accuracy": 0.8573717948717948,
+    "sensitivity": 0.9974358974358974,
+    "specificity": 0.6239316239316239,
+    "precision": 0.8155136268343816,
+    "pneumonia_f1": 0.8973471741637832,
+    "normal_f1": 0.7664041994750657,
+    "macro_f1": 0.8318756868194244,
+    "balanced_accuracy": 0.8106837606837607,
+    "auc": 0.972260574183651,
+    "confusion_matrix": [
+      [
+        146,
+        88
+      ],
+      [
+        1,
+        389
+      ]
+    ]
+  },
+  "checkpoint_selection": "Independently recomputed from validation histories only",
+  "warning": "Multiple settings/split changed; this comparison does not isolate epoch count. Test was inspected in earlier work; no test-based selection in this run."
+}

@@ -1,0 +1,61 @@
+{
+  "model": "densenet121",
+  "epochs": 5,
+  "train_records": 5232,
+  "boundary": "denseblock4.denselayer15 + denselayer16 + classifier",
+  "config_hash": "e0e9ac2a0d1c82a7260d25a43705b706ecedd92909d4967ba6adc75124beb296",
+  "checkpoint_sha256": "52c20e86c63fe4a4d386e9e0854def19580d4cc129717d62a1caf5812568dbc7",
+  "seconds": 1922.59725856781,
+  "history": [
+    {
+      "epoch": 1,
+      "training_records": 5232,
+      "optimizer_steps": 327,
+      "training_loss": 0.17189129274010956,
+      "training_accuracy_augmented": 0.9294724770642202,
+      "last_learning_rate": 0.001,
+      "first_augmented_batch_sha256": "4c510d30527157f6d7ba4fcda1602f3379b48ce4a5c52e129b89d82519d42c73",
+      "seconds": 367.7866325378418
+    },
+    {
+      "epoch": 2,
+      "training_records": 5232,
+      "optimizer_steps": 654,
+      "training_loss": 0.11592810837600369,
+      "training_accuracy_augmented": 0.9554663608562691,
+      "last_learning_rate": 0.001,
+      "first_augmented_batch_sha256": "5baeb2c6df1a7d7a16873105ff1946d78b4bf76f613b8d90ac87b653d6de3837",
+      "seconds": 376.0648910999298
+    },
+    {
+      "epoch": 3,
+      "training_records": 5232,
+      "optimizer_steps": 981,
+      "training_loss": 0.1151339571698019,
+      "training_accuracy_augmented": 0.9569954128440367,
+      "last_learning_rate": 0.001,
+      "first_augmented_batch_sha256": "59d3ee05d71bd66f604791c798a8d6691aaedbea4455f794331404a43a2e9725",
+      "seconds": 393.09062910079956
+    },
+    {
+      "epoch": 4,
+      "training_records": 5232,
+      "optimizer_steps": 1308,
+      "training_loss": 0.09337328012394705,
+      "training_accuracy_augmented": 0.9640672782874617,
+      "last_learning_rate": 0.0005,
+      "first_augmented_batch_sha256": "1eb3265c2a839d586c3f3f3105b65f806b45280fbd5b3e5b6c81fe42dd08ff26",
+      "seconds": 385.8032228946686
+    },
+    {
+      "epoch": 5,
+      "training_records": 5232,
+      "optimizer_steps": 1635,
+      "training_loss": 0.07965004949870345,
+      "training_accuracy_augmented": 0.9676987767584098,
+      "last_learning_rate": 0.0005,
+      "first_augmented_batch_sha256": "875571f180c0282a6ae5b8400c255d30bf07acc268a7d6d83eed598ea7073ef0",
+      "seconds": 399.43008279800415
+    }
+  ]
+}

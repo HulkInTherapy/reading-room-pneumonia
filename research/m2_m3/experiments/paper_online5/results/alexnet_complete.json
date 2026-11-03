@@ -1,0 +1,61 @@
+{
+  "model": "alexnet",
+  "epochs": 5,
+  "train_records": 5232,
+  "boundary": "9216->512->2 replacement classifier",
+  "config_hash": "e0e9ac2a0d1c82a7260d25a43705b706ecedd92909d4967ba6adc75124beb296",
+  "checkpoint_sha256": "1e96f0d0d68552b402d24bb90b237d3d7968047d6897cce5c371b3cd3c47064f",
+  "seconds": 562.0540788173676,
+  "history": [
+    {
+      "epoch": 1,
+      "training_records": 5232,
+      "optimizer_steps": 327,
+      "training_loss": 0.34062759527696806,
+      "training_accuracy_augmented": 0.922782874617737,
+      "last_learning_rate": 1e-05,
+      "first_augmented_batch_sha256": "e2c2b90c4341f8d39acc41879c45d697531deb1e7149fa5db94f3c726f9950f3",
+      "seconds": 110.8298819065094
+    },
+    {
+      "epoch": 2,
+      "training_records": 5232,
+      "optimizer_steps": 654,
+      "training_loss": 0.11661377596734405,
+      "training_accuracy_augmented": 0.9579510703363915,
+      "last_learning_rate": 1e-05,
+      "first_augmented_batch_sha256": "751c433a43b41cad12fd3d014249271495c5e9c3589fd727d509d68b8fef29b2",
+      "seconds": 113.31397223472595
+    },
+    {
+      "epoch": 3,
+      "training_records": 5232,
+      "optimizer_steps": 981,
+      "training_loss": 0.11067574095146143,
+      "training_accuracy_augmented": 0.9612003058103975,
+      "last_learning_rate": 1e-05,
+      "first_augmented_batch_sha256": "f62725adc1f9068719fa77591db45ac586c019a39aed00365cd1bc12150a98ae",
+      "seconds": 113.2771680355072
+    },
+    {
+      "epoch": 4,
+      "training_records": 5232,
+      "optimizer_steps": 1308,
+      "training_loss": 0.10571732209277672,
+      "training_accuracy_augmented": 0.9613914373088684,
+      "last_learning_rate": 1e-05,
+      "first_augmented_batch_sha256": "a2c123985fa2f62def54c3be158b3facc0e7da6d9efdce06b0082b7b96944f9f",
+      "seconds": 111.21900796890259
+    },
+    {
+      "epoch": 5,
+      "training_records": 5232,
+      "optimizer_steps": 1635,
+      "training_loss": 0.10338218535570035,
+      "training_accuracy_augmented": 0.9606269113149847,
+      "last_learning_rate": 1e-05,
+      "first_augmented_batch_sha256": "f703379e01102b387ea3df0962b0ef7a49ef71eb3c266414eda6283d99e5c09d",
+      "seconds": 110.80124688148499
+    }
+  ]
+}
