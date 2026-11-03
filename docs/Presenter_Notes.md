@@ -1,38 +1,38 @@
 # Presenter script — read this once before the talk
 
-The slides contain very little text. Read the short script below in your own words. The talk takes about 5–7 minutes. You do not need to explain the code.
+New to the project? First read Friend_20_Minute_Guide.pdf. The slides now include brief explanations; use this script to connect them into a story. The talk takes about 5–7 minutes. You do not need to explain the code.
 
 ## Slide 1 — Reading Room
 
 “Good morning. Our project is Reading Room, a computer vision study of pneumonia classification from children's chest X-rays. The four team members are Samarth Shekhar, Meghavi Rao, Rachit Kumar and Harshal Nerpagar. We first reconstructed a published approach, then tested lung-focused cropping and a second type of image model.”
 
-## Slide 2 — Two dataset labels
+## Slide 2 — Dataset and prediction task
 
-“The computer predicts one of two labels: normal or pneumonia. These are labels in a public research dataset. The pictures shown here are examples. We evaluate how often predictions agree with the dataset labels. This is a research demonstration, rather than a clinical diagnosis system.”
+“We use the public Kermany pediatric chest X-ray dataset. It contains normal and pneumonia labels, with 5,856 original records. Our final experiment uses 4,164 training, 1,042 validation and 624 test records. The test set contains 234 normal and 390 pneumonia records. These images come from one pediatric center, so they do not establish performance in every hospital.”
 
-## Slide 3 — Our journey
+## Slide 3 — Our journey: M1 to M5
 
-“M1 was our literature review. M2 built a baseline, which means a starting system for comparison. M3 recorded our improvement idea before running it. M4 tested that idea, and M5 analyzed the results and built the demonstration. We tried three baseline protocols. The 15-epoch attempt did worse, so we audited the implementation instead of assuming that more training always helps.”
+“This table shows our entire project. M1 reviewed earlier work. In M2 our first cached run reached 87.18 percent, the longer audit reached 85.74 percent, and corrected online processing reached 92.15 percent. M3 recorded our hypothesis before implementing it. M4 ran four matched comparisons, with final accuracy 93.75 percent. M5 verified the model and analyzed errors. Because historical settings changed together, we use A/B/C/D for the fair final comparison.”
 
-## Slide 4 — Lung-focused input
+## Slide 4 — From full X-ray to lung crop
 
-“First, a pretrained anatomical model estimates where the lungs are. The white mask represents the lungs, not pneumonia lesions. We crop a rectangle around both lungs with a small margin. Then two pretrained image readers classify the image: a CNN called ResNet18 and a vision transformer called DeiT-Tiny. We trained their small final classifier heads for five epochs. The main image encoders stayed fixed.”
+“We start with the full image. A fixed pretrained anatomical model estimates both lungs, producing the white mask. White means predicted lung pixels, not infection. We crop a rectangle with a 10 percent margin from the original pixels, then resize it to 224 by 224 in RGB format. RGB is the three-channel input format, not medical coloring. ResNet18 and DeiT-Tiny classify this crop, and final D averages their scores equally.”
 
-## Slide 5 — Four comparisons
+## Slide 5 — Four matched comparisons
 
-“We used the same split and head-training settings in these four conditions. A uses a full image and the CNN. B changes the input to a lung crop. C adds the transformer to the full image. D combines the lung crop with both models. B versus A tests cropping, and D versus B tests the extra transformer on crops. This helps us explain which changes mattered.”
+“A uses the full X-ray and CNN. B changes only to the lung crop, so B versus A tests cropping. C adds the transformer on full images. D adds it on crops, so D versus B tests the extra model there. All conditions use the same split and comparable five-epoch head training. The main encoders remain fixed. These are measured controls, not guesses about which change helps.”
 
-## Slide 6 — Final results
+## Slide 6 — Final model results
 
-“The final crop-plus-transformer model correctly classified 93.75 percent of 624 test images. It detected 383 of the 390 pneumonia cases, giving 98.21 percent recall. It still made 32 false alarms and missed seven pneumonia cases. Against the matched full-image CNN, accuracy increased by 6.89 percentage points. That comparison is different from comparing against our older five-CNN experiment.”
+“Our final model correctly classified 585 of 624 test records, giving 93.75 percent accuracy. It found 383 of 390 pneumonia records, giving 98.21 percent recall. A false alarm is a normal-labelled image predicted as pneumonia: there were 32. A missed case is pneumonia predicted as normal: there were seven. Against the matched full-image CNN control, accuracy increased by 6.89 percentage points.”
 
-## Slide 7 — Mistakes and limits
+## Slide 7 — Mistakes, limits and next steps
 
-“These are real wrong predictions. A false alarm means a normal-labelled image was predicted as pneumonia. A missed case means a pneumonia-labelled image was predicted as normal. We also found that cropping helped the test set but hurt this validation split. We cannot explain that reversal from one split, so we report it and recommend repeated splits and external testing.”
+“These are two real wrong predictions, showing a false alarm and a missed pneumonia case. A good overall score does not mean every image is right. Cropping helped test performance but reduced validation performance. We cannot establish the reason from one split. Our next work is repeated group-aware splits, independent data and limited fine-tuning. We also used a full-image fallback for 82 implausible masks; that is an automatic flag rate, not measured segmentation accuracy.”
 
-## Slide 8 — Live demonstration
+## Slide 8 — Live demonstration and this term’s work
 
-“We can select a supplied sample or upload a PNG or JPEG. Clicking Analyze runs the saved models. The page shows the original image, predicted lung mask, crop and result. The built-in samples reuse their prepared masks, but classifier inference runs now. Uploaded images run segmentation too. If the network or laptop setup fails, we can show our clearly labelled recorded offline demo.”
+“This term we implemented original-pixel lung cropping, added a small transformer, ran four controlled comparisons and verified the results. We also packaged a standalone web app, portable weights, report and GitHub presenter hub. To demonstrate, select an image and click Analyze. Show the full image, mask, crop and result. Built-in masks are prepared, but classification runs now; uploads run segmentation too. If setup fails, show the clearly labelled recorded backup.”
 
 # The live demo — exact sequence
 
@@ -78,5 +78,3 @@ The slides contain very little text. Read the short script below in your own wor
 - “The mask identifies pneumonia lesions.”
 - “The score is the patient's actual probability of pneumonia.”
 - “We beat every paper or proved clinical readiness.”
-
-The full report contains all three baseline attempts, the four final conditions, graphs, failure examples, exact settings and limitations.

@@ -6,7 +6,7 @@ You only need to follow one of these paths.
 
 1. Open [GitHub Releases](https://github.com/HulkInTherapy/reading-room-pneumonia/releases/tag/v1.0.0).
 2. Download **Presentation_Kit.zip** and extract it before leaving home.
-3. Open **Presentation_8_Slides.pdf**. Read **Presenter_Notes.md** once.
+3. Read **Friend_20_Minute_Guide.pdf** for the full story, then open **Presentation_8_Slides.pdf**. Use **Presenter_Notes.pdf** for the short read-aloud script.
 4. Open **Offline_Demo.html** if you need the recorded backup. It works without Python or a network connection.
 
 The offline page is clearly labelled as recorded model output. It does not run a new prediction.
@@ -49,7 +49,7 @@ For uploaded images, lung segmentation runs now. Built-in samples use their prep
 
 > We classify public pediatric chest X-rays as normal or pneumonia. We tested lung cropping and a CNN/transformer combination using four matched comparisons. The final system reached 93.75% accuracy and 98.21% pneumonia recall on 624 test records. Validation and test showed different crop trends, so we report the limitation.
 
-All eight slides have an exact script and simple Q&A in [Presenter_Notes.md](docs/Presenter_Notes.md).
+Read the [20-minute understanding guide](docs/Friend_20_Minute_Guide.pdf) first. All eight slides also have an exact script and simple Q&A in [Presenter_Notes.md](docs/Presenter_Notes.md).
 
 ## If something fails
 

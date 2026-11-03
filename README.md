@@ -9,16 +9,17 @@
 
 **Open the [Presenter Hub](https://hulkintherapy.github.io/reading-room-pneumonia/)** for the slides, script, recorded demo and live-setup guide.
 
-**No Python or coding required:** download **[Presentation_Kit.zip](https://github.com/HulkInTherapy/reading-room-pneumonia/releases/download/v1.0.0/Presentation_Kit.zip)**, extract it, and open **Presentation_8_Slides.pdf**. Read **Presenter_Notes.md** once. The kit also contains **Offline_Demo.html**, a clearly labelled recording of actual model responses that works without a network connection.
+**No Python or coding required:** download **[Presentation_Kit.zip](https://github.com/HulkInTherapy/reading-room-pneumonia/releases/download/v1.0.0/Presentation_Kit.zip)**, extract it, and open **Presentation_8_Slides.pdf**. Read **Friend_20_Minute_Guide.pdf** first; use **Presenter_Notes.pdf** for the short read-aloud script. The kit also contains **Offline_Demo.html**, a clearly labelled recording of actual model responses that works without a network connection.
 
-| File                                                       | Use it for                                                         |
-| ---------------------------------------------------------- | ------------------------------------------------------------------ |
-| [Eight-slide presentation](docs/Presentation_8_Slides.pdf) | Minimal, visual slides for a 5–7 minute talk                       |
-| [HTML slideshow](docs/Presentation_8_Slides.html)          | Offline fullscreen slides; use arrow keys                          |
-| [Presenter script and Q&A](docs/Presenter_Notes.pdf)       | Simple explanations for presenters who are new to the project      |
-| [IEEE-format research report](docs/Research_Report.pdf)    | Full history, settings, graphs, errors, limitations and references |
-| [LaTeX report source](docs/Research_Report.tex)            | Editable source using the actual `IEEEtran` conference class       |
-| [Start-here guide](START_HERE.md)                          | Exact demo steps and recovery instructions                         |
+| File                                                                     | Use it for                                                                 |
+| ------------------------------------------------------------------------ | -------------------------------------------------------------------------- |
+| [Eight-slide presentation](docs/Presentation_8_Slides.pdf)               | Minimal, visual slides for a 5–7 minute talk                               |
+| [HTML slideshow](docs/Presentation_8_Slides.html)                        | Offline fullscreen slides; use arrow keys                                  |
+| [20-minute project understanding guide](docs/Friend_20_Minute_Guide.pdf) | Plain-English history, dataset, models, results, demo and likely questions |
+| [Presenter script and Q&A](docs/Presenter_Notes.pdf)                     | Simple explanations for presenters who are new to the project              |
+| [IEEE-format research report](docs/Research_Report.pdf)                  | Full history, settings, graphs, errors, limitations and references         |
+| [LaTeX report source](docs/Research_Report.tex)                          | Editable source using the actual `IEEEtran` conference class               |
+| [Start-here guide](START_HERE.md)                                        | Exact demo steps and recovery instructions                                 |
 
 ## Run the live model
 
@@ -136,7 +137,7 @@ Large weights are hosted in **[GitHub Releases](https://github.com/HulkInTherapy
 
 - **Portable_Lung_Model.zip:** complete latest model, encoders, segmenter, heads, examples and manifest.
 - **Historical_Models.zip:** saved final/selected checkpoints from the three baseline experiments.
-- **Presentation_Kit.zip:** eight-slide talk, script, report and offline demo.
+- **Presentation_Kit.zip:** eight-slide explanatory talk, 20-minute guide, script, report and offline demo.
 
 Raw training images, environments, redundant optimizer-resume states and activation caches are regenerated from the documented sources rather than committed. No credentials are required by the live demonstration.
 
